@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema targetNamespace="http://www.openlyrics.info/2009/song/namespace"
+           xmlns="http://www.openlyrics.info/2009/song/namespace"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"> 
+
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+     Song schema for OpenLyrics format.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="song" type="songType"/>
+
+  <xs:complexType name="songType">
+    <xs:all>
+      <xs:element name="titles" type="titlesType"/>
+      <xs:element name="lyrics" type="lyricsType"/>
+    </xs:all>
+    <!-- xs:token is like restricted string
+         (no CR, LF, only one space delimiter allowed) -->
+    <xs:attribute name="version" type="xs:token"/>
+    <xs:attribute name="createdIn" type="xs:token"/>
+    <xs:attribute name="lastEditIn" type="xs:token"/>
+    <xs:attribute name="lastEditDate" type="xs:dateTime"/>
+  </xs:complexType>
+
+  <!-- Titles -->
+
+  <xs:complexType name="titlesType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Lyrics -->
+
+  <xs:complexType name="lyricsType">
+    <xs:sequence>
+      <xs:element name="verse" type="verseType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verseType">
+    <xs:sequence>
+      <xs:element name="line" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NMTOKEN"/>
+  </xs:complexType>
+
+</xs:schema>
