@@ -30,9 +30,19 @@
 
   <xs:complexType name="titlesType">
     <xs:sequence>
-      <xs:element name="title" type="xs:string" maxOccurs="unbounded"/>
+        <xs:element name="title" type="titleType" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
+
+  <xs:complexType name="titleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+        <xs:attribute name="original" type="xs:boolean"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
 
   <!-- Lyrics -->
 
@@ -46,6 +56,7 @@
     <xs:sequence>
       <xs:element name="line" type="xs:string" maxOccurs="unbounded"/>
     </xs:sequence>
+    <!-- xs:NMTOKEN one word value -->
     <xs:attribute name="name" type="xs:NMTOKEN"/>
   </xs:complexType>
 
