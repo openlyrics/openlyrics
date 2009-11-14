@@ -5,6 +5,10 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"> 
 
+  <!-- import because of xml:lang -->
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+
   <xs:annotation>
     <xs:documentation xml:lang="en">
      Song schema for OpenLyrics format.
@@ -14,10 +18,11 @@
   <xs:element name="song" type="songType"/>
 
   <xs:complexType name="songType">
-    <xs:all>
+      <!-- allow mutliple lyrics -->
+    <xs:sequence>
       <xs:element name="titles" type="titlesType"/>
-      <xs:element name="lyrics" type="lyricsType"/>
-    </xs:all>
+      <xs:element name="lyrics" type="lyricsType" maxOccurs="unbounded"/>
+    </xs:sequence>
     <!-- xs:token is like restricted string
          (no CR, LF, only one space delimiter allowed) -->
     <xs:attribute name="version" type="xs:token"/>
@@ -37,7 +42,7 @@
   <xs:complexType name="titleType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="lang" type="xs:language"/>
+        <xs:attribute ref="xml:lang"/>
         <xs:attribute name="original" type="xs:boolean"/>
       </xs:extension>
     </xs:simpleContent>
@@ -50,6 +55,7 @@
     <xs:sequence>
       <xs:element name="verse" type="verseType" maxOccurs="unbounded"/>
     </xs:sequence>
+    <xs:attribute ref="xml:lang"/>
   </xs:complexType>
 
   <xs:complexType name="verseType">
