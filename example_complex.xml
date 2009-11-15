@@ -13,13 +13,12 @@
     <authorInfo>
         <authors>
             <author>John Newton</author>
-            <author type="text">Chris Rice</author>
+            <author type="words">Chris Rice</author>
             <author type="music">Richard Wagner</author>
             <author type="translation" xml:lang="cs">František Foo</author>
         </authors>
         <copyright>public domain</copyright>
         <ccliNo></ccliNo>
-        <!-- date format: ISO 8601 -->
         <releaseDate>1779</releaseDate>
     </authorInfo>
     <musicInfo>

@@ -12,7 +12,20 @@
     <title>Amazing</title>
     <title xml:lang="de-DE">Erstaunliche Anmut</title>
   </titles>
-
+  <!--
+   -->
+  <authorInfo>
+    <authors>
+      <author>John Newton</author>
+      <author type="words">Chris Rice</author>
+      <author type="music">Richard Wagner</author>
+      <author type="translation" xml:lang="cs">František Foo</author>
+    </authors>
+    <copyright>public domain</copyright>
+    <ccliNo>4639462</ccliNo>
+    <releaseDate>1779</releaseDate>
+  </authorInfo>
+ 
   <lyrics xml:lang="en">
     <comment>any text</comment>
     <verse name="v1">
