@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- TODO revisit content of which elements/attributes is required -->
+
 <xs:schema targetNamespace="http://www.openlyrics.info/2009/song/namespace"
            xmlns="http://www.openlyrics.info/2009/song/namespace"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -27,6 +29,7 @@
       <!-- allow mutliple lyrics -->
     <xs:sequence>
       <xs:element name="titles" type="titlesType"/>
+      <xs:element name="authorInfo" type="authorInfoType"/>
       <xs:element name="lyrics" type="lyricsType" maxOccurs="unbounded"/>
     </xs:sequence>
     <!-- xs:token is like restricted string
@@ -53,6 +56,46 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+
+  <!-- AuthorInfo -->
+
+  <xs:complexType name="authorInfoType">
+    <xs:sequence>
+      <xs:element name="authors" type="authorsType" minOccurs="0"/>
+      <xs:element name="copyright" type="xs:token" minOccurs="0"/>
+      <xs:element name="ccliNo" type="xs:positiveInteger" minOccurs="0"/>
+      <xs:element name="releaseDate" type="releaseDateType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorsType">
+    <xs:sequence>
+      <xs:element name="author" type="authorType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="type" type="authorAttrType" use="optional"/>
+        <!-- TODO require xml:lang only when <author type="translation"> -->
+        <xs:attribute ref="xml:lang" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="authorAttrType">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="words"/>
+      <xs:enumeration value="music"/>
+      <xs:enumeration value="translation"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="releaseDateType">
+      <xs:union memberTypes="xs:gYear xs:gYearMonth xs:date xs:dateTime"/>
+  </xs:simpleType>
 
 
   <!-- Lyrics -->
