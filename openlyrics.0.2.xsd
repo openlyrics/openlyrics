@@ -69,15 +69,25 @@
     <xs:sequence maxOccurs="unbounded"> <!-- maxOccurs - comment at any line -->
       <xs:element ref="comment" minOccurs="0"/>
       <xs:element name="part" type="partType" minOccurs="0"/>
-      <xs:element name="line" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="line" type="lineType" maxOccurs="unbounded"/>
     </xs:sequence>
     <!-- xs:NMTOKEN - one word value -->
     <xs:attribute name="name" type="xs:NMTOKEN" use="required"/>
   </xs:complexType>
 
   <xs:complexType name="partType">
+    <xs:attribute name="name" type="xs:token" use="required"/>
+  </xs:complexType>
+
+  <!-- chords are inside the content of line e.g. <chord name="D7"> -->
+  <xs:complexType name="lineType" mixed="true"> <!-- 'mixed' - allow tags inside content -->
     <xs:sequence>
+      <xs:element name="chord" type="chordType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="chordType">
+    <!-- TODO: define list of possible chord values -->
     <xs:attribute name="name" type="xs:token" use="required"/>
   </xs:complexType>
 
