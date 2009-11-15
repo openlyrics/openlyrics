@@ -57,25 +57,26 @@
     </otherInfo>
     <lyrics xml:lang="en-US">
         <verse name="v1">
-            <part name="men">
-                <comment>any text</comment>
-                <line>
-                    <chord name="D"/>Amazing <chord name="D7"/>grace, how
-                    ...
-                </line>
-            </part>
-            <part name="women">
-                <line>A b c</line>
-                <line>D e f</line>
-            </part>
+            <comment>any text</comment>
+            <part name="men"/>
+            <line>
+                <chord name="D"/>Amazing <chord name="D7"/>grace, how
+                ...
+            </line>
+            <part name="women"/>
+            <line>A b c</line>
+            <line>D e f</line>
             ...
         </verse>
+        <comment>any text</comment>
         <verse name="c">
             <comment>any text</comment>
             <line>
                 ...
             </line>
+            <comment>any text</comment>
         </verse>
+        <comment>any text</comment>
     </lyrics>
     <lyrics xml:lang="de-DE">
         <verse name="v1">

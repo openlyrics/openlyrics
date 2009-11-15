@@ -14,7 +14,13 @@
   </titles>
 
   <lyrics xml:lang="en">
+    <comment>any text</comment>
     <verse name="v1">
+      <comment>any text</comment>
+      <part name="men"/>
+      <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
+      <comment>any text</comment>
+      <part name="women"/>
       <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
     </verse>
   </lyrics>
