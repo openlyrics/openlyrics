@@ -21,7 +21,8 @@
       <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
       <comment>any text</comment>
       <part name="women"/>
-      <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
+      <line><chord name="D"/>Amazing grace how sweet <chord name="D"/>the sound that saved a wretch like me;<chord name="B7"/></line>
+      <line>Amazing grace<chord name="G7"/> how sweet the sound that saved a wretch like me;</line>
     </verse>
   </lyrics>
 
