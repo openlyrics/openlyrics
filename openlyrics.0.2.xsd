@@ -15,7 +15,13 @@
     </xs:documentation>
   </xs:annotation>
 
+
   <xs:element name="song" type="songType"/>
+
+
+  <!-- referred elements -->
+  <xs:element name="comment" type="xs:string"/>
+
 
   <xs:complexType name="songType">
       <!-- allow mutliple lyrics -->
@@ -52,18 +58,27 @@
   <!-- Lyrics -->
 
   <xs:complexType name="lyricsType">
-    <xs:sequence>
+    <xs:sequence maxOccurs="unbounded"> <!-- maxOccurs - comment at any verse -->
+      <xs:element ref="comment" minOccurs="0"/>
       <xs:element name="verse" type="verseType" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute ref="xml:lang"/>
   </xs:complexType>
 
   <xs:complexType name="verseType">
-    <xs:sequence>
+    <xs:sequence maxOccurs="unbounded"> <!-- maxOccurs - comment at any line -->
+      <xs:element ref="comment" minOccurs="0"/>
+      <xs:element name="part" type="partType" minOccurs="0"/>
       <xs:element name="line" type="xs:string" maxOccurs="unbounded"/>
     </xs:sequence>
-    <!-- xs:NMTOKEN one word value -->
-    <xs:attribute name="name" type="xs:NMTOKEN"/>
+    <!-- xs:NMTOKEN - one word value -->
+    <xs:attribute name="name" type="xs:NMTOKEN" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partType">
+    <xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:token" use="required"/>
   </xs:complexType>
 
 </xs:schema>
