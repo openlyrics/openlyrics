@@ -30,6 +30,7 @@
     <xs:sequence>
       <xs:element name="titles" type="titlesType"/>
       <xs:element name="authorInfo" type="authorInfoType"/>
+      <xs:element name="musicInfo" type="musicInfoType"/>
       <xs:element name="lyrics" type="lyricsType" maxOccurs="unbounded"/>
     </xs:sequence>
     <!-- xs:token is like restricted string
@@ -95,6 +96,47 @@
 
   <xs:simpleType name="releaseDateType">
       <xs:union memberTypes="xs:gYear xs:gYearMonth xs:date xs:dateTime"/>
+  </xs:simpleType>
+
+
+  <!-- MusicInfo -->
+
+  <xs:complexType name="musicInfoType">
+    <xs:sequence>
+      <xs:element name="transposition" type="transpositionType" minOccurs="0"/>
+      <xs:element name="tempo" type="tempoType" minOccurs="0"/>
+      <!-- TODO restrict to only allowed values -->
+      <xs:element name="key" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="transpositionType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="-99"/>
+      <xs:maxInclusive value="99"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tempoType">
+    <xs:union memberTypes="tempoTypeBeeps tempoTypeFuzzy"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="tempoTypeBeeps">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="39"/>
+      <xs:maxInclusive value="250"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tempoTypeFuzzy">
+    <xs:restriction base="xs:string">
+      <!-- TODO are those 5 values enough? -->
+      <xs:enumeration value="very fast"/>
+      <xs:enumeration value="fast"/>
+      <xs:enumeration value="moderate"/>
+      <xs:enumeration value="slow"/>
+      <xs:enumeration value="very slow"/>
+    </xs:restriction>
   </xs:simpleType>
 
 

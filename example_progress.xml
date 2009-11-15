@@ -25,7 +25,18 @@
     <ccliNo>4639462</ccliNo>
     <releaseDate>1779</releaseDate>
   </authorInfo>
- 
+
+  <musicInfo>
+    <!-- move chords pitch up/down by a fixed number of semitones,
+         values: positive or negative integer -->
+    <transposition>2</transposition>
+    <!-- bpm (beats per minute, maybe 30-250) or some words like
+         Very Fast, Fast, Moderate, Slow, Very Slow -->
+    <tempo>250</tempo>
+    <!-- should be more than only one key? -->
+    <key>C#</key>
+  </musicInfo>
+
   <lyrics xml:lang="en">
     <comment>any text</comment>
     <verse name="v1">
