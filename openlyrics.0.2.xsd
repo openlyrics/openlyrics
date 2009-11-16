@@ -29,8 +29,9 @@
       <!-- allow mutliple lyrics -->
     <xs:sequence>
       <xs:element name="titles" type="titlesType"/>
-      <xs:element name="authorInfo" type="authorInfoType"/>
-      <xs:element name="musicInfo" type="musicInfoType"/>
+      <xs:element name="authorInfo" type="authorInfoType" minOccurs="0"/>
+      <xs:element name="musicInfo" type="musicInfoType" minOccurs="0"/>
+      <xs:element name="otherInfo" type="otherInfoType" minOccurs="0"/>
       <xs:element name="lyrics" type="lyricsType" maxOccurs="unbounded"/>
     </xs:sequence>
     <!-- xs:token is like restricted string
@@ -139,6 +140,72 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- OtherInfo -->
+
+  <xs:complexType name="otherInfoType">
+    <xs:sequence>
+      <xs:element name="songVariant" type="xs:token" minOccurs="0"/>
+      <xs:element name="customSongVersion" type="xs:token" minOccurs="0"/>
+      <xs:element name="searchKeywords" type="xs:string" minOccurs="0"/>
+      <xs:element name="verseOrder" type="verseOrderType" minOccurs="0"/>
+      <xs:element name="collection" type="xs:token" minOccurs="0"/>
+      <xs:element name="trackNo" type="xs:positiveInteger" minOccurs="0"/>
+      <xs:element name="themes" type="themesType" minOccurs="0"/>
+      <xs:element name="customInfo" type="customInfoType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="verseOrderType">
+    <xs:list itemType="verseOrderItemType"/>
+  </xs:simpleType>
+
+  <!-- TODO Should be allowed custom values of verse name? -->
+  <xs:simpleType name="verseOrderItemType">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:minLength value="0"/>
+      <!-- verse - v1, v2, v1a, ... -->
+      <xs:pattern value="v[1-9]\d?[a-z]?"/>
+      <!-- chorus c, c1, c2, c1a, ca, ... -->
+      <!-- pre-chorus - p, p1, p2, p1a, pa, ... -->
+      <!-- bridge - b, b1, b2, b1a, ba, ... -->
+      <xs:pattern value="[cpb][a-z]?"/>
+      <xs:pattern value="[cpb][1-9]\d?[a-z]?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- TODO Should be allowed only predefined themes ccli themes?
+       http://www.ccli.com.au/owners/themes.cfm -->
+  <xs:complexType name="themesType">
+    <xs:sequence>
+      <xs:element name="theme" type="themeType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="themeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+      <!-- id reffers to the list of ccli themes
+           Translation of predefined themes from list should be handled
+           in application using the 'id' value. -->
+        <xs:attribute name="id" type="xs:positiveInteger"/>
+        <xs:attribute ref="xml:lang"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="customInfoType">
+    <xs:sequence>
+      <xs:element name="custom" type="customType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
 
   <!-- Lyrics -->
 
