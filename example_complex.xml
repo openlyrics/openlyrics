@@ -18,7 +18,7 @@
             <author type="translation" xml:lang="cs">František Foo</author>
         </authors>
         <copyright>public domain</copyright>
-        <ccliNo></ccliNo>
+        <ccliNo>1234</ccliNo>
         <releaseDate>1779</releaseDate>
     </authorInfo>
     <musicInfo>
@@ -40,6 +40,7 @@
         <collection>name of a collection</collection>
         <trackNo>48</trackNo>
         <themes>
+            <theme id="5"/>
             <theme>Adoration</theme>
             <theme id="1" xml:lang="en-US">Grace</theme>
             <theme id="2" xml:lang="en-US">Praise</theme> 
@@ -60,35 +61,25 @@
             <part name="men"/>
             <line>
                 <chord name="D"/>Amazing <chord name="D7"/>grace, how
-                ...
             </line>
             <part name="women"/>
             <line>A b c</line>
             <line>D e f</line>
-            ...
         </verse>
         <comment>any text</comment>
         <verse name="c">
             <comment>any text</comment>
-            <line>
-                ...
-            </line>
-            <comment>any text</comment>
+            <line>Line content</line>
         </verse>
-        <comment>any text</comment>
     </lyrics>
     <lyrics xml:lang="de-DE">
         <verse name="v1">
             <line>
                 <chord name="D"/>Erstaunliche <chord name="D7"/>Anmut, wie
-                ...
             </line>
-            ...
         </verse>
         <verse name="c">
-            <line>
-                ...
-            </line>
+            <line>Text</line>
         </verse>
     </lyrics>
 </song>
