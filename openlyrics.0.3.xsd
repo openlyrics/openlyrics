@@ -41,13 +41,27 @@
 
   <xs:complexType name="propertiesType">
     <xs:all> <!-- 'all' - allowed any order of elements -->
-      <xs:element name="titles" type="titlesType"/>
+      <xs:element name="titles" type="titlesType" minOccurs="1"/>
       <xs:element name="authors" type="authorsType" minOccurs="0"/>
       <xs:element name="copyright" type="xs:token" minOccurs="0"/>
       <xs:element name="ccliNo" type="xs:positiveInteger" minOccurs="0"/>
       <xs:element name="releaseDate" type="releaseDateType" minOccurs="0"/>
-      <xs:element name="musicInfo" type="musicInfoType" minOccurs="0"/>
-      <xs:element name="otherInfo" type="otherInfoType" minOccurs="0"/>
+      <!-- MusicInfo -->
+      <xs:element name="transposition" type="transpositionType" minOccurs="0"/>
+      <xs:element name="tempo" type="tempoWithAttrType" minOccurs="0"/>
+      <!-- TODO restrict to only allowed values -->
+      <xs:element name="key" type="xs:string" minOccurs="0"/>
+      <!-- OtherInfo -->
+      <xs:element name="variant" type="xs:token" minOccurs="0"/>
+      <xs:element name="publisher" type="xs:token" minOccurs="0"/>
+      <xs:element name="customVersion" type="xs:token" minOccurs="0"/>
+      <xs:element name="keywords" type="xs:string" minOccurs="0"/>
+      <xs:element name="verseOrder" type="verseOrderType" minOccurs="0"/>
+      <xs:element name="collection" type="xs:token" minOccurs="0"/>
+      <xs:element name="trackNo" type="xs:positiveInteger" minOccurs="0"/>
+      <xs:element name="themes" type="themesType" minOccurs="0"/>
+      <xs:element name="comments" type="commentsType" minOccurs="0"/>
+      <xs:element name="customData" type="customDataType" minOccurs="0"/>
     </xs:all>
   </xs:complexType>
 
@@ -103,19 +117,25 @@
 
   <!-- MusicInfo -->
 
-  <xs:complexType name="musicInfoType">
-    <xs:sequence>
-      <xs:element name="transposition" type="transpositionType" minOccurs="0"/>
-      <xs:element name="tempo" type="tempoType" minOccurs="0"/>
-      <!-- TODO restrict to only allowed values -->
-      <xs:element name="key" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:simpleType name="transpositionType">
     <xs:restriction base="xs:integer">
       <xs:minInclusive value="-99"/>
       <xs:maxInclusive value="99"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="tempoWithAttrType">
+    <xs:simpleContent>
+      <xs:extension base="tempoType">
+        <xs:attribute name="type" type="tempoAttributeType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="tempoAttributeType">
+    <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="text"/>
+        <xs:enumeration value="bpm"/> <!-- bpm - beep per minute -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -142,19 +162,6 @@
   </xs:simpleType>
 
   <!-- OtherInfo -->
-
-  <xs:complexType name="otherInfoType">
-    <xs:sequence>
-      <xs:element name="songVariant" type="xs:token" minOccurs="0"/>
-      <xs:element name="customSongVersion" type="xs:token" minOccurs="0"/>
-      <xs:element name="searchKeywords" type="xs:string" minOccurs="0"/>
-      <xs:element name="verseOrder" type="verseOrderType" minOccurs="0"/>
-      <xs:element name="collection" type="xs:token" minOccurs="0"/>
-      <xs:element name="trackNo" type="xs:positiveInteger" minOccurs="0"/>
-      <xs:element name="themes" type="themesType" minOccurs="0"/>
-      <xs:element name="customInfo" type="customInfoType" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
 
   <xs:simpleType name="verseOrderType">
     <xs:list itemType="verseOrderItemType"/>
@@ -194,16 +201,23 @@
     </xs:simpleContent>
   </xs:complexType>
 
-  <xs:complexType name="customInfoType">
+  <xs:complexType name="commentsType">
     <xs:sequence>
-      <xs:element name="custom" type="customType" maxOccurs="unbounded"/>
+      <xs:element name="comment" type="xs:string" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="customType">
+  <xs:complexType name="customDataType">
+    <xs:sequence>
+      <xs:element name="data" type="dataType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dataType">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="source" type="xs:NMTOKEN" use="required"/>
+        <xs:attribute name="key" type="xs:NMTOKEN" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -230,7 +244,7 @@
       <xs:element ref="comment" minOccurs="0"/>
       <xs:element name="line" type="lineType" maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute name="name" type="xs:token" use="optional"/>
+    <xs:attribute name="part" type="xs:token" use="optional"/>
   </xs:complexType>
 
   <!-- chords are inside the content of line e.g. <chord name="D7"> -->
