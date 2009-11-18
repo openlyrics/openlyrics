@@ -59,7 +59,7 @@
   <lyrics>
 
     <verse name="v1" xml:lang="en-US">
-      <lines part="men"/>
+      <lines part="men">
         <comment>any text</comment>
         <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
         <comment>any text</comment>
@@ -74,7 +74,7 @@
 
     <verse name="v1" xml:lang="de">
       <lines>
-        <line><chord name="B">Erstaunliche Ahmut, wie</line>
+        <line><chord name="B"/>Erstaunliche Ahmut, wie</line>
       </lines>
     </verse>
 
