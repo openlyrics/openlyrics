@@ -4,3 +4,8 @@ Release Notes for OpenLyrics
 Release 0.2 (draft)
 16 Nov 2009
 
+------------------------------
+
+Release 0.3 (draft)
+18 Nov 2009
+
