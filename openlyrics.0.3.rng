@@ -1,0 +1,37 @@
+<element name="song" 
+         xmlns="http://relaxng.org/ns/structure/1.0"
+         ns="http://www.openlyrics.info/2009/song/namespace">
+
+  <attribute name="version"/>
+  <attribute name="createdIn"/>
+  <attribute name="modifiedIn"/>
+  <attribute name="modifiedDate"/>
+
+  <element name="properties">
+    <element name="titles">
+      <oneOrMore>
+        <element name="title">
+          <text/>
+        </element>
+      </oneOrMore>
+    </element>
+  </element>
+
+  <element name="lyrics">
+    <oneOrMore>
+      <element name="verse">
+        <attribute name="name"/>
+        <oneOrMore>
+          <element name="lines">
+            <oneOrMore>
+              <element name="line">
+                <text/>
+              </element>
+            </oneOrMore>
+          </element>
+        </oneOrMore>
+      </element>
+    </oneOrMore>
+  </element>
+</element>
+
