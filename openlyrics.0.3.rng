@@ -1,13 +1,28 @@
-<element name="song" 
-         xmlns="http://relaxng.org/ns/structure/1.0"
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
          ns="http://www.openlyrics.info/2009/song/namespace">
 
-  <attribute name="version"/>
-  <attribute name="createdIn"/>
-  <attribute name="modifiedIn"/>
-  <attribute name="modifiedDate"/>
+  <start>
+    <element name="song">
+           <!--  ns="http://www.openlyrics.info/2009/song/namespace"> -->
 
-  <element name="properties">
+      <!-- by default: value of type string is required in attr -->     
+      <attribute name="version"/>
+      <attribute name="createdIn"/>
+      <attribute name="modifiedIn"/>
+      <attribute name="modifiedDate"/>
+
+      <element name="properties">
+        <ref name="propertiesContent"/>
+      </element>
+      <element name="lyrics">
+        <ref name="lyricsContent"/>
+      </element>
+
+    </element>
+  </start>
+
+
+  <define name="propertiesContent">
     <element name="titles">
       <oneOrMore>
         <element name="title">
@@ -15,23 +30,29 @@
         </element>
       </oneOrMore>
     </element>
-  </element>
+  </define>
 
-  <element name="lyrics">
+
+  <define name="lyricsContent">
     <oneOrMore>
       <element name="verse">
-        <attribute name="name"/>
+        <ref name="verseContent"/>
+      </element>
+    </oneOrMore>
+  </define>
+
+
+  <define name="verseContent">
+    <attribute name="name"/>
+    <oneOrMore>
+      <element name="lines">
         <oneOrMore>
-          <element name="lines">
-            <oneOrMore>
-              <element name="line">
-                <text/>
-              </element>
-            </oneOrMore>
+          <element name="line">
+            <text/>
           </element>
         </oneOrMore>
       </element>
     </oneOrMore>
-  </element>
-</element>
-
+  </define>
+ 
+</grammar>
