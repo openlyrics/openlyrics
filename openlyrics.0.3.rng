@@ -57,15 +57,48 @@
   <define name="verse">
     <element name="verse">
       <ref name="verseAttributes"/>
+      <optional>
+        <ref name="langAttribute"/>
+      </optional>
       <oneOrMore>
-        <element name="lines">
+        <ref name="lines"/>
+      </oneOrMore>
+    </element>
+  </define>
+ 
+ 
+  <define name="lines">
+    <element name="lines">
+      <optional>
+        <attribute name="part">
+          <text/>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <optional>
+          <element name="comment">
+            <text/>
+          </element>
+        </optional>
+        <element name="line">
+          <!-- allow tag chord inside regular text - mixed content -->
           <oneOrMore>
-            <element name="line">
-              <text/>
-            </element>
+            <optional>
+              <ref name="chord"/>
+            </optional>
+            <text/>
           </oneOrMore>
         </element>
       </oneOrMore>
+    </element>
+  </define>
+ 
+ 
+  <define name="chord">
+    <element name="chord">
+      <attribute name="name">
+        <data type="NMTOKEN"/>
+      </attribute>
     </element>
   </define>
  
@@ -99,7 +132,15 @@
       <text/>
     </attribute>
     <attribute name="modifiedDate">
+      <!-- date format: ISO 8601 -->
       <data type="dateTime"/>
+    </attribute>
+  </define>
+
+
+  <define name="langAttribute">
+    <attribute name="xml:lang">
+      <data type="language"/>
     </attribute>
   </define>
 
