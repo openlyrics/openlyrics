@@ -1,28 +1,49 @@
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.openlyrics.info/2009/song/namespace">
 
   <start>
     <element name="song">
-           <!--  ns="http://www.openlyrics.info/2009/song/namespace"> -->
-
-      <!-- by default: value of type string is required in attr -->     
-      <attribute name="version"/>
-      <attribute name="createdIn"/>
-      <attribute name="modifiedIn"/>
-      <attribute name="modifiedDate"/>
-
-      <element name="properties">
-        <ref name="propertiesContent"/>
-      </element>
-      <element name="lyrics">
-        <ref name="lyricsContent"/>
-      </element>
-
+      <ref name="songAttributes"/>
+      <ref name="properties"/>
+      <ref name="lyrics"/>
     </element>
   </start>
 
 
-  <define name="propertiesContent">
+  <!-- ________________________________________ -->
+
+
+  <define name="properties">
+    <element name="properties">
+      <interleave> <!-- allow occur in any order -->
+        <!-- at least one title is always required -->
+        <ref name="titles"/>
+        <!-- other properties items are optional -->
+        <!--
+        <optional>
+
+        </optional>
+        -->
+      </interleave>
+    </element>
+  </define>
+
+
+  <define name="lyrics">
+    <element name="lyrics">
+      <!-- at least one verse is required -->
+      <oneOrMore>
+        <ref name="verse"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+
+  <!-- ________________________________________ -->
+
+
+  <define name="titles">
     <element name="titles">
       <oneOrMore>
         <element name="title">
@@ -33,26 +54,53 @@
   </define>
 
 
-  <define name="lyricsContent">
-    <oneOrMore>
-      <element name="verse">
-        <ref name="verseContent"/>
-      </element>
-    </oneOrMore>
-  </define>
-
-
-  <define name="verseContent">
-    <attribute name="name"/>
-    <oneOrMore>
-      <element name="lines">
-        <oneOrMore>
-          <element name="line">
-            <text/>
-          </element>
-        </oneOrMore>
-      </element>
-    </oneOrMore>
+  <define name="verse">
+    <element name="verse">
+      <ref name="verseAttributes"/>
+      <oneOrMore>
+        <element name="lines">
+          <oneOrMore>
+            <element name="line">
+              <text/>
+            </element>
+          </oneOrMore>
+        </element>
+      </oneOrMore>
+    </element>
   </define>
  
+ 
+  <define name="verseAttributes">
+    <attribute name="name">
+      <data type="NMTOKEN">
+        <param name="minLength">1</param>
+        <!-- verse - v1, v2, v1a, ...
+             chorus c, c1, c2, c1a, ca, ...
+             pre-chorus - p, p1, p2, p1a, pa, ...
+             bridge - b, b1, b2, b1a, ba, ... -->
+        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
+      </data>
+    </attribute>
+  </define>
+
+ 
+  <define name="songAttributes">
+    <!-- by default: value of type string is required in attr -->     
+    <attribute name="version">
+      <data type="NMTOKEN"> <!-- one word value -->
+        <!-- allow only values like: '0.1' '11.2' '13.14.15' -->
+        <param name="pattern">[0-9]+\.[0-9]+(\.[0-9]+)?</param>
+      </data>
+    </attribute>
+    <attribute name="createdIn">
+      <text/>
+    </attribute>
+    <attribute name="modifiedIn">
+      <text/>
+    </attribute>
+    <attribute name="modifiedDate">
+      <data type="dateTime"/>
+    </attribute>
+  </define>
+
 </grammar>
