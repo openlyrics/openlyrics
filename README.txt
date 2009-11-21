@@ -12,8 +12,9 @@ Files
 example_simple.xml       minimalist song example
 example_complex.xml      fairly complex song example
 
-openlyrics.0.2.xsd       W3C XML Schema for songs
-validate.py              python script to validate xml with xsd file
+openlyrics.0.3.xsd       old W3C XML Schema for songs
+openlyrics.0.4.rng       RelaxNG XML Schema for songs
+validate.py              python script to validate xml with rng (RelaxNG xml) file
 
 
 Validation
@@ -28,5 +29,5 @@ http://pypi.python.org/pypi/lxml
 
 Usage:
 
-$ python validate.py  openlyrics.0.2.xsd  any_song.xml
+$ python validate.py  openlyrics.0.4.rng  any_song.xml
 

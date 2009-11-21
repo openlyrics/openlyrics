@@ -129,13 +129,13 @@
               </attribute>
               <!-- when attrib 'type' value is 'translation' require attribute 'lang'.
                    'xml:lang' can't be used. xml:lang says in what language is the
-                   content of an element and this is not the case.
+                   content of an element and this is not the case. -->
               <group>
                 <attribute name="type">
                   <value>translation</value>
                 </attribute>
-                <attribute name="lang"/>
-                  <data type="language">
+                <attribute name="lang">
+                  <data type="language"/>
                 </attribute>
               </group>
             </choice>
