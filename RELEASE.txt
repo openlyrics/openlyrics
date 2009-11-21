@@ -4,11 +4,15 @@ Release Notes for OpenLyrics
 Release 0.4 (draft)
 Unknown
 
-* move to RelaxNG xml schema definition
+* move to RelaxNG xml schema
 * tag attribute change. xml:lang describes the language of an element
   from
    <author type="translation" xml:lang="cs">
   to
+   <author type="translation" lang="cs">
+* xml schema:
+  in 'author' element attribute 'lang' is required when attribute 'type'
+  contains value 'translation'
    <author type="translation" lang="cs">
 
 ------------------------------
