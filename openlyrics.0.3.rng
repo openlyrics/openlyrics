@@ -20,26 +20,58 @@
       <interleave> <!-- allow occur in any order -->
         <!-- at least one title is always required -->
         <ref name="titles"/>
-        <!-- other properties items are optional -->
+      <!-- other properties items are optional -->
         <optional>
           <ref name="authors"/>
+        </optional>
+        <optional>
           <ref name="copyright"/>
+        </optional>
+        <optional>
           <ref name="ccliNo"/>
+        </optional>
+        <optional>
           <ref name="releaseDate"/>
-          <!-- MusicInfo -->
+        </optional>
+      <!-- MusicInfo -->
+        <optional>
           <ref name="transposition"/>
+        </optional>
+        <optional>
           <ref name="tempo"/>
+        </optional>
+        <optional>
           <ref name="key"/>
-          <!-- OtherInfo -->
+        </optional>
+      <!-- OtherInfo -->
+        <optional>
           <ref name="variant"/>
+        </optional>
+        <optional>
           <ref name="publisher"/>
+        </optional>
+        <optional>
           <ref name="customVersion"/>
+        </optional>
+        <optional>
           <ref name="keywords"/>
+        </optional>
+        <optional>
           <ref name="verseOrder"/>
+        </optional>
+        <optional>
           <ref name="collection"/>
+        </optional>
+        <optional>
           <ref name="trackNo"/>
+        </optional>
+        <optional>
           <ref name="themes"/>
+        </optional>
+        <optional>
           <ref name="comments"/>
+        </optional>
+        <optional>
           <ref name="customData"/>
         </optional>
       </interleave>
@@ -84,7 +116,23 @@
 
   <define name="authors">
     <element name="authors">
+      <oneOrMore>
+        <element name="author">
           <text/>
+          <optional>
+            <attribute name="type">
+              <choice>
+                <value>words</value>
+                <value>music</value>
+                <value>translation</value>
+              </choice>
+            </attribute>
+          </optional>
+          <optional>
+            <ref name="langAttribute"/>
+          </optional>
+        </element>
+      </oneOrMore>
     </element>
   </define>
  
