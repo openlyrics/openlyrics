@@ -234,35 +234,39 @@
 
   <define name="variant">
     <element name="variant">
-          <text/>
+      <text/>
     </element>
   </define>
  
 
   <define name="publisher">
     <element name="publisher">
-          <text/>
+      <text/>
     </element>
   </define>
  
 
   <define name="customVersion">
     <element name="customVersion">
-          <text/>
+      <text/>
     </element>
   </define>
  
 
   <define name="keywords">
     <element name="keywords">
-          <text/>
+      <text/>
     </element>
   </define>
  
 
   <define name="verseOrder">
     <element name="verseOrder">
-          <text/>
+      <list>
+        <oneOrMore>
+          <ref name="verseNameType"/>
+        </oneOrMore>
+      </list>
     </element>
   </define>
  
@@ -356,14 +360,7 @@
  
   <define name="verseAttributes">
     <attribute name="name">
-      <data type="NMTOKEN">
-        <param name="minLength">1</param>
-        <!-- verse - v1, v2, v1a, ...
-             chorus c, c1, c2, c1a, ca, ...
-             pre-chorus - p, p1, p2, p1a, pa, ...
-             bridge - b, b1, b2, b1a, ba, ... -->
-        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
-      </data>
+      <ref name="verseNameType"/>
     </attribute>
   </define>
 
@@ -386,6 +383,18 @@
       <!-- date format: ISO 8601 -->
       <data type="dateTime"/>
     </attribute>
+  </define>
+
+
+  <define name="verseNameType">
+    <data type="NMTOKEN">
+      <param name="minLength">1</param>
+      <!-- verse - v1, v2, v1a, ...
+           chorus c, c1, c2, c1a, ca, ...
+           pre-chorus - p, p1, p2, p1a, pa, ...
+           bridge - b, b1, b2, b1a, ba, ... -->
+      <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
+    </data>
   </define>
 
 

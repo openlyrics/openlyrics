@@ -27,13 +27,18 @@
     <!-- move chords pitch up/down by a fixed number of semitones,
          values: positive or negative integer -->
     <transposition>2</transposition>
-    <!--
-      -->
     <!-- bpm (beats per minute, maybe 30-250) or some words like
          Very Fast, Fast, Moderate, Slow, Very Slow -->
     <tempo type="bpm">90</tempo>
     <!-- TODO Could there be more than only one key? -->
     <key>C#</key>
+    <variant>Newsboys</variant>
+    <publisher>Sparrow Records</publisher>
+    <customVersion>0.99</customVersion>
+    <keywords>something to help with more accurate results</keywords>
+    <!--
+      -->
+    <verseOrder>v1 v2 v1a v1b v3 c v4 c1 c2 b b1 b2</verseOrder>
   </properties>
   <lyrics>
     <verse name="v1" xml:lang="en">
