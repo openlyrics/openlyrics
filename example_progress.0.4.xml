@@ -21,6 +21,19 @@
       <author type="music">Richard Wagner</author>
       <author type="translation" lang="cs">František Foo</author>
     </authors>
+    <copyright>public domain</copyright>
+    <ccliNo>4639462</ccliNo>
+    <releaseDate>1779</releaseDate>
+    <!-- move chords pitch up/down by a fixed number of semitones,
+         values: positive or negative integer -->
+    <transposition>2</transposition>
+    <!--
+      -->
+    <!-- bpm (beats per minute, maybe 30-250) or some words like
+         Very Fast, Fast, Moderate, Slow, Very Slow -->
+    <tempo type="bpm">90</tempo>
+    <!-- TODO Could there be more than only one key? -->
+    <key>C#</key>
   </properties>
   <lyrics>
     <verse name="v1" xml:lang="en">
