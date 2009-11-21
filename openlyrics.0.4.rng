@@ -3,6 +3,7 @@
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.openlyrics.info/2009/song/namespace">
 
+<!-- TODO revisit content of which elements/attributes is required -->
 
   <!-- TOP LEVEL -->
 
@@ -128,6 +129,7 @@
                   <value>music</value>
                 </choice>
               </attribute>
+              <!-- TODO require xml:lang only when <author type="translation"> -->
               <!-- when attrib 'type' value is 'translation' require attribute 'lang'.
                    'xml:lang' can't be used. xml:lang says in what language is the
                    content of an element and this is not the case. -->
@@ -207,6 +209,7 @@
         <!-- attrib 'type' value 'text' - predefined element value is expected -->
         <group>
           <choice>
+            <!-- TODO are those 5 values enough? -->
             <value>very fast</value>
             <value>fast</value>
             <value>moderate</value>
@@ -223,6 +226,7 @@
  
 
   <define name="key">
+    <!-- TODO restrict to only allowed values -->
     <element name="key">
       <text/>
     </element>
@@ -285,6 +289,8 @@
   </define>
  
 
+  <!-- TODO Should be allowed only predefined themes ccli themes?
+       http://www.ccli.com.au/owners/themes.cfm -->
   <define name="themes">
     <element name="themes">
       <oneOrMore>
@@ -375,6 +381,7 @@
   </define>
  
  
+  <!-- TODO: define list of possible chord values -->
   <define name="chord">
     <element name="chord">
       <attribute name="name">
@@ -412,6 +419,7 @@
   </define>
 
 
+  <!-- TODO Should be allowed custom values of verse name? -->
   <define name="verseNameType">
     <data type="NMTOKEN">
       <param name="minLength">1</param>
