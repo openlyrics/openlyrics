@@ -2,6 +2,10 @@
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.openlyrics.info/2009/song/namespace">
 
+
+  <!-- TOP LEVEL -->
+
+
   <start>
     <element name="song">
       <ref name="songAttributes"/>
@@ -11,20 +15,33 @@
   </start>
 
 
-  <!-- ________________________________________ -->
-
-
   <define name="properties">
     <element name="properties">
       <interleave> <!-- allow occur in any order -->
         <!-- at least one title is always required -->
         <ref name="titles"/>
         <!-- other properties items are optional -->
-        <!--
         <optional>
-
+          <ref name="authors"/>
+          <ref name="copyright"/>
+          <ref name="ccliNo"/>
+          <ref name="releaseDate"/>
+          <!-- MusicInfo -->
+          <ref name="transposition"/>
+          <ref name="tempo"/>
+          <ref name="key"/>
+          <!-- OtherInfo -->
+          <ref name="variant"/>
+          <ref name="publisher"/>
+          <ref name="customVersion"/>
+          <ref name="keywords"/>
+          <ref name="verseOrder"/>
+          <ref name="collection"/>
+          <ref name="trackNo"/>
+          <ref name="themes"/>
+          <ref name="comments"/>
+          <ref name="customData"/>
         </optional>
-        -->
       </interleave>
     </element>
   </define>
@@ -40,7 +57,7 @@
   </define>
 
 
-  <!-- ________________________________________ -->
+  <!-- PROPERTIES -->
 
 
   <define name="titles">
@@ -48,10 +65,149 @@
       <oneOrMore>
         <element name="title">
           <text/>
+          <optional>
+            <ref name="langAttribute"/>
+          </optional>
+          <optional>
+            <attribute name="original">
+              <data type="boolean"/>
+            </attribute>
+          </optional>
         </element>
       </oneOrMore>
     </element>
   </define>
+
+
+  <!-- AuthorInfo -->
+
+
+  <define name="authors">
+    <element name="authors">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="copyright">
+    <element name="copyright">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="ccliNo">
+    <element name="ccliNo">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="releaseDate">
+    <element name="releaseDate">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <!-- MusicInfo -->
+ 
+
+  <define name="transposition">
+    <element name="transposition">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="tempo">
+    <element name="tempo">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="key">
+    <element name="key">
+          <text/>
+    </element>
+  </define>
+ 
+ 
+  <!-- Other Info --> 
+ 
+
+  <define name="variant">
+    <element name="variant">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="publisher">
+    <element name="publisher">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="customVersion">
+    <element name="customVersion">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="keywords">
+    <element name="keywords">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="verseOrder">
+    <element name="verseOrder">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="collection">
+    <element name="collection">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="trackNo">
+    <element name="trackNo">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="themes">
+    <element name="themes">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="comments">
+    <element name="comments">
+          <text/>
+    </element>
+  </define>
+ 
+
+  <define name="customData">
+    <element name="customData">
+          <text/>
+    </element>
+  </define>
+ 
+ 
+ <!-- LYRICS -->
 
 
   <define name="verse">
