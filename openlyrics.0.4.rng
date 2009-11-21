@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.openlyrics.info/2009/song/namespace">
@@ -148,21 +149,31 @@
 
   <define name="copyright">
     <element name="copyright">
-          <text/>
+      <text/>
     </element>
   </define>
  
 
   <define name="ccliNo">
     <element name="ccliNo">
-          <text/>
+      <data type="positiveInteger"/>
     </element>
   </define>
  
 
   <define name="releaseDate">
     <element name="releaseDate">
-          <text/>
+      <!-- allowed values
+           1779
+           1779-12
+           1779-12-31
+           1779-12-31T13:15:30+01:00 -->
+      <choice>
+        <data type="gYear"/>
+        <data type="gYearMonth"/>
+        <data type="date"/>
+        <data type="dateTime"/>
+      </choice>
     </element>
   </define>
  
@@ -172,21 +183,48 @@
 
   <define name="transposition">
     <element name="transposition">
-          <text/>
+      <data type="integer">
+        <param name="minInclusive">-99</param>
+        <param name="maxInclusive">99</param>
+      </data>
     </element>
   </define>
  
 
   <define name="tempo">
     <element name="tempo">
-          <text/>
+      <choice>
+        <!-- attrib 'type' value 'bpm' - beeps per minute required -->
+        <group>
+          <data type="positiveInteger">
+            <param name="minInclusive">30</param>
+            <param name="maxInclusive">250</param>
+          </data>
+          <attribute name="type">
+            <value>bpm</value>
+          </attribute>
+        </group>
+        <!-- attrib 'type' value 'text' - predefined element value is expected -->
+        <group>
+          <choice>
+            <value>very fast</value>
+            <value>fast</value>
+            <value>moderate</value>
+            <value>slow</value>
+            <value>very slow</value>
+          </choice>
+          <attribute name="type">
+            <value>text</value>
+          </attribute>
+        </group>
+      </choice>
     </element>
   </define>
  
 
   <define name="key">
     <element name="key">
-          <text/>
+      <text/>
     </element>
   </define>
  
