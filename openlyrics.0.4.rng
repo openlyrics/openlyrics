@@ -273,35 +273,61 @@
 
   <define name="collection">
     <element name="collection">
-          <text/>
+      <text/>
     </element>
   </define>
  
 
   <define name="trackNo">
     <element name="trackNo">
-          <text/>
+      <data type="positiveInteger"/>
     </element>
   </define>
  
 
   <define name="themes">
     <element name="themes">
+      <oneOrMore>
+        <element name="theme">
           <text/>
+          <optional>
+            <attribute name="id">
+              <data type="positiveInteger"/>
+            </attribute>
+          </optional>
+          <optional>
+            <ref name="langAttribute"/>
+          </optional>
+        </element>
+      </oneOrMore>
     </element>
   </define>
  
 
   <define name="comments">
     <element name="comments">
+      <oneOrMore>
+        <element name="comment">
           <text/>
+        </element>
+      </oneOrMore>
     </element>
   </define>
  
 
   <define name="customData">
     <element name="customData">
+      <oneOrMore>
+        <element name="data">
           <text/>
+          <attribute name="source">
+            <data type="NMTOKEN"/>
+          </attribute>
+          <attribute name="key">
+            <data type="NMTOKEN"/>
+          </attribute>
+        </element>
+      </oneOrMore>
     </element>
   </define>
  

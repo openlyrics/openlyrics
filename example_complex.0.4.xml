@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <song xmlns="http://www.openlyrics.info/2009/song/namespace"
-      version="0.4"
+      version="0.3"
       createdIn="OpenLP 1.9.0"
       modifiedIn="ChangingSong 0.0.1"
       modifiedDate="2008-11-28T13:15:30+01:00"><!-- date format: ISO 8601 -->
   <properties>
     <titles>
-      <title original="true" xml:lang="en-US" >Amazing Grace</title>
+      <title xml:lang="en-US" original="true">Amazing Grace</title>
       <title xml:lang="en">Amazing Grace</title>
       <title>Amazing</title>
       <title xml:lang="de-DE">Erstaunliche Anmut</title>
     </titles>
-    <!--
-      -->
-    <!--
-      -->
     <authors>
       <author>John Newton</author>
       <author type="words">Chris Rice</author>
@@ -32,12 +29,11 @@
     <tempo type="bpm">90</tempo>
     <!-- TODO Could there be more than only one key? -->
     <key>C#</key>
+    <!-- other example of values: 'old hymn' etc. -->
     <variant>Newsboys</variant>
     <publisher>Sparrow Records</publisher>
     <customVersion>0.99</customVersion>
     <keywords>something to help with more accurate results</keywords>
-    <!--
-      -->
     <verseOrder>v1 v2 v1a v1b v3 c v4 c1 c2 b b1 b2</verseOrder>
     <collection>name of a collection</collection>
     <trackNo>48</trackNo>
@@ -51,7 +47,6 @@
       <theme id="2" xml:lang="pt-BR">Adoração</theme>
       <theme id="3" xml:lang="pt-BR">Salvação</theme>
     </themes>
-
     <comments>
       <comment>This is one of the most popular songs in our congregation.</comment>
     </comments>
@@ -62,9 +57,14 @@
   </properties>
 
   <lyrics>
-    <verse name="v1" xml:lang="en">
-      <lines>
+
+    <verse name="v1" xml:lang="en-US">
+      <lines part="men">
+        <comment>any text</comment>
         <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
+        <comment>any text</comment>
+        <line><chord name="D"/>Amazing grace how sweet <chord name="D"/>the sound that saved a wretch like me;<chord name="B7"/></line>
+        <line>Amazing grace<chord name="G7"/> how sweet the sound that saved a wretch like me;</line>
       </lines>
       <lines part="women">
         <line>A b c</line>
@@ -85,21 +85,6 @@
       </lines>
     </verse>
 
-    <verse name="v2" xml:lang="en-US">
-      <lines part="men">
-        <comment>any text</comment>
-        <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
-        <comment>any text</comment>
-        <line><chord name="D"/>Amazing grace how sweet <chord name="D"/>the sound that saved a wretch like me;<chord name="B7"/></line>
-        <line>Amazing grace<chord name="G7"/> how sweet the sound that saved a wretch like me;</line>
-      </lines>
-      <lines part="women">
-        <line>A b c</line>
-        <line>D e f</line>
-      </lines>
-    </verse>
-
-
-
   </lyrics>
+
 </song>
