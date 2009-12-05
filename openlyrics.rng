@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
-         ns="http://www.openlyrics.info/2009/song/namespace">
+         ns="http://openlyrics.info/namespace/2009/song">
 
-<!-- TODO revisit content of which elements/attributes is required -->
 
   <!-- TOP LEVEL -->
 
@@ -98,7 +97,7 @@
     <element name="titles">
       <oneOrMore>
         <element name="title">
-          <text/>
+          <ref name="nonEmptyContent"/>
           <optional>
             <ref name="langAttribute"/>
           </optional>
@@ -120,7 +119,7 @@
     <element name="authors">
       <oneOrMore>
         <element name="author">
-          <text/>
+          <ref name="nonEmptyContent"/>
           <optional>
             <choice>
               <attribute name="type">
@@ -129,9 +128,8 @@
                   <value>music</value>
                 </choice>
               </attribute>
-              <!-- TODO require xml:lang only when <author type="translation"> -->
               <!-- when attrib 'type' value is 'translation' require attribute 'lang'.
-                   'xml:lang' can't be used. xml:lang says in what language is the
+                   'xml:lang' can't be used. xml:lang means in what language is the
                    content of an element and this is not the case. -->
               <group>
                 <attribute name="type">
@@ -151,7 +149,7 @@
 
   <define name="copyright">
     <element name="copyright">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  
@@ -196,7 +194,7 @@
   <define name="tempo">
     <element name="tempo">
       <choice>
-        <!-- attrib 'type' value 'bpm' - beeps per minute required -->
+        <!-- attrib 'type' value 'bpm' - beatss per minute required -->
         <group>
           <data type="positiveInteger">
             <param name="minInclusive">30</param>
@@ -206,16 +204,9 @@
             <value>bpm</value>
           </attribute>
         </group>
-        <!-- attrib 'type' value 'text' - predefined element value is expected -->
+        <!-- attrib 'type' value 'text' - any text -->
         <group>
-          <choice>
-            <!-- TODO are those 5 values enough? -->
-            <value>very fast</value>
-            <value>fast</value>
-            <value>moderate</value>
-            <value>slow</value>
-            <value>very slow</value>
-          </choice>
+          <ref name="nonEmptyContent"/>
           <attribute name="type">
             <value>text</value>
           </attribute>
@@ -226,9 +217,8 @@
  
 
   <define name="key">
-    <!-- TODO restrict to only allowed values -->
     <element name="key">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  
@@ -238,28 +228,28 @@
 
   <define name="variant">
     <element name="variant">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  
 
   <define name="publisher">
     <element name="publisher">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  
 
   <define name="customVersion">
     <element name="customVersion">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  
 
   <define name="keywords">
     <element name="keywords">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  
@@ -277,7 +267,7 @@
 
   <define name="collection">
     <element name="collection">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  
@@ -289,16 +279,19 @@
   </define>
  
 
-  <!-- TODO Should be allowed only predefined themes ccli themes?
-       http://www.ccli.com.au/owners/themes.cfm -->
   <define name="themes">
     <element name="themes">
       <oneOrMore>
         <element name="theme">
-          <text/>
+          <ref name="nonEmptyContent"/>
           <optional>
+            <!-- id: line in a ccli theme list from
+                 http://www.ccli.com.au/owners/themes.cfm -->
             <attribute name="id">
-              <data type="positiveInteger"/>
+              <data type="positiveInteger">
+                <param name="minInclusive">1</param>
+                <param name="maxInclusive">999</param>
+              </data>
             </attribute>
           </optional>
           <optional>
@@ -314,7 +307,7 @@
     <element name="comments">
       <oneOrMore>
         <element name="comment">
-          <text/>
+          <ref name="nonEmptyContent"/>
         </element>
       </oneOrMore>
     </element>
@@ -325,6 +318,7 @@
     <element name="customData">
       <oneOrMore>
         <element name="data">
+          <!-- allow empty value -->
           <text/>
           <attribute name="source">
             <data type="NMTOKEN"/>
@@ -358,13 +352,13 @@
     <element name="lines">
       <optional>
         <attribute name="part">
-          <text/>
+          <ref name="nonEmptyContent"/>
         </attribute>
       </optional>
       <oneOrMore>
         <optional>
           <element name="comment">
-            <text/>
+            <ref name="nonEmptyContent"/>
           </element>
         </optional>
         <element name="line">
@@ -381,11 +375,10 @@
   </define>
  
  
-  <!-- TODO: define list of possible chord values -->
   <define name="chord">
     <element name="chord">
       <attribute name="name">
-        <data type="NMTOKEN"/>
+        <ref name="nonEmptyContent"/>
       </attribute>
     </element>
   </define>
@@ -407,10 +400,10 @@
       </data>
     </attribute>
     <attribute name="createdIn">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </attribute>
     <attribute name="modifiedIn">
-      <text/>
+      <ref name="nonEmptyContent"/>
     </attribute>
     <attribute name="modifiedDate">
       <!-- date format: ISO 8601 -->
@@ -419,16 +412,19 @@
   </define>
 
 
-  <!-- TODO Should be allowed custom values of verse name? -->
   <define name="verseNameType">
-    <data type="NMTOKEN">
-      <param name="minLength">1</param>
-      <!-- verse - v1, v2, v1a, ...
-           chorus c, c1, c2, c1a, ca, ...
-           pre-chorus - p, p1, p2, p1a, pa, ...
-           bridge - b, b1, b2, b1a, ba, ... -->
-      <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
-    </data>
+    <choice>
+      <data type="NMTOKEN">
+        <param name="minLength">1</param>
+        <!-- verse - v1, v2, v1a, ...  3 letters: [verse][verse_number][verse_part]
+             chorus c, c1, c2, c1a, ca, ...
+             pre-chorus - p, p1, p2, p1a, pa, ...
+             bridge - b, b1, b2, b1a, ba, ... -->
+        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
+      </data>
+      <!-- custom values of verse name - one word name -->
+      <data type="NMTOKEN"/>
+    </choice>
   </define>
 
 
@@ -436,6 +432,13 @@
     <attribute name="xml:lang">
       <data type="language"/>
     </attribute>
+  </define>
+
+
+  <define name="nonEmptyContent">
+    <data type="string">
+      <param name="minLength">1</param>
+    </data>
   </define>
 
 </grammar>

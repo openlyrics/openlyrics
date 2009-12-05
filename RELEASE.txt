@@ -1,6 +1,37 @@
 Release Notes for OpenLyrics
 ==============================
 
+------------------------------
+
+Release 0.5 (final draft)
+21 Dec 2009
+
+* custom verse names:
+   <verse name="custom_name_name">
+
+* custom tempo:
+   <tempo type="custom">steadily</tempo>
+
+* stay with only one key (any text):
+   <key>C#</key>
+
+* allow any chord notation (any text)
+
+* restrict ccli theme 'id' to range 1-999:
+
+* theme value can't be empty
+
+* namespace changed
+  from:
+   http://www.openlyrics.info/2009/song/namespace
+  to:
+   http://openlyrics.info/namespace/2009/song
+
+* content of an optional element is mandatory, when
+  the element present in xml.
+
+------------------------------
+
 Release 0.4 (draft)
 21 Nov 2009
 

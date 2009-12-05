@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<song xmlns="http://www.openlyrics.info/2009/song/namespace"
-      version="0.4"
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.5"
       createdIn="OpenLP 1.9.0"
       modifiedIn="ChangingSong 0.0.1"
       modifiedDate="2008-11-28T13:15:30+01:00"><!-- date format: ISO 8601 -->
@@ -30,7 +30,6 @@
     <!-- bpm (beats per minute, maybe 30-250) or some words like
          Very Fast, Fast, Moderate, Slow, Very Slow -->
     <tempo type="bpm">90</tempo>
-    <!-- TODO Could there be more than only one key? -->
     <key>C#</key>
     <variant>Newsboys</variant>
     <publisher>Sparrow Records</publisher>
@@ -42,7 +41,6 @@
     <collection>name of a collection</collection>
     <trackNo>48</trackNo>
     <themes>
-      <theme id="5"/>
       <theme>Adoration</theme>
       <theme id="1" xml:lang="en-US">Grace</theme>
       <theme id="2" xml:lang="en-US">Praise</theme> 

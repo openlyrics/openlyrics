@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<song xmlns="http://www.openlyrics.info/2009/song/namespace"
-      version="0.4"
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.5"
       createdIn="OpenLP 1.9.0"
       modifiedIn="ChangingSong 0.0.1"
       modifiedDate="2008-11-28T13:15:30+01:00"><!-- date format: ISO 8601 -->
@@ -24,9 +24,10 @@
     <!-- move chords pitch up/down by a fixed number of semitones,
          values: positive or negative integer -->
     <transposition>2</transposition>
-    <!-- bpm (beats per minute, maybe 30-250) or some words like
-         Very Fast, Fast, Moderate, Slow, Very Slow -->
-    <tempo type="bpm">90</tempo>
+    <!-- bpm (beats per minute, maybe 30-250) 
+         some words like Very Fast, Fast, Moderate, Slow, Very Slow, etc.
+         -->
+    <tempo type="text">steadily</tempo>
     <!-- TODO Could there be more than only one key? -->
     <key>C#</key>
     <!-- other example of values: 'old hymn' etc. -->
@@ -38,7 +39,6 @@
     <collection>name of a collection</collection>
     <trackNo>48</trackNo>
     <themes>
-      <theme id="5"/>
       <theme>Adoration</theme>
       <theme id="1" xml:lang="en-US">Grace</theme>
       <theme id="2" xml:lang="en-US">Praise</theme> 
@@ -53,17 +53,24 @@
     <customData>
       <data source="OpenLP" key="theme">African Sunset</data>
       <data source="ChangingSong" key="foo">something</data>
+      <data source="ChangingSong" key="foo2"></data>
     </customData>
   </properties>
 
   <lyrics>
+
+    <verse name="intro" xml:lang="en">
+      <lines>
+        <line>This is intro of a song.</line>
+      </lines>
+    </verse>
 
     <verse name="v1" xml:lang="en-US">
       <lines part="men">
         <comment>any text</comment>
         <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
         <comment>any text</comment>
-        <line><chord name="D"/>Amazing grace how sweet <chord name="D"/>the sound that saved a wretch like me;<chord name="B7"/></line>
+        <line><chord name="D#m7"/>Amazing grace how sweet <chord name="D"/>the sound that saved a wretch like me;<chord name="B7"/></line>
         <line>Amazing grace<chord name="G7"/> how sweet the sound that saved a wretch like me;</line>
       </lines>
       <lines part="women">
