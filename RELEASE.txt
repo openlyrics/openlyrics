@@ -2,7 +2,7 @@ Release Notes for OpenLyrics
 ==============================
 
 Release 0.4 (draft)
-Unknown
+21 Nov 2009
 
 * move to RelaxNG xml schema
 * tag attribute change. xml:lang describes the language of an element
