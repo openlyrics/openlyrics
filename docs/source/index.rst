@@ -1,7 +1,7 @@
 .. _index:
 
-Welcome to OpenLyrics's documentation!
-======================================
+Welcome OpenLyrics,info
+=======================
 
 Brief Introduction
 ------------------
@@ -15,6 +15,8 @@ Table of Contents
 
 .. toctree::
    :maxdepth: 2
+
+   introduction
 
 Indices and tables
 ==================
