@@ -1,6 +1,6 @@
 .. _index:
 
-Welcome OpenLyrics,info
+Welcome OpenLyrics.info
 =======================
 
 Brief Introduction

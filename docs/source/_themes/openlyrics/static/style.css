@@ -9,9 +9,27 @@ background: #deedf7 url(background.png) 0 0 repeat-x;
 margin: 0px;
 padding: 0px;
 text-align: left;
-font-family: arial, verdana;
-font-size: 15px;
+font-family: lucida grande, trebuchet ms, verdana, arial, verdana;
+font-size: 90%;
 color: #666666;
+}
+
+pre {
+  background-color: #f2f5f7;
+border-top: #deedf7 1px solid;
+border-bottom: #deedf7 1px solid;
+color: #333;
+padding: 0.5em;
+}
+
+a:link, a:visited {
+color: #3F89A8;
+text-decoration: none;
+}
+  
+a:hover {
+color: #3F89A8;
+text-decoration: underline;
 }
 
 #header {
