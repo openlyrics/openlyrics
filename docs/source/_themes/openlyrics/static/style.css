@@ -15,20 +15,19 @@ color: #666666;
 }
 
 pre {
-  background-color: #f2f5f7;
+background-color: #f2f5f7;
 border-top: #deedf7 1px solid;
 border-bottom: #deedf7 1px solid;
 color: #333;
 padding: 0.5em;
 }
 
-a:link, a:visited {
+a {
 color: #3F89A8;
 text-decoration: none;
 }
-  
+
 a:hover {
-color: #3F89A8;
 text-decoration: underline;
 }
 
@@ -161,12 +160,17 @@ margin-top: -80px;
 float: left;
 }
 
+#content h1 {
+font-size: 150%;
+margin-top: 1em;
+}
+
 #content h2 {
 background: url(tuzka.gif) no-repeat left;
 padding-left: 35px;
 padding-bottom: 5px;
 color: #333333;
-font-size: 30px;
+font-size: 130%;
 }
 
 #content-top, #content-bottom, #lista {
@@ -403,16 +407,6 @@ font-size: 25px;
 line-height: 15px;
 }
 
-#sidebar2 a:link, a:visited {
-color: #3F89A8;
-text-decoration: none;
-}
-
-#sidebar2 a:hover {
-color: #3F89A8;
-text-decoration: underline;
-}
-
 #left {
 width: 160px;
 position: relative;
@@ -525,4 +519,18 @@ color: #666666;
 
 #footertext span a:hover {
 color: #666666;
+}
+
+a.headerlink {
+background-color: #fff;
+color: #3F89A8;
+font-size: 80%;
+margin-top: -3px;
+padding: 0 2px;
+}
+
+a.headerlink:hover {
+background-color: #3F89A8;
+color: #fff;
+text-decoration: none;
 }
