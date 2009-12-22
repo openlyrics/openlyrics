@@ -8,6 +8,10 @@ applications.
 
 For more details see:
 
+http://sourceforge.net/apps/trac/changingsong/wiki/DevOpenLyrics
+
+or
+
 http://openlyrics.info
 
 
