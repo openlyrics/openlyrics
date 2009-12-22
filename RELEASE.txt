@@ -3,8 +3,15 @@ Release Notes for OpenLyrics
 
 ------------------------------
 
+Release 0.6
+22 Dec 2009
+
+* drop element <customData> (is ambiguous)
+
+------------------------------
+
 Release 0.5 (final draft)
-21 Dec 2009
+06 Dec 2009
 
 * custom verse names:
    <verse name="custom_name_name">

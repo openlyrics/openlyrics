@@ -50,11 +50,6 @@
     <comments>
       <comment>This is one of the most popular songs in our congregation.</comment>
     </comments>
-    <customData>
-      <data source="OpenLP" key="theme">African Sunset</data>
-      <data source="ChangingSong" key="foo">something</data>
-      <data source="ChangingSong" key="foo2"></data>
-    </customData>
   </properties>
 
   <lyrics>
