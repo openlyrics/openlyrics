@@ -13,9 +13,11 @@ Here's an example of the XML::
 
     <?xml version="1.0" encoding="UTF-8"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.4"
+          version="0.6"
           createdIn="OpenLP 1.9.0"
-          modifiedDate="2009-12-01T21:24:30+02:00"><!-- date format: ISO 8601 -->
+          modifiedIn="ChangingSong 0.0.1"
+          <!-- date format: ISO 8601 -->
+          modifiedDate="2009-12-22T21:24:30+02:00">
       <properties>
         <titles>
           <title>Amazing Grace</title>
