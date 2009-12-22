@@ -72,9 +72,6 @@
         <optional>
           <ref name="comments"/>
         </optional>
-        <optional>
-          <ref name="customData"/>
-        </optional>
       </interleave>
     </element>
   </define>
@@ -314,24 +311,6 @@
   </define>
  
 
-  <define name="customData">
-    <element name="customData">
-      <oneOrMore>
-        <element name="data">
-          <!-- allow empty value -->
-          <text/>
-          <attribute name="source">
-            <data type="NMTOKEN"/>
-          </attribute>
-          <attribute name="key">
-            <data type="NMTOKEN"/>
-          </attribute>
-        </element>
-      </oneOrMore>
-    </element>
-  </define>
- 
- 
  <!-- LYRICS -->
 
 
