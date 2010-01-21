@@ -38,7 +38,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenLyrics'
-copyright = u'2009, Martin Zibricky, Raoul Snyman'
+copyright = u'2009-2010, Martin Zibricky, Raoul Snyman'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
