@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% set title = 'Overview' %}
+{% block body %}
+  <h1>Welcome</h1>
+
+  <p>
+    OpenLyrics is a free, open XML standard for Christian worship songs. The goal of
+    OpenLyrics is to provide an application-independant and operating
+    system-independant song format for interoperability between applications.
+  </p>
+  <p>
+    The following features can be seen in OpenLyrics:
+  </p>
+  <ul>
+    <li><b>XML format</b></li>
+    <li><b>Multiple languages</b></li>
+    <li><b>Chords</b></li>
+    <li><b>XML schema</b></li>
+    <li><b>and more...</b></li>
+  </ul>
+
+  <h2>Examples</h2>
+  <p>
+    Song examples can be found on the <a href="{{ pathto("dataformat") }}">
+    OpenLyrics data format</a> page.
+    Links to some implementations of OpenLyrics can be found on the
+    <a href="{{ pathto("examples") }}">Projects using OpenLyrics</a> page.
+  </p>
+
+  <h2>Get OpenLyrics</h2>
+  <p>
+    OpenLyrics is available as an
+    <a href="http://downloads.sourceforge.net/project/changingsong/OpenLyrics/{{ version }}/openlyrics-{{ version }}.zip">
+    zip archive</a> containing a few song examples, XML schema and a simple script
+    for validation.
+  </p>
+  <p>
+    The latest development version can be found in a Subversion repository, at
+    <tt>https://changingsong.svn.sf.net/svnroot/changingsong/trunk/openlyrics</tt>
+  </p>
+  <p>
+    The Subversion repository can be 
+    <a href="http://sourceforge.net/apps/trac/changingsong/browser/trunk/openlyrics">
+    browsed online</a>.
+  </p>
+
+{% endblock %}

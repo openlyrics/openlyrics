@@ -1,0 +1,17 @@
+{% extends "!layout.html" %}
+
+
+{% block header %}
+  <div id="header">
+    <div id="logo">
+      <h1><a href="{{ pathto('index') }}">OpenLyrics - Open Standard for Lyrics</a></h1>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block rootrellink %}
+        <li><a href="{{ pathto('index') }}">Home</a></li>
+        <li><a href="{{ pathto(master_doc) }}">Documentation</a></li>
+{% endblock %}
+
