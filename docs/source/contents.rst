@@ -1,36 +1,19 @@
-.. _index:
+.. _contents:
 
-Welcome OpenLyrics.info
-=======================
-
-Brief Introduction
-------------------
-
-OpenLyrics is a free, open XML standard for Christian worship songs. The goal of
-OpenLyrics is to provide an application-independant and operating
-system-independant song format for interoperability between applications.
-
-Download
---------
-
-`OpenLyrics 0.6 archive`_ contains several song examples and `RelaxNG`_ xml schema.
-
-.. _OpenLyrics 0.6 archive:
-   http://openlyrics.info/files/openlyrics-0.6.zip
-.. _RelaxNG:
-   http://en.wikipedia.org/wiki/RelaxNG
-
-Table of Contents
------------------
+OpenLyrics documentation contents
+=================================
 
 .. toctree::
    :maxdepth: 2
 
-   introduction
+   intro
+   concepts
+   dataformat
+   validation
+   conversion
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
+   faq
+   glossary
+   changes
+   examples
 
