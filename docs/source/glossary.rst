@@ -13,3 +13,5 @@ Glossary
         Additional information about a song. There can be author name, copyright
         information, publisher, release date, etc.
 
+    theme
+        Clasifying songs to various groups along suitability.

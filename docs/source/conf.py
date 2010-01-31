@@ -49,6 +49,8 @@ release = '0.6'
 # output. They are ignored by default.
 #show_authors = False
 
+highlight_language = 'none'
+
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 

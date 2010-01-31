@@ -11,9 +11,9 @@ Prerequisites
 Using bundled tool
 ------------------
 
-RelaxNG xml schema
-------------------
-
 Other tools
 -----------
+
+RelaxNG xml schema
+------------------
 

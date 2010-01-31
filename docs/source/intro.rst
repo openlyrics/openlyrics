@@ -3,6 +3,8 @@
 Introduction
 ============
 
+About
+-----
 
 OpenLyrics is a free, open XML standard for Christian worship songs. The goal of
 OpenLyrics is to provide an application-independant and operating
