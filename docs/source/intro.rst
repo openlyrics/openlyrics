@@ -3,91 +3,54 @@
 Introduction
 ============
 
-OpenLyrics is an open standard for storing songs for
-interoperability between Church Presentation applications.
-
-Brief Introduction
-------------------
 
 OpenLyrics is a free, open XML standard for Christian worship songs. The goal of
 OpenLyrics is to provide an application-independant and operating
 system-independant song format for interoperability between applications.
 
-Download
---------
 
-`OpenLyrics 0.6 archive`_ contains several song examples and `RelaxNG`_ xml schema.
-
-.. _OpenLyrics 0.6 archive:
-   http://openlyrics.info/files/openlyrics-0.6.zip
-.. _RelaxNG:
-   http://en.wikipedia.org/wiki/RelaxNG
-
-
-Example
+History
 -------
 
-Here's an example of the XML::
+The first version of OpenLyrics was created in 2008. Back in 2008, the
+openlp.org project leader came up with a proposal about cooperation between
+OpenLP and ChangingSong. We agreed that it would be great to create at least
+a data format to allow exchange songs between our presentation applications.
+One day he suggested the name **openlyrics**. Thus the data format is named
+using that name.
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.6"
-          createdIn="OpenLP 1.9.0"
-          modifiedIn="ChangingSong 0.0.1"
-          <!-- date format: ISO 8601 -->
-          modifiedDate="2009-12-22T21:24:30+02:00">
-      <properties>
-        <titles>
-          <title>Amazing Grace</title>
-        </titles>
-        <authors>
-          <author>John Newton</author>
-        </authors>
-        <copyright>Public Domain</copyright>
-        <ccliNo>2762836</ccliNo>
-        <releaseDate>1779</releaseDate>
-        <tempo type="text">moderate</tempo>
-        <key>D</key>
-        <verseOrder>v1 v2 v3 v4 v5 v6</verseOrder>
-        <themes>
-          <theme>Assurance</theme>
-          <theme>Grace</theme>
-          <theme>Praise</theme>
-          <theme>Salvation</theme>
-        </themes>
-      </properties>
-      <lyrics>
-        <verse name="v1">
-          <lines>
-            <line>Amazing grace how sweet the sound</line>
-            <line>That saved a wretch like me.</line>
-            <line>I once was lost, but now am found,</line>
-            <line>Was blind but now I see.</line>
-          </lines>
-        </verse>
-        <verse name="v2">
-          <lines>
-            <line>T'was grace that taught my heart to fear,</line>
-            <line>And grace my fears;</line>
-            <line>How precious did that grace appear</line>
-            <line>The hour I first believed.</line>
-          </lines>
-        </verse>
-        <verse name="v3">
-          <lines>
-            <line>Through many dangers, toil and snares,</line>
-            <line>I have already come;</line>
-            <line>'Tis grace has brought me safe thus far,</line>
-            <line>And grace will lead me home.</line>
-          </lines>
-        </verse>
-        <verse name="v4">
-          <lines>
-            <line>When we've been there ten thousand years</line>
-            <line>Bright shining as the sun,</line>
-            <line>We've no less days to sing God's praise</line>
-            <line>Than when we've first begun.</line>
-          </lines>
-        </verse>
-      </lyrics>
-    </song>
+In the beginning with ChangingSong I was aware that a new data format is
+necessary, if I would like to implement some more advanced features, requested
+by users of other applications.
+During designing openlyrics I realized why not to do it well? In order to
+be used by more applications.
+
+OpenLyrics uses XML for data format definition. XML is a well established
+standard with solid support in programming libraries.
+
+The current design of OpenLyrics is based on the OpenSong data format and
+on some features suggested by users, especially the ability using
+`multiple languages for a song (forum) <http://sourceforge.net/projects/changingsong/forums/forum/770759/topic/1983107>`_
+.
+
+
+Release Numbering
+-----------------
+
+OpenLyrics release numbering is in the format::
+
+    X.X_pX
+
+where ``X.X`` means the data format version and ``pX`` is used only, when
+additionally files were updated. Additional files could be for instance
+documentation, song examples, etc.
+
+When also data format is changed, the numbering could be as follows::
+
+    0.6
+
+Only documentation is updated or anything else without changing data format::
+
+    0.6_p1
+
+
