@@ -1,68 +1,41 @@
-Release Notes for OpenLyrics
-==============================
+Release 0.6 (22 Dec 2009)
+=========================
 
-------------------------------
+* drop element ``<customData>`` (is ambiguous)
 
-Release 0.6
-22 Dec 2009
 
-* drop element <customData> (is ambiguous)
+Release 0.5 (06 Dec 2009) - final draft
+========================================
 
-------------------------------
-
-Release 0.5 (final draft)
-06 Dec 2009
-
-* custom verse names:
-   <verse name="custom_name_name">
-
-* custom tempo:
-   <tempo type="custom">steadily</tempo>
-
-* stay with only one key (any text):
-   <key>C#</key>
-
+* Allow custom verse names ``<verse name="custom_name_name">``
+* custom tempo ``<tempo type="custom">steadily</tempo>``
+* stay with only one key (any text) ``<key>C#</key>``
 * allow any chord notation (any text)
-
-* restrict ccli theme 'id' to range 1-999:
-
+* restrict ccli theme 'id' to range 1-999
 * theme value can't be empty
+* namespace changed  from ``http://www.openlyrics.info/2009/song/namespace``
+  to ``http://openlyrics.info/namespace/2009/song``
+* content of an optional element is mandatory, when the element present in xml.
 
-* namespace changed
-  from:
-   http://www.openlyrics.info/2009/song/namespace
-  to:
-   http://openlyrics.info/namespace/2009/song
 
-* content of an optional element is mandatory, when
-  the element present in xml.
-
-------------------------------
-
-Release 0.4 (draft)
-21 Nov 2009
+Release 0.4 (21 Nov 2009) - draft
+==================================
 
 * move to RelaxNG xml schema
-* tag attribute change. xml:lang describes the language of an element
-  from
-   <author type="translation" xml:lang="cs">
-  to
-   <author type="translation" lang="cs">
-* xml schema:
-  in 'author' element attribute 'lang' is required when attribute 'type'
-  contains value 'translation'
-   <author type="translation" lang="cs">
-
-------------------------------
-
-Release 0.3 (draft)
-18 Nov 2009
-
-------------------------------
-
-Release 0.2 (draft)
-16 Nov 2009
-
-------------------------------
+* tag attribute change. xml:lang describes the language of an element. Change
+  from ``<author type="translation" xml:lang="cs">``
+  to `` <author type="translation" lang="cs">``
+* xml schema: in 'author' element attribute 'lang' is required when attribute
+  'type' contains value 'translation' ``<author type="translation" lang="cs">``
 
 
+Release 0.3 (18 Nov 2009) - draft
+==================================
+
+
+Release 0.2 (16 Nov 2009) - draft
+==================================
+
+
+Release 0.1 (28 Nov 2008) - draft
+==================================
