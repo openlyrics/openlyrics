@@ -14,21 +14,26 @@ system-independent song format for interoperability between applications.
 History
 -------
 
-The first version of OpenLyrics was created in 2008, when the openlp.org project
-leader came up with a proposal for cooperation between OpenLP and ChangingSong.
-We agreed that it would be great to create at least a data format to allow
-song exchange between our presentation applications. We started discussing what
-this should look like.
+The first version of OpenLyrics was created in 2008, when the OpenLP project
+leader approached the ChangingSong project leader, and proposed cooperation
+between OpenLP and ChangingSong to improve data exchange between the two
+projects. They agreed that a good first step would be to create an independent
+interoperable data format to provide better song exchange between the two
+applications.
 
-My experience with ChangingSong made me aware that a new data format was
-necessary  to implement some of the more advanced features that were being
-requested. During the planning stages of creating OpenLyrics, we asked, "Why not
-do it well?" Our goal from the start was to create a format that could be shared
-across multiple platforms and applications.
+Furthermore, experiences the leader of the ChangingSong had with the OpenSong
+project's XML format for songs made him aware that the OpenSong format was not
+sufficient for the proposed features in ChangingSong, and thus a new format
+would be necessary in order to implement many of the more advanced features
+the project planned to develop.
 
-To that end, OpenLyrics uses XML for data format definition. XML is a well
-established standard with solid support in many programming languages. Numerous
-libraries exist to aid in working in it.
+Upon planning the OpenLyrics format, the two leaders decided to make the
+format as open and inclusive as possible so that other presentation projects,
+both open source and proprietary, could use this new format as well.
+
+To that end, they decided to make OpenLyrics an XML format. XML is a well
+established standard with solid support in many programming languages, and
+there are a plethora of XML libraries for manipulating XML.
 
 The current design of OpenLyrics is based on the OpenSong data format along with
 some features suggested by users, particularly the ability to use
