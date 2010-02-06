@@ -257,7 +257,7 @@ There could be more titles::
 You can define attribute ``xml:lang=""``. It says what is the language of the
 title. The value of this attribute should be in the format ``xx`` or ``xx-YY``
 where ``xx`` is an `ISO-639 language code <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
-and YY is an `countro code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
+and YY is an `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
 more details see `bcp47 <ftp://ftp.rfc-editor.org/in-notes/bcp/bcp47.txt>`_.
 
 It comes handy when the song is translated from one
@@ -270,7 +270,7 @@ or the song contains lyrics in multiple languages::
       <title xml:lang="pl">Cudowna Boża łaska</title>
     </titles>
 
-Addtitionally, it is possible use attribute ``original="true"``. This attribute
+Additionally, it is possible use attribute ``original="true"``. This attribute
 expresses that a title is the title of the original song::
 
     <titles>
@@ -316,7 +316,7 @@ Three types of authors can be distinguished:
 Copyright
 ^^^^^^^^^
 
-This element should contain copyright information. In some contries it is
+This element should contain copyright information. In some countries it is
 necessary to display copyright information during presentation. In this
 situation this comes handy.
 

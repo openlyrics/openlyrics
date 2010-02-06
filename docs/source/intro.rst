@@ -7,31 +7,29 @@ About
 -----
 
 OpenLyrics is a free, open XML standard for Christian worship songs. The goal of
-OpenLyrics is to provide an application-independant and operating
-system-independant song format for interoperability between applications.
+OpenLyrics is to provide an application-independent and operating
+system-independent song format for interoperability between applications.
 
 
 History
 -------
 
-The first version of OpenLyrics was created in 2008. Back in 2008, the
-openlp.org project leader came up with a proposal about cooperation between
-OpenLP and ChangingSong. We agreed that it would be great to create at least
-a data format to allow exchange songs between our presentation applications.
-One day he suggested the name **openlyrics**. Thus the data format is named
-using that name.
+The first version of OpenLyrics was created in 2008 when, the openlp.org project
+leader came up with a proposal about cooperation between OpenLP and
+ChangingSong. We agreed that it would be great to create at least a data format
+to allow exchange songs between our presentation applications.
 
-In the beginning with ChangingSong I was aware that a new data format is
-necessary, if I would like to implement some more advanced features, requested
-by users of other applications.
-During designing openlyrics I realized why not to do it well? In order to
-be used by more applications.
+My experience with ChangingSong made me aware that a new data format was
+necessary  to implement some of the more advanced features that were being
+requested. During the planning stages of creating OpenLyrics, we asked, "Why not
+do it well?" Our goal from the start was to create a format that could be shared
+across multiple platforms and applications.
 
 OpenLyrics uses XML for data format definition. XML is a well established
 standard with solid support in programming libraries.
 
 The current design of OpenLyrics is based on the OpenSong data format and
-on some features suggested by users, especially the ability using
+on some features suggested by users, especially the ability to use
 `multiple languages for a song (forum) <http://sourceforge.net/projects/changingsong/forums/forum/770759/topic/1983107>`_
 .
 
