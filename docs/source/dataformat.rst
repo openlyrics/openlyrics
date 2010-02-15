@@ -724,7 +724,7 @@ Verse Parts (Groups of Lines)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the term *verse parts* or *group of lines* could be misleading but
-I was not able to find any other meaningful for this feature.
+It was hard to find any other meaningful name for this feature.
 
 This feature means the ability marking words for different groups of people.
 For example some words should be sung by men and some by women.
