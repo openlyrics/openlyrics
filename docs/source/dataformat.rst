@@ -556,9 +556,226 @@ items. The value can be any text::
 Song lyrics
 -----------
 
+Description of the possible syntax enclosed in tag ``<lyrics>``. This tag
+contain text of a song and other stuff related to it.
+
+Lyrics part of OpenLyrics format will mostly contain elements like 
+``<verse>``, ``<lines>`` or ``<line>``. A song should contain at least
+**one verse with one line**.::
+
+    <lyrics>
+      <verse name="v1">
+        <lines>
+          <line>This is the first line of the text.</line>
+        </lines>
+      </verse>
+    </lyrics>
+
+In ``<line>`` should be enclosed all text for one line. More lines of text
+can be in element ``<lines>``::
+
+    <lines>
+      <line>This is the first line of the text.</line>
+      <line>This is the second line of the text.</line>
+    </lines>
+
+There can be more group of lines::
+
+    <verse name="v1">
+      <lines>
+        <line>This is the first line of the text.</line>
+      </lines>
+      <lines>
+        <line>This is the second line of the text.</line>
+      </lines>
+    </verse>
+
+And of course it can contain more verses::
+
+    <lyrics>
+      <verse name="v1">
+        <lines><line>First line of first verse.</line></lines>
+      </verse>
+      <verse name="v2">
+        <lines><line>First line of second verse.</line></lines>
+      </verse>
+    </lyrics>
+
+The tag ``<verse>`` is meant for all song parts, not only verses but
+also for *chorus*, *bridge*, *pre-chorus*, etc.
+
+It is recommended enclose in one element ``<verse>`` text for one slide.
+
+
+Verse Name
+^^^^^^^^^^
+
+For every verse an attribute ``name`` with an unique value is required.
+*There shouldn't be two or more verses the same name*. (The exception is
+the situation when there are present more translations of a verse.)
+
+The recommendation for standardized verse names follows:
+
+======================= ============================================
+Name                    Description
+======================= ============================================
+``v1, v2, v3, ...``     first verse, second verse, third verse, ...
+``c``                   chorus
+``c1, c2, ...``         more choruses
+``p``                   pre-chorus
+``p1, p2, ...``         more pre-choruses
+``b``                   bridge
+``b1, b2, ...``         more bridges
+``v1a, v1b, v1c, ...``  this schema is for splitting verse to more parts
+                        (e.g. for splitting verse over more slides)
+``ca, cb, ...``         splitting chorus to more parts
+``c1a, c1b, ...``       splitting chorus to more parts
+``pa, pb, ...``         splitting pre-chorus to more parts
+``p1a, p1b, ...``       splitting pre-chorus to more parts
+``ba, bb, bc, ...``     splitting bridge to more parts
+``b1a, b1b, b1c, ...``  splitting bridge to more parts
+======================= ============================================
+
+In recommended naming schema are names in **lowercase**.
+The value of the ``name`` attribute could be any *one word*.
+
+Example of a song containing two verses (*v1, v2*), a chorus (*c*) and a
+bridge (*b*). Second verse is splited into more slides::
+
+    <lyrics>
+      <verse name="v1">
+        ...
+      </verse>
+      <verse name="v2a">
+        ...
+      </verse>
+      <verse name="v2b">
+        ...
+      </verse>
+      <verse name="c">
+        ...
+      </verse>
+      <verse name="b">
+        ...
+      </verse>
+    </lyrics>
 
 Chords
-------
+^^^^^^
+
+OpenLyrics format allows storing chords. Having chords can be handy in
+some situations. For example when printing leadsheets or when preseting
+a song during band training.
+
+The element containing a chord name looks like::
+
+    <chord name="D7"/>
+
+Elements ``<chord>`` are mixed with the text of a song. This element should be
+placed immediately before the letters where it should be played::
+
+    <lyrics>
+      <verse name="v1">
+        <lines>
+          <line><chord name="D7"/>Amazing grace how 
+                <chord name="E"/>sweet the sound</line>
+          <line>That saved <chord name="A"/>a wretch
+                <chord name="F#"/>like me.</line>
+        </lines>
+      </verse>
+    </lyrics>
+
+At the moment there is no a fixed notation for chords. But if you would like
+to see some examples how chords can be written, see 
+:ref:`chord examples <chordlist>`.
+
+Multiple Languages (Lyrics Translations)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Lyrics translation can be useful for example in situation when the worship band
+is singing a song in a foreing language and wants to display translation
+of the text for others to understand.
+
+Translations are at the verse level. They can be added by translating a text of
+a ``<verse>`` and by adding attribute ``xml:lang=""`` to ``<verse>``.
+The value of this attribute should be in the format ``xx`` or ``xx-YY``
+where ``xx`` is an `ISO-639 language code <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
+and YY is an `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
+more details see `bcp47 <ftp://ftp.rfc-editor.org/in-notes/bcp/bcp47.txt>`_.
+
+More translations of a verse should have the same value of the attribute
+``name=""`` but different values of ``xml:lang=""``.
+
+Example of a song containg English and German translation for the first verse::
+
+    <lyrics>
+      <verse name="v1" xml:lang="en">
+        <lines><line>This text is in English.</line></lines>
+      </verse>
+      <verse name="v1" xml:lang="de">
+        <lines><line>Dieses Text ist auf Deutsch.</line></lines>
+      </verse>
+    </lyrics>
+
+Because translations are defined at the verse level, there can be also
+situation, that some verses have translations and some do not.
+
+Verse Parts (Groups of Lines)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using the term *verse parts* or *group of lines* could be misleading but
+I was not able to find any other meaningful for this feature.
+
+This feature means the ability marking words for different groups of people.
+For example some words should be sung by men and some by women.
+
+This feature is the reason why there is the tag ``<lines>``. This ability is
+implemented by adding attribute ``part=""`` to the element ``<lines>``.
+The value of this attribute is any arbitrary text.
+
+Example of lyrics containing one verse with some words for men and soe word
+for women::
+
+    <lyrics>
+      <verse name="v1">
+        <lines part="men">
+          <line>First line of words sung by men.</line>
+          <line>Second line of words sung by men.</line>
+        </lines>
+        <lines part="women">
+          <line>First line of words sung by women.</line>
+          <line>Second line of words sung by women.</line>
+        </lines>
+      </verse>
+    </lyrics>
+
+Comments in Lyrics
+^^^^^^^^^^^^^^^^^^
+
+OpenLyrics format supports adding comments. Comments must be put before
+a line with text. Comments could be useful for printing leadsheets.
+They can contain various information. For example it could contain information
+how to play or sing any particular text.
+
+Example::
+
+    <lyrics>
+      <verse name="v1">
+        <lines>
+          <comment>Singing loudly.</comment>
+          <line>Text of verse.</line>
+          <comment>Singing quietly.</comment>
+          <line>Text of verse.</line>
+        </lines>
+      </verse>
+      <verse name="c">
+        <lines>
+          <comment>Singing loudly.</comment>
+          <line>Line content.</line>
+          <line>Line content.</line>
+        </lines>
+      </verse>
+    </lyrics>
 
 
 Advanced Example

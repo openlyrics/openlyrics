@@ -12,6 +12,9 @@ OpenLyrics documentation contents
    validation
    conversion
 
+   chordlist
+   themelist
+
    faq
    glossary
    changes
