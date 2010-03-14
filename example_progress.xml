@@ -6,10 +6,10 @@
       modifiedDate="2008-11-28T13:15:30+01:00"><!-- date format: ISO 8601 -->
   <properties>
     <titles>
-      <title original="true" xml:lang="en-US" >Amazing Grace</title>
-      <title xml:lang="en">Amazing Grace</title>
+      <title original="true" lang="en-US" >Amazing Grace</title>
+      <title lang="en">Amazing Grace</title>
       <title>Amazing</title>
-      <title xml:lang="de-DE">Erstaunliche Anmut</title>
+      <title lang="de-DE">Erstaunliche Anmut</title>
     </titles>
     <!--
       -->
@@ -42,12 +42,12 @@
     <trackNo>48</trackNo>
     <themes>
       <theme>Adoration</theme>
-      <theme id="1" xml:lang="en-US">Grace</theme>
-      <theme id="2" xml:lang="en-US">Praise</theme> 
-      <theme id="3" xml:lang="en-US">Salvation</theme>
-      <theme id="1" xml:lang="pt-BR">Graça</theme>
-      <theme id="2" xml:lang="pt-BR">Adoração</theme>
-      <theme id="3" xml:lang="pt-BR">Salvação</theme>
+      <theme id="1" lang="en-US">Grace</theme>
+      <theme id="2" lang="en-US">Praise</theme> 
+      <theme id="3" lang="en-US">Salvation</theme>
+      <theme id="1" lang="pt-BR">Graça</theme>
+      <theme id="2" lang="pt-BR">Adoração</theme>
+      <theme id="3" lang="pt-BR">Salvação</theme>
     </themes>
 
     <comments>
@@ -56,7 +56,7 @@
   </properties>
 
   <lyrics>
-    <verse name="v1" xml:lang="en">
+    <verse name="v1" lang="en">
       <lines>
         <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
       </lines>
@@ -66,7 +66,7 @@
       </lines>
     </verse>
 
-    <verse name="v1" xml:lang="de">
+    <verse name="v1" lang="de">
       <lines>
         <line><chord name="B"/>Erstaunliche Ahmut, wie</line>
       </lines>
@@ -79,7 +79,7 @@
       </lines>
     </verse>
 
-    <verse name="v2" xml:lang="en-US">
+    <verse name="v2" lang="en-US">
       <lines part="men">
         <comment>any text</comment>
         <line>Amazing grace how sweet the sound that saved a wretch like me;</line>

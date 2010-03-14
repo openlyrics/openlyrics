@@ -2,7 +2,16 @@
 
 import sys
 
-from lxml import etree
+try:
+    from lxml import etree
+except ImportError:
+    print('Python module "lxml" is required')
+    exit(1)
+
+
+if len(sys.argv) != 3:
+    print('Usage: python   %s   openlyrics_schema.rng  xmlfile.xml' % __file__)
+    exit(1)
 
 
 relaxng_file = sys.argv[1]

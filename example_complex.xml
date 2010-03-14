@@ -7,10 +7,10 @@
       modifiedDate="2008-11-28T13:15:30+01:00"><!-- date format: ISO 8601 -->
   <properties>
     <titles>
-      <title xml:lang="en-US" original="true">Amazing Grace</title>
-      <title xml:lang="en">Amazing Grace</title>
+      <title lang="en-US" original="true">Amazing Grace</title>
+      <title lang="en">Amazing Grace</title>
       <title>Amazing</title>
-      <title xml:lang="de-DE">Erstaunliche Anmut</title>
+      <title lang="de-DE">Erstaunliche Anmut</title>
     </titles>
     <authors>
       <author>John Newton</author>
@@ -40,12 +40,12 @@
     <trackNo>48</trackNo>
     <themes>
       <theme>Adoration</theme>
-      <theme id="1" xml:lang="en-US">Grace</theme>
-      <theme id="2" xml:lang="en-US">Praise</theme> 
-      <theme id="3" xml:lang="en-US">Salvation</theme>
-      <theme id="1" xml:lang="pt-BR">Graça</theme>
-      <theme id="2" xml:lang="pt-BR">Adoração</theme>
-      <theme id="3" xml:lang="pt-BR">Salvação</theme>
+      <theme id="1" lang="en-US">Grace</theme>
+      <theme id="2" lang="en-US">Praise</theme> 
+      <theme id="3" lang="en-US">Salvation</theme>
+      <theme id="1" lang="pt-BR">Graça</theme>
+      <theme id="2" lang="pt-BR">Adoração</theme>
+      <theme id="3" lang="pt-BR">Salvação</theme>
     </themes>
     <comments>
       <comment>This is one of the most popular songs in our congregation.</comment>
@@ -54,13 +54,13 @@
 
   <lyrics>
 
-    <verse name="intro" xml:lang="en">
+    <verse name="intro" lang="en">
       <lines>
         <line>This is intro of a song.</line>
       </lines>
     </verse>
 
-    <verse name="v1" xml:lang="en-US">
+    <verse name="v1" lang="en-US">
       <lines part="men">
         <comment>any text</comment>
         <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
@@ -74,7 +74,7 @@
       </lines>
     </verse>
 
-    <verse name="v1" xml:lang="de">
+    <verse name="v1" lang="de">
       <lines>
         <line><chord name="B"/>Erstaunliche Ahmut, wie</line>
       </lines>
