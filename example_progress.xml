@@ -108,7 +108,11 @@
       </lines>
     </verse>
 
-
+    <verse name="e" lang="de">
+      <lines>
+        <line>This is text of ending.</line>
+      </lines>
+    </verse>
 
   </lyrics>
 </song>

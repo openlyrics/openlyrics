@@ -396,8 +396,9 @@
         <!-- verse - v1, v2, v1a, ...  3 letters: [verse][verse_number][verse_part]
              chorus c, c1, c2, c1a, ca, ...
              pre-chorus - p, p1, p2, p1a, pa, ...
-             bridge - b, b1, b2, b1a, ba, ... -->
-        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
+             bridge - b, b1, b2, b1a, ba, ...
+             ending - e, e1, e2, e1a, ea, ... -->
+        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpbe][1-9]\d?[a-z]?)</param>
       </data>
       <!-- custom values of verse name - one word name -->
       <data type="NMTOKEN"/>
