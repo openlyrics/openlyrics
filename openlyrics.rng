@@ -132,9 +132,7 @@
                 <attribute name="type">
                   <value>translation</value>
                 </attribute>
-                <attribute name="lang">
-                  <data type="language"/>
-                </attribute>
+                <ref name="langAttribute"/>
               </group>
             </choice>
           </optional>
@@ -408,7 +406,7 @@
 
 
   <define name="langAttribute">
-    <attribute name="xml:lang">
+    <attribute name="lang">
       <data type="language"/>
     </attribute>
   </define>
