@@ -38,8 +38,11 @@
     <!--
       -->
     <verseOrder>v1 v2 v1a v1b v3 c v4 c1 c2 b b1 b2</verseOrder>
-    <collection>name of a collection</collection>
-    <trackNo>48</trackNo>
+    <songbooks>
+      <songbook name="Songbook without Number"/>
+      <songbook name="Songbook with Number" entry="48"/>
+      <songbook name="Songbook with Letters in Entry Name" entry="153c"/>
+    </songbooks>
     <themes>
       <theme>Adoration</theme>
       <theme id="1" lang="en-US">Grace</theme>
