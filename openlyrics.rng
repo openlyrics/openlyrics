@@ -97,6 +97,9 @@
           <ref name="nonEmptyContent"/>
           <optional>
             <ref name="langAttribute"/>
+            <optional>
+              <ref name="translitAttribute"/>
+            </optional>
           </optional>
           <optional>
             <attribute name="original">
@@ -291,6 +294,9 @@
           </optional>
           <optional>
             <ref name="langAttribute"/>
+            <optional>
+              <ref name="translitAttribute"/>
+            </optional>
           </optional>
         </element>
       </oneOrMore>
@@ -317,6 +323,9 @@
       <ref name="verseAttributes"/>
       <optional>
         <ref name="langAttribute"/>
+        <optional>
+          <ref name="translitAttribute"/>
+        </optional>
       </optional>
       <oneOrMore>
         <ref name="lines"/>
@@ -408,6 +417,14 @@
 
   <define name="langAttribute">
     <attribute name="lang">
+      <data type="language"/>
+    </attribute>
+  </define>
+
+
+  <!-- transliteration -->
+  <define name="translitAttribute">
+    <attribute name="translit">
       <data type="language"/>
     </attribute>
   </define>
