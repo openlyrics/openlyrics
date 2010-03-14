@@ -89,7 +89,22 @@
       </lines>
       <lines part="women">
         <line>A b c</line>
+        <line/>
+        <line></line>
         <line>D e f</line>
+      </lines>
+    </verse>
+
+    <verse name="emptyline" lang="de">
+      <lines>
+        <line/>
+      </lines>
+      <lines>
+        <line/>
+        <line></line>
+        <line></line>
+        <line/>
+        <line/>
       </lines>
     </verse>
 
