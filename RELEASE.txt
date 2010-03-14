@@ -8,6 +8,14 @@ Release 0.6 (22 Dec 2009)
   other variants like e1, e2, e1a, ea, ...): ``<verse name="e">``
 * add transliteration support, attribute ``translit=""``
   can be used in elements ``<title>``, ``<theme>``, ``<verse>``
+* add multiple songbooks entries. Syntax changed from elements ``<collection>``
+  and ``<trackNo>`` to:
+
+    <songbooks>
+      <songbook name="This is a Songbook Name" entry="123"/>
+    </songbooks>
+
+*
 
 
 Release 0.6 (22 Dec 2009)

@@ -61,10 +61,7 @@
           <ref name="verseOrder"/>
         </optional>
         <optional>
-          <ref name="collection"/>
-        </optional>
-        <optional>
-          <ref name="trackNo"/>
+          <ref name="songbooks"/>
         </optional>
         <optional>
           <ref name="themes"/>
@@ -263,16 +260,23 @@
   </define>
  
 
-  <define name="collection">
-    <element name="collection">
-      <ref name="nonEmptyContent"/>
-    </element>
-  </define>
- 
-
-  <define name="trackNo">
-    <element name="trackNo">
-      <data type="positiveInteger"/>
+  <define name="songbooks">
+    <element name="songbooks">
+      <oneOrMore>
+        <element name="songbook">
+          <attribute name="name">
+            <ref name="nonEmptyContent"/>
+          </attribute>
+          <optional>
+            <!-- 'entry' is like song number but song number must not
+                 always be integer and it can contain letters.
+                 examples: '153c' or '023', etc. -->
+            <attribute name="entry">
+              <ref name="nonEmptyContent"/>
+            </attribute>
+          </optional>
+        </element>
+      </oneOrMore>
     </element>
   </define>
  
