@@ -3,6 +3,7 @@ Release 0.6 (22 Dec 2009)
 
 * move attribute 'xml:lang' to just 'lang' since the element could not always
   contain text in another language but also transliteration
+* allow empty lines by using syntax ``<line/>`` or ``<line></line>`` for that
 
 
 Release 0.6 (22 Dec 2009)

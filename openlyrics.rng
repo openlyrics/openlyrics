@@ -340,12 +340,12 @@
         </optional>
         <element name="line">
           <!-- allow tag chord inside regular text - mixed content -->
-          <oneOrMore>
+          <zeroOrMore>
             <optional>
               <ref name="chord"/>
             </optional>
             <text/>
-          </oneOrMore>
+          </zeroOrMore>
         </element>
       </oneOrMore>
     </element>
