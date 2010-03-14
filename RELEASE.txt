@@ -6,6 +6,8 @@ Release 0.6 (22 Dec 2009)
 * allow empty lines by using syntax ``<line/>`` or ``<line></line>`` for that
 * add 'e' (ending) as a new reserved (standardized) name for verses (including
   other variants like e1, e2, e1a, ea, ...): ``<verse name="e">``
+* add transliteration support, attribute ``translit=""``
+  can be used in elements ``<title>``, ``<theme>``, ``<verse>``
 
 
 Release 0.6 (22 Dec 2009)
