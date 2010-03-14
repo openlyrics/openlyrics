@@ -4,6 +4,8 @@ Release 0.6 (22 Dec 2009)
 * move attribute 'xml:lang' to just 'lang' since the element could not always
   contain text in another language but also transliteration
 * allow empty lines by using syntax ``<line/>`` or ``<line></line>`` for that
+* add 'e' (ending) as a new reserved (standardized) name for verses (including
+  other variants like e1, e2, e1a, ea, ...): ``<verse name="e">``
 
 
 Release 0.6 (22 Dec 2009)
