@@ -1,4 +1,4 @@
-Release 0.6 (22 Dec 2009)
+Release 0.7 (15 Mar 2010)
 =========================
 
 * move attribute 'xml:lang' to just 'lang' since the element could not always
@@ -15,7 +15,8 @@ Release 0.6 (22 Dec 2009)
       <songbook name="This is a Songbook Name" entry="123"/>
     </songbooks>
 
-*
+* add script 'opensong2openlyrics.py' to convert OpenSong songs to OpenLyrics
+  format
 
 
 Release 0.6 (22 Dec 2009)
