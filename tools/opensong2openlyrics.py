@@ -20,15 +20,18 @@
 #
 
 # History:
+# 0.3
+# - map some opensong themes to ccli counterparts
+# - try add theme id if possible
+# - detect vertical bar '|' in a line
+#
 # 0.2
 # - xml schema definition is red from external file
 # - script moved to OpenLyrics trunk
-# - map some opensong themes to ccli counterparts
-# - try add theme id if possible
 #
 # 0.1
 
-__version__ = '0.2'
+__version__ = '0.3'
 
 '''
 Convert an OpenSong song to OpenLyrics format.
@@ -40,6 +43,7 @@ Not Parsed:
 Parsed lyrics:
     verse names [V1], ...
     text lines (lines beginning with space)
+    text lines containing vertical bar '|'
     themes (separated by ';' and ccli theme id is added)
 
 Format version:
@@ -204,20 +208,24 @@ class LyricsParser(object):
         vtag = etree.SubElement(tree, 'verse')
         vtag.set('name', versename)
 
-    def _add_line(self, tree, text):
-        text = text.strip()
-        # ignore empty lines
-        if not text:
-            return
-        ltag = etree.Element('line')
-        ltag.text = text
-        # append line to last verse
-        lastv = tree[-1]
-        if len(lastv) == 0: # no subelem. <lines>
-            linestag = etree.SubElement(lastv, 'lines')
-        else:
-            linestag = lastv[-1]
-        linestag.append(ltag)
+    def _add_line(self, tree, linetext):
+        # vertical bar '|' means in opensong new line of text for presentation
+        texts = linetext.split('|')
+
+        for text in texts:
+            text.strip()
+            # ignore empty lines
+            if not text:
+                continue
+            ltag = etree.Element('line')
+            ltag.text = text
+            # append line to last verse
+            lastv = tree[-1]
+            if len(lastv) == 0: # no subelem. <lines>
+                linestag = etree.SubElement(lastv, 'lines')
+            else:
+                linestag = lastv[-1]
+            linestag.append(ltag)
 
 
 class OpenLyricsConverter(object):
@@ -239,7 +247,7 @@ class OpenLyricsConverter(object):
         # properties
         self._copy_subelement(osong, 'title', olprop, 'titles', 'title')
         self._copy_subelement(osong, 'aka', olprop, 'titles', 'title')
-        self._copy_subelement(osong, 'author', olprop, 'authors', 'author')
+        self._conv_author(osong, olprop)
         self._copy_element(osong, 'copyright', olprop, 'copyright')
         self._copy_element(osong, 'ccli', olprop, 'ccliNo')
         self._copy_element(osong, 'capo', olprop, 'transposition')
@@ -311,6 +319,28 @@ class OpenLyricsConverter(object):
             elem.text = orig_elem.text
         return elem
 
+    def _conv_author(self, os_tree, ol_tree):
+        text = os_tree.find('author').text.strip()
+        # not empty - continue
+        if not text:
+            return
+        else:
+            authors = []
+            # more names are usually separated by ',', ';', '&' or 'and'
+            for a in text.split(','):
+                for b in a.split(';'):
+                    for c in b.split('&'):
+                        for d in c.split('and'):
+                            d = d.strip()
+                            if d: authors.append(d)
+            # add authors to openlyrics structure
+            elem = etree.SubElement(ol_tree, 'authors')
+            for author in authors:
+                subelem = etree.SubElement(elem, 'author')
+                subelem.text = author
+            
+
+
     def _conv_verseorder(self, os_tree, os_elem, ol_tree, ol_elem):
         elem = self._copy_element(os_tree, os_elem, ol_tree, ol_elem)
         # verseOrder in lowercase
@@ -360,14 +390,11 @@ class OpenLyricsConverter(object):
                     elem = etree.SubElement(themes_elem, 'theme')
                     elem.text = t
                     # if ccli theme - add 'ID' attribute (index ccli theme list)
-                    #try:
-                    print CCLITHEMES
-                    print ''
-                    print t
-                    print('size', len(CCLITHEMES))
-                    id = CCLITHEMES.index(t)
-                    elem.set('id', unicode(id + 1)) # indexing beginns with '1'
-                    #except ValueError:
+                    try:
+                        id = CCLITHEMES.index(t)
+                        elem.set('id', unicode(id + 1)) # indexing beginns with '1'
+                    except ValueError:
+                        pass
                     
 
     def _conv_lyrics(self, os_tree, ol_tree):
