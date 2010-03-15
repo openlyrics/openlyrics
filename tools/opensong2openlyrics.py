@@ -23,6 +23,8 @@
 # 0.2
 # - xml schema definition is red from external file
 # - script moved to OpenLyrics trunk
+# - map some opensong themes to ccli counterparts
+# - try add theme id if possible
 #
 # 0.1
 
@@ -38,10 +40,11 @@ Not Parsed:
 Parsed lyrics:
     verse names [V1], ...
     text lines (lines beginning with space)
+    themes (separated by ';' and ccli theme id is added)
 
 Format version:
     OpenSong 1.5.1
-    OpenLyrics 0.6
+    OpenLyrics 0.7
 
 Usage:
 
@@ -61,10 +64,115 @@ except ImportError:
 
 
 NAMESPACE = 'http://openlyrics.info/namespace/2009/song'
-OPENLYRICS_VER = '0.6'
+OPENLYRICS_VER = '0.7'
 
 SCRIPTPATH = os.path.dirname(unicode(__file__, locale.getpreferredencoding()))
 SCHEMAFILE = os.path.join(SCRIPTPATH, '..', 'openlyrics.rng')
+
+CCLITHEMES_FILE = os.path.join(SCRIPTPATH, '..', 'themelist.txt')
+CCLITHEMES = []
+for item in open(CCLITHEMES_FILE, 'r').readlines():
+    CCLITHEMES.append(item.strip())
+
+
+# try to map OpenSong theme to ccli
+def map_to_ccli_themes(name):
+    if name == "Christ: Attributes" : 
+        map = ['Christ']
+    elif name == "Christ: Birth" : 
+        map = ['Seasonal / Christmas']
+    elif name == "Christ: Death/Atonement" : 
+        map = ['Atonement']
+    elif name == "Christ: Power/Majesty" : 
+        map = ["God's Attributes / Power", "God's Attributes / Majesty"]
+    elif name == "Christ: Love/Mercy" : 
+        map = ['Love', 'Mercy']
+    elif name == "Christ: Resurrection" : 
+        map = ['Resurrection']
+    elif name == "Christ: Second Coming" : 
+        map = ['Second Coming']
+    elif name == "Christ: Victory" : 
+        map = ['Victory']
+    elif name == "Church: Commitment/Obedience" : 
+        map = ['Commitment', 'Obedience']
+    elif name == "Church: Country" : 
+        map = ['Country']
+    elif name == "Church: Eternal Life/Heaven" : 
+        map = ['Eternal Life', 'Heaven']
+    elif name == "Church: Evangelism" : 
+        map = ['Evangelism']
+    elif name == "Church: Family/Fellowship" : 
+        map = ['Family', 'Fellowship']
+    elif name == "Church: Fellowship w/ God" : 
+        map = ['Fellowship']
+    elif name == "Church: Purity/Holiness" : 
+        map = ['Cleansing', 'Holiness']
+    elif name == "Church: Repentance/Salvation" : 
+        map = ['Repentance', 'Salvation']
+    elif name == "Church: Renewal" : 
+        map = ['Renewal']
+    elif name == "Church: Service/Ministry" : 
+        map = ['Service ']
+    elif name == "Church: Spiritual Hunger" : 
+        map = ['Spiritual Hunger']
+    elif name == "Fruit: Faith/Hope" : 
+        map = ['Faith', 'Hope']
+    elif name == "Fruit: Love" : 
+        map = ['Love']
+    elif name == "Fruit: Joy" : 
+        map = ['Joy']
+    elif name == "Fruit: Peace/Comfort" : 
+        map = ['Peace']
+    elif name == "Fruit: Patience/Kindness" : 
+        map = ['Patience', 'Kindness']
+    elif name == "Fruit: Humility/Meekness" : 
+        map = ['Humility']
+    elif name == "God: Attributes" : 
+        map = ["God's Attributes"]
+    elif name == "God: Creator/Creation" : 
+        map = ['Creator', 'Creation']
+    elif name == "God: Father" : 
+        map = ["God's Attributes / Father"]
+    elif name == "God: Guidance/Care" : 
+        map = ['Guidance', 'Care']
+    elif name == "God: Holy Spirit" : 
+        map = ['Holy Spirit']
+    elif name == "God: Holiness" : 
+        map = ['Holiness']
+    elif name == "God: Love/Mercy" : 
+        map = ["God's Attributes / Love", "God's Attributes / Mercy"]
+    elif name == "God: Power/Majesty" : 
+        map = ["God's Attributes / Power", "God's Attributes / Majesty"]
+    elif name == "God: Promises" : 
+        map = ['Promise']
+    elif name == "God: Victory" : 
+        map = ['Victory']
+    elif name == "God: Word" : 
+        map = ["God's Word"]
+    elif name == "Worship: Assurance/Trust" : 
+        map = ['Assurance', 'Trust']
+    elif name == "Worship: Call/Opening" : 
+        map = ['Call', 'Opening']
+    elif name == "Worship: Celebration" : 
+        map = ['Celebration']
+    elif name == "Worship: Declaration" : 
+        map = ['Declaration']
+    elif name == "Worship: Intimacy" : 
+        map = ['Intimacy']
+    elif name == "Worship: Invitation" : 
+        map = ['Invitation']
+    elif name == "Worship: Praise/Adoration" : 
+        map = ['Praise', 'Adoration ']
+    elif name == "Worship: Prayer/Devotion" : 
+        map = ['Prayer', 'Devotion']
+    elif name == "Worship: Provision/Deliverance" : 
+        map = ['Provision', 'Deliverance']
+    elif name == "Worship: Thankfulness":
+        map = ['Thankfulness']
+    else:
+        map = [name]
+
+    return map
 
 
 
@@ -230,6 +338,7 @@ class OpenLyricsConverter(object):
         os_elem = os_tree.find(os_elem)
         if os_elem is not None and os_elem.text is not None:
 
+            # themes are sometimes separated by semicolon
             theme_list = os_elem.text.split(';')
             # remove white spaces and empty items
             cleaned_list = []
@@ -244,8 +353,22 @@ class OpenLyricsConverter(object):
             if themes_elem is None:
                 themes_elem = etree.SubElement(ol_tree, 'themes')
             for theme in cleaned_list:
-                elem = etree.SubElement(themes_elem, 'theme')
-                elem.text = theme
+                # OpenSong theme could be mapped to more themes
+                ths = map_to_ccli_themes(theme)
+                for t in ths:
+                    t = t.strip()
+                    elem = etree.SubElement(themes_elem, 'theme')
+                    elem.text = t
+                    # if ccli theme - add 'ID' attribute (index ccli theme list)
+                    #try:
+                    print CCLITHEMES
+                    print ''
+                    print t
+                    print('size', len(CCLITHEMES))
+                    id = CCLITHEMES.index(t)
+                    elem.set('id', unicode(id + 1)) # indexing beginns with '1'
+                    #except ValueError:
+                    
 
     def _conv_lyrics(self, os_tree, ol_tree):
         text = os_tree.find('lyrics').text
