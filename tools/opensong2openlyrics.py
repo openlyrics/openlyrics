@@ -423,25 +423,30 @@ class OpenLyricsConverter(object):
         return elem
 
     def _conv_author(self, os_tree, ol_tree):
-        text = os_tree.find('author').text.strip()
+        text = os_tree.find('author')
+        # existing element
+        if text is not None:
+            return
         # not empty - continue
+        text = text.text
         if not text:
             return
-        else:
-            authors = []
-            # more names are usually separated by ',', ';', '&' or 'and'
-            for a in text.split(','):
-                for b in a.split(';'):
-                    for c in b.split('&'):
-                        for d in c.split('and'):
-                            d = d.strip()
-                            if d: authors.append(d)
-            # add authors to openlyrics structure
-            elem = etree.SubElement(ol_tree, 'authors')
-            for author in authors:
-                subelem = etree.SubElement(elem, 'author')
-                subelem.text = author
-            
+        
+        text = text.strip()
+        authors = []
+        # more names are usually separated by ',', ';', '&' or 'and'
+        for a in text.split(','):
+            for b in a.split(';'):
+                for c in b.split('&'):
+                    for d in c.split('and'):
+                        d = d.strip()
+                        if d: authors.append(d)
+        # add authors to openlyrics structure
+        elem = etree.SubElement(ol_tree, 'authors')
+        for author in authors:
+            subelem = etree.SubElement(elem, 'author')
+            subelem.text = author
+        
 
 
     def _conv_verseorder(self, os_tree, os_elem, ol_tree, ol_elem):

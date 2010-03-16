@@ -1,4 +1,4 @@
-Release 0.7 (15 Mar 2010)
+Release 0.7 (Not yet released)
 =========================
 
 * move attribute 'xml:lang' to just 'lang' since the element could not always
@@ -17,6 +17,7 @@ Release 0.7 (15 Mar 2010)
 
 * add script 'opensong2openlyrics.py' to convert OpenSong songs to OpenLyrics
   format
+* add examples of some public domain songs or not copyrighted
 
 
 Release 0.6 (22 Dec 2009)
