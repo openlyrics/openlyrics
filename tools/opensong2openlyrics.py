@@ -24,6 +24,7 @@
 # - map some opensong themes to ccli counterparts
 # - try add theme id if possible
 # - detect vertical bar '|' in a line
+# - parse chords
 #
 # 0.2
 # - xml schema definition is red from external file
@@ -38,13 +39,14 @@ Convert an OpenSong song to OpenLyrics format.
 
 Not Parsed:
     <timesig>
-    advanced lyrics formating (like chords, etc)
+    advanced lyrics formating (like chords for mutiple verses)
 
 Parsed lyrics:
     verse names [V1], ...
     text lines (lines beginning with space)
     text lines containing vertical bar '|'
     themes (separated by ';' and ccli theme id is added)
+    chords
 
 Format version:
     OpenSong 1.5.1
@@ -190,14 +192,21 @@ class LyricsParser(object):
     def parse(self, os_lyrics):
         tree = etree.Element('lyrics')
         lines = os_lyrics.splitlines()
+        
+        # line with chords (line starts with '.'
+        linechords = None
 
         for line in lines:
             if line.startswith('['):
                 versename = line.strip().strip('[]')
                 self._add_verse(tree, versename)
+            elif line.startswith('.'):
+                linechords = line.strip().lstrip('.') # remove leading '.'
             elif line.startswith(' '):
                 line = line.strip()
-                self._add_line(tree, line)
+                self._add_line(tree, line, linechords)
+                # init chord line for another line with text
+                linechords = None
 
         return tree
 
@@ -208,24 +217,118 @@ class LyricsParser(object):
         vtag = etree.SubElement(tree, 'verse')
         vtag.set('name', versename)
 
-    def _add_line(self, tree, linetext):
+    def _parse_line(self, text, linechords):
+        '''
+        Example of a line with chords:
+            .D     Bm    A  D   G          D
+             Holy, holy, ho_ly, Lord God Almighty,
+        OpenLyrics:
+            <chord name="D"/>Holy, <chord name="Bm">holy, \
+            <chord name="A"/>ho<chord name="G"/>ly, \
+            <chord name="G"/>Lord God Al<chord name="D"/>mighty,
+
+        Works even if 'linechords' is an empty string.
+        '''
+        if not linechords:
+            linechords = ''
+        # parse chords and remember position of a chord
+        chords = {} # empty dict
+        i = 0
+        prev = ' ' # previous character
+        curr = ' ' # current character
+        key = None #  position for current chords (when chord consists of more letters)
+        while i < len(linechords):
+            curr = linechords[i]
+            # start a new chord
+            if prev == ' ' and curr != ' ':
+                key = i
+                chords[key] = curr
+            # continue with a chord
+            elif curr != ' ':
+                chords[key] += curr
+
+            prev = curr
+            i += 1
+
+        #print(chords)
+
+        # dict type is not sorted
+        keys = chords.keys()
+        keys.sort()
+        #print 'keys', keys
+
+        # construct xml tree with chords
+        root = etree.Element('line')
+        for key in keys:
+            # add chord tags
+            elem = etree.SubElement(root, 'chord')
+            elem.set('name', chords[key])
+
+        #print(etree.tostring(root))
+            
+        # split text to snippets
+        snippets = []
+        id1 = 0
+        id2 = 0
+        for k in keys:
+            id2 = k
+            snippets.append(text[id1:id2])
+            id1 = id2
+        snippets.append(text[id1:]) # last snippet
+
+        #print(snippets)
+
+        # remove underscores '_' - are used in opensong format
+        temp = []
+        for s in snippets:
+            clean = ''
+            for char in s:
+                if char != '_':
+                    clean += char
+            temp.append(clean)
+        snippets = temp
+
+        #print(snippets)
+
+        # assign text snippets to chords in xml structure
+        root.text = snippets.pop(0)
+        for chord_elem in root.getchildren():
+            chord_elem.tail = snippets.pop(0)
+
+        #print(etree.tostring(root))
+
+        return root
+
+    def _add_line(self, tree, linetext, chords):
+        # ignore empty line
+        if not linetext.strip():
+            return
+
         # vertical bar '|' means in opensong new line of text for presentation
         texts = linetext.split('|')
+        chordlines = [''] * len(texts) # init chordlines to empty strings
+        # add chords to line if chords are available
+        if chords:
+            offset = 0
+            for i in range(len(texts)):
+                length = len(texts[i])
+                chordlines[i] = chords[offset : offset+length]
+                offset += length + 1
+                #print(chordlines[i])
+        
+        #print(chordlines)
 
-        for text in texts:
-            text.strip()
-            # ignore empty lines
-            if not text:
-                continue
-            ltag = etree.Element('line')
-            ltag.text = text
-            # append line to last verse
-            lastv = tree[-1]
-            if len(lastv) == 0: # no subelem. <lines>
-                linestag = etree.SubElement(lastv, 'lines')
-            else:
-                linestag = lastv[-1]
-            linestag.append(ltag)
+        # create element <lines> if necessary
+        last_verse_tree = tree[-1]
+        if len(last_verse_tree) == 0: # no subelement <lines>
+            lines_tree = etree.SubElement(last_verse_tree, 'lines')
+        else:
+            lines_tree = last_verse_tree[-1] # last subelement <lines>
+        
+        # parse lines and create xml structure
+        for i in range(len(texts)):
+            line_tree = self._parse_line(texts[i], chordlines[i])
+            lines_tree.append(line_tree)
 
 
 class OpenLyricsConverter(object):
