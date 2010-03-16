@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T14:23:43.441075">
+  <properties>
+    <titles>
+      <title>How Firm A Foundation</title>
+    </titles>
+    <copyright>Public Domain</copyright>
+    <releaseDate>1787</releaseDate>
+    <verseOrder>v1 v2 v3 v4 v5</verseOrder>
+    <songbooks>
+      <songbook name="Rippon's Selection of Hymns"/>
+    </songbooks>
+    <themes>
+      <theme id="68">Guidance</theme>
+      <theme>Care</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>How <chord name="G"/>firm <chord name="C"/>a foun<chord name="G"/>dation, ye <chord name="G"/>saints of the <chord name="D"/>Lord,</line>
+        <line>Is <chord name="G"/>laid <chord name="C"/>for your <chord name="G"/>faith <chord name="Em"/>in His <chord name="G/D"/>ex<chord name="D7"/>cellent <chord name="G"/>word!</line>
+        <line>What <chord name="G"/>more can He <chord name="Em"/>say than to <chord name="G"/>you He hath <chord name="D"/>said,</line>
+        <line>To <chord name="G"/>you <chord name="C"/>who for <chord name="G"/>re<chord name="Em"/>fuge to <chord name="G/D"/>Je<chord name="D7"/>sus hath <chord name="G"/>fled.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line>"Fear <chord name="G"/>not, <chord name="C"/>I am <chord name="G"/>with thee, O <chord name="G"/>be not dis<chord name="D"/>mayed,</line>
+        <line>For <chord name="G"/>I <chord name="C"/>am your <chord name="G"/>God, <chord name="Em"/>and will <chord name="G/D"/>still <chord name="D7"/>give thee <chord name="G"/>aid;</line>
+        <line>I'll <chord name="G"/>strengthen thee, <chord name="Em"/>help thee and <chord name="G"/>cause thee to <chord name="D"/>stand,</line>
+        <line>Up<chord name="G"/>held <chord name="C"/>by My <chord name="G"/>right<chord name="Em"/>eous, om<chord name="G/D"/>ni<chord name="D7"/>potent <chord name="G"/>hand."</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line>"When <chord name="G"/>through <chord name="C"/>the deep <chord name="G"/>waters I <chord name="G"/>call thee to <chord name="D"/>go,</line>
+        <line>The <chord name="G"/>ri<chord name="C"/>vers of <chord name="G"/>sor<chord name="Em"/>row shall <chord name="G/D"/>not <chord name="D7"/>over<chord name="G"/>flow;</line>
+        <line>For I<chord name="G"/> will be <chord name="Em"/>with thee, thy <chord name="G"/>troubles to <chord name="D"/>bless,</line>
+        <line>And <chord name="G"/>sanc<chord name="C"/>tify <chord name="G"/>to <chord name="Em"/>thee thy <chord name="G/D"/>deep<chord name="D7"/>est dis<chord name="G"/>tress."</line>
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <line>"When <chord name="G"/>through <chord name="C"/>fiery <chord name="G"/>trials thy <chord name="G"/>pathway shall <chord name="D"/>lie,</line>
+        <line>My <chord name="G"/>grace, <chord name="C"/>all suf<chord name="G"/>fi<chord name="Em"/>cient shall <chord name="G/D"/>be  <chord name="D7"/>thy sup<chord name="G"/>ply;</line>
+        <line>The f<chord name="G"/>lame shall not <chord name="Em"/>hurt thee; I <chord name="G"/>only de<chord name="D"/>sign</line>
+        <line>Thy <chord name="G"/>dross <chord name="C"/>to con<chord name="G"/>sume, <chord name="Em"/>and thy <chord name="G/D"/>gold <chord name="D7"/>to re<chord name="G"/>fine."</line>
+      </lines>
+    </verse>
+    <verse name="v5">
+      <lines>
+        <line>"The <chord name="G"/>soul <chord name="C"/>that on <chord name="G"/>Jesus hath <chord name="G"/>leaned for re<chord name="D"/>pose,</line>
+        <line>I <chord name="G"/>will <chord name="C"/>not, I <chord name="G"/>will <chord name="Em"/>not de<chord name="G/D"/>sert <chord name="D7"/>to his <chord name="G"/>foes;</line>
+        <line>That <chord name="G"/>soul, though all <chord name="Em"/>hell should en<chord name="G"/>deavor to <chord name="D"/>shake,</line>
+        <line>I'll <chord name="G"/>ne<chord name="C"/>ver, no <chord name="G"/>ne<chord name="Em"/>ver, no <chord name="G/D"/>ne<chord name="D7"/>ver for<chord name="G"/>sake!"</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

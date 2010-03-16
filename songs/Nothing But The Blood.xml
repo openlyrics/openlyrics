@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:07:42.318057">
+  <properties>
+    <titles>
+      <title>Nothing But The Blood</title>
+    </titles>
+    <authors>
+      <author>Robert Lowry</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>21332</ccliNo>
+    <verseOrder>v1 c v2 c v3 c</verseOrder>
+    <themes>
+      <theme id="7">Atonement</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line><chord name="E"/>What can wash a<chord name="C#m7"/>way my sin? <chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;</line>
+        <line><chord name="E"/>What can make me <chord name="C#m7"/>whole again? <chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        <line><chord name="E"/>Oh precious <chord name="C#m7"/>is the flow,</line>
+        <line><chord name="Bsus"/>That makes me white as snow;</line>
+        <line><chord name="E"/>No other <chord name="C#m7"/>fount I know,</line>
+        <line><chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line><chord name="E"/>For my pardon <chord name="C#m7"/>this I see, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;</line>
+        <line><chord name="E"/>For my cleansing <chord name="C#m7"/>this my plea, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line><chord name="E"/>This is all my <chord name="C#m7"/>hope and peace, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;</line>
+        <line><chord name="E"/>This is all my <chord name="C#m7"/>righteousness, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>
