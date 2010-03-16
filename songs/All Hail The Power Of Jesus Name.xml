@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:21:09.913745">
+  <properties>
+    <titles>
+      <title>All Hail The Power Of Jesus' Name</title>
+    </titles>
+    <authors>
+      <author>Edward Perronet</author>
+      <author>John Rippon</author>
+      <author>Oliver Holden</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <verseOrder>v1 v2 v3 v4</verseOrder>
+    <themes>
+      <theme id="62">God's Attributes / Power</theme>
+      <theme id="60">God's Attributes / Majesty</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>All <chord name="D/F#"/>hail the pow’r of <chord name="A"/>Jesus’ name! Let angels <chord name="D/A"/>pros<chord name="A"/>trate <chord name="D"/>fall;</line>
+        <line><chord name="A"/>Bring <chord name="D"/>forth the <chord name="D/F#"/>royal <chord name="A"/>dia<chord name="D"/>dem, And crown <chord name="A/C#"/>Him  <chord name="Bm"/>Lord <chord name="A/E"/>of<chord name="E"/>  <chord name="A"/>all.</line>
+        <line>Bring <chord name="D"/>forth the <chord name="D/F#"/>royal <chord name="A"/>diadem, And <chord name="D/F#"/>crown <chord name="G"/>Him <chord name="D/F#"/>Lord<chord name="A"/> of <chord name="D"/>all.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line>Ye  <chord name="D/F#"/>chosen seed of  <chord name="A"/>Israel’s race, Ye  ransomed <chord name="D/A"/>from <chord name="A"/>the <chord name="D"/>fall,</line>
+        <line><chord name="A"/>Hail <chord name="D"/>Him Who <chord name="D/F#"/>saves you <chord name="A"/>by His <chord name="D"/>grace, And crown <chord name="A/C#"/>Him  <chord name="Bm"/>Lord <chord name="A/E"/>of<chord name="E"/>  <chord name="A"/>all.</line>
+        <line>Hail <chord name="D"/>Him Who <chord name="D/F#"/>saves you <chord name="A"/>by His grace, And <chord name="D/F#"/>crown <chord name="G"/>Him <chord name="D/F#"/>Lord<chord name="A"/> of <chord name="D"/>all.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line>Let <chord name="E/G#"/>every kindred, <chord name="B"/>every tribe On this ter<chord name="E/B"/>res<chord name="B"/>trial <chord name="E"/>ball</line>
+        <line><chord name="B"/>To <chord name="E"/>Him all <chord name="E/G#"/>majes<chord name="B"/>ty a<chord name="E"/>scribe, And crown <chord name="B/D#"/>Him  <chord name="C#m"/>Lord <chord name="B/F#"/>of<chord name="F#"/>   <chord name="B"/>all.</line>
+        <line>To <chord name="E"/>Him all <chord name="E/G#"/>majes<chord name="B"/>ty ascribe, And <chord name="E/G#"/>crown <chord name="A"/>Him <chord name="E/G#"/>Lord<chord name="B"/> of <chord name="E"/>all.</line>
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <line>O <chord name="E/G#"/>that with yonder <chord name="B"/>sacred throng We at His <chord name="E/B"/>feet <chord name="B"/>may  <chord name="E"/>fall</line>
+        <line><chord name="B"/>We’ll <chord name="E"/>join the <chord name="E/G#"/>ever<chord name="B"/>last<chord name="E"/>ing song, And crown <chord name="B/D#"/>Him  <chord name="C#m"/>Lord <chord name="B/F#"/>of<chord name="F#"/>   <chord name="B"/>all.</line>
+        <line>We’ll <chord name="E"/>join the <chord name="E/G#"/>ever<chord name="B"/>lasting song, And <chord name="E/G#"/>crown <chord name="A"/>Him <chord name="E/G#"/>Lord<chord name="B"/> of <chord name="E"/>all.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>
