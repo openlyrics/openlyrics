@@ -1,4 +1,4 @@
-:tocdepth: 2
+:tocdepth: 3
 
 .. _dataformat:
 
@@ -94,10 +94,22 @@ Features
         ``<verse name="v1">``
 
     translated lyrics
-        ``<verse name="v1" xml:lang="en">``
+        ``<verse name="v1" lang="en">``
 
     translated song title
-        ``<title xml:lang="en">``
+        ``<title lang="en">``
+
+    translated theme
+        ``<theme lang="en">``
+
+    transliterated lyrics
+        ``<verse name="v1" lang="en" translit="he">``
+
+    transliterated song title
+        ``<title lang="en" translit="he">``
+
+    transliterated theme
+        ``<theme lang="en" translit="he">``
 
     transposition
         ``<transposition>``
@@ -254,7 +266,7 @@ There could be more titles::
       <title>Amazing</title>
     </titles>
 
-You can define attribute ``xml:lang=""``. It says what is the language of the
+You can define attribute ``lang=""``. It says what is the language of the
 title. The value of this attribute should be in the format ``xx`` or ``xx-YY``
 where ``xx`` is an `ISO-639 language code <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
 and YY is an `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
@@ -265,17 +277,17 @@ language to another and there is a need to know the titles in other languages
 or the song contains lyrics in multiple languages::
 
     <titles>
-      <title xml:lang="en">Amazing Grace</title>
-      <title xml:lang="de">Staunenswerte Gnade</title>
-      <title xml:lang="pl">Cudowna Boża łaska</title>
+      <title lang="en">Amazing Grace</title>
+      <title lang="de">Staunenswerte Gnade</title>
+      <title lang="pl">Cudowna Boża łaska</title>
     </titles>
 
 Additionally, it is possible use attribute ``original="true"``. This attribute
 expresses that a title is the title of the original song::
 
     <titles>
-      <title xml:lang="en" original="true">Amazing Grace</title>
-      <title xml:lang="pl">Cudowna Boża łaska</title>
+      <title lang="en" original="true">Amazing Grace</title>
+      <title lang="pl">Cudowna Boża łaska</title>
     </titles>
 
 
@@ -487,23 +499,31 @@ this element could be::
     <verseOrder>v1 c v2 c v1 c</verseOrder>
 
 
-Collection
-^^^^^^^^^^
+Songbooks
+^^^^^^^^^
 
 If a song comes from any collection or songbook, here should be noted the name
-of the songbook or collection. There could be any arbitrary text::
+of the songbook/collection and number of a song in that songbook.
+For songbook name is used attribute ``name=""`` and for number attribute
+``entry=""``. Both attributes can contain any text::
 
-    <collection>Name of a songbook or collection</collection>
+    <songbooks>
+      <songbook name="Name of a songbook or collection" entry="48"/>
+    </songbooks>
 
+The attribute ``name=""`` is mandatory but ``entry=""`` is not::
 
-Track Number
-^^^^^^^^^^^^
+    <songbooks>
+      <songbook name="Name of a songbook or collection"/>
+    </songbooks>
 
-If a song comes from any collection or songbook, here should be noted the
-number of the song in a collection or songbook.
-The value must be any positive integer::
+The attribute ``name=""`` is mandatory but ``entry=""`` is not::
 
-    <trackNo>48</trackNo>
+    <songbooks>
+      <songbook name="This is a Songbook Name" entry="48"/>
+      <songbook name="Name of a songbook without number"/>
+      <songbook name="Name of a songbook" entry="84c"/>
+    </songbooks>
 
 
 Themes
@@ -516,16 +536,16 @@ There can be one or more themes::
 
     <themes><theme>Adoration</theme></themes>
 
-As additional attributes could be an ``id=""`` and/or ``xml:lang=""``::
+As additional attributes could be an ``id=""`` and/or ``lang=""``::
 
     <themes>
       <theme>Adoration</theme>
-      <theme id="1" xml:lang="en-US">Grace</theme>
-      <theme id="2" xml:lang="en-US">Praise</theme> 
-      <theme id="3" xml:lang="en-US">Salvation</theme>
-      <theme id="1" xml:lang="pt-BR">Graça</theme>
-      <theme id="2" xml:lang="pt-BR">Adoração</theme>
-      <theme id="3" xml:lang="pt-BR">Salvação</theme>
+      <theme id="1" lang="en-US">Grace</theme>
+      <theme id="2" lang="en-US">Praise</theme> 
+      <theme id="3" lang="en-US">Salvation</theme>
+      <theme id="1" lang="pt-BR">Graça</theme>
+      <theme id="2" lang="pt-BR">Adoração</theme>
+      <theme id="3" lang="pt-BR">Salvação</theme>
     </themes>
 
 The ``id`` attribute should be used when using a theme from a
@@ -535,7 +555,7 @@ file with name ``themelist.txt``. The value of ``id`` is the line number
 of a particular theme in this file. Standardized themes with id should ease
 assigning translated themes to songs in an application.
 
-``xml:lang`` defines a language of a theme.
+``lang`` defines a language of a theme.
 Value of this attribute should be in the format ``xx`` or ``xx-YY``.
 ``xx`` means language code and ``YY`` means country code.
 
@@ -571,7 +591,8 @@ Lyrics part of OpenLyrics format will mostly contain elements like
       </verse>
     </lyrics>
 
-In ``<line>`` should be enclosed all text for one line. More lines of text
+In ``<line>`` should be enclosed all text for one line. An empty line is
+expressed by ``<line/>`` or ``<line></line>``. More lines of text
 can be in element ``<lines>``::
 
     <lines>
@@ -626,6 +647,8 @@ Name                    Description
 ``p1, p2, ...``         more pre-choruses
 ``b``                   bridge
 ``b1, b2, ...``         more bridges
+``e``                   ending
+``e1, e2, ...``         more endings
 ``v1a, v1b, v1c, ...``  this schema is for splitting verse to more parts
                         (e.g. for splitting verse over more slides)
 ``ca, cb, ...``         splitting chorus to more parts
@@ -634,13 +657,15 @@ Name                    Description
 ``p1a, p1b, ...``       splitting pre-chorus to more parts
 ``ba, bb, bc, ...``     splitting bridge to more parts
 ``b1a, b1b, b1c, ...``  splitting bridge to more parts
+``ea, eb, ec, ...``     splitting ending to more parts
+``e1a, e1b, e1c, ...``  splitting ending to more parts
 ======================= ============================================
 
 In recommended naming schema are names in **lowercase**.
 The value of the ``name`` attribute could be any *one word*.
 
-Example of a song containing two verses (*v1, v2*), a chorus (*c*) and a
-bridge (*b*). Second verse is splited into more slides::
+Example of a song containing two verses (*v1, v2*), a chorus (*c*),
+bridge (*b*) and ending (*e*). Second verse is splited into more slides::
 
     <lyrics>
       <verse name="v1">
@@ -656,6 +681,9 @@ bridge (*b*). Second verse is splited into more slides::
         ...
       </verse>
       <verse name="b">
+        ...
+      </verse>
+      <verse name="e">
         ...
       </verse>
     </lyrics>
@@ -697,28 +725,81 @@ is singing a song in a foreing language and wants to display translation
 of the text for others to understand.
 
 Translations are at the verse level. They can be added by translating a text of
-a ``<verse>`` and by adding attribute ``xml:lang=""`` to ``<verse>``.
+a ``<verse>`` and by adding attribute ``lang=""`` to ``<verse>``.
 The value of this attribute should be in the format ``xx`` or ``xx-YY``
 where ``xx`` is an `ISO-639 language code <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
 and YY is an `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
 more details see `bcp47 <ftp://ftp.rfc-editor.org/in-notes/bcp/bcp47.txt>`_.
 
 More translations of a verse should have the same value of the attribute
-``name=""`` but different values of ``xml:lang=""``.
+``name=""`` but different values of ``lang=""``.
 
 Example of a song containg English and German translation for the first verse::
 
     <lyrics>
-      <verse name="v1" xml:lang="en">
+      <verse name="v1" lang="en">
         <lines><line>This text is in English.</line></lines>
       </verse>
-      <verse name="v1" xml:lang="de">
+      <verse name="v1" lang="de">
         <lines><line>Dieses Text ist auf Deutsch.</line></lines>
       </verse>
     </lyrics>
 
 Because translations are defined at the verse level, there can be also
 situation, that some verses have translations and some do not.
+
+
+Transliteration
+^^^^^^^^^^^^^^^
+
+`Transliteration <http://en.wikipedia.org/wiki/Transliteration>`_ comes handy in
+situation when singing for instance a Hebrew song but the congregation is not
+able read Hebrew aplhabet.
+
+Transliteration allows to distinguish in one song:
+
+* text written in original alphabet (e.g. Hebrew)
+* pronunciation of original aplhabet mapped to requested alphabet (e.g. Hebrew
+  pronunciation written in English)
+* translation of the song to requested language (e.g. English translation)
+
+Transliteration can be defined by adding attribute ``translit=""`` to
+``<title>``, ``<theme>`` or ``<verse>``.
+The value of this attribute should be in the format ``xx`` or ``xx-YY``
+where ``xx`` is an `ISO-639 language code <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
+and YY is an `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
+more details see `bcp47 <ftp://ftp.rfc-editor.org/in-notes/bcp/bcp47.txt>`_.
+
+The attribute ``translit=""`` must be used in conjunction with attribute
+``lang=""``. This is because one writting system can be transliterated
+to different languages differently. For example Hebrew is transliterated
+differently to English and French.
+
+In the following example the attribute ``lang=""`` means the language of
+original alphabet (Hebrew) and ``translit=""`` means the language to what
+the song was transliterated (English)::
+
+    <verse name="v1" lang="he" translit="en">
+    ...
+    </verse>
+
+Example of lyrics containing original text written in Hebrew 
+``<verse name="v1" lang="he">``, transliterated to English
+``<verse name="v1" lang="he" translit="en">`` and translated
+to English ``<verse name="v1" lang="en">``::
+
+    <lyrics>
+      <verse name="v1" lang="he">
+        <lines><line>הבה נגילה</line></lines>
+      </verse>
+      <verse name="v1" lang="he" translit="en">
+        <lines><line>Hava nagila</line></lines>
+      </verse>
+      <verse name="v1" lang="en">
+        <lines><line>Let's rejoice</line></lines>
+      </verse>
+    </lyrics>
+
 
 Verse Parts (Groups of Lines)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -781,13 +862,16 @@ Example::
 Advanced Example
 ----------------
 
+More song examples can be found in folder ''songs'' distributed with the
+OpenLyrics ZIP archive.
+
 Here's an example of the XML::
 
     <?xml version="1.0" encoding="UTF-8"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.6"
-          createdIn="OpenLP 1.9.0"
-          modifiedIn="ChangingSong 0.0.1"
+          version="0.7"
+          createdIn="OpenLP 2.0"
+          modifiedIn="ChangingSong 0.0.2"
           <!-- date format: ISO 8601 -->
           modifiedDate="2009-12-22T21:24:30+02:00">
       <properties>
