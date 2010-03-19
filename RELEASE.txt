@@ -1,4 +1,4 @@
-Release 0.7 (Not yet released)
+Release 0.7 (19 Mar 2010)
 =========================
 
 * move attribute 'xml:lang' to just 'lang' since the element could not always
@@ -9,7 +9,7 @@ Release 0.7 (Not yet released)
 * add transliteration support, attribute ``translit=""``
   can be used in elements ``<title>``, ``<theme>``, ``<verse>``
 * add multiple songbooks entries. Syntax changed from elements ``<collection>``
-  and ``<trackNo>`` to:
+  and ``<trackNo>`` to::
 
     <songbooks>
       <songbook name="This is a Songbook Name" entry="123"/>
