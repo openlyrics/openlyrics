@@ -4,7 +4,7 @@ OpenLyrics documentation contents
 =================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    intro
    concepts
