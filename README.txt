@@ -28,6 +28,13 @@ chords.txt               examples of chord notation
 themelist.txt            standardized song themes (from www.ccli.com)
 
 
+Folders
+-------
+
+songs                    several song examples
+tools                    additional tools
+
+
 Validation
 ===========
 

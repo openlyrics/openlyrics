@@ -1,4 +1,4 @@
-Release 0.7 (19 Mar 2010)
+Release 0.7 (24 Mar 2010)
 =========================
 
 * move attribute 'xml:lang' to just 'lang' since the element could not always
