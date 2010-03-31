@@ -19,7 +19,7 @@ Provides a module to access OpenLyrics data type.
 
 Usage:
 from openlyrics import Song
-s = Lyric('song.xml')
+s = Song('song.xml')
 '''
 
 try:
@@ -51,9 +51,9 @@ def _path(tag, ns = None):
   else:
     return "/".join("{%s}%s" % (ns, t) for t in tag.split("/"))
 
-class Lyric:
+class Song:
   '''
-  Definition of an OpenLyrics song.
+  Definition of an Opens song.
   '''
   __ns = ""
   __titles = None
@@ -150,12 +150,12 @@ class Lyric:
     
     #TODO: Comments
     
-    #TODO: Lyrics
+    #TODO: s
     
 
-class _Title:
+class Title:
   '''
-  An instance of a title for OpenLyrics.
+  An instance of a title for Opens.
   
   title:  The title as a string.
   lang:  A language code, in the format of "xx", or "xx-YY".
@@ -169,9 +169,9 @@ class _Title:
     self.lang = lang
 
 
-class _Author:
+class Author:
   '''
-  An instance of an author for OpenLyrics.
+  An instance of an author for Opens.
   
   author:  Author's name as a string.
   type:  One of "words", "music", or "translation". This module will throw ValueError if one
@@ -191,9 +191,9 @@ class _Author:
     self.lang = lang
 
 
-class _Songbook:
+class Songbook:
   '''
-  A songbook for OpenLyrics.
+  A songbook for Opens.
   
   name:  The name of the songbook or collection.
   entry:  A number or string representing the index in this songbook.
@@ -207,7 +207,7 @@ class _Songbook:
     self.entry = entry
 
 
-class _Theme:
+class Theme:
   '''
   A category for the song.
   

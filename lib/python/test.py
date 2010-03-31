@@ -15,4 +15,4 @@
 
 import openlyrics
 
-openlyrics.Lyric("test.xml")
+openlyrics.Song("test.xml")
