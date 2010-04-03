@@ -54,34 +54,57 @@ def _path(tag, ns = None):
 class Song:
   '''
   Definition of an Opens song.
+  
+  titles:         A list of Title (class) objects.
+  authors:        A list of Author (class) objects.
+  release_date:   The date, in the format of yyyy-mm-ddThh:mm.
+  copyright:      A copyright string.
+  ccli_no:        The CCLI number. Numeric or string value.
+  transposition:  Key adjustment up or down. Integer value.
+  tempo:          Numeric value of speed.
+  tempo_type:     Unit of measurement of tempo. Example: "bpm".
+  key:            Key of a string. Example: "Eb".
+  variant:        A string describing differentiating it from other songs with a common title.
+  publisher:      A string value of the song publisher.
+  custom_version: 
+  verse_order:    The verse names in a specific order.
+  keywords:       
+  songbooks:      A list of Songbook (class) objects, with a name and entry.
+  themes:         
+  comments:       
   '''
-  __ns = ""
-  __titles = None
-  __authors = None
-  __copyright = ""
-  __ccli_no = ""
-  __release_date = ""
-  __transposition = 0
-  __tempo = None
-  __tempo_type = None
-  __key = ""
-  __variant = ""
-  __publisher = ""
-  __custom_version = ""
-  __verse_order = None
-  # Should keywords be a list?
-  __keywords = ""
-  __songbooks = None
-  __themes = None
-  __comments = None
+  # List Types
+  _titles = None
+  _authors = None
+  _songbooks = None
+  _themes = None
+  comments = None
+  
+  # String Types
+  _release_date = None
+  _ccli_no = None
+  _tempo = None
+  _tempo_type = None
+  _key = ""
+  _transposition = 0
+  _variant = ""
+  _verse_order = None
+  keywords = "" # Should keywords be a list?
+  themes = None
+  copyright = None
+  publisher = ""
+  custom_version = None
+  
+  # Private Variables
+  __ns = None
   
   def __init__(self, file_ = None):
     'Create the instance.'
-    self.__titles = []
-    self.__authors = []
-    self.__songbooks = []
-    self.__themes = []
-    self.__comments = []
+    self._titles = []
+    self._authors = []
+    self._songbooks = []
+    self._themes = []
+    self.comments = []
     
     if isinstance(file_, str) or isinstance(file_, file):
       self.open_file(file_)
@@ -95,62 +118,76 @@ class Song:
     if "}" in roottag:
       self.__ns = roottag.split("}")[0].lstrip("{")
     
-    # TODO: Titles
+    elem = tree.findall(_path('properties/titles/title',self.__ns))
+    for el in elem:
+      title = Title(el.text, el.attrib.get("lang",None))
+      self._titles.append(title)
     
-    # TODO: Authors
+    elem = tree.findall(_path('properties/authors/author',self.__ns))
+    for el in elem:
+      author = Author(el.text, el.attrib.get("type",None), el.attrib.get("lang",None))
+      self._authors.append(author)
     
-    el = tree.find(_path('properties/copyright',self.__ns))
-    if el != None:
-      self.__copyright = el.text
+    elem = tree.findall(_path('properties/songbooks/songbook',self.__ns))
+    for el in elem:
+      songbook = Songbook(el.text, el.attrib.get("entry",None))
+      self._songbooks.append(songbook)
     
-    el = tree.find(_path('properties/ccliNo',self.__ns))
-    if el != None:
-      self.__ccli_no = el.text
+    elem = tree.findall(_path('properties/themes/theme',self.__ns))
+    for el in elem:
+      theme = Theme(el.text, el.attrib.get("id",None), el.attrib.get("lang",None))
+      self._themes.append(theme)
     
-    el = tree.find(_path('properties/releaseDate',self.__ns))
-    if el != None:
-      self.__release_date = el.text
+    elem = tree.findall(_path('properties/comments/comment',self.__ns))
+    for el in elem:
+      self.comments.append(el.text)
     
-    el = tree.find(_path('properties/tempo',self.__ns))
-    if el != None:
-      self.__tempo_type = el.attrib.get("type",None)
-      self.__tempo = el.text
+    elem = tree.find(_path('properties/copyright',self.__ns))
+    if elem != None:
+      self.copyright = elem.text
     
-    el = tree.find(_path('properties/key',self.__ns))
-    if el != None:
-      self.__key = el.text
+    elem = tree.find(_path('properties/ccliNo',self.__ns))
+    if elem != None:
+      self.ccli_no = elem.text
     
-    el = tree.find(_path('properties/verseOrder',self.__ns))
-    if el != None:
-      self.__verse_order = el.text
+    elem = tree.find(_path('properties/releaseDate',self.__ns))
+    if elem != None:
+      self._release_date = elem.text
     
-    el = tree.find(_path('properties/keywords',self.__ns))
-    if el != None:
-      self.__keywords = el.text
+    elem = tree.find(_path('properties/tempo',self.__ns))
+    if elem != None:
+      self._tempo_type = elem.attrib.get("type",None)
+      self._tempo = elem.text
     
-    el = tree.find(_path('properties/transposition',self.__ns))
-    if el != None:
-      self.__transposition = el.text
+    elem = tree.find(_path('properties/key',self.__ns))
+    if elem != None:
+      self._key = elem.text
     
-    el = tree.find(_path('properties/variant',self.__ns))
-    if el != None:
-      self.__variant = el.text
+    elem = tree.find(_path('properties/verseOrder',self.__ns))
+    if elem != None:
+      self._verse_order = elem.text
     
-    el = tree.find(_path('properties/publisher',self.__ns))
-    if el != None:
-      self.__publisher = el.text
+    elem = tree.find(_path('properties/keywords',self.__ns))
+    if elem != None:
+      self.keywords = elem.text
     
-    el = tree.find(_path('properties/customVersion',self.__ns))
-    if el != None:
-      self.__custom_version = el.text
+    elem = tree.find(_path('properties/transposition',self.__ns))
+    if elem != None:
+      self._transposition = elem.text
     
-    #TODO: Songbooks
+    elem = tree.find(_path('properties/variant',self.__ns))
+    if elem != None:
+      self.variant = elem.text
     
-    #TODO: Themes
+    elem = tree.find(_path('properties/publisher',self.__ns))
+    if elem != None:
+      self.publisher = elem.text
     
-    #TODO: Comments
+    elem = tree.find(_path('properties/customVersion',self.__ns))
+    if elem != None:
+      self.custom_version = elem.text
     
-    #TODO: s
+    #TODO: Verses
     
 
 class Title:
@@ -167,6 +204,11 @@ class Title:
     'Create the instance.'
     self.title = title
     self.lang = lang
+  
+  def __str__(self):
+    return self.title
+  def __unicode__(self):
+    return self.title
 
 
 class Author:
@@ -185,10 +227,15 @@ class Author:
   def __init__(self, author = None, type = None, lang = None):
     'Create the instance. May return `ValueError` on incorrect `type` argument.'
     self.author = author
-    if type not in ('words','music','translation'):
+    if type not in ('words','music','translation', None):
       raise ValueError('`type` must be one of \"words\", \"music\", or \"translator\".')
     self.type = type
     self.lang = lang
+  
+  def __str__(self):
+    return self.author
+  def __unicode__(self):
+    return self.author
 
 
 class Songbook:
@@ -205,6 +252,11 @@ class Songbook:
     'Create the instance.'
     self.name = name
     self.entry = entry
+  
+  def __str__(self):
+    return '%s #%s' % (self.name, self.entry)
+  def __unicode__(self):
+    return '%s #%s' % (self.name, self.entry)
 
 
 class Theme:
@@ -225,4 +277,9 @@ class Theme:
     self.theme = theme
     self.id = id
     self.lang = lang
+  
+  def __str__(self):
+    return self.theme
+  def __unicode__(self):
+    return self.theme
 

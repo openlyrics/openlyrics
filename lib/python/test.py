@@ -14,5 +14,34 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import openlyrics
+import os.path
 
-openlyrics.Song("test.xml")
+
+s = openlyrics.Song(os.path.join(os.path.dirname(__file__),"test.xml"))
+
+print "_titles: "
+for title in s._titles:
+  print '         ', title
+print "_authors: "
+for auth in s._authors:
+  print '          ', auth
+print "_songbooks: "
+for song in s._songbooks:
+  print '            ', song
+print "_themes: "
+for thm in s._themes:
+  print '         ', thm
+print "comments: ", s.comments
+print "_release_date: ", s._release_date
+print "_ccli_no: ", s._ccli_no
+print "_tempo: ", s._tempo
+print "_tempo_type: ", s._tempo_type
+print "_key: ", s._key
+print "_transposition: ", s._transposition
+print "_variant: ", s._variant
+print "_verse_order: ", s._verse_order
+print "keywords: ", s.keywords
+print "themes: ", s.themes
+print "copyright: ", s.copyright
+print "publisher: ", s.publisher
+print "custom_version: ", s.custom_version
