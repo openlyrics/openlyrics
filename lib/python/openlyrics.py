@@ -22,6 +22,8 @@ from openlyrics import Song
 s = Song('song.xml')
 '''
 
+from datetime import datetime
+
 try:
   from lxml import etree
 except ImportError:
@@ -43,101 +45,104 @@ except ImportError:
         except ImportError:
           raise ImportError("No ElementTree Installation.")
 
-def _path(tag, ns = None):
-  'If a namespace is on a document, the XPath requires {ns}tag for every tag in the path.\
-  This assumes that only one namespace for the document exists.'
-  if ns == None or len(ns) == 0:
-    return tag
-  else:
-    return "/".join("{%s}%s" % (ns, t) for t in tag.split("/"))
-
-class Song:
+class Song(object):
   '''
   Definition of an Opens song.
   
-  titles:         A list of Title (class) objects.
-  authors:        A list of Author (class) objects.
-  release_date:   The date, in the format of yyyy-mm-ddThh:mm.
-  copyright:      A copyright string.
-  ccli_no:        The CCLI number. Numeric or string value.
-  transposition:  Key adjustment up or down. Integer value.
-  tempo:          Numeric value of speed.
-  tempo_type:     Unit of measurement of tempo. Example: "bpm".
-  key:            Key of a string. Example: "Eb".
+  _titles:        A list of Title (class) objects.
+  _authors:       A list of Author (class) objects.
+  _songbooks:     A list of Songbook (class) objects, with a name and entry.
+  _themes:        A list of Theme (class) objects.
+  comments:       A list of string comments
+  _release_date:   The date, in the format of yyyy-mm-ddThh:mm.
+  _ccli_no:        The CCLI number. Numeric or string value.
+  _tempo:          Numeric value of speed.
+  _tempo_type:     Unit of measurement of tempo. Example: "bpm".
+  _key:            Key of a string. Example: "Eb".
+  _transposition:  Key adjustment up or down. Integer value.
+  _verse_order:    The verse names in a specific order.
   variant:        A string describing differentiating it from other songs with a common title.
+  keywords:       
+  copyright:      A copyright string.
   publisher:      A string value of the song publisher.
   custom_version: 
-  verse_order:    The verse names in a specific order.
-  keywords:       
-  songbooks:      A list of Songbook (class) objects, with a name and entry.
-  themes:         
-  comments:       
   '''
   # List Types
-  _titles = None
-  _authors = None
-  _songbooks = None
-  _themes = None
+  titles = None
+  authors = None
+  songbooks = None
+  themes = None
   comments = None
   
   # String Types
-  _release_date = None
-  _ccli_no = None
-  _tempo = None
-  _tempo_type = None
-  _key = ""
-  _transposition = 0
-  _variant = ""
-  _verse_order = None
+  release_date = None
+  ccli_no = None
+  tempo = None
+  tempo_type = None
+  key = ""
+  transposition = 0
+  verse_order = None
+  variant = ""
   keywords = "" # Should keywords be a list?
-  themes = None
   copyright = None
   publisher = ""
   custom_version = None
   
   # Private Variables
   __ns = None
+  _version = 0.7
+  createdIn = ""
+  modifiedIn = ""
+  modifiedDate =""
   
   def __init__(self, file_ = None):
     'Create the instance.'
-    self._titles = []
-    self._authors = []
-    self._songbooks = []
-    self._themes = []
+    self.titles = []
+    self.authors = []
+    self.songbooks = []
+    self.themes = []
     self.comments = []
     
     if isinstance(file_, str) or isinstance(file_, file):
-      self.open_file(file_)
+      self.from_xml(file_)
   
-  def open_file(self, file_):
+  def from_xml(self, file_):
     'Open the XML file.'
     tree = etree.parse(file_)
     
     
-    roottag = tree.getroot().tag
-    if "}" in roottag:
-      self.__ns = roottag.split("}")[0].lstrip("{")
+    root = tree.getroot()
+    if "}" in root.tag:
+      self.__ns = root.tag.split("}")[0].lstrip("{")
+    self.createdIn = root.attrib.get("createdIn", None)
+    self.modifiedIn = root.attrib.get("modifiedIn", None)
+    self.modifiedDate = root.attrib.get("modifiedDate", None)
     
+    self.titles = []
     elem = tree.findall(_path('properties/titles/title',self.__ns))
     for el in elem:
       title = Title(el.text, el.attrib.get("lang",None))
-      self._titles.append(title)
+      self.titles.append(title)
     
+    self.authors = []
     elem = tree.findall(_path('properties/authors/author',self.__ns))
     for el in elem:
       author = Author(el.text, el.attrib.get("type",None), el.attrib.get("lang",None))
-      self._authors.append(author)
+      self.authors.append(author)
     
+    self.songbooks = []
     elem = tree.findall(_path('properties/songbooks/songbook',self.__ns))
     for el in elem:
-      songbook = Songbook(el.text, el.attrib.get("entry",None))
-      self._songbooks.append(songbook)
+      songbook = Songbook(el.attrib.get("name",None), el.attrib.get("entry",None))
+      self.songbooks.append(songbook)
     
+    self.themes = []
     elem = tree.findall(_path('properties/themes/theme',self.__ns))
     for el in elem:
       theme = Theme(el.text, el.attrib.get("id",None), el.attrib.get("lang",None))
-      self._themes.append(theme)
+      self.themes.append(theme)
     
+    self.comments = []
     elem = tree.findall(_path('properties/comments/comment',self.__ns))
     for el in elem:
       self.comments.append(el.text)
@@ -152,20 +157,20 @@ class Song:
     
     elem = tree.find(_path('properties/releaseDate',self.__ns))
     if elem != None:
-      self._release_date = elem.text
+      self.release_date = elem.text
     
     elem = tree.find(_path('properties/tempo',self.__ns))
     if elem != None:
-      self._tempo_type = elem.attrib.get("type",None)
-      self._tempo = elem.text
+      self.tempo_type = elem.attrib.get("type",None)
+      self.tempo = elem.text
     
     elem = tree.find(_path('properties/key',self.__ns))
     if elem != None:
-      self._key = elem.text
+      self.key = elem.text
     
     elem = tree.find(_path('properties/verseOrder',self.__ns))
     if elem != None:
-      self._verse_order = elem.text
+      self.verse_order = elem.text
     
     elem = tree.find(_path('properties/keywords',self.__ns))
     if elem != None:
@@ -173,7 +178,7 @@ class Song:
     
     elem = tree.find(_path('properties/transposition',self.__ns))
     if elem != None:
-      self._transposition = elem.text
+      self.transposition = elem.text
     
     elem = tree.find(_path('properties/variant',self.__ns))
     if elem != None:
@@ -188,13 +193,143 @@ class Song:
       self.custom_version = elem.text
     
     #TODO: Verses
+  
+  def to_xml(self, file_, modifiedIn_ = modifiedIn):
+    'Save to a file.'
+    root = etree.Element('song')
+    root.attrib['xmlns'] = self.__ns
+    root.attrib['version'] = "0.7"
+    root.attrib['createdIn'] = self.createdIn
+    root.attrib['modifiedIn'] = modifiedIn_
+    root.attrib['modifiedDate'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
     
+    
+    props = etree.Element('properties')
+    
+    if len(self.titles):
+      elem1 = etree.Element('titles')
+      for t in self.titles:
+        elem2 = etree.Element('title')
+        if t.lang:
+          elem2.attrib['lang'] = t.lang
+        elem2.text = t.title
+        elem1.append(elem2)
+      props.append(elem1)
+    
+    if len(self.authors):
+      elem1 = etree.Element('authors')
+      for a in self.authors:
+        elem2 = etree.Element('author')
+        if a.type:
+          elem2.attrib['type'] = a.type
+          if a.type == 'translator' and a.lang:
+            elem2.attrib['lang'] = a.lang
+        elem2.text = a.author
+        elem1.append(elem2)
+      props.append(elem1)
+    
+    if len(self.songbooks):
+      elem1 = etree.Element('songbooks')
+      for s in self.songbooks:
+        elem2 = etree.Element('songbook')
+        if s.entry:
+          elem2.attrib['entry'] = s.entry
+        elem2.text = s.name
+        elem1.append(elem2)
+      props.append(elem1)
+    
+    if len(self.themes):
+      elem1 = etree.Element('themes')
+      for t in self.themes:
+        elem2 = etree.Element('theme')
+        if t.id:
+          elem2.attrib['id'] = t.id
+        if t.lang:
+          elem2.attrib['lang'] = t.lang
+        elem2.text = t.theme
+        elem1.append(elem2)
+      props.append(elem1)
+    
+    if len(self.comments):
+      elem1 = etree.Element('comments')
+      for c in self.comments:
+        elem2 = etree.Element('comment')
+        elem2.text = str(c)
+        elem1.append(elem2)
+      props.append(elem1)
+    
+    if self.copyright:
+      elem1 = etree.Element('copyright')
+      elem1.text = str(self.copyright)
+      props.append(elem1)
+    
+    if self.ccli_no:
+      elem1 = etree.Element('ccliNo')
+      elem1.text = str(self.ccli_no)
+      props.append(elem1)
+    
+    if self.release_date:
+      elem1 = etree.Element('releaseDate')
+      elem1.text = str(self.release_date)
+      props.append(elem1)
+    
+    if self.tempo:
+      elem1 = etree.Element('tempo')
+      if self.tempo_type:
+        elem1.attrib['type'] = self.tempo_type
+      elem1.text = self.tempo
+      props.append(elem1)
+    
+    if self.key:
+      elem1 = etree.Element('key')
+      elem1.text = self.key
+      props.append(elem1)
+    
+    if self.verse_order:
+      elem1 = etree.Element('verseOrder')
+      elem1.text = self.verse_order
+      props.append(elem1)
+    
+    if self.keywords:
+      elem1 = etree.Element('keywords')
+      elem1.text = self.keywords
+      props.append(elem1)
+    
+    if self.transposition:
+      elem1 = etree.Element('transposition')
+      elem1.text = self.transposition
+      props.append(elem1)
+    
+    if self.variant:
+      elem1 = etree.Element('variant')
+      elem1.text = self.variant
+      props.append(elem1)
+    
+    if self.publisher:
+      elem1 = etree.Element('publisher')
+      elem1.text = self.publisher
+      props.append(elem1)
+    
+    if self.custom_version:
+      elem1 = etree.Element('customVersion')
+      elem1.text = self.custom_version
+      props.append(elem1)
+    
+    root.append(props)
+    
+    #TODO: Verses
+    
+    tree = etree.ElementTree(root)
+    tree.write(file_)
+  
+
+
 
 class Title:
   '''
-  An instance of a title for Opens.
+  A title for the song.
   
-  title:  The title as a string.
+  title: The title as a string.
   lang:  A language code, in the format of "xx", or "xx-YY".
   '''
   title = None
@@ -206,19 +341,22 @@ class Title:
     self.lang = lang
   
   def __str__(self):
+    'Return a string representation of this class.'
     return self.title
+  
   def __unicode__(self):
+    'Return a unicode representation of this class.'
     return self.title
 
 
 class Author:
   '''
-  An instance of an author for Opens.
+  An author of words, music, or a translation.
   
-  author:  Author's name as a string.
-  type:  One of "words", "music", or "translation". This module will throw ValueError if one
-    of these is found to be incorrect.
-  lang:  A language code, in the format of "xx", or "xx-YY".
+  author: Author's name as a string.
+  type:   One of "words", "music", or "translation". This module will throw ValueError if one
+          of these is found to be incorrect.
+  lang:   A language code, in the format of "xx", or "xx-YY".
   '''
   author = None
   type = None
@@ -233,17 +371,20 @@ class Author:
     self.lang = lang
   
   def __str__(self):
+    'Return a string representation of this class.'
     return self.author
+  
   def __unicode__(self):
+    'Return a unicode representation of this class.'
     return self.author
 
 
 class Songbook:
   '''
-  A songbook for Opens.
+  A songbook/collection with an entry/number.
   
   name:  The name of the songbook or collection.
-  entry:  A number or string representing the index in this songbook.
+  entry: A number or string representing the index in this songbook.
   '''
   name = None
   entry = None
@@ -254,8 +395,11 @@ class Songbook:
     self.entry = entry
   
   def __str__(self):
+    'Return a string representation of this class.'
     return '%s #%s' % (self.name, self.entry)
+  
   def __unicode__(self):
+    'Return a unicode representation of this class.'
     return '%s #%s' % (self.name, self.entry)
 
 
@@ -263,9 +407,9 @@ class Theme:
   '''
   A category for the song.
   
-  theme:  The name of the song.
-  id:  A number from the standardized CCLI list.
-    http://www.ccli.com.au/owners/themes.cfm
+  theme: The name of the song.
+  id:    A number from the standardized CCLI list.
+         http://www.ccli.com.au/owners/themes.cfm
   lang:  A language code, in the format of "xx", or "xx-YY".
   '''
   theme = None
@@ -279,7 +423,19 @@ class Theme:
     self.lang = lang
   
   def __str__(self):
+    'Return a string representation of this class.'
     return self.theme
+  
   def __unicode__(self):
+    'Return a unicode representation of this class.'
     return self.theme
 
+
+
+def _path(tag, ns = None):
+  'If a namespace is on a document, the XPath requires {ns}tag for every tag in the path.\
+  This assumes that only one namespace for the document exists.'
+  if ns == None or len(ns) == 0:
+    return tag
+  else:
+    return "/".join("{%s}%s" % (ns, t) for t in tag.split("/"))
