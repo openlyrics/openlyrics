@@ -23,6 +23,9 @@
       <theme>Praise</theme>
       <theme>Salvation</theme>
     </themes>
+    <songbooks>
+      <songbook name='Songs of Faith and Praise' entry='129' />
+    </songbooks>
   </properties>
   <lyrics>
     <verse name="v1">
