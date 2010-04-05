@@ -45,22 +45,22 @@ except ImportError:
         except ImportError:
           raise ImportError("No ElementTree Installation.")
 
-class Song(object):
+class Song:
   '''
   Definition of an Opens song.
   
-  _titles:        A list of Title (class) objects.
-  _authors:       A list of Author (class) objects.
-  _songbooks:     A list of Songbook (class) objects, with a name and entry.
-  _themes:        A list of Theme (class) objects.
+  titles:        A list of Title (class) objects.
+  authors:       A list of Author (class) objects.
+  songbooks:     A list of Songbook (class) objects, with a name and entry.
+  themes:        A list of Theme (class) objects.
   comments:       A list of string comments
-  _release_date:   The date, in the format of yyyy-mm-ddThh:mm.
-  _ccli_no:        The CCLI number. Numeric or string value.
-  _tempo:          Numeric value of speed.
-  _tempo_type:     Unit of measurement of tempo. Example: "bpm".
-  _key:            Key of a string. Example: "Eb".
-  _transposition:  Key adjustment up or down. Integer value.
-  _verse_order:    The verse names in a specific order.
+  release_date:   The date, in the format of yyyy-mm-ddThh:mm.
+  ccli_no:        The CCLI number. Numeric or string value.
+  tempo:          Numeric value of speed.
+  tempo_type:     Unit of measurement of tempo. Example: "bpm".
+  key:            Key of a string. Example: "Eb".
+  transposition:  Key adjustment up or down. Integer value.
+  verse_order:    The verse names in a specific order.
   variant:        A string describing differentiating it from other songs with a common title.
   keywords:       
   copyright:      A copyright string.
