@@ -30,6 +30,7 @@ except ImportError:
   try:
     # Python 2.5
     from xml.etree import cElementTree as etree
+    print 'cElementTree'
   except ImportError:
     try:
       # Python 2.5
@@ -320,7 +321,14 @@ class Song:
     #TODO: Verses
     
     tree = etree.ElementTree(root)
-    tree.write(file_)
+
+    # lxml implements pretty printing
+    # argument 'encoding' adds xml declaration: <?xml version='1.0' encoding='UTF-8'?>
+    try:
+      tree.write(file_, encoding='UTF-8', pretty_print=True)
+    except TypeError:
+      # TODO: implement pretty_print for other ElementTree API implementations
+      tree.write(file_, encoding='UTF-8')
   
 
 
