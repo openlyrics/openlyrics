@@ -16,9 +16,17 @@
 import openlyrics
 import os.path
 
+from time import time
 
+
+
+parse_begin = time()
 s = openlyrics.Song(os.path.join(os.path.dirname(__file__),"test.xml"))
+parse_end = time()
+
+write_begin = time()
 s.to_xml('out.xml')
+write_end = time()
 
 print "titles: "
 for title in s.titles:
@@ -45,3 +53,8 @@ print "keywords: ", s.keywords
 print "copyright: ", s.copyright
 print "publisher: ", s.publisher
 print "custom_version: ", s.custom_version
+
+print ''
+print 'Time parsing:', parse_end - parse_begin
+print 'Time writing:', write_end - write_begin
+print 'Time total:', write_end - parse_begin
