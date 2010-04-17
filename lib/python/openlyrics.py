@@ -23,6 +23,7 @@ s = Song('song.xml')
 '''
 
 from datetime import datetime
+import re
 
 try:
   from lxml import etree
@@ -331,7 +332,7 @@ class Song:
       tree.write(file_, encoding='UTF-8')
   
 
-
+# Property elements
 
 class Title:
   '''
@@ -349,11 +350,11 @@ class Title:
     self.lang = lang
   
   def __str__(self):
-    'Return a string representation of this class.'
+    'Return a string representation.'
     return self.title
   
   def __unicode__(self):
-    'Return a unicode representation of this class.'
+    'Return a unicode representation.'
     return self.title
 
 
@@ -379,11 +380,11 @@ class Author:
     self.lang = lang
   
   def __str__(self):
-    'Return a string representation of this class.'
+    'Return a string representation.'
     return self.author
   
   def __unicode__(self):
-    'Return a unicode representation of this class.'
+    'Return a unicode representation.'
     return self.author
 
 
@@ -403,11 +404,11 @@ class Songbook:
     self.entry = entry
   
   def __str__(self):
-    'Return a string representation of this class.'
+    'Return a string representation.'
     return '%s #%s' % (self.name, self.entry)
   
   def __unicode__(self):
-    'Return a unicode representation of this class.'
+    'Return a unicode representation.'
     return '%s #%s' % (self.name, self.entry)
 
 
@@ -431,14 +432,84 @@ class Theme:
     self.lang = lang
   
   def __str__(self):
-    'Return a string representation of this class.'
+    'Return a string representation.'
     return self.theme
   
   def __unicode__(self):
-    'Return a unicode representation of this class.'
+    'Return a unicode representation.'
     return self.theme
 
+  
+# Verse element and subelements
 
+class Verse:
+  '''
+  A verse for a song.
+  '''
+  name = None
+  lang = None
+  translit = None
+  lines = None
+  
+  def __init__(self):
+    'Create the instance.'
+    lines = None
+    part = None
+  
+
+class Lines:
+  '''
+  A group of lines in a verse.
+  '''
+  lines = None
+  
+  def __init__(self):
+    'Create the instance.'
+    self.lines = []
+  
+  def __str__(self):
+    'Return a string representation.'
+    return "\n".join(str(l) for l in self.lines)
+  
+  def __unicode__(self):
+    'Return a unicode representation.'
+    return u"\n".join(unicode(l) for l in self.lines)
+
+class Line:
+  '''
+  A single line in a group of lines.
+  '''
+  markup = ""
+  
+  def __init__(self, markup):
+    self.markup = markup
+    self.__chords_regex = re.compile('<chord[^>]>')
+  
+  @property
+  def text(self):
+    'Get the text for this line.'
+    return self.__chords_regex.sub('',self.markup)
+  
+  @text.setter
+  def text(self, value):
+    'Set the text for this line. This removes all chords.'
+    self.markup = value
+  
+  @property
+  def chords(self):
+    'Get the chords for this line.'
+    self.__chords_regex.findall(self.markup)
+  
+  def __str__(self):
+    'Return a string representation.'
+    return str(self.text)
+  
+  def __unicode__(self):
+    'Return a unicode representation.'
+    return self.text
+
+
+# Various functions
 
 def _path(tag, ns = None):
   'If a namespace is on a document, the XPath requires {ns}tag for every tag in the path.\
