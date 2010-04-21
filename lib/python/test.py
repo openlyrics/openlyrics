@@ -53,6 +53,12 @@ print "keywords: ", s.keywords
 print "copyright: ", s.copyright
 print "publisher: ", s.publisher
 print "custom_version: ", s.custom_version
+for verse in s.verses:
+  print "Verse: %s" % verse.name
+  for lines in verse.lines:
+    print "  Lines (Part '%s')" % lines.part
+    for line in lines.lines:
+      print "    Line: %s" % line.markup
 
 print ''
 print 'Time parsing:', parse_end - parse_begin
