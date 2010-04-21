@@ -75,6 +75,7 @@ class Song:
   songbooks = None
   themes = None
   comments = None
+  verses = None
   
   # String Types
   release_date = None
@@ -104,6 +105,7 @@ class Song:
     self.songbooks = []
     self.themes = []
     self.comments = []
+    self.verses = []
     
     if isinstance(file_, str) or isinstance(file_, file):
       self.from_xml(file_)
@@ -116,32 +118,32 @@ class Song:
     root = tree.getroot()
     if "}" in root.tag:
       self.__ns = root.tag.split("}")[0].lstrip("{")
-    self.createdIn = root.attrib.get("createdIn", None)
-    self.modifiedIn = root.attrib.get("modifiedIn", None)
-    self.modifiedDate = root.attrib.get("modifiedDate", None)
+    self.createdIn = root.get("createdIn", None)
+    self.modifiedIn = root.get("modifiedIn", None)
+    self.modifiedDate = root.get("modifiedDate", None)
     
     self.titles = []
     elem = tree.findall(_path('properties/titles/title',self.__ns))
     for el in elem:
-      title = Title(el.text, el.attrib.get("lang",None))
+      title = Title(el.text, el.get("lang",None))
       self.titles.append(title)
     
     self.authors = []
     elem = tree.findall(_path('properties/authors/author',self.__ns))
     for el in elem:
-      author = Author(el.text, el.attrib.get("type",None), el.attrib.get("lang",None))
+      author = Author(el.text, el.get("type",None), el.get("lang",None))
       self.authors.append(author)
     
     self.songbooks = []
     elem = tree.findall(_path('properties/songbooks/songbook',self.__ns))
     for el in elem:
-      songbook = Songbook(el.attrib.get("name",None), el.attrib.get("entry",None))
+      songbook = Songbook(el.get("name",None), el.get("entry",None))
       self.songbooks.append(songbook)
     
     self.themes = []
     elem = tree.findall(_path('properties/themes/theme',self.__ns))
     for el in elem:
-      theme = Theme(el.text, el.attrib.get("id",None), el.attrib.get("lang",None))
+      theme = Theme(el.text, el.get("id",None), el.get("lang",None))
       self.themes.append(theme)
     
     self.comments = []
@@ -163,7 +165,7 @@ class Song:
     
     elem = tree.find(_path('properties/tempo',self.__ns))
     if elem != None:
-      self.tempo_type = elem.attrib.get("type",None)
+      self.tempo_type = elem.get("type",None)
       self.tempo = elem.text
     
     elem = tree.find(_path('properties/key',self.__ns))
@@ -194,16 +196,30 @@ class Song:
     if elem != None:
       self.custom_version = elem.text
     
-    #TODO: Verses
+    self.verses = []
+    for verse_elem in tree.findall(_path('lyrics/verse',self.__ns)):
+      verse = Verse()
+      name = verse_elem.get("name", None)
+      lang = verse_elem.get("lang", None)
+      translit = verse_elem.get("translit", None)
+      for lines_elem in verse_elem.findall(_path('lines', self.__ns)):
+        lines = Lines()
+        lines.part = lines_elem.get("part", None)
+        for line_elem in lines_elem.findall(_path('line', self.__ns)):
+          # TODO: This returns the outer element, but it should not.
+          lines.lines.append( Line(etree.tostring(line_elem)) )
+        verse.lines.append(lines)
+      self.verses.append(verse)
+      
   
   def to_xml(self, file_, modifiedIn_ = modifiedIn):
     'Save to a file.'
     root = etree.Element('song')
-    root.attrib['xmlns'] = self.__ns
-    root.attrib['version'] = "0.7"
-    root.attrib['createdIn'] = self.createdIn
-    root.attrib['modifiedIn'] = modifiedIn_
-    root.attrib['modifiedDate'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+    root.set('xmlns', self.__ns)
+    root.set('version', "0.7")
+    root.set('createdIn',self.createdIn)
+    root.set('modifiedIn',modifiedIn_)
+    root.set('modifiedDate',datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
     
     
     props = etree.Element('properties')
@@ -213,7 +229,7 @@ class Song:
       for t in self.titles:
         elem2 = etree.Element('title')
         if t.lang:
-          elem2.attrib['lang'] = t.lang
+          elem2.set('lang',t.lang)
         elem2.text = t.title
         elem1.append(elem2)
       props.append(elem1)
@@ -223,9 +239,9 @@ class Song:
       for a in self.authors:
         elem2 = etree.Element('author')
         if a.type:
-          elem2.attrib['type'] = a.type
+          elem2.set('type',a.type)
           if a.type == 'translator' and a.lang:
-            elem2.attrib['lang'] = a.lang
+            elem2.set('lang',a.lang)
         elem2.text = a.author
         elem1.append(elem2)
       props.append(elem1)
@@ -235,7 +251,7 @@ class Song:
       for s in self.songbooks:
         elem2 = etree.Element('songbook')
         if s.entry:
-          elem2.attrib['entry'] = s.entry
+          elem2.set('entry',s.entry)
         elem2.text = s.name
         elem1.append(elem2)
       props.append(elem1)
@@ -245,9 +261,9 @@ class Song:
       for t in self.themes:
         elem2 = etree.Element('theme')
         if t.id:
-          elem2.attrib['id'] = t.id
+          elem2.set('id',t.id)
         if t.lang:
-          elem2.attrib['lang'] = t.lang
+          elem2.set('lang',t.lang)
         elem2.text = t.theme
         elem1.append(elem2)
       props.append(elem1)
@@ -278,7 +294,7 @@ class Song:
     if self.tempo:
       elem1 = etree.Element('tempo')
       if self.tempo_type:
-        elem1.attrib['type'] = self.tempo_type
+        elem1.set('type',self.tempo_type)
       elem1.text = self.tempo
       props.append(elem1)
     
@@ -453,8 +469,7 @@ class Verse:
   
   def __init__(self):
     'Create the instance.'
-    lines = None
-    part = None
+    self.lines = []
   
 
 class Lines:
@@ -462,6 +477,7 @@ class Lines:
   A group of lines in a verse.
   '''
   lines = None
+  part = None
   
   def __init__(self):
     'Create the instance.'
@@ -485,20 +501,21 @@ class Line:
     self.markup = markup
     self.__chords_regex = re.compile('<chord[^>]>')
   
-  @property
-  def text(self):
+  def _get_text(self):
     'Get the text for this line.'
     return self.__chords_regex.sub('',self.markup)
   
-  @text.setter
-  def text(self, value):
+  def _set_text(self, value):
     'Set the text for this line. This removes all chords.'
     self.markup = value
   
-  @property
-  def chords(self):
+  text = property(_get_text, _set_text)
+  
+  def _get_chords(self):
     'Get the chords for this line.'
     self.__chords_regex.findall(self.markup)
+  
+  chords = property(_get_chords)
   
   def __str__(self):
     'Return a string representation.'
