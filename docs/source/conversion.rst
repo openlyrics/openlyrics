@@ -13,5 +13,5 @@ needs to be written
 Other formats
 ------------------
 
-needs to be written
+Other formats are not currently supported.
 
