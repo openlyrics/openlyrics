@@ -7,7 +7,6 @@ OpenLyrics documentation contents
    :maxdepth: 3
 
    intro
-   concepts
    dataformat
    validation
    conversion
