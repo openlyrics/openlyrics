@@ -1,7 +1,7 @@
 .. _faq:
 
-OpenLyrics FAQ
-==============
+FAQ
+===
 
 This is a list of Frequently Asked Questions about OpenLyrics. Feel free to
 suggest new entries!
@@ -9,5 +9,4 @@ suggest new entries!
 How do I...
 -----------
 
-needs to be written
-
+Currently there are not any questions yet.
