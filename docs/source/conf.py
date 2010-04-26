@@ -49,7 +49,7 @@ release = '0.7'
 # output. They are ignored by default.
 #show_authors = False
 
-highlight_language = 'none'
+highlight_language = 'xml'
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
