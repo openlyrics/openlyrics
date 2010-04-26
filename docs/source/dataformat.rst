@@ -205,9 +205,10 @@ Encoding and Filenames
 Encoding
 ^^^^^^^^
 
-I recommend using `UTF-8 <http://en.wikipedia.org/wiki/Utf8>`_ encoding for the
+It is recommended using `UTF-8 <http://en.wikipedia.org/wiki/Utf8>`_ encoding for the
 content of xml files in OpenLyrics format. *UTF-8* is well supported among
-programming libraries.
+programming libraries and allows to have text in multiple languages in one
+file.
 
 Filenames
 ^^^^^^^^^
