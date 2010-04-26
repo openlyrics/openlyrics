@@ -20,6 +20,9 @@
 #
 
 # History:
+# 0.3.1
+#   renamed file 'openlyrics.rng'
+#
 # 0.3
 # - map some opensong themes to ccli counterparts
 # - try add theme id if possible
@@ -73,7 +76,7 @@ NAMESPACE = 'http://openlyrics.info/namespace/2009/song'
 OPENLYRICS_VER = '0.7'
 
 SCRIPTPATH = os.path.dirname(unicode(__file__, locale.getpreferredencoding()))
-SCHEMAFILE = os.path.join(SCRIPTPATH, '..', 'openlyrics.rng')
+SCHEMAFILE = os.path.join(SCRIPTPATH, '..', 'openlyrics_schema.rng')
 
 CCLITHEMES_FILE = os.path.join(SCRIPTPATH, '..', 'themelist.txt')
 CCLITHEMES = []

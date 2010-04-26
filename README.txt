@@ -21,7 +21,7 @@ Files
 example_simple.xml       minimalist song example
 example_complex.xml      complex song example
 
-openlyrics.rng           RelaxNG XML Schema for a song
+openlyrics_schema.rng    RelaxNG XML Schema for a song
 validate.py              python script to validate xml using RelaxNG schema
 
 chords.txt               examples of chord notation
@@ -66,4 +66,4 @@ http://pypi.python.org/pypi/lxml
 
 Usage:
 
-$ python validate.py  openlyrics.rng  any_song.xml
+$ python validate.py  openlyrics_schema.rng  any_song.xml
