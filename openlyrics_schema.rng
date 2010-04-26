@@ -3,9 +3,7 @@
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://openlyrics.info/namespace/2009/song">
 
-
   <!-- TOP LEVEL -->
-
 
   <start>
     <element name="song">
@@ -15,13 +13,12 @@
     </element>
   </start>
 
-
   <define name="properties">
     <element name="properties">
       <interleave> <!-- allow occur in any order -->
         <!-- at least one title is always required -->
         <ref name="titles"/>
-      <!-- other properties items are optional -->
+        <!-- other properties items are optional -->
         <optional>
           <ref name="authors"/>
         </optional>
@@ -34,7 +31,7 @@
         <optional>
           <ref name="releaseDate"/>
         </optional>
-      <!-- MusicInfo -->
+        <!-- Music Info -->
         <optional>
           <ref name="transposition"/>
         </optional>
@@ -44,7 +41,7 @@
         <optional>
           <ref name="key"/>
         </optional>
-      <!-- OtherInfo -->
+        <!-- Other Info -->
         <optional>
           <ref name="variant"/>
         </optional>
@@ -73,7 +70,6 @@
     </element>
   </define>
 
-
   <define name="lyrics">
     <element name="lyrics">
       <!-- at least one verse is required -->
@@ -83,9 +79,7 @@
     </element>
   </define>
 
-
   <!-- PROPERTIES -->
-
 
   <define name="titles">
     <element name="titles">
@@ -108,9 +102,7 @@
     </element>
   </define>
 
-
-  <!-- AuthorInfo -->
-
+  <!-- AUTHOR info -->
 
   <define name="authors">
     <element name="authors">
@@ -140,21 +132,18 @@
       </oneOrMore>
     </element>
   </define>
- 
 
   <define name="copyright">
     <element name="copyright">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
 
   <define name="ccliNo">
     <element name="ccliNo">
       <data type="positiveInteger"/>
     </element>
   </define>
- 
 
   <define name="releaseDate">
     <element name="releaseDate">
@@ -171,10 +160,8 @@
       </choice>
     </element>
   </define>
- 
 
-  <!-- MusicInfo -->
- 
+  <!-- MUSIC INFO -->
 
   <define name="transposition">
     <element name="transposition">
@@ -184,7 +171,6 @@
       </data>
     </element>
   </define>
- 
 
   <define name="tempo">
     <element name="tempo">
@@ -217,37 +203,31 @@
     </element>
   </define>
  
- 
-  <!-- Other Info --> 
- 
+  <!-- OTHER INFO --> 
 
   <define name="variant">
     <element name="variant">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
 
   <define name="publisher">
     <element name="publisher">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
 
   <define name="customVersion">
     <element name="customVersion">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
 
   <define name="keywords">
     <element name="keywords">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
 
   <define name="verseOrder">
     <element name="verseOrder">
@@ -258,7 +238,6 @@
       </list>
     </element>
   </define>
- 
 
   <define name="songbooks">
     <element name="songbooks">
@@ -279,7 +258,6 @@
       </oneOrMore>
     </element>
   </define>
- 
 
   <define name="themes">
     <element name="themes">
@@ -306,7 +284,6 @@
       </oneOrMore>
     </element>
   </define>
- 
 
   <define name="comments">
     <element name="comments">
@@ -317,10 +294,8 @@
       </oneOrMore>
     </element>
   </define>
- 
 
  <!-- LYRICS -->
-
 
   <define name="verse">
     <element name="verse">
@@ -336,7 +311,6 @@
       </oneOrMore>
     </element>
   </define>
- 
  
   <define name="lines">
     <element name="lines">
@@ -364,7 +338,6 @@
     </element>
   </define>
  
- 
   <define name="chord">
     <element name="chord">
       <attribute name="name">
@@ -373,13 +346,11 @@
     </element>
   </define>
  
- 
   <define name="verseAttributes">
     <attribute name="name">
       <ref name="verseNameType"/>
     </attribute>
   </define>
-
  
   <define name="songAttributes">
     <!-- by default: value of type string is required in attr -->     
@@ -401,7 +372,6 @@
     </attribute>
   </define>
 
-
   <define name="verseNameType">
     <choice>
       <data type="NMTOKEN">
@@ -418,13 +388,11 @@
     </choice>
   </define>
 
-
   <define name="langAttribute">
     <attribute name="lang">
       <data type="language"/>
     </attribute>
   </define>
-
 
   <!-- transliteration -->
   <define name="translitAttribute">
@@ -432,7 +400,6 @@
       <data type="language"/>
     </attribute>
   </define>
-
 
   <define name="nonEmptyContent">
     <data type="string">
