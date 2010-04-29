@@ -1,6 +1,6 @@
 .. _contents:
 
-OpenLyrics documentation contents
+Documentation Contents
 =================================
 
 .. toctree::
