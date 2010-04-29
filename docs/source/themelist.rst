@@ -3,4 +3,7 @@
 List of Themes
 ==============
 
-needs to be written
+This list of themes comes from
+`CCLI site <http://www.ccli.com.au/owners/themes.cfm>`_.
+
+.. literalinclude:: ../../themelist.txt
