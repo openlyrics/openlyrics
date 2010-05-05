@@ -30,7 +30,7 @@ Before using the script for validation please ensure that the following
 is available in your system:
 
 * `Python <http://www.python.org/>`_ >= 2.5
-* `lxm <http://codespeak.net/lxml/>`_
+* `lxml <http://codespeak.net/lxml/>`_
 
 Usage
 ^^^^^
