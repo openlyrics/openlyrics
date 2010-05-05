@@ -54,11 +54,11 @@ and ``pX`` is the optional minor release number, used when incidental files
 
 Therefore, this would be a valid release number, indicating a new data format::
 
-    0.6
+    0.7
 
 And this would be the minor release made when we correct typos in documentation,
 add an example song, etc::
 
-    0.6_p1
+    0.7_p1
 
 

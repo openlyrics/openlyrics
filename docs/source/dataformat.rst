@@ -35,7 +35,7 @@ Features
         ``<releaseDate>``
 
     format version
-        ``<song version="0.6>``
+        ``<song version="0.7>``
 
     keywords for searching
         ``<keywords>``
@@ -128,7 +128,7 @@ Required Data Items
 The song, containing only necessary data items, follows::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.6"
+          version="0.7"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
           modifiedDate="2010-01-28T13:15:30+01:00">
@@ -166,7 +166,7 @@ of of applications using OpenLyrics.
 Metadata are enclosed in tag ``<song>`` as its attributes::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.6"
+          version="0.7"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
           modifiedDate="2010-01-28T13:15:30+01:00">
