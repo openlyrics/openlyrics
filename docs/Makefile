@@ -93,3 +93,8 @@ deploy:
 	@echo
 	@echo "Deployed to http://openlyrics.info/"
 
+pdf:
+	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) build/pdf
+	@echo
+	@echo "Build finished. The PDF files are in build/pdf."
+

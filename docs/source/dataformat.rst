@@ -11,6 +11,7 @@ Basic Structure
 ---------------
 
 .. image:: /images/xmlstructure.png
+   :width: 70%
 
 
 Features
