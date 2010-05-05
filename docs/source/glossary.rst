@@ -7,8 +7,8 @@ Glossary
 
     metadata
         Data not directly related to a song, but useful for debugging and other
-        purposes. There are items like time of last edit and name of the
-        application which the song was created in.
+        purposes. Other items include modification time and the name of the
+        application used to create the song.
 
     song properties
         Additional information about a song. There can be author name, copyright
@@ -18,5 +18,6 @@ Glossary
         Clasifying songs to various groups along suitability.
 
     transliteration
-        Writing text of one writing system using another writing system.
-        For instance writing Chinese characters using latin.
+        Transcription of text in one alphabet to another while retaining
+        the language it was written in. For instance writing Chinese characters
+        using latin.

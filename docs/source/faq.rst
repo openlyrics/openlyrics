@@ -9,4 +9,4 @@ suggest new entries!
 How do I...
 -----------
 
-Currently there are not any questions yet.
+There are no frequently asked questions as yet.
