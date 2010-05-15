@@ -25,6 +25,26 @@ from openlyrics import Song
 s = Song('song.xml')
 """
 
+# A few 
+
+def fromstring(text):
+    u"Read from a string."
+    tree = etree.fromstring(text)
+    song = Song()
+    if tree:
+        song.from_xml(tree)
+    return song
+
+def tostring(song):
+    u"Convert to a file."
+    tree = song.to_xml()
+    return etree.tostring(tree.getroot(), encoding=u'UTF-8')
+
+def parse(filename):
+    u"Read from the file."
+    tree = etree.parse(filename)
+    song = Song(tree)
+    return song
 
 class Song(object):
     u"""
@@ -49,37 +69,12 @@ class Song(object):
     publisher:      A string value of the song publisher.
     custom_version: 
     """
-    # List Types
-    titles = None
-    authors = None
-    songbooks = None
-    themes = None
-    comments = None
-    verses = None
     
-    # String Types
-    release_date = None
-    ccli_no = None
-    tempo = None
-    tempo_type = None
-    key = u''
-    transposition = 0
-    verse_order = None
-    variant = u''
-    keywords = u'' # Should keywords be a list?
-    copyright = None
-    publisher = u''
-    custom_version = None
-    
-    # Private Variables
-    __ns = None
-    _version = 0.7
-    createdIn = u''
-    modifiedIn = u''
-    modifiedDate = u''
-    
-    def __init__(self, file_ = None):
+    def __init__(self, filename = None):
         u"Create the instance."
+        self.__ns = u''
+        self._version = u'0.7'
+        
         self.titles = []
         self.authors = []
         self.songbooks = []
@@ -87,20 +82,57 @@ class Song(object):
         self.comments = []
         self.verses = []
         
-        if isinstance(file_, str) or isinstance(file_, file):
-            self.from_xml(file_)
+        # String Types
+        self.release_date = u''
+        self.ccli_no = u''
+        self.tempo = u''
+        self.tempo_type = u''
+        self.key = u''
+        self.transposition = u'0'
+        self.verse_order = u''
+        self.variant = u''
+        self.keywords = u'' # Should keywords be a list?
+        self.copyright = u''
+        self.publisher = u''
+        self.custom_version = u''
+        
+        self.createdIn = u''
+        self.modifiedIn = u''
+        self.modifiedDate = u''
+
+        if filename:
+            self.parse(filename)
     
-    def from_xml(self, file_):
-        u"Open the XML file."
-        tree = etree.parse(file_)
+    def parse(self, filename):
+        u"Read from the file."
+        tree = etree.parse(filename)
+        self.from_xml(tree)
+    
+    def write(self, filename):
+        u"Save to a file."
+        tree = self.to_xml()
+        # lxml implements pretty printing
+        # argument 'encoding' adds xml declaration:
+        # <?xml version='1.0' encoding='UTF-8'?>
+        try:
+            tree.write(filename, encoding=u'UTF-8', pretty_print=True)
+        except TypeError:
+            # TODO: implement pretty_print for other ElementTree API
+            # implementations
+            tree.write(filename, encoding=u'UTF-8')
+    
+    def from_xml(self, tree):
+        u"Read from XML."
+        if isinstance(tree, etree.ElementTree):
+            root = tree.getroot()
+        else:
+            root = tree
         
-        
-        root = tree.getroot()
         if u'}' in root.tag:
             self.__ns = root.tag.split(u'}')[0].lstrip(u'{')
-        self.createdIn = root.get(u'createdIn', None)
-        self.modifiedIn = root.get(u'modifiedIn', None)
-        self.modifiedDate = root.get(u'modifiedDate', None)
+        self.createdIn = root.get(u'createdIn', u'')
+        self.modifiedIn = root.get(u'modifiedIn', u'')
+        self.modifiedDate = root.get(u'modifiedDate', u'')
         
         self.titles = []
         elem = tree.findall(_path(u'properties/titles/title',self.__ns))
@@ -186,24 +218,20 @@ class Song(object):
             for lines_elem in verse_elem.findall(_path(u'lines', self.__ns)):
                 lines = Lines()
                 lines.part = lines_elem.get(u'part', None)
-                for line_elem in lines_elem.findall(_path(u'line',
-                                                          self.__ns)):
+                for line_elem in lines_elem.findall(_path(u'line', self.__ns)):
                     # TODO: This returns the outer element, but it should not.
                     lines.lines.append( Line(etree.tostring(line_elem)) )
                 verse.lines.append(lines)
             self.verses.append(verse)
-            
     
-    def to_xml(self, file_, modifiedIn_ = modifiedIn):
-        u"Save to a file."
+    def to_xml(self):
+        u"Convert to XML."
         root = etree.Element(u'song')
         root.set(u'xmlns', self.__ns)
-        root.set(u'version', u'0.7')
-        root.set(u'createdIn',self.createdIn)
-        root.set(u'modifiedIn',modifiedIn_)
-        root.set(u'modifiedDate',
-                 datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
-        
+        root.set(u'version', self._version)
+        root.set(u'createdIn', self.createdIn)
+        root.set(u'modifiedIn', self.modifiedIn)
+        root.set(u'modifiedDate', datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
         
         props = etree.Element(u'properties')
         
@@ -321,16 +349,7 @@ class Song(object):
         #TODO: Verses
         
         tree = etree.ElementTree(root)
-
-        # lxml implements pretty printing
-        # argument 'encoding' adds xml declaration:
-        # <?xml version='1.0' encoding='UTF-8'?>
-        try:
-            tree.write(file_, encoding=u'UTF-8', pretty_print=True)
-        except TypeError:
-            # TODO: implement pretty_print for other ElementTree API
-            # implementations
-            tree.write(file_, encoding=u'UTF-8')
+        return tree
     
 
 # Property elements

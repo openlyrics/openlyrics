@@ -18,49 +18,73 @@ import os.path
 
 from time import time
 
+def printSong(s):
+    print "titles: "
+    for title in s.titles:
+      print '  * ', title
+    print "authors: "
+    for auth in s.authors:
+      print '  * ', auth
+    print "songbooks: "
+    for song in s.songbooks:
+      print '  * ', song
+    print "themes: "
+    for thm in s.themes:
+      print '  * ', thm
+    print "comments: ", s.comments
+    print "release_date: ", s.release_date
+    print "ccli_no: ", s.ccli_no
+    print "tempo: ", s.tempo
+    print "tempo_type: ", s.tempo_type
+    print "key: ", s.key
+    print "transposition: ", s.transposition
+    print "variant: ", s.variant
+    print "verse_order: ", s.verse_order
+    print "keywords: ", s.keywords
+    print "copyright: ", s.copyright
+    print "publisher: ", s.publisher
+    print "custom_version: ", s.custom_version
+    for verse in s.verses:
+      print "Verse: %s" % verse.name
+      for lines in verse.lines:
+        print "  Lines (Part '%s')" % lines.part
+        for line in lines.lines:
+          print "    Line: %s" % line.markup
 
+# Test file access
 
 parse_begin = time()
-s = openlyrics.Song(os.path.join(os.path.dirname(__file__),"test.xml"))
+s = openlyrics.Song(os.path.join(os.path.dirname(__file__), "test.xml"))
 parse_end = time()
+print 'Time parsing:', parse_end - parse_begin
 
 write_begin = time()
-s.to_xml('out.xml')
+s.write('out.xml')
 write_end = time()
-
-print "titles: "
-for title in s.titles:
-  print '  * ', title
-print "authors: "
-for auth in s.authors:
-  print '  * ', auth
-print "songbooks: "
-for song in s.songbooks:
-  print '  * ', song
-print "themes: "
-for thm in s.themes:
-  print '  * ', thm
-print "comments: ", s.comments
-print "release_date: ", s.release_date
-print "ccli_no: ", s.ccli_no
-print "tempo: ", s.tempo
-print "tempo_type: ", s.tempo_type
-print "key: ", s.key
-print "transposition: ", s.transposition
-print "variant: ", s.variant
-print "verse_order: ", s.verse_order
-print "keywords: ", s.keywords
-print "copyright: ", s.copyright
-print "publisher: ", s.publisher
-print "custom_version: ", s.custom_version
-for verse in s.verses:
-  print "Verse: %s" % verse.name
-  for lines in verse.lines:
-    print "  Lines (Part '%s')" % lines.part
-    for line in lines.lines:
-      print "    Line: %s" % line.markup
-
-print ''
-print 'Time parsing:', parse_end - parse_begin
 print 'Time writing:', write_end - write_begin
+
 print 'Time total:', write_end - parse_begin
+print ''
+
+#Test string access
+
+parse_begin = time()
+f = open(os.path.join(os.path.dirname(__file__),"test.xml"),"r")
+lines = f.readlines()
+s = openlyrics.fromstring("\n".join(lines))
+print s.titles
+f.close()
+parse_end = time()
+
+print 'Time parsing:', parse_end - parse_begin
+
+
+write_begin = time()
+f = open("out2.xml","w")
+f.write(openlyrics.tostring(s))
+f.close()
+write_end = time()
+print 'Time writing:', write_end - write_begin
+
+print 'Time total:', write_end - parse_begin
+
