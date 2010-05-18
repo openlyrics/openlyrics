@@ -32,12 +32,12 @@ def fromstring(text):
     tree = etree.fromstring(text)
     song = Song()
     if tree:
-        song.from_xml(tree)
+        song._from_xml(tree)
     return song
 
 def tostring(song):
     u"Convert to a file."
-    tree = song.to_xml()
+    tree = song._to_xml()
     return etree.tostring(tree.getroot(), encoding=u'UTF-8')
 
 def parse(filename):
@@ -55,19 +55,6 @@ class Song(object):
     songbooks:     A list of Songbook (class) objects, with a name and entry.
     themes:        A list of Theme (class) objects.
     comments:       A list of string comments
-    release_date:   The date, in the format of yyyy-mm-ddThh:mm.
-    ccli_no:        The CCLI number. Numeric or string value.
-    tempo:          Numeric value of speed.
-    tempo_type:     Unit of measurement of tempo. Example: "bpm".
-    key:            Key of a string. Example: "Eb".
-    transposition:  Key adjustment up or down. Integer value.
-    verse_order:    The verse names in a specific order.
-    variant:        A string describing differentiating it from other songs
-                    with a common title.
-    keywords:       
-    copyright:      A copyright string.
-    publisher:      A string value of the song publisher.
-    custom_version: 
     """
     
     def __init__(self, filename = None):
@@ -75,26 +62,8 @@ class Song(object):
         self.__ns = u''
         self._version = u'0.7'
         
-        self.titles = []
-        self.authors = []
-        self.songbooks = []
-        self.themes = []
-        self.comments = []
         self.verses = []
-        
-        # String Types
-        self.release_date = u''
-        self.ccli_no = u''
-        self.tempo = u''
-        self.tempo_type = u''
-        self.key = u''
-        self.transposition = u'0'
-        self.verse_order = u''
-        self.variant = u''
-        self.keywords = u'' # Should keywords be a list?
-        self.copyright = u''
-        self.publisher = u''
-        self.custom_version = u''
+        self.props = Properties()
         
         self.createdIn = u''
         self.modifiedIn = u''
@@ -106,11 +75,11 @@ class Song(object):
     def parse(self, filename):
         u"Read from the file."
         tree = etree.parse(filename)
-        self.from_xml(tree)
+        self._from_xml(tree)
     
     def write(self, filename):
         u"Save to a file."
-        tree = self.to_xml()
+        tree = self._to_xml()
         # lxml implements pretty printing
         # argument 'encoding' adds xml declaration:
         # <?xml version='1.0' encoding='UTF-8'?>
@@ -121,7 +90,7 @@ class Song(object):
             # implementations
             tree.write(filename, encoding=u'UTF-8')
     
-    def from_xml(self, tree):
+    def _from_xml(self, tree):
         u"Read from XML."
         if isinstance(tree, etree.ElementTree):
             root = tree.getroot()
@@ -134,18 +103,18 @@ class Song(object):
         self.modifiedIn = root.get(u'modifiedIn', u'')
         self.modifiedDate = root.get(u'modifiedDate', u'')
         
-        self.titles = []
+        self.props.titles = []
         elem = tree.findall(_path(u'properties/titles/title',self.__ns))
         for el in elem:
             title = Title(el.text, el.get(u'lang',None))
-            self.titles.append(title)
+            self.props.titles.append(title)
         
-        self.authors = []
+        self.props.authors = []
         elem = tree.findall(_path(u'properties/authors/author',self.__ns))
         for el in elem:
             author = Author(el.text, el.get(u'type',None),
                             el.get(u'lang',None))
-            self.authors.append(author)
+            self.props.authors.append(author)
         
         self.songbooks = []
         elem = tree.findall(_path(u'properties/songbooks/songbook',self.__ns))
@@ -153,61 +122,61 @@ class Song(object):
             songbook = Songbook(el.get(u'name',None), el.get(u'entry',None))
             self.songbooks.append(songbook)
         
-        self.themes = []
+        self.props.themes = []
         elem = tree.findall(_path(u'properties/themes/theme',self.__ns))
         for el in elem:
             theme = Theme(el.text, el.get(u'id',None), el.get(u'lang',None))
-            self.themes.append(theme)
+            self.props.themes.append(theme)
         
-        self.comments = []
+        self.props.comments = []
         elem = tree.findall(_path(u'properties/comments/comment',self.__ns))
         for el in elem:
-            self.comments.append(el.text)
+            self.props.comments.append(el.text)
         
         elem = tree.find(_path(u'properties/copyright',self.__ns))
         if elem != None:
-            self.copyright = elem.text
+            self.props.copyright = elem.text
         
         elem = tree.find(_path(u'properties/ccliNo',self.__ns))
         if elem != None:
-            self.ccli_no = elem.text
+            self.props.ccli_no = elem.text
         
         elem = tree.find(_path(u'properties/releaseDate',self.__ns))
         if elem != None:
-            self.release_date = elem.text
+            self.props.release_date = elem.text
         
         elem = tree.find(_path(u'properties/tempo',self.__ns))
         if elem != None:
-            self.tempo_type = elem.get(u'type',None)
-            self.tempo = elem.text
+            self.props.tempo_type = elem.get(u'type',None)
+            self.props.tempo = elem.text
         
         elem = tree.find(_path(u'properties/key',self.__ns))
         if elem != None:
-            self.key = elem.text
+            self.props.key = elem.text
         
         elem = tree.find(_path(u'properties/verseOrder',self.__ns))
         if elem != None:
-            self.verse_order = elem.text
+            self.props.verse_order = elem.text
         
         elem = tree.find(_path(u'properties/keywords',self.__ns))
         if elem != None:
-            self.keywords = elem.text
+            self.props.keywords = elem.text
         
         elem = tree.find(_path(u'properties/transposition',self.__ns))
         if elem != None:
-            self.transposition = elem.text
+            self.props.transposition = elem.text
         
         elem = tree.find(_path(u'properties/variant',self.__ns))
         if elem != None:
-            self.variant = elem.text
+            self.props.variant = elem.text
         
         elem = tree.find(_path(u'properties/publisher',self.__ns))
         if elem != None:
-            self.publisher = elem.text
+            self.props.publisher = elem.text
         
         elem = tree.find(_path(u'properties/customVersion',self.__ns))
         if elem != None:
-            self.custom_version = elem.text
+            self.props.custom_version = elem.text
         
         self.verses = []
         for verse_elem in tree.findall(_path(u'lyrics/verse',self.__ns)):
@@ -220,11 +189,12 @@ class Song(object):
                 lines.part = lines_elem.get(u'part', None)
                 for line_elem in lines_elem.findall(_path(u'line', self.__ns)):
                     # TODO: This returns the outer element, but it should not.
+                    #print "Line:", line_elem.text
                     lines.lines.append( Line(etree.tostring(line_elem)) )
                 verse.lines.append(lines)
             self.verses.append(verse)
     
-    def to_xml(self):
+    def _to_xml(self):
         u"Convert to XML."
         root = etree.Element(u'song')
         root.set(u'xmlns', self.__ns)
@@ -235,9 +205,9 @@ class Song(object):
         
         props = etree.Element(u'properties')
         
-        if len(self.titles):
+        if len(self.props.titles):
             elem1 = etree.Element(u'titles')
-            for t in self.titles:
+            for t in self.props.titles:
                 elem2 = etree.Element(u'title')
                 if t.lang:
                     elem2.set(u'lang',t.lang)
@@ -245,9 +215,9 @@ class Song(object):
                 elem1.append(elem2)
             props.append(elem1)
         
-        if len(self.authors):
+        if len(self.props.authors):
             elem1 = etree.Element(u'authors')
-            for a in self.authors:
+            for a in self.props.authors:
                 elem2 = etree.Element(u'author')
                 if a.type:
                     elem2.set(u'type',a.type)
@@ -267,9 +237,9 @@ class Song(object):
                 elem1.append(elem2)
             props.append(elem1)
         
-        if len(self.themes):
+        if len(self.props.themes):
             elem1 = etree.Element(u'themes')
-            for t in self.themes:
+            for t in self.props.themes:
                 elem2 = etree.Element(u'theme')
                 if t.id:
                     elem2.set(u'id',t.id)
@@ -279,69 +249,69 @@ class Song(object):
                 elem1.append(elem2)
             props.append(elem1)
         
-        if len(self.comments):
+        if len(self.props.comments):
             elem1 = etree.Element(u'comments')
-            for c in self.comments:
+            for c in self.props.comments:
                 elem2 = etree.Element(u'comment')
                 elem2.text = str(c)
                 elem1.append(elem2)
             props.append(elem1)
         
-        if self.copyright:
+        if self.props.copyright:
             elem1 = etree.Element(u'copyright')
-            elem1.text = str(self.copyright)
+            elem1.text = str(self.props.copyright)
             props.append(elem1)
         
-        if self.ccli_no:
+        if self.props.ccli_no:
             elem1 = etree.Element(u'ccliNo')
-            elem1.text = str(self.ccli_no)
+            elem1.text = str(self.props.ccli_no)
             props.append(elem1)
         
-        if self.release_date:
+        if self.props.release_date:
             elem1 = etree.Element(u'releaseDate')
-            elem1.text = str(self.release_date)
+            elem1.text = str(self.props.release_date)
             props.append(elem1)
         
-        if self.tempo:
+        if self.props.tempo:
             elem1 = etree.Element(u'tempo')
-            if self.tempo_type:
-                elem1.set(u'type',self.tempo_type)
-            elem1.text = self.tempo
+            if self.props.tempo_type:
+                elem1.set(u'type',self.props.tempo_type)
+            elem1.text = self.props.tempo
             props.append(elem1)
         
-        if self.key:
+        if self.props.key:
             elem1 = etree.Element(u'key')
-            elem1.text = self.key
+            elem1.text = self.props.key
             props.append(elem1)
         
-        if self.verse_order:
+        if self.props.verse_order:
             elem1 = etree.Element(u'verseOrder')
-            elem1.text = self.verse_order
+            elem1.text = self.props.verse_order
             props.append(elem1)
         
-        if self.keywords:
+        if self.props.keywords:
             elem1 = etree.Element(u'keywords')
-            elem1.text = self.keywords
+            elem1.text = self.props.keywords
             props.append(elem1)
         
-        if self.transposition:
+        if self.props.transposition:
             elem1 = etree.Element(u'transposition')
-            elem1.text = self.transposition
+            elem1.text = self.props.transposition
             props.append(elem1)
         
-        if self.variant:
+        if self.props.variant:
             elem1 = etree.Element(u'variant')
-            elem1.text = self.variant
+            elem1.text = self.props.variant
             props.append(elem1)
         
-        if self.publisher:
+        if self.props.publisher:
             elem1 = etree.Element(u'publisher')
-            elem1.text = self.publisher
+            elem1.text = self.props.publisher
             props.append(elem1)
         
-        if self.custom_version:
+        if self.props.custom_version:
             elem1 = etree.Element(u'customVersion')
-            elem1.text = self.custom_version
+            elem1.text = self.props.custom_version
             props.append(elem1)
         
         root.append(props)
@@ -352,7 +322,47 @@ class Song(object):
         return tree
     
 
-# Property elements
+class Properties(object):
+    u"""
+    Stores Song property elements.
+    
+    release_date:   The date, in the format of yyyy-mm-ddThh:mm.
+    ccli_no:        The CCLI number. Numeric or string value.
+    tempo:          Numeric value of speed.
+    tempo_type:     Unit of measurement of tempo. Example: "bpm".
+    key:            Key of a string. Example: "Eb".
+    transposition:  Key adjustment up or down. Integer value.
+    verse_order:    The verse names in a specific order.
+    variant:        A string describing differentiating it from other songs
+                    with a common title.
+    keywords:       
+    copyright:      A copyright string.
+    publisher:      A string value of the song publisher.
+    custom_version: 
+    """
+    def __init__(self):
+        # List types
+        self.titles = []
+        self.authors = []
+        self.songbooks = []
+        self.themes = []
+        self.comments = []
+        
+        # String Types
+        self.release_date = u''
+        self.ccli_no = u''
+        self.tempo = u''
+        self.tempo_type = u''
+        self.key = u''
+        self.transposition = u'0'
+        self.verse_order = u''
+        self.variant = u''
+        self.keywords = u'' # Should keywords be a list?
+        self.copyright = u''
+        self.publisher = u''
+        self.custom_version = u''
+        
+    
 
 class Title(object):
     u"""
@@ -361,8 +371,6 @@ class Title(object):
     title: The title as a string.
     lang:  A language code, in the format of "xx", or "xx-YY".
     """
-    title = None
-    lang = None
     
     def __init__(self, title = None, lang = None):
         u"Create the instance."
@@ -387,9 +395,6 @@ class Author(object):
             ValueError if one of these is found to be incorrect.
     lang:   A language code, in the format of "xx", or "xx-YY".
     """
-    author = None
-    type = None
-    lang = None
     
     def __init__(self, author = None, type = None, lang = None):
         u"Create the instance. May return `ValueError`."
@@ -416,8 +421,6 @@ class Songbook(object):
     name:  The name of the songbook or collection.
     entry: A number or string representing the index in this songbook.
     """
-    name = None
-    entry = None
     
     def __init__(self, name = None, entry = None):
         u"Create the instance."
@@ -442,9 +445,6 @@ class Theme(object):
                  http://www.ccli.com.au/owners/themes.cfm
     lang:  A language code, in the format of "xx", or "xx-YY".
     """
-    theme = None
-    id = None
-    lang = None
     
     def __init__(self, theme = None, id = None, lang = None):
         u"Create the instance."
@@ -467,13 +467,12 @@ class Verse(object):
     u"""
     A verse for a song.
     """
-    name = None
-    lang = None
-    translit = None
-    lines = None
     
     def __init__(self):
         u"Create the instance."
+        self.lang = None
+        self.translit = None
+        self.name = None
         self.lines = []
     
 
@@ -481,12 +480,11 @@ class Lines(object):
     u"""
     A group of lines in a verse.
     """
-    lines = None
-    part = None
     
     def __init__(self):
         u"Create the instance."
         self.lines = []
+        self.part = None
     
     def __str__(self):
         u"Return a string representation."
@@ -500,7 +498,6 @@ class Line(object):
     u"""
     A single line in a group of lines.
     """
-    markup = u''
     
     def __init__(self, markup):
         self.markup = markup
@@ -516,10 +513,10 @@ class Line(object):
     
     text = property(_get_text, _set_text)
     
-    # Chords property
     def _get_chords(self):
         u"Get the chords for this line."
         self.__chords_regex.findall(self.markup)
+    
     chords = property(_get_chords)
     
     def __str__(self):
