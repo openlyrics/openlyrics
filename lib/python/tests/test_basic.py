@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # vim: autoindent shiftwidth=4 expandtab textwidth=80 tabstop=4 softtabstop=4
 #
@@ -17,40 +16,33 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-'''This script runs the OpenLyrics test suite.'''
+'''Unit test example using unittest module.'''
 
-
-import sys
-import os
 import unittest
-from os import path
+import openlyrics
 
-import test_example
-import test_basic
+from tests import paths
 
 
-# use relative paths
-# Workaround for placing openlyrics module in a path
-# with only ascii characters.
-scriptdir = path.join(path.dirname(__file__))
-os.chdir(scriptdir)
+class WeirdTestCase(unittest.TestCase):
 
-# add OpenLyric Python library to PYTHON_PATH
-sys.path.insert(0, '.')
+    def test_notexist_file(self):
+        fname = 'not existing file.xml'
+        self.assertRaises(IOError, openlyrics.Song, fname)
 
-# TODO replace Nose test framework with built-in unittest module
-
+    def test_invalid_xml(self):
+        fname = paths.invalid_song
+        print fname
+        self.assertRaises(SyntaxError, openlyrics.Song, fname)
+     
 
 def suite():
-
     suite = unittest.TestSuite()
-    suite.addTest(test_basic.suite())
-    suite.addTest(test_example.suite())
+    suite.addTest(unittest.makeSuite(WeirdTestCase, 'test'))
 
     return suite
 
 
 if __name__ == '__main__':
-    print('Running OpenLyrics test suite...')
-    print(os.getcwd())
     unittest.main(defaultTest='suite')
+
