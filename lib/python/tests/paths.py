@@ -19,8 +19,8 @@
 from os.path import normpath, join, dirname, abspath
 
 
-SONGDIR = join('.', 'songs')
-TMPDIR = join('.', 'tmp')
+SONGDIR = join('.', 'tests', 'songs')
+TMPDIR = join('.', 'tests', 'tmp')
 
 eng_song = join(SONGDIR, 'What A Friend We Have In Jesus.xml')
 l10n_song = join(SONGDIR,
