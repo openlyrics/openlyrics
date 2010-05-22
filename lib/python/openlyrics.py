@@ -600,7 +600,9 @@ def _path(tag, ns=None):
 
 def _element_contents_to_string(elem):
     u"Function that returns the a string representation."
-    s = elem.text
+    s = u""
+    if elem.text:
+        s += elem.text
     if s == None:
         s = u""
     for sub in elem.getchildren():
@@ -616,5 +618,6 @@ def _element_contents_to_string(elem):
                     {"tag": subtag, "text": subtext}
         else:
             s += "<%(tag)s />" % {"tag": subtag}
-        s += sub.tail
+        if sub.tail:
+            s += sub.tail
     return unicode(s)
