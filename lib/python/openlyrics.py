@@ -57,7 +57,7 @@ class Song(object):
     comments:       A list of string comments
     """
     
-    def __init__(self, filename = None):
+    def __init__(self, filename=None):
         u"Create the instance."
         self.__ns = u''
         self._version = u'0.7'
@@ -121,8 +121,12 @@ class Song(object):
         root.set(u'modifiedDate', datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
         
         props = self.props._to_xml()
-        
         root.append(props)
+        
+        verses_elem = etree.Element(u'verses')
+        for verse in self.verses:
+            verses_elem.append(verse._to_xml())
+        root.append(verses_elem)
         
         #TODO: Verses
         
@@ -351,7 +355,7 @@ class Title(object):
     lang:  A language code, in the format of "xx", or "xx-YY".
     """
     
-    def __init__(self, title = None, lang = None):
+    def __init__(self, title=u'', lang=None):
         u"Create the instance."
         self.title = title
         self.lang = lang
@@ -383,13 +387,13 @@ class Author(object):
     lang:   A language code, in the format of "xx", or "xx-YY".
     """
     
-    def __init__(self, author = None, type = None, lang = None):
+    def __init__(self, author=u'', type_=None, lang=None):
         u"Create the instance. May return `ValueError`."
         self.author = author
-        if type not in (u'words',u'music',u'translation', None):
-            raise ValueError(u'`type` must be one of "words", "music", or\
-                    "translator".')
-        self.type = type
+        if type_ and type_ not in (u'words',u'music',u'translation'):
+            raise ValueError(u'`type` must be one of "words", "music", or' +
+                    '"translator".')
+        self.type = type_
         self.lang = lang
     
     def _to_xml(self):
@@ -418,7 +422,7 @@ class Songbook(object):
     entry: A number or string representing the index in this songbook.
     """
     
-    def __init__(self, name, entry = None):
+    def __init__(self, name u='', entry=None):
         u"Create the instance."
         self.name = name
         self.entry = entry
@@ -450,7 +454,7 @@ class Theme(object):
     lang:  A language code, in the format of "xx", or "xx-YY".
     """
     
-    def __init__(self, theme = None, id = None, lang = None):
+    def __init__(self, theme=u'', id=None, lang=None):
         u"Create the instance."
         self.theme = theme
         self.id = id
@@ -497,6 +501,19 @@ class Verse(object):
             lines._from_xml(lines_elem, namespace)
             self.lines.append(lines)
     
+    def _to_xml(self):
+        u""
+        verse = etree.Element('verse')
+        if self.name:
+            verse.set(u'name', self.name)
+        if self.lang:
+            verse.set(u'lang', self.lang)
+        if self.translit:
+            verse.set(u'translit', self.translit)
+        for lines in self.lines:
+            verse.append(lines._to_xml())
+        return verse
+    
 
 class Lines(object):
     u"""
@@ -515,6 +532,16 @@ class Lines(object):
             # TODO: This returns the outer element, but it should not.
             
             self.lines.append( Line(line_elem) )
+    
+    def _to_xml(self):
+        u""
+        lines_elem = etree.Element('lines')
+        if self.part:
+            lines_elem.set('part', self.part)
+        for line in self.lines:
+            line_elem = etree.fromstring(u'<line>%s</line>' % line.markup)
+            lines_elem.append(line_elem)
+        return lines_elem
     
     def __str__(self):
         u"Return a string representation."
@@ -560,7 +587,7 @@ class Line(object):
 
 # Various functions
 
-def _path(tag, ns = None):
+def _path(tag, ns=None):
     u"""
     If a namespace is on a document, the XPath requires {ns}tag for every
     tag in the path. This assumes that only one namespace for the document
