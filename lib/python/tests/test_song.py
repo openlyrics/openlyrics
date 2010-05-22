@@ -162,14 +162,4 @@ def test_unicode_filename():
     fname = paths.unicode_filename
     song = io.song.Song(fname)
     assert io.song.tostring(song) == patterns.unicode_filename_song
-
-@raises(IOError)
-def test_notexist_file():
-    fname = 'not existing file.xml'
-    song = io.song.Song(fname)
-
-@raises(etree.XMLSyntaxError)
-def test_invalid_xml():
-    fname = paths.invalid_song
-    song = io.song.Song(fname)
-    
+   
