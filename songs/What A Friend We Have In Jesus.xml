@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:09:30.772706">
+  <properties>
+    <titles>
+      <title>What A Friend We Have In Jesus</title>
+    </titles>
+    <authors>
+      <author>Joseph M. Scriven</author>
+      <author>Charles C. Convers</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>27714</ccliNo>
+    <themes>
+      <theme id="90">Love</theme>
+      <theme id="91">Mercy</theme>
+      <theme id="97">Peace</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line><chord name="D"/>What a friend we have in <chord name="G"/>Jesus, <chord name="D"/>All ours sins and griefs to <chord name="A"/>bear;</line>
+        <line><chord name="D"/>What a privilege to <chord name="G"/>carry, <chord name="A"/>Everything to God in <chord name="D"/>prayer!</line>
+        <line><chord name="A"/>O what peace we often <chord name="D"/>forfeit, <chord name="G"/>O what <chord name="D"/>needless pain we <chord name="A"/>bear;</line>
+        <line><chord name="D"/>All because we do not <chord name="G"/>carry, <chord name="A"/>Everything to God in <chord name="D"/>prayer!</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line><chord name="D"/>Have we trials and temp<chord name="G"/>tations? <chord name="D"/>Is there trouble any<chord name="A"/>where?</line>
+        <line><chord name="D"/>We should never be dis<chord name="G"/>couraged, <chord name="A"/>Take it to the Lord in <chord name="D"/>prayer.</line>
+        <line><chord name="A"/>Can we find a friend so <chord name="D"/>faithful? <chord name="G"/>Who will <chord name="D"/>all our sorrows <chord name="A"/>share?</line>
+        <line><chord name="D"/>Jesus knows our every <chord name="G"/>weakness; <chord name="A"/>Take it to the Lord in <chord name="D"/>prayer.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line><chord name="D"/>Are we weak and heavy <chord name="G"/>laden, <chord name="D"/>Cumbered with a load of <chord name="A"/>care?</line>
+        <line><chord name="D"/>Precious Saviour still our <chord name="G"/>refuge; <chord name="A"/>Take it to the Lord in <chord name="D"/>prayer.</line>
+        <line><chord name="A"/>Do thy friends despise for<chord name="D"/>sake thee? <chord name="G"/>Take it <chord name="D"/>to the Lord in <chord name="A"/>prayer!</line>
+        <line><chord name="D"/>In His arms He’ll take and <chord name="G"/>shield thee; <chord name="A"/>Thou wilt find a solace <chord name="D"/>there.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

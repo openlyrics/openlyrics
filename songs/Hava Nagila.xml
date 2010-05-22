@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.7"
+      createdIn="Trac 0.11.2"
+      modifiedIn="Vim 7.2"
+      modifiedDate="2010-03-14T13:15:30+01:00">
+  <properties>
+    <titles>
+      <title lang="he">הבה נגילה</title>
+      <title lang="he" translit="en">Hava Nagila</title>
+      <title lang="he" translit="fr">Hava naguila</title>
+      <title lang="en">Let Us Rejoice</title>
+      <title lang="fr">Réjouissons-nous</title>
+    </titles>
+    <copyright>public domain</copyright>
+    <variant>Hebrew folk song</variant>
+    <themes>
+      <theme lang="he">הבה נגילה</theme>
+      <theme lang="he" translit="en">Hava Nagila</theme>
+      <theme lang="en">Rejoice</theme>
+    </themes>
+  </properties>
+  <lyrics>
+
+    <verse name="v1" lang="he">
+      <lines>
+        <line>הבה נגילה</line>
+        <line>הבה נגילה</line>
+        <line>הבה נגילה ונשמחה</line>
+      </lines>
+    </verse>
+    <verse name="v1" lang="he" translit="en">
+      <lines>
+        <line>Hava nagila</line>
+        <line>Hava nagila</line>
+        <line>Hava nagila vi nis'mecha</line>
+      </lines>
+    </verse>
+    <verse name="v1" lang="en">
+      <lines>
+        <line>Let's rejoice</line>
+        <line>Let's rejoice</line>
+        <line>Let's rejoice and be happy</line>
+      </lines>
+    </verse>
+
+    <verse name="c" lang="he">
+      <lines>
+        <line>הבה נרננה</line>
+        <line>הבה נרננה</line>
+        <line>הבה נרננה ונשמחה</line>
+      </lines>
+    </verse>
+    <verse name="c" lang="he" translit="en">
+      <lines>
+        <line>Hava neranenah</line>
+        <line>Hava neranenah</line>
+        <line>Hava neranenah vi nis'mecha</line>
+      </lines>
+    </verse>
+    <verse name="c" lang="en">
+      <lines>
+        <line>Let's sing</line>
+        <line>Let's sing</line>
+        <line>Let's sing and be happy</line>
+      </lines>
+    </verse>
+
+    <verse name="b" lang="he">
+      <lines>
+        <line>!עורו, עורו אחים</line>
+        <line>עורו אחים בלב שמח</line>
+        <line></line>
+        <line>!עורו אחים, עורו אחים</line>
+        <line>בלב שמח</line>
+      </lines>
+    </verse>
+    <verse name="b" lang="he" translit="en">
+      <lines>
+        <line>Uru, uru achim!</line>
+        <line>Uru achim b'lev sameach</line>
+        <line></line>
+        <line>Uru achim, uru achim!</line>
+        <line>B'lev sameach</line>
+      </lines>
+    </verse>
+    <verse name="b" lang="en">
+      <lines>
+        <line>Awake, awake, brothers!</line>
+        <line>Awake brothers with a happy heart</line>
+        <line></line>
+        <line>Awake, brothers, awake, brothers!</line>
+        <line>With a happy heart</line>
+      </lines>
+    </verse>
+
+  </lyrics>
+</song>

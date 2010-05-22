@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.6"
+      createdIn="OpenLP 1.9.0"
+      modifiedIn="ChangingSong 0.0.1"
+      modifiedDate="2008-11-28T13:15:30+01:00"><!-- date format: ISO 8601 -->
+  <properties>
+    <titles>
+      <title>Amazing Grace</title>
+    </titles>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

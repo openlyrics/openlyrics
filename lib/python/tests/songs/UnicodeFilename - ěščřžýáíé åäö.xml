@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song"
+      version="0.7"
+      createdIn="ChangingSong 0.0.3"
+      modifiedIn="ChangingSong 0.0.3"
+      modifiedDate="2008-11-28T13:15:30+01:00">
+  <properties>
+    <titles>
+      <title>This is Song Title</title>
+    </titles>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>This is first verse.</line>
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        <line>This is chorus.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>
