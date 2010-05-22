@@ -555,7 +555,7 @@ class Line(object):
     u"""
     A single line in a group of lines.
     """
-    __chords_regex = re.compile(u'<chord[^>]>')
+    __chords_regex = re.compile(u'<chord[^>]*>')
     
     def __init__(self, elem):
         self.markup = _element_contents_to_string(elem)
