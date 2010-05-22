@@ -1,1 +1,2 @@
 ^docs/build$
+^lib/python/tests/tmp/*$
