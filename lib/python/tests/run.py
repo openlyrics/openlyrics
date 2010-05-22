@@ -22,8 +22,11 @@
 
 import sys
 import os
-import locale
+import unittest
 from os import path
+
+import test_example
+import test_basic
 
 
 # use relative paths
@@ -31,13 +34,23 @@ from os import path
 # with only ascii characters.
 scriptdir = path.join(path.dirname(__file__))
 os.chdir(scriptdir)
-parentdir = os.pardir # '..'
 
 # add OpenLyric Python library to PYTHON_PATH
-sys.path.insert(0, parentdir)
+sys.path.insert(0, '.')
 
 # TODO replace Nose test framework with built-in unittest module
-print('Nose {0}'.format(nose.__version__))
-print('Running OpenLyrics test suite...')
-nose.main()
 
+
+def suite():
+
+    suite = unittest.TestSuite()
+    suite.addTest(test_basic.suite())
+    suite.addTest(test_example.suite())
+
+    return suite
+
+
+if __name__ == '__main__':
+    print('Running OpenLyrics test suite...')
+    print(os.getcwd())
+    unittest.main(defaultTest='suite')
