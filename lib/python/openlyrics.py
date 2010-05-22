@@ -422,7 +422,7 @@ class Songbook(object):
     entry: A number or string representing the index in this songbook.
     """
     
-    def __init__(self, name u='', entry=None):
+    def __init__(self, name=u'', entry=None):
         u"Create the instance."
         self.name = name
         self.entry = entry
