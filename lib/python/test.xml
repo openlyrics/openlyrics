@@ -30,7 +30,7 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <line>Amazing grace how sweet the sound</line>
+        <line>Amazing <chord name='a' />grace how sweet the sound</line>
         <line>That saved a wretch like me.</line>
         <line>I once was lost, but now am found,</line>
         <line>Was blind but now I see.</line>
