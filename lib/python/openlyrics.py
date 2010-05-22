@@ -179,13 +179,13 @@ class Properties(object):
         self.titles = []
         elem = tree.findall(_path(u'properties/titles/title',namespace))
         for el in elem:
-            title = Title(el.text, el.get(u'lang',None))
+            title = Title(_get_text(el), el.get(u'lang',None))
             self.titles.append(title)
         
         self.authors = []
         elem = tree.findall(_path(u'properties/authors/author',namespace))
         for el in elem:
-            author = Author(el.text, el.get(u'type',None),
+            author = Author(_get_text(el), el.get(u'type',None),
                             el.get(u'lang',None))
             self.authors.append(author)
         
@@ -198,58 +198,58 @@ class Properties(object):
         self.themes = []
         elem = tree.findall(_path(u'properties/themes/theme',namespace))
         for el in elem:
-            theme = Theme(el.text, el.get(u'id',None), el.get(u'lang',None))
+            theme = Theme(_get_text(el), el.get(u'id',None), el.get(u'lang',None))
             self.themes.append(theme)
         
         self.comments = []
         elem = tree.findall(_path(u'properties/comments/comment',namespace))
         for el in elem:
-            self.comments.append(el.text)
+            self.comments.append(_get_text(el))
         
         elem = tree.find(_path(u'properties/copyright',namespace))
         if elem != None:
-            self.copyright = elem.text
+            self.copyright = _get_text(elem)
         
         elem = tree.find(_path(u'properties/ccliNo',namespace))
         if elem != None:
-            self.ccli_no = elem.text
+            self.ccli_no = _get_text(elem)
         
         elem = tree.find(_path(u'properties/releaseDate',namespace))
         if elem != None:
-            self.release_date = elem.text
+            self.release_date = _get_text(elem)
         
         elem = tree.find(_path(u'properties/tempo',namespace))
         if elem != None:
             self.tempo_type = elem.get(u'type',None)
-            self.tempo = elem.text
+            self.tempo = _get_text(elem)
         
         elem = tree.find(_path(u'properties/key',namespace))
         if elem != None:
-            self.key = elem.text
+            self.key = _get_text(elem)
         
         elem = tree.find(_path(u'properties/verseOrder',namespace))
         if elem != None:
-            self.verse_order = elem.text
+            self.verse_order = _get_text(elem)
         
         elem = tree.find(_path(u'properties/keywords',namespace))
         if elem != None:
-            self.keywords = elem.text
+            self.keywords = _get_text(elem)
         
         elem = tree.find(_path(u'properties/transposition',namespace))
         if elem != None:
-            self.transposition = elem.text
+            self.transposition = _get_text(elem)
         
         elem = tree.find(_path(u'properties/variant',namespace))
         if elem != None:
-            self.variant = elem.text
+            self.variant = _get_text(elem)
         
         elem = tree.find(_path(u'properties/publisher',namespace))
         if elem != None:
-            self.publisher = elem.text
+            self.publisher = _get_text(elem)
         
         elem = tree.find(_path(u'properties/customVersion',namespace))
         if elem != None:
-            self.custom_version = elem.text
+            self.custom_version = _get_text(elem)
     
     def _to_xml(self):
         u""
@@ -599,10 +599,13 @@ def _path(tag, ns=None):
         return u'/'.join(u'{%s}%s' % (ns, t) for t in tag.split(u'/'))
 
 def _element_contents_to_string(elem):
-    u"Function that returns the a string representation."
+    u"""
+    Get a string representation of an XML Element, excluding the tag of the
+    element itself.
+    """
     s = u""
     if elem.text:
-        s += elem.text
+        s += _get_text(elem)
     if s == None:
         s = u""
     for sub in elem.getchildren():
@@ -621,3 +624,7 @@ def _element_contents_to_string(elem):
         if sub.tail:
             s += sub.tail
     return unicode(s)
+
+def _get_text(elem):
+    u"Strip whitespace and return the element"
+    return re.sub('\s+',' ',elem.text.strip())
