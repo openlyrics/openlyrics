@@ -144,7 +144,7 @@ class Properties(object):
     tempo_type:     Unit of measurement of tempo. Example: "bpm".
     key:            Key of a string. Example: "Eb".
     transposition:  Key adjustment up or down. Integer value.
-    verse_order:    The verse names in a specific order.
+    verse_order:    The verse names in a specified order.
     variant:        A string describing differentiating it from other songs
                     with a common title.
     keywords:       
@@ -159,6 +159,7 @@ class Properties(object):
         self.songbooks = []
         self.themes = []
         self.comments = []
+        self.verse_order = []
         
         # String Types
         self.release_date = u''
@@ -167,7 +168,6 @@ class Properties(object):
         self.tempo_type = u''
         self.key = u''
         self.transposition = u'0'
-        self.verse_order = u''
         self.variant = u''
         self.keywords = u'' # Should keywords be a list?
         self.copyright = u''
@@ -229,7 +229,7 @@ class Properties(object):
         
         elem = tree.find(_path(u'properties/verseOrder',namespace))
         if elem != None:
-            self.verse_order = _get_text(elem)
+            self.verse_order = _get_text(elem).strip().split()
         
         elem = tree.find(_path(u'properties/keywords',namespace))
         if elem != None:
@@ -316,7 +316,7 @@ class Properties(object):
         
         if self.verse_order:
             elem1 = etree.Element(u'verseOrder')
-            elem1.text = self.verse_order
+            elem1.text = ' '.join(self.verse_order)
             props.append(elem1)
         
         if self.keywords:
@@ -351,13 +351,13 @@ class Title(object):
     u"""
     A title for the song.
     
-    title: The title as a string.
+    text:  The title as a string.
     lang:  A language code, in the format of "xx", or "xx-YY".
     """
     
-    def __init__(self, title=u'', lang=None):
+    def __init__(self, text=u'', lang=None):
         u"Create the instance."
-        self.title = title
+        self.text = text
         self.lang = lang
     
     def _to_xml(self):
@@ -365,31 +365,31 @@ class Title(object):
         elem = etree.Element(u'title')
         if self.lang:
             elem.set(u'lang', self.lang)
-        elem.text = self.title
+        elem.text = self.text
         return elem
     
     def __str__(self):
         u"Return a string representation."
-        return self.title
+        return self.text
     
     def __unicode__(self):
         u"Return a unicode representation."
-        return self.title
+        return self.text
 
 
 class Author(object):
     u"""
     An author of words, music, or a translation.
     
-    author: Author's name as a string.
+    name:   Author's name as a string.
     type:   One of "words", "music", or "translation". This module will throw
             ValueError if one of these is found to be incorrect.
     lang:   A language code, in the format of "xx", or "xx-YY".
     """
     
-    def __init__(self, author=u'', type_=None, lang=None):
+    def __init__(self, name=u'', type_=None, lang=None):
         u"Create the instance. May return `ValueError`."
-        self.author = author
+        self.name = name
         if type_ and type_ not in (u'words',u'music',u'translation'):
             raise ValueError(u'`type` must be one of "words", "music", or' +
                     '"translator".')
@@ -402,16 +402,16 @@ class Author(object):
             elem.set(u'type',self.type)
             if self.type == u'translator' and self.lang:
                 elem.set(u'lang',self.lang)
-        elem.text = self.author
+        elem.text = self.name
         return elem
     
     def __str__(self):
         u"Return a string representation."
-        return self.author
+        return self.name
     
     def __unicode__(self):
         u"Return a unicode representation."
-        return self.author
+        return self.name
 
 
 class Songbook(object):
@@ -454,9 +454,9 @@ class Theme(object):
     lang:  A language code, in the format of "xx", or "xx-YY".
     """
     
-    def __init__(self, theme=u'', id=None, lang=None):
+    def __init__(self, name=u'', id=None, lang=None):
         u"Create the instance."
-        self.theme = theme
+        self.name = name
         self.id = id
         self.lang = lang
     
@@ -466,16 +466,16 @@ class Theme(object):
             elem.set(u'id',self.id)
         if self.lang:
             elem.set(u'lang',self.lang)
-        elem.text = self.theme
+        elem.text = self.name
         return elem
     
     def __str__(self):
         u"Return a string representation."
-        return self.theme
+        return self.name
     
     def __unicode__(self):
         u"Return a unicode representation."
-        return self.theme
+        return self.name
 
     
 # Verse element and subelements
