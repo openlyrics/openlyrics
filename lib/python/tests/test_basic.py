@@ -34,14 +34,14 @@ class ParsingAsciiTestCase(unittest.TestCase):
 
         titles = [u'What A Friend We Have In Jesus']
         for i in range(0, len(titles)):
-            self.assertEqual(titles[i], song.props.titles[i].title)
+            self.assertEqual(titles[i], song.props.titles[i].text)
         authors = [u'Joseph M. Scriven', u'Charles C. Convers']
         for i in range(0, len(authors)):
-            self.assertEqual(authors[i], song.props.authors[i].author)
+            self.assertEqual(authors[i], song.props.authors[i].name)
         self.assertEqual(u'Public Domain', song.props.copyright)
         self.assertEqual(u'27714', song.props.ccli_no)
-        self.assertEqual(u'Christ: Love/Mercy', song.props.themes[0].theme)
-        self.assertEqual(u'Fruit: Peace/Comfort', song.props.themes[1].theme)
+        self.assertEqual(u'Christ: Love/Mercy', song.props.themes[0].name)
+        self.assertEqual(u'Fruit: Peace/Comfort', song.props.themes[1].name)
                     
 
         # verse order
