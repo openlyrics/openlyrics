@@ -24,31 +24,52 @@ import openlyrics
 from tests import paths, patterns
 
 
-class PropertiesClassesTestCase(unittest.TestCase):
+def test_props_values(test_case, props):
+    test = test_case
+    p = props
+
+    # List types
+    test.assertEqual([], p.titles)
+    test.assertEqual([], p.authors)
+    test.assertEqual([], p.songbooks)
+    test.assertEqual([], p.themes)
+    test.assertEqual([], p.comments)
+    test.assertEqual([], p.verse_order)
+
+    # String Types
+    test.assertEqual(u'', p.release_date)
+    test.assertEqual(u'', p.ccli_no)
+    test.assertEqual(u'', p.tempo)
+    test.assertEqual(u'', p.tempo_type)
+    test.assertEqual(u'', p.key)
+    test.assertEqual(u'0', p.transposition)
+    test.assertEqual(u'', p.variant)
+    test.assertEqual(u'', p.keywords)
+    test.assertEqual(u'', p.copyright)
+    test.assertEqual(u'', p.publisher)
+    test.assertEqual(u'', p.custom_version)
+
+
+class InitSongClassTestCase(unittest.TestCase):
+
+    def test_Song(self):
+        s = openlyrics.Song()
+
+        self.assertEqual(u'0.7', s._version)
+        self.assertEqual([], s.verses)
+        self.assertEqual(u'', s.createdIn)
+        self.assertEqual(u'', s.modifiedIn)
+        self.assertEqual(u'', s.modifiedDate)
+        self.assertNotEqual(None, s.props)
+
+        test_props_values(self, s.props)
+
+
+class InitPropertiesClassesTestCase(unittest.TestCase):
 
     def test_Properties(self):
-
         p = openlyrics.Properties()
-        # List types
-        self.assertEqual([], p.titles)
-        self.assertEqual([], p.authors)
-        self.assertEqual([], p.songbooks)
-        self.assertEqual([], p.themes)
-        self.assertEqual([], p.comments)
-        self.assertEqual([], p.verse_order)
-
-        # String Types
-        self.assertEqual(u'', p.release_date)
-        self.assertEqual(u'', p.ccli_no)
-        self.assertEqual(u'', p.tempo)
-        self.assertEqual(u'', p.tempo_type)
-        self.assertEqual(u'', p.key)
-        self.assertEqual(u'0', p.transposition)
-        self.assertEqual(u'', p.variant)
-        self.assertEqual(u'', p.keywords)
-        self.assertEqual(u'', p.copyright)
-        self.assertEqual(u'', p.publisher)
-        self.assertEqual(u'', p.custom_version)
+        test_props_values(self, p)
 
     def test_Title(self):
         t = openlyrics.Title()
@@ -73,9 +94,17 @@ class PropertiesClassesTestCase(unittest.TestCase):
         self.assertEqual(None, t.lang)
 
 
+class InitLyricsClassesTestCase(unittest.TestCase):
+
+    def test_(self):
+        pass
+
+
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(PropertiesClassesTestCase, 'test'))
+    suite.addTest(unittest.makeSuite(InitSongClassTestCase, 'test'))
+    suite.addTest(unittest.makeSuite(InitPropertiesClassesTestCase, 'test'))
+    suite.addTest(unittest.makeSuite(InitLyricsClassesTestCase, 'test'))
 
     return suite
 
