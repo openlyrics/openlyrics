@@ -1,4 +1,6 @@
-#! /usr/bin/env /usr/bin/python
+# -*- coding: utf-8 -*-
+# vim: autoindent shiftwidth=4 expandtab textwidth=80 tabstop=4 softtabstop=4
+#
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Lesser General Public License as published by
@@ -628,3 +630,4 @@ def _element_contents_to_string(elem):
 def _get_text(elem):
     u"Strip whitespace and return the element"
     return re.sub('\s+',' ',elem.text.strip())
+
