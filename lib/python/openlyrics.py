@@ -171,7 +171,7 @@ class Properties(object):
         self.key = u''
         self.transposition = u'0'
         self.variant = u''
-        self.keywords = u'' # Should keywords be a list?
+        self.keywords = u''
         self.copyright = u''
         self.publisher = u''
         self.custom_version = u''
