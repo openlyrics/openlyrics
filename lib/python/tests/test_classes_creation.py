@@ -96,7 +96,20 @@ class InitPropertiesClassesTestCase(unittest.TestCase):
 
 class InitLyricsClassesTestCase(unittest.TestCase):
 
-    def test_(self):
+    def test_Verse(self):
+        v = openlyrics.Verse()
+        self.assertEqual(None, v.lang)
+        self.assertEqual(None, v.translit)
+        self.assertEqual(None, v.name)
+        self.assertEqual([], v.lines)
+
+    def test_Lines(self):
+        l = openlyrics.Lines()
+        self.assertEqual([], l.lines)
+        self.assertEqual(None, l.part)
+
+    # FIXME add tests for initialization of Line class
+    def test_Line(self):
         pass
 
 
