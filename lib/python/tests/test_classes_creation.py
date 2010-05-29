@@ -26,7 +26,7 @@ from tests import paths, patterns
 
 class PropertiesClassesTestCase(unittest.TestCase):
 
-    def test_properties(self):
+    def test_Properties(self):
 
         p = openlyrics.Properties()
         # List types
@@ -49,6 +49,28 @@ class PropertiesClassesTestCase(unittest.TestCase):
         self.assertEqual(u'', p.copyright)
         self.assertEqual(u'', p.publisher)
         self.assertEqual(u'', p.custom_version)
+
+    def test_Title(self):
+        t = openlyrics.Title()
+        self.assertEqual(u'', t.text)
+        self.assertEqual(None, t.lang)
+
+    def test_Author(self):
+        a = openlyrics.Author()
+        self.assertEqual(u'', a.name)
+        self.assertEqual(None, a.type)
+        self.assertEqual(None, a.lang)
+
+    def test_Songbook(self):
+        s = openlyrics.Songbook()
+        self.assertEqual(u'', s.name)
+        self.assertEqual(None, s.entry)
+
+    def test_Theme(self):
+        t = openlyrics.Theme()
+        self.assertEqual(u'', t.name)
+        self.assertEqual(None, t.id)
+        self.assertEqual(None, t.lang)
 
 
 def suite():
