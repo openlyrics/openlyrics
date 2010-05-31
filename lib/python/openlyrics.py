@@ -553,6 +553,8 @@ class Lines(object):
         u"Return a unicode representation."
         return u'\n'.join(unicode(l) for l in self.lines)
 
+# TODO add chords handling
+
 class Line(object):
     u"""
     A single line in a group of lines.
@@ -600,6 +602,7 @@ def _path(tag, ns=None):
     else:
         return u'/'.join(u'{%s}%s' % (ns, t) for t in tag.split(u'/'))
 
+# FIXME simplify handling mixed content of XML
 def _element_contents_to_string(elem):
     u"""
     Get a string representation of an XML Element, excluding the tag of the
