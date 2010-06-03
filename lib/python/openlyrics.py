@@ -15,41 +15,44 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import re
-from datetime import datetime
-from xml.etree import cElementTree as etree
-
-u"""
+'''
 Provides a module to access OpenLyrics data type.
 
 Usage:
 from openlyrics import Song
 s = Song('song.xml')
-"""
+'''
+
+import re
+from datetime import datetime
+from xml.etree import cElementTree as etree
 
 # A few 
 
 def fromstring(text):
-    u"Read from a string."
+    u'Read from a string.'
     tree = etree.fromstring(text)
     song = Song()
     if tree:
         song._from_xml(tree)
     return song
 
+
 def tostring(song, pretty_print=True, update_modified_date=True):
-    u"Convert to a file."
+    u'Convert to a file.'
     tree = song._to_xml(pretty_print, update_modified_date)
     return etree.tostring(tree.getroot(), encoding=u'UTF-8')
 
+
 def parse(filename):
-    u"Read from the file."
+    'Read from the file.'
     tree = etree.parse(filename)
     song = Song(tree)
     return song
 
+
 class Song(object):
-    u"""
+    '''
     Definition of an song.
     
     titles:        A list of Title (class) objects.
@@ -57,10 +60,10 @@ class Song(object):
     songbooks:     A list of Songbook (class) objects, with a name and entry.
     themes:        A list of Theme (class) objects.
     comments:       A list of string comments
-    """
+    '''
     
     def __init__(self, filename=None):
-        u"Create the instance."
+        'Create the instance.'
         self.__ns = u''
         self._version = u'0.7'
         
@@ -75,19 +78,19 @@ class Song(object):
             self.parse(filename)
     
     def parse(self, filename):
-        u"Read from the file."
+        'Read from the file.'
         tree = etree.parse(filename)
         self._from_xml(tree)
     
     def write(self, filename):
-        u"Save to a file."
+        'Save to a file.'
         tree = self._to_xml()
         # argument 'encoding' adds xml declaration:
         # <?xml version='1.0' encoding='UTF-8'?>
         tree.write(filename, encoding=u'UTF-8')
     
     def _from_xml(self, tree):
-        u"Read from XML."
+        'Read from XML.'
         if isinstance(tree, etree.ElementTree):
             root = tree.getroot()
         else:
@@ -108,7 +111,7 @@ class Song(object):
             self.verses.append(verse)
     
     def _to_xml(self, pretty_print=True, update_modified_date=True):
-        u"Convert to XML."
+        'Convert to XML.'
 
         if update_modified_date:
             # update modifiedDate in the object
@@ -141,7 +144,7 @@ class Song(object):
 
     # http://infix.se/2007/02/06/gentlemen-indent-your-xml
     def _indent(self, elem, level=0):
-        u'in-place prettyprint formatter'
+        'in-place prettyprint formatter'
 
         i = '\n' + level*'  '
         if len(elem):
@@ -159,7 +162,7 @@ class Song(object):
        
 
 class Properties(object):
-    u"""
+    '''
     Stores Song property elements.
     
     release_date:   The date, in the format of yyyy-mm-ddThh:mm.
@@ -175,7 +178,7 @@ class Properties(object):
     copyright:      A copyright string.
     publisher:      A string value of the song publisher.
     custom_version: 
-    """
+    '''
     def __init__(self):
         # List types
         self.titles = []
@@ -372,20 +375,20 @@ class Properties(object):
     
 
 class Title(object):
-    u"""
+    '''
     A title for the song.
     
     text:  The title as a string.
     lang:  A language code, in the format of "xx", or "xx-YY".
-    """
+    '''
     
     def __init__(self, text=u'', lang=None):
-        u"Create the instance."
+        'Create the instance.'
         self.text = text
         self.lang = lang
     
     def _to_xml(self):
-        u"Create the XML element."
+        'Create the XML element.'
         elem = etree.Element(u'title')
         if self.lang:
             elem.set(u'lang', self.lang)
@@ -393,26 +396,26 @@ class Title(object):
         return elem
     
     def __str__(self):
-        u"Return a string representation."
+        'Return a string representation.'
         return self.text
     
     def __unicode__(self):
-        u"Return a unicode representation."
+        'Return a unicode representation.'
         return self.text
 
 
 class Author(object):
-    u"""
+    '''
     An author of words, music, or a translation.
     
     name:   Author's name as a string.
     type:   One of "words", "music", or "translation". This module will throw
             ValueError if one of these is found to be incorrect.
     lang:   A language code, in the format of "xx", or "xx-YY".
-    """
+    '''
     
     def __init__(self, name=u'', type_=None, lang=None):
-        u"Create the instance. May return `ValueError`."
+        'Create the instance. May return `ValueError`.'
         self.name = name
         if type_ and type_ not in (u'words',u'music',u'translation'):
             raise ValueError(u'`type` must be one of "words", "music", or' +
@@ -430,29 +433,29 @@ class Author(object):
         return elem
     
     def __str__(self):
-        u"Return a string representation."
+        'Return a string representation.'
         return self.name
     
     def __unicode__(self):
-        u"Return a unicode representation."
+        'Return a unicode representation.'
         return self.name
 
 
 class Songbook(object):
-    u"""
+    '''
     A songbook/collection with an entry/number.
     
     name:  The name of the songbook or collection.
     entry: A number or string representing the index in this songbook.
-    """
+    '''
     
     def __init__(self, name=u'', entry=None):
-        u"Create the instance."
+        'Create the instance.'
         self.name = name
         self.entry = entry
     
     def _to_xml(self):
-        u"Create the XML element."
+        'Create the XML element.'
         elem = etree.Element(u'songbook')
         if self.entry:
             elem.set(u'entry',self.entry)
@@ -460,26 +463,26 @@ class Songbook(object):
         return elem
     
     def __str__(self):
-        u"Return a string representation."
+        'Return a string representation.'
         return u'%s #%s' % (self.name, self.entry)
     
     def __unicode__(self):
-        u"Return a unicode representation."
+        'Return a unicode representation.'
         return u'%s #%s' % (self.name, self.entry)
 
 
 class Theme(object):
-    u"""
+    '''
     A category for the song.
     
     theme: The name of the song.
     id:    A number from the standardized CCLI list.
                  http://www.ccli.com.au/owners/themes.cfm
     lang:  A language code, in the format of "xx", or "xx-YY".
-    """
+    '''
     
     def __init__(self, name=u'', id=None, lang=None):
-        u"Create the instance."
+        'Create the instance.'
         self.name = name
         self.id = id
         self.lang = lang
@@ -494,23 +497,23 @@ class Theme(object):
         return elem
     
     def __str__(self):
-        u"Return a string representation."
+        'Return a string representation.'
         return self.name
     
     def __unicode__(self):
-        u"Return a unicode representation."
+        'Return a unicode representation.'
         return self.name
 
     
 # Verse element and subelements
 
 class Verse(object):
-    u"""
+    '''
     A verse for a song.
-    """
+    '''
     
     def __init__(self):
-        u"Create the instance."
+        'Create the instance.'
         self.lang = None
         self.translit = None
         self.name = None
@@ -526,7 +529,7 @@ class Verse(object):
             self.lines.append(lines)
     
     def _to_xml(self):
-        u""
+        ''
         verse = etree.Element('verse')
         if self.name:
             verse.set(u'name', self.name)
@@ -540,17 +543,17 @@ class Verse(object):
     
 
 class Lines(object):
-    u"""
+    '''
     A group of lines in a verse.
-    """
+    '''
     
     def __init__(self):
-        u"Create the instance."
+        'Create the instance.'
         self.lines = []
         self.part = None
     
     def _from_xml(self, elem, namespace):
-        u""
+        ''
         self.part = elem.get(u'part', None)
         for line_elem in elem.findall(_path(u'line', namespace)):
             # TODO: This returns the outer element, but it should not.
@@ -558,7 +561,7 @@ class Lines(object):
             self.lines.append( Line(line_elem) )
     
     def _to_xml(self):
-        u""
+        ''
         lines_elem = etree.Element('lines')
         if self.part:
             lines_elem.set('part', self.part)
@@ -568,68 +571,69 @@ class Lines(object):
         return lines_elem
     
     def __str__(self):
-        u"Return a string representation."
+        'Return a string representation.'
         return u'\n'.join(str(l) for l in self.lines)
     
     def __unicode__(self):
-        u"Return a unicode representation."
+        'Return a unicode representation.'
         return u'\n'.join(unicode(l) for l in self.lines)
 
 # TODO add chords handling
 
 class Line(object):
-    u"""
+    '''
     A single line in a group of lines.
-    """
+    '''
     __chords_regex = re.compile(u'<chord[^>]*>')
     
     def __init__(self, elem):
         self.markup = _element_contents_to_string(elem)
     
     def _get_text(self):
-        u"Get the text for this line."
+        'Get the text for this line.'
         return self.__chords_regex.sub(u'',self.markup)
     
     def _set_text(self, value):
-        u"Set the text for this line. This removes all chords."
+        'Set the text for this line. This removes all chords.'
         self.markup = value
     
     text = property(_get_text, _set_text)
     
     def _get_chords(self):
-        u"Get the chords for this line."
+        'Get the chords for this line.'
         self.__chords_regex.findall(self.markup)
     
     chords = property(_get_chords)
     
     def __str__(self):
-        u"Return a string representation."
+        'Return a string representation.'
         return str(self.text)
     
     def __unicode__(self):
-        u"Return a unicode representation."
+        'Return a unicode representation.'
         return self.text
 
 
 # Various functions
 
 def _path(tag, ns=None):
-    u"""
+    '''
     If a namespace is on a document, the XPath requires {ns}tag for every
     tag in the path. This assumes that only one namespace for the document
     exists.
-    """
+    '''
     if ns == None or len(ns) == 0:
         return tag
     else:
         return u'/'.join(u'{%s}%s' % (ns, t) for t in tag.split(u'/'))
 
+
 # FIXME simplify handling mixed content of XML
 def _element_contents_to_string(elem):
-    u"""
+    '''
     Get a string representation of an XML Element, excluding the tag of the
     element itself.
-    """
+    '''
     s = u""
     if elem.text:
         s += _get_text(elem)
@@ -641,20 +645,18 @@ def _element_contents_to_string(elem):
             tag = sub.tag.partition("}")[2]
         else:
             tag = sub.tag
-        subtag = " ".join((tag,) + tuple('%s="%s"' % i for i in sub.items()))
+        subtag = ' '.join((tag,) + tuple('%s="%s"' % i for i in sub.items()))
         subtext = _element_contents_to_string(sub)
         if subtext:
-            s += "<%(tag)s>%(text)s</%(tag)s>" % \
-                    {"tag": subtag, "text": subtext}
+            s += '<%(tag)s>%(text)s</%(tag)s>' % \
+                    {"tag": subtag, 'text': subtext}
         else:
-            s += "<%(tag)s />" % {"tag": subtag}
+            s += "<%(tag)s />" % {'tag': subtag}
         if sub.tail:
             s += sub.tail
     return unicode(s)
 
 def _get_text(elem):
-    u"Strip whitespace and return the element"
+    'Strip whitespace and return the element'
     return re.sub('\s+',' ',elem.text.strip())
-
-
 
