@@ -139,9 +139,16 @@ class UnicodeFilenameTestCase(unittest.TestCase):
         # Python's file object should be used
         fname = paths.unicode_filename
         song = openlyrics.Song(fname)
-        self.assertEquals(patterns.unicode_filename_song,
-                openlyrics.tostring(song))
-       
+
+        # modifiedDate is usually updated during conversion to string but
+        # we need to be able compare string with another sing.
+        text = openlyrics.tostring(song, update_modified_date=False)
+        self.assertEqual(patterns.unicode_filename_song, text)
+
+        # modifiedDate should be different not equal
+        text = openlyrics.tostring(song, update_modified_date=True)
+        self.assertNotEqual(patterns.unicode_filename_song, text)
+        
 
 class WeirdTestCase(unittest.TestCase):
 
@@ -151,7 +158,6 @@ class WeirdTestCase(unittest.TestCase):
 
     def test_invalid_xml(self):
         fname = paths.invalid_song
-        print fname
         self.assertRaises(SyntaxError, openlyrics.Song, fname)
      
 

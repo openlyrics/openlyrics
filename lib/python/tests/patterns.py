@@ -245,7 +245,8 @@ u'''<?xml version='1.0' encoding='UTF-8'?>
 '''
 
 unicode_filename_song = \
-u'''<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="ChangingSong 0.0.3" modifiedIn="ChangingSong 0.0.3" modifiedDate="2008-11-28T13:15:30+01:00">
+u'''<?xml version='1.0' encoding='UTF-8'?>
+<song createdIn="ChangingSong 0.0.3" modifiedDate="2008-11-28T13:15:30+01:00" modifiedIn="ChangingSong 0.0.3" version="0.7" xmlns="http://openlyrics.info/namespace/2009/song">
   <properties>
     <titles>
       <title>This is Song Title</title>
@@ -263,5 +264,4 @@ u'''<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" creat
       </lines>
     </verse>
   </lyrics>
-</song>
-'''
+</song>'''
