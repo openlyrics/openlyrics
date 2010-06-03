@@ -37,9 +37,9 @@ def fromstring(text):
         song._from_xml(tree)
     return song
 
-def tostring(song):
+def tostring(song, pretty_print=True, update_modified_date=True):
     u"Convert to a file."
-    tree = song._to_xml()
+    tree = song._to_xml(pretty_print, update_modified_date)
     return etree.tostring(tree.getroot(), encoding=u'UTF-8')
 
 def parse(filename):
@@ -82,15 +82,9 @@ class Song(object):
     def write(self, filename):
         u"Save to a file."
         tree = self._to_xml()
-        # lxml implements pretty printing
         # argument 'encoding' adds xml declaration:
         # <?xml version='1.0' encoding='UTF-8'?>
-        try:
-            tree.write(filename, encoding=u'UTF-8', pretty_print=True)
-        except TypeError:
-            # TODO: implement pretty_print for other ElementTree API
-            # implementations
-            tree.write(filename, encoding=u'UTF-8')
+        tree.write(filename, encoding=u'UTF-8')
     
     def _from_xml(self, tree):
         u"Read from XML."
@@ -113,28 +107,56 @@ class Song(object):
             verse._from_xml(verse_elem, self.__ns)
             self.verses.append(verse)
     
-    def _to_xml(self):
+    def _to_xml(self, pretty_print=True, update_modified_date=True):
         u"Convert to XML."
+
+        if update_modified_date:
+            # update modifiedDate in the object
+            self.modifiedDate = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+
         root = etree.Element(u'song')
-        root.set(u'xmlns', self.__ns)
-        root.set(u'version', self._version)
+
+        # attribuses are sorted in alphabetic order by ElementTree
         root.set(u'createdIn', self.createdIn)
+        root.set(u'modifiedDate', self.modifiedDate)
         root.set(u'modifiedIn', self.modifiedIn)
-        root.set(u'modifiedDate', datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
+        root.set(u'version', self._version)
+        root.set(u'xmlns', self.__ns)
         
         props = self.props._to_xml()
         root.append(props)
         
-        verses_elem = etree.Element(u'verses')
+        lyrics_elem = etree.Element(u'lyrics')
         for verse in self.verses:
-            verses_elem.append(verse._to_xml())
-        root.append(verses_elem)
+            lyrics_elem.append(verse._to_xml())
+        root.append(lyrics_elem)
         
         #TODO: Verses
+
+        if pretty_print:
+            self._indent(root)
         
         tree = etree.ElementTree(root)
         return tree
-    
+
+    # http://infix.se/2007/02/06/gentlemen-indent-your-xml
+    def _indent(self, elem, level=0):
+        u'in-place prettyprint formatter'
+
+        i = '\n' + level*'  '
+        if len(elem):
+            if not elem.text or not elem.text.strip():
+                elem.text = i + '  '
+            for e in elem:
+                self._indent(e, level+1)
+                if not e.tail or not e.tail.strip():
+                    e.tail = i + '  '
+            if not e.tail or not e.tail.strip():
+                e.tail = i
+        else:
+            if level and (not elem.tail or not elem.tail.strip()):
+                elem.tail = i
+       
 
 class Properties(object):
     u"""
@@ -326,7 +348,7 @@ class Properties(object):
             elem1.text = self.keywords
             props.append(elem1)
         
-        if self.transposition:
+        if self.transposition and not self.transposition == u'0':
             elem1 = etree.Element(u'transposition')
             elem1.text = self.transposition
             props.append(elem1)
@@ -633,4 +655,6 @@ def _element_contents_to_string(elem):
 def _get_text(elem):
     u"Strip whitespace and return the element"
     return re.sub('\s+',' ',elem.text.strip())
+
+
 
