@@ -142,7 +142,8 @@ class UnicodeFilenameTestCase(unittest.TestCase):
 
         # modifiedDate is usually updated during conversion to string but
         # we need to be able compare string with another sing.
-        text = openlyrics.tostring(song, update_modified_date=False)
+        text = openlyrics.tostring(song, update_modified_date=False,
+                update_modified_in=False)
         self.assertEqual(patterns.unicode_filename_song, text)
 
         # modifiedDate should be different not equal
