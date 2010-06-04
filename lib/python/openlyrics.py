@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 __version__ = '0.1'
+__all__ = ['fromstring', 'tostring', 'parse', 'Song', 'Properties',
+        'Title', 'Author', 'Songbook', 'Theme', 'Verse', 'Lines', 'Line']
 
 '''
 Provides a module to access OpenLyrics data type.
