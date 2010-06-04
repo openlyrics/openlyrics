@@ -31,6 +31,12 @@ import re
 from datetime import datetime
 from xml.etree import cElementTree as etree
 
+
+OLYR_NS = u'http://openlyrics.info/namespace/2009/song'
+OLYR_VERSION = u'0.7'
+OLYR_CREATED_IN = u'OpenLyrics Python Library %s' % __version__
+OLYR_MODIFIED_IN = u'OpenLyrics Python Library %s' % __version__
+
 # A few 
 
 def fromstring(text):
@@ -42,9 +48,11 @@ def fromstring(text):
     return song
 
 
-def tostring(song, pretty_print=True, update_modified_date=True):
+def tostring(song, pretty_print=True, update_modified_date=True,
+        update_modified_in=True):
     u'Convert to a file.'
-    tree = song._to_xml(pretty_print, update_modified_date)
+    tree = song._to_xml(pretty_print, update_modified_date,
+            update_modified_in)
     return etree.tostring(tree.getroot(), encoding=u'UTF-8')
 
 
@@ -68,14 +76,14 @@ class Song(object):
     
     def __init__(self, filename=None):
         'Create the instance.'
-        self.__ns = u''
-        self._version = u'0.7'
+        self.__ns = OLYR_NS
+        self._version = OLYR_VERSION
         
         self.verses = []
         self.props = Properties()
         
-        self.createdIn = u''
-        self.modifiedIn = u''
+        self.createdIn = OLYR_CREATED_IN
+        self.modifiedIn = OLYR_MODIFIED_IN
         self.modifiedDate = u''
 
         if filename:
@@ -114,12 +122,15 @@ class Song(object):
             verse._from_xml(verse_elem, self.__ns)
             self.verses.append(verse)
     
-    def _to_xml(self, pretty_print=True, update_modified_date=True):
+    def _to_xml(self, pretty_print=True, update_modified_date=True,
+            update_modified_in=True):
         'Convert to XML.'
 
+        # for unit tests it's helpful to not update following items
         if update_modified_date:
-            # update modifiedDate in the object
             self.modifiedDate = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+        if update_modified_in:
+            self.modifiedIn = OLYR_MODIFIED_IN
 
         root = etree.Element(u'song')
 

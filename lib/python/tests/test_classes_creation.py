@@ -57,12 +57,18 @@ class InitSongClassTestCase(unittest.TestCase):
 
         self.assertEqual(u'0.7', s._version)
         self.assertEqual([], s.verses)
-        self.assertEqual(u'', s.createdIn)
-        self.assertEqual(u'', s.modifiedIn)
+        self.assertEqual(u'OpenLyrics Python Library 0.1', s.createdIn)
+        self.assertEqual(u'OpenLyrics Python Library 0.1', s.modifiedIn)
         self.assertEqual(u'', s.modifiedDate)
         self.assertNotEqual(None, s.props)
 
         test_props_values(self, s.props)
+
+    def test_Song_tostring(self):
+        s = openlyrics.Song()
+        s.modifiedDate = u'2010-06-04T21:51:57'
+        text = openlyrics.tostring(s, update_modified_date=False)
+        self.assertEqual(patterns.song_with_default_values, text)
 
 
 class InitPropertiesClassesTestCase(unittest.TestCase):
