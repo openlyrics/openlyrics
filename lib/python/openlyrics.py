@@ -40,7 +40,7 @@ OLYR_MODIFIED_IN = u'OpenLyrics Python Library %s' % __version__
 # A few 
 
 def fromstring(text):
-    u'Read from a string.'
+    'Read from a string.'
     tree = etree.fromstring(text)
     song = Song()
     if tree:
@@ -50,7 +50,7 @@ def fromstring(text):
 
 def tostring(song, pretty_print=True, update_modified_date=True,
         update_modified_in=True):
-    u'Convert to a file.'
+    'Convert to a file.'
     tree = song._to_xml(pretty_print, update_modified_date,
             update_modified_in)
     return etree.tostring(tree.getroot(), encoding=u'UTF-8')
@@ -66,12 +66,6 @@ def parse(filename):
 class Song(object):
     '''
     Definition of an song.
-    
-    titles:        A list of Title (class) objects.
-    authors:       A list of Author (class) objects.
-    songbooks:     A list of Songbook (class) objects, with a name and entry.
-    themes:        A list of Theme (class) objects.
-    comments:       A list of string comments
     '''
     
     def __init__(self, filename=None):
@@ -180,6 +174,12 @@ class Properties(object):
     '''
     Stores Song property elements.
     
+    titles:         A list of Title (class) objects.
+    authors:        A list of Author (class) objects.
+    songbooks:      A list of Songbook (class) objects, with a name and entry.
+    themes:         A list of Theme (class) objects.
+    comments:       A list of string comments
+    
     release_date:   The date, in the format of yyyy-mm-ddThh:mm.
     ccli_no:        The CCLI number. Numeric or string value.
     tempo:          Numeric value of speed.
@@ -217,7 +217,7 @@ class Properties(object):
         self.custom_version = u''
         
     def _from_xml(self, tree, namespace):
-        u""
+        'Load xml into the properties.'
         self.titles = []
         elem = tree.findall(_path(u'properties/titles/title',namespace))
         for el in elem:
@@ -294,7 +294,7 @@ class Properties(object):
             self.custom_version = _get_text(elem)
     
     def _to_xml(self):
-        u""
+        'Convert the properties to XML.'
         props = etree.Element(u'properties')
         
         if len(self.titles):
@@ -439,6 +439,7 @@ class Author(object):
         self.lang = lang
     
     def _to_xml(self):
+        'Convert the XML element.'
         elem = etree.Element(u'author')
         if self.type:
             elem.set(u'type',self.type)
@@ -503,6 +504,7 @@ class Theme(object):
         self.lang = lang
     
     def _to_xml(self):
+        'Create the XML element.'
         elem = etree.Element(u'theme')
         if self.id:
             elem.set(u'id',self.id)
@@ -535,6 +537,7 @@ class Verse(object):
         self.lines = []
     
     def _from_xml(self, tree, namespace):
+        'Convert to XML.'
         self.name = tree.get(u'name', None)
         self.lang = tree.get(u'lang', None)
         self.translit = tree.get(u'translit', None)
@@ -544,7 +547,7 @@ class Verse(object):
             self.lines.append(lines)
     
     def _to_xml(self):
-        ''
+        'Create the XML element.'
         verse = etree.Element('verse')
         if self.name:
             verse.set(u'name', self.name)
@@ -568,7 +571,7 @@ class Lines(object):
         self.part = None
     
     def _from_xml(self, elem, namespace):
-        ''
+        'Convert to XML.'
         self.part = elem.get(u'part', None)
         for line_elem in elem.findall(_path(u'line', namespace)):
             # TODO: This returns the outer element, but it should not.
@@ -576,7 +579,7 @@ class Lines(object):
             self.lines.append( Line(line_elem) )
     
     def _to_xml(self):
-        ''
+        'Create the XML element.'
         lines_elem = etree.Element('lines')
         if self.part:
             lines_elem.set('part', self.part)
