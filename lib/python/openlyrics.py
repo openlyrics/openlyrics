@@ -30,6 +30,7 @@ s = Song('song.xml')
 import re
 from datetime import datetime
 from xml.etree import cElementTree as etree
+from StringIO import StringIO
 
 
 OLYR_NS = u'http://openlyrics.info/namespace/2009/song'
@@ -41,7 +42,8 @@ OLYR_MODIFIED_IN = u'OpenLyrics Python Library %s' % __version__
 
 def fromstring(text):
     'Read from a string.'
-    tree = etree.fromstring(text)
+    # text must be passed as string encoded in utf-8
+    tree = etree.fromstring(text.encode('UTF-8'))
     song = Song()
     if tree:
         song._from_xml(tree)
