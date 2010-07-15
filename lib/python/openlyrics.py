@@ -48,11 +48,9 @@ def fromstring(text):
     return song
 
 
-def tostring(song, pretty_print=True, update_modified_date=True,
-        update_modified_in=True):
+def tostring(song, pretty_print=True, update_metadata=True):
     'Convert to a file.'
-    tree = song._to_xml(pretty_print, update_modified_date,
-            update_modified_in)
+    tree = song._to_xml(pretty_print, update_metadata)
     return etree.tostring(tree.getroot(), encoding=u'UTF-8')
 
 
@@ -88,9 +86,9 @@ class Song(object):
         tree = etree.parse(filename)
         self._from_xml(tree)
     
-    def write(self, filename):
+    def write(self, filename, pretty_print=True, update_metadata=True):
         'Save to a file.'
-        tree = self._to_xml()
+        tree = self._to_xml(pretty_print, update_metadata)
         # argument 'encoding' adds xml declaration:
         # <?xml version='1.0' encoding='UTF-8'?>
         tree.write(filename, encoding=u'UTF-8')
@@ -107,6 +105,7 @@ class Song(object):
         self.createdIn = root.get(u'createdIn', u'')
         self.modifiedIn = root.get(u'modifiedIn', u'')
         self.modifiedDate = root.get(u'modifiedDate', u'')
+        self._version = root.get(u'version', u'')
         
         self.props._from_xml(tree, self.__ns)
         
@@ -116,15 +115,14 @@ class Song(object):
             verse._from_xml(verse_elem, self.__ns)
             self.verses.append(verse)
     
-    def _to_xml(self, pretty_print=True, update_modified_date=True,
-            update_modified_in=True):
+    def _to_xml(self, pretty_print=True, update_metadata=True):
         'Convert to XML.'
 
         # for unit tests it's helpful to not update following items
-        if update_modified_date:
-            self.modifiedDate = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
-        if update_modified_in:
+        if update_metadata:
             self.modifiedIn = OLYR_MODIFIED_IN
+            self.modifiedDate = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+            self._version = OLYR_VERSION
 
         root = etree.Element(u'song')
 
