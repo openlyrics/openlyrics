@@ -67,7 +67,7 @@ class InitSongClassTestCase(unittest.TestCase):
     def test_Song_tostring(self):
         s = openlyrics.Song()
         s.modifiedDate = u'2010-06-04T21:51:57'
-        text = openlyrics.tostring(s, update_modified_date=False)
+        text = openlyrics.tostring(s, update_metadata=False)
         self.assertEqual(patterns.song_with_default_values, text)
 
 
