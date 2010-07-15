@@ -24,12 +24,9 @@ import openlyrics
 from tests import paths, patterns
 
 
-class ParsingAsciiTestCase(unittest.TestCase):
+class ParsingTestCase(unittest.TestCase):
 
-    def test_english_song(self):
-
-        song = openlyrics.Song(paths.eng_song)
-
+    def check_english_song(self, song):
         # test properties
 
         titles = [u'What A Friend We Have In Jesus']
@@ -72,13 +69,7 @@ class ParsingAsciiTestCase(unittest.TestCase):
         for i in range(0, len(lst)):
             self.assertEqual(lst[i], lines[i].text)
 
-
-class ParsingUtf8TestCase(unittest.TestCase):
-
-    def test_localized_song(self):
-
-        song = openlyrics.Song(paths.l10n_song)
-
+    def check_localized_song(self, song):
         # test properties
 
         titles = [u'Mám zde přítele']
@@ -130,6 +121,37 @@ class ParsingUtf8TestCase(unittest.TestCase):
             u'uč se na ně vždycky spoléhat!',]
         for i in range(0, len(lst)):
             self.assertEqual(lst[i], lines[i].text)
+
+    def readtext(self, filename):
+        import codecs
+        f = codecs.open(filename, 'r', 'UTF-8')
+        text = f.read()
+        f.close()
+        return text
+
+
+class ParsingAsciiTestCase(ParsingTestCase):
+
+    def test_english_song(self):
+        song = openlyrics.Song(paths.eng_song)
+        self.check_english_song(song)
+
+    def test_english_song_fromstring(self):
+        text = self.readtext(paths.eng_song)
+        song = openlyrics.fromstring(text)
+        self.check_english_song(song)
+
+
+class ParsingUtf8TestCase(ParsingTestCase):
+
+    def test_localized_song(self):
+        song = openlyrics.Song(paths.l10n_song)
+        self.check_localized_song(song)
+
+    def test_localized_song_fromstring(self):
+        text = self.readtext(paths.l10n_song)
+        song = openlyrics.fromstring(text)
+        self.check_localized_song(song)
 
 
 class UnicodeFilenameTestCase(unittest.TestCase):
