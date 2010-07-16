@@ -122,9 +122,10 @@ class ParsingTestCase(unittest.TestCase):
         for i in range(0, len(lst)):
             self.assertEqual(lst[i], lines[i].text)
 
-    def readtext(self, filename, encoding='UTF-8'):
+    def readtext(self, filename):
+        '''return unicode string'''
         import codecs
-        f = codecs.open(filename, 'r', encoding)
+        f = codecs.open(filename, 'r', 'UTF-8')
         text = f.read()
         f.close()
         return text
@@ -161,8 +162,10 @@ class ParsingCp1250TestCase(ParsingTestCase):
         self.check_localized_song(song)
 
     def test_localized_song_fromstring(self):
-        text = self.readtext(paths.l10n_song_cp1250, encoding='cp1250')
-        song = openlyrics.fromstring(text)
+        f = open(paths.l10n_song_cp1250)
+        byte_string_text = f.read()
+        f.close()
+        song = openlyrics.fromstring(byte_string_text)
         self.check_localized_song(song)
 
 
