@@ -25,6 +25,8 @@ TMPDIR = join('.', 'tests', 'tmp')
 eng_song = join(SONGDIR, 'What A Friend We Have In Jesus.xml')
 l10n_song = join(SONGDIR,
         u'Mám zde přítele, Pána Ježíše.xml')
+l10n_song_cp1250 = join(SONGDIR,
+        u'Mám zde přítele, Pána Ježíše - cp1250.xml')
 invalid_song = join(SONGDIR, 'InvalidXml.xml')
 
 notprettyprint_eng_song = join(SONGDIR,

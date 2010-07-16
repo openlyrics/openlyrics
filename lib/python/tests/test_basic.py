@@ -122,9 +122,9 @@ class ParsingTestCase(unittest.TestCase):
         for i in range(0, len(lst)):
             self.assertEqual(lst[i], lines[i].text)
 
-    def readtext(self, filename):
+    def readtext(self, filename, encoding='UTF-8'):
         import codecs
-        f = codecs.open(filename, 'r', 'UTF-8')
+        f = codecs.open(filename, 'r', encoding)
         text = f.read()
         f.close()
         return text
@@ -150,6 +150,18 @@ class ParsingUtf8TestCase(ParsingTestCase):
 
     def test_localized_song_fromstring(self):
         text = self.readtext(paths.l10n_song)
+        song = openlyrics.fromstring(text)
+        self.check_localized_song(song)
+
+
+class ParsingCp1250TestCase(ParsingTestCase):
+
+    def test_localized_song(self):
+        song = openlyrics.Song(paths.l10n_song_cp1250)
+        self.check_localized_song(song)
+
+    def test_localized_song_fromstring(self):
+        text = self.readtext(paths.l10n_song_cp1250, encoding='cp1250')
         song = openlyrics.fromstring(text)
         self.check_localized_song(song)
 
@@ -187,6 +199,7 @@ def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ParsingAsciiTestCase, 'test'))
     suite.addTest(unittest.makeSuite(ParsingUtf8TestCase, 'test'))
+    suite.addTest(unittest.makeSuite(ParsingCp1250TestCase, 'test'))
     suite.addTest(unittest.makeSuite(UnicodeFilenameTestCase, 'test'))
     suite.addTest(unittest.makeSuite(WeirdTestCase, 'test'))
 
