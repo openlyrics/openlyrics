@@ -584,7 +584,8 @@ class Lines(object):
         if self.part:
             lines_elem.set('part', self.part)
         for line in self.lines:
-            line_elem = etree.fromstring(u'<line>%s</line>' % line.markup)
+            line = u'<line>%s</line>' % line.markup
+            line_elem = etree.fromstring(line.encode('UTF-8'))
             lines_elem.append(line_elem)
         return lines_elem
     
