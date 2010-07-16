@@ -55,7 +55,8 @@ def fromstring(text):
 def tostring(song, pretty_print=True, update_metadata=True):
     'Convert to a file.'
     tree = song._to_xml(pretty_print, update_metadata)
-    return etree.tostring(tree.getroot(), encoding=u'UTF-8')
+    text = etree.tostring(tree.getroot(), encoding='UTF-8')
+    return unicode(text, 'UTF-8') # convert to unicode string
 
 
 def parse(filename):
