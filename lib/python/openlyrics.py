@@ -42,8 +42,10 @@ OLYR_MODIFIED_IN = u'OpenLyrics Python Library %s' % __version__
 
 def fromstring(text):
     'Read from a string.'
-    # text must be passed as string encoded in utf-8
-    tree = etree.fromstring(text.encode('UTF-8'))
+    # unicode string must be passed as byte string encoded in utf-8
+    if type(text) is unicode:
+        text = text.encode('UTF-8')
+    tree = etree.fromstring(text)
     song = Song()
     if tree:
         song._from_xml(tree)
