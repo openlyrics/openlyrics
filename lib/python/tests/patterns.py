@@ -16,12 +16,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-'''Assertion patterns for the ChangingSong test suite.'''
+'''Assertion patterns for OpenLyrics Python library test suite.'''
 
 
-eng_song = \
-u'''<?xml version='1.0' encoding='UTF-8'?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.6" createdIn="opensong2openlyrics.py 0.1" modifiedIn="opensong2openlyrics.py 0.1" modifiedDate="2009-12-31T07:36:52.305167">
+eng_song = u'''<?xml version='1.0' encoding='UTF-8'?>
+<song createdIn="opensong2openlyrics.py 0.1" modifiedDate="2009-12-31T07:36:52.305167" modifiedIn="opensong2openlyrics.py 0.1" version="0.6" xmlns="http://openlyrics.info/namespace/2009/song">
   <properties>
     <titles>
       <title>What A Friend We Have In Jesus</title>
@@ -30,12 +29,12 @@ u'''<?xml version='1.0' encoding='UTF-8'?>
       <author>Joseph M. Scriven</author>
       <author>Charles C. Convers</author>
     </authors>
-    <copyright>Public Domain</copyright>
-    <ccliNo>27714</ccliNo>
     <themes>
       <theme>Christ: Love/Mercy</theme>
       <theme>Fruit: Peace/Comfort</theme>
     </themes>
+    <copyright>Public Domain</copyright>
+    <ccliNo>27714</ccliNo>
   </properties>
   <lyrics>
     <verse name="v1">
@@ -63,12 +62,11 @@ u'''<?xml version='1.0' encoding='UTF-8'?>
       </lines>
     </verse>
   </lyrics>
-</song>
-'''
+</song>'''
 
-l10n_song = \
-u'''<?xml version='1.0' encoding='UTF-8'?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.6" createdIn="opensong2openlyrics.py 0.1" modifiedIn="opensong2openlyrics.py 0.1" modifiedDate="2009-12-31T07:36:37.405351">
+
+l10n_song = u'''<?xml version='1.0' encoding='UTF-8'?>
+<song createdIn="opensong2openlyrics.py 0.1" modifiedDate="2009-12-31T07:36:37.405351" modifiedIn="opensong2openlyrics.py 0.1" version="0.6" xmlns="http://openlyrics.info/namespace/2009/song">
   <properties>
     <titles>
       <title>Mám zde přítele</title>
@@ -119,8 +117,7 @@ u'''<?xml version='1.0' encoding='UTF-8'?>
       </lines>
     </verse>
   </lyrics>
-</song>
-'''
+</song>'''
 
 
 prettyprint_eng_song = \
