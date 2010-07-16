@@ -147,6 +147,13 @@ class ParsingAsciiTestCase(ParsingTestCase):
         text = openlyrics.tostring(song, update_metadata=False)
         self.assertEqual(patterns.eng_song, text)
 
+    def test_english_song_prettyprint(self):
+        song = openlyrics.Song(paths.notprettyprint_eng_song)
+        text = openlyrics.tostring(song, update_metadata=False)
+        self.assertEqual(patterns.prettyprint_eng_song, text)
+        text_not_pretty = openlyrics.tostring(song, pretty_print=False, update_metadata=False)
+        self.assertNotEqual(patterns.prettyprint_eng_song, text_not_pretty)
+
 
 class ParsingUtf8TestCase(ParsingTestCase):
 
@@ -163,6 +170,13 @@ class ParsingUtf8TestCase(ParsingTestCase):
         song = openlyrics.Song(paths.l10n_song)
         text = openlyrics.tostring(song, update_metadata=False)
         self.assertEqual(patterns.l10n_song, text)
+        
+    def test_localized_song_prettyprint(self):
+        song = openlyrics.Song(paths.notprettyprint_l10n_song)
+        text = openlyrics.tostring(song, update_metadata=False)
+        self.assertEqual(patterns.prettyprint_l10n_song, text)
+        text_not_pretty = openlyrics.tostring(song, pretty_print=False, update_metadata=False)
+        self.assertNotEqual(patterns.prettyprint_l10n_song, text_not_pretty)
 
 
 class ParsingCp1250TestCase(ParsingTestCase):
