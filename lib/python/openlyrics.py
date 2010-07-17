@@ -415,7 +415,7 @@ class Title(object):
     
     def __str__(self):
         'Return a string representation.'
-        return self.text
+        return unicode(self).encode('UTF-8') 
     
     def __unicode__(self):
         'Return a unicode representation.'
@@ -453,7 +453,7 @@ class Author(object):
     
     def __str__(self):
         'Return a string representation.'
-        return self.name
+        return unicode(self).encode('UTF-8') 
     
     def __unicode__(self):
         'Return a unicode representation.'
@@ -483,7 +483,7 @@ class Songbook(object):
     
     def __str__(self):
         'Return a string representation.'
-        return u'%s #%s' % (self.name, self.entry)
+        return unicode(self).encode('UTF-8') 
     
     def __unicode__(self):
         'Return a unicode representation.'
@@ -518,7 +518,7 @@ class Theme(object):
     
     def __str__(self):
         'Return a string representation.'
-        return self.name
+        return unicode(self).encode('UTF-8') 
     
     def __unicode__(self):
         'Return a unicode representation.'
@@ -561,7 +561,14 @@ class Verse(object):
         for lines in self.lines:
             verse.append(lines._to_xml())
         return verse
-    
+
+    def __str__(self):
+        return unicode(self).encode('UTF-8') 
+
+    def __unicode__(self):
+        'Return a unicode representation.'
+        return u''.join(unicode(l) for l in self.lines)
+
 
 class Lines(object):
     '''
@@ -594,7 +601,7 @@ class Lines(object):
     
     def __str__(self):
         'Return a string representation.'
-        return u'\n'.join(str(l) for l in self.lines)
+        return unicode(self).encode('UTF-8') 
     
     def __unicode__(self):
         'Return a unicode representation.'
@@ -629,7 +636,7 @@ class Line(object):
     
     def __str__(self):
         'Return a string representation.'
-        return str(self.text)
+        return unicode(self).encode('UTF-8') 
     
     def __unicode__(self):
         'Return a unicode representation.'
