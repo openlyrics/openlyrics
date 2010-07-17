@@ -38,6 +38,9 @@ OLYR_VERSION = u'0.7'
 OLYR_CREATED_IN = u'OpenLyrics Python Library %s' % __version__
 OLYR_MODIFIED_IN = u'OpenLyrics Python Library %s' % __version__
 
+
+# TODO revise creating openlyrics Objects - add more arguments to contructor
+
 # A few 
 
 def fromstring(text):
@@ -615,6 +618,7 @@ class Line(object):
     '''
     __chords_regex = re.compile(u'<chord[^>]*>')
     
+    # TODO allow creating empty Line() object without ElementTree 'elem'
     def __init__(self, elem):
         self.markup = _element_contents_to_string(elem)
     
