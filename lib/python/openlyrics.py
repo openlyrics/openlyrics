@@ -110,6 +110,8 @@ class Song(object):
         
         if u'}' in root.tag:
             self.__ns = root.tag.split(u'}')[0].lstrip(u'{')
+        else:
+            self.__ns = ''
         self.createdIn = root.get(u'createdIn', u'')
         self.modifiedIn = root.get(u'modifiedIn', u'')
         self.modifiedDate = root.get(u'modifiedDate', u'')
@@ -655,10 +657,10 @@ def _path(tag, ns=None):
     tag in the path. This assumes that only one namespace for the document
     exists.
     '''
-    if ns == None or len(ns) == 0:
-        return tag
-    else:
+    if ns:
         return u'/'.join(u'{%s}%s' % (ns, t) for t in tag.split(u'/'))
+    else:
+        return tag
 
 
 # FIXME simplify handling mixed content of XML
