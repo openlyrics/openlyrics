@@ -693,5 +693,7 @@ def _element_contents_to_string(elem):
 
 def _get_text(elem):
     'Strip whitespace and return the element'
+    if not elem.text:
+        return ''
     return re.sub('\s+',' ',elem.text.strip())
 
