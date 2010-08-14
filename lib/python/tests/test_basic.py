@@ -58,10 +58,10 @@ class ParsingTestCase(unittest.TestCase):
 
         # lines count
         for ver in verses:
-            self.assertEqual(4, len(ver.lines[0].lines))
+            self.assertEqual(4, len(ver.lines[0]))
 
         # verse content
-        lines = verses[1].lines[0].lines
+        lines = verses[1].lines[0]
         lst = [u'Have we trials and temptations? Is there trouble anywhere?',
             u'We should never be discouraged, Take it to the Lord in prayer.',
             u'Can we find a friend so faithful? Who will all our sorrows share?',
@@ -97,13 +97,13 @@ class ParsingTestCase(unittest.TestCase):
         self.assertEqual(u'v3', verses[3].name)
 
         # lines count
-        self.assertEqual(6, len(verses[0].lines[0].lines))
-        self.assertEqual(4, len(verses[1].lines[0].lines))
-        self.assertEqual(6, len(verses[2].lines[0].lines))
-        self.assertEqual(6, len(verses[3].lines[0].lines))
+        self.assertEqual(6, len(verses[0].lines[0]))
+        self.assertEqual(4, len(verses[1].lines[0]))
+        self.assertEqual(6, len(verses[2].lines[0]))
+        self.assertEqual(6, len(verses[3].lines[0]))
 
         # 1st verse content
-        lines = verses[0].lines[0].lines
+        lines = verses[0].lines[0]
         lst = [u'Mám zde přítele,',
             u'Pána Ježíše,',
             u'a na rámě jeho spoléhám;',
@@ -114,7 +114,7 @@ class ParsingTestCase(unittest.TestCase):
             self.assertEqual(lst[i], lines[i].text)
 
         # chorus content
-        lines = verses[1].lines[0].lines
+        lines = verses[1].lines[0]
         lst = [u'Boží rámě',
             u'je v soužení náš pevný hrad;',
             u'Boží rámě,',

@@ -111,7 +111,7 @@ class InitLyricsClassesTestCase(unittest.TestCase):
 
     def test_Lines(self):
         l = openlyrics.Lines()
-        self.assertEqual([], l.lines)
+        self.assertEqual([], l)
         self.assertEqual(u'', l.part)
 
     # FIXME add tests for initialization of Line class
