@@ -575,14 +575,13 @@ class Verse(object):
         return u''.join(unicode(l) for l in self.lines)
 
 
-class Lines(object):
+class Lines(list, object):
     '''
     A group of lines in a verse.
     '''
     
     def __init__(self):
         'Create the instance.'
-        self.lines = []
         self.part = u''
     
     def _from_xml(self, elem, namespace):
@@ -591,14 +590,14 @@ class Lines(object):
         for line_elem in elem.findall(_path(u'line', namespace)):
             # TODO: This returns the outer element, but it should not.
             
-            self.lines.append( Line(line_elem) )
+            self.append( Line(line_elem) )
     
     def _to_xml(self):
         'Create the XML element.'
         lines_elem = etree.Element('lines')
         if self.part:
             lines_elem.set('part', self.part)
-        for line in self.lines:
+        for line in self:
             line = u'<line>%s</line>' % line.markup
             line_elem = etree.fromstring(line.encode('UTF-8'))
             lines_elem.append(line_elem)
@@ -610,7 +609,7 @@ class Lines(object):
     
     def __unicode__(self):
         'Return a unicode representation.'
-        return u'\n'.join(unicode(l) for l in self.lines)
+        return u'\n'.join(unicode(l) for l in self)
 
 # TODO add chords handling
 
