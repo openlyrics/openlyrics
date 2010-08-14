@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T14:35:49.043136">
+  <properties>
+    <titles>
+      <title>How Great Thou Art</title>
+    </titles>
+    <verseOrder>v1 c v2 c v3 c v4 c v5 c</verseOrder>
+    <themes>
+      <theme>God's Attributes</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>Oh Lord my <chord name="A2"/>God, when I in <chord name="D"/>awesome wonder</line>
+        <line>Consider <chord name="A2"/>all the <chord name="E"/>worlds Thy <chord name="Bm"/>hands have <chord name="A2"/>made;</line>
+        <line>I see the stars, I hear the <chord name="D"/>rolling thunder:</line>
+        <line>Thy pow'r through<chord name="A2"/>out the  <chord name="E"/>uni<chord name="Bm"/>verse dis<chord name="A2"/>played.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line>When through the <chord name="A2"/>woods, and forest <chord name="D"/>glades I wander,</line>
+        <line>And hear the <chord name="A2"/>birds sing <chord name="E"/>sweetly <chord name="Bm"/>in the <chord name="A2"/>trees;</line>
+        <line>When I look down from lofty <chord name="D"/>mountain grandeur,</line>
+        <line>And hear the b<chord name="A2"/>rook and <chord name="E"/>feel the <chord name="Bm"/>gentle <chord name="A2"/>breeze.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line>And when I <chord name="A2"/>think that God, His <chord name="D"/>Son not sparing</line>
+        <line>Sent Him to <chord name="A2"/>die, I <chord name="E"/>scarce can <chord name="Bm"/>take it <chord name="A2"/>in;</line>
+        <line>That on the cross, my burden <chord name="D"/>gladly bearing,</line>
+        <line>He bled and d<chord name="A2"/>ied to <chord name="E"/>take a<chord name="Bm"/>way my <chord name="A2"/>sin.</line>
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <line>When Christ shall <chord name="A2"/>come with shout of <chord name="D"/>acclamation</line>
+        <line>And take me <chord name="A2"/>home, what <chord name="E"/>joy shall <chord name="Bm"/>fill my <chord name="A2"/>heart;</line>
+        <line>Then I shall bow in humble <chord name="D"/>adoration,</line>
+        <line>And there proc<chord name="A2"/>laim my <chord name="E"/>God how <chord name="Bm"/>great Thou <chord name="A2"/>art!</line>
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        <line>Then sings my <chord name="A2"/>soul my <chord name="D"/>Savior God to <chord name="A2"/>Thee,</line>
+        <line>How great Thou <chord name="E"/>art, how great Thou <chord name="A2"/>art;</line>
+        <line>Then sings my soul my <chord name="D"/>Savior God to <chord name="A2"/>Thee,</line>
+        <line>How great Thou <chord name="E"/>art<chord name="Bm"/>, how great Thou <chord name="A2"/>art.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:01:39.362200">
+  <properties>
+    <titles>
+      <title>Great Is Thy Faithfulness</title>
+    </titles>
+    <authors>
+      <author>Thomas O. Chisholm</author>
+    </authors>
+    <copyright>1923 Renewed 1951 Hope Publishing Company</copyright>
+    <ccliNo>18723</ccliNo>
+    <themes>
+      <theme id="68">Guidance</theme>
+      <theme>Care</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line><chord name="A"/>Great is Thy <chord name="E"/>faithfulness, <chord name="D"/>O God my <chord name="A"/>Father,</line>
+        <line><chord name="D"/>There is no <chord name="A"/>shadow of <chord name="B7"/>turning with <chord name="E"/>Thee;</line>
+        <line><chord name="E7"/>Thou changest <chord name="A"/>not, Thy com<chord name="A7"/>passions they <chord name="D"/>fail not;</line>
+        <line><chord name="Bm7"/>As Thou hast <chord name="A"/>been, Thou for<chord name="D"/>ever <chord name="E"/>will <chord name="A"/>be.</line>
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        <line><chord name="E"/>Great is Thy <chord name="A"/>faithfulness! <chord name="F#"/>Great is Thy <chord name="Bm"/>faithfulness!</line>
+        <line><chord name="E"/>Morning by <chord name="A"/>morning new <chord name="B7"/>mercies I <chord name="E"/>see;</line>
+        <line><chord name="E7"/>All I have <chord name="A"/>needed, Thy <chord name="A7"/>hands hath pro<chord name="D"/>vided--</line>
+        <line><chord name="B7"/>Great is Thy <chord name="A"/>faithfulness, <chord name="D"/>Lord un<chord name="E"/>to <chord name="A"/>me!</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line><chord name="A"/>Summer and <chord name="E"/>winter and <chord name="D"/>springtime and <chord name="A"/>harvest,</line>
+        <line><chord name="D"/>Sun, moon and <chord name="A"/>stars in their <chord name="B7"/>courses a<chord name="E"/>bove</line>
+        <line><chord name="E7"/>Join with all <chord name="A"/>nature in <chord name="A7"/>manifold <chord name="D"/>witness</line>
+        <line><chord name="Bm7"/>To Thy great <chord name="A"/>faithfulness, <chord name="D"/>mercy <chord name="E"/>and <chord name="A"/>love.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line><chord name="A"/>Pardon for <chord name="E"/>sin and a <chord name="D"/>peace that en<chord name="A"/>dureth,</line>
+        <line><chord name="D"/>Thy own dear <chord name="A"/>presence to <chord name="B7"/>cheer and to <chord name="E"/>guide;</line>
+        <line><chord name="E7"/>Strength for to<chord name="A"/>day and bright <chord name="A7"/>hope for to<chord name="D"/>morrow,</line>
+        <line><chord name="Bm7"/>Blessings all <chord name="A"/>mine with ten <chord name="D"/>thousands <chord name="E"/>be<chord name="A"/>side.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

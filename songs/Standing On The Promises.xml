@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T15:10:32.751990">
+  <properties>
+    <titles>
+      <title>Standing On The Promises</title>
+    </titles>
+    <copyright>Public Domain</copyright>
+    <ccliNo>31803</ccliNo>
+    <verseOrder>v1 v2 v3 c v4 c v5 c</verseOrder>
+    <themes>
+      <theme id="6">Assurance</theme>
+      <theme id="137">Trust</theme>
+      <theme id="103">Promise</theme>
+    </themes>
+    <comments>
+      <comment>2 Peter 1:4</comment>
+    </comments>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line><chord name="G"/>Standing on the promises of Christ, my King!</line>
+        <line><chord name="C"/>Through eternal ages let His <chord name="G"/>praises ring;</line>
+        <line><chord name="G"/>"Glory in the highest!" I will shout and sing,</line>
+        <line>Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line><chord name="G"/>Standing on the promises that cannot fail,</line>
+        <line><chord name="C"/>When the howling storms of doubt and <chord name="G"/>fears assail,</line>
+        <line><chord name="G"/>By the living Word of God I shall prevail,</line>
+        <line>Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line><chord name="G"/>Standing on the promises, I now can see</line>
+        <line><chord name="C"/>Perfect, present cleansing in the <chord name="G"/>blood for me;</line>
+        <line><chord name="G"/>Standing in the liberty where Christ makes free,</line>
+        <line>Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.</line>
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <line><chord name="G"/>Standing on the promises of Christ the Lord,</line>
+        <line><chord name="C"/>Bound to Him eternally by <chord name="G"/>love's strong cord,</line>
+        <line><chord name="G"/>Overcoming daily with the Spirit's sword,</line>
+        <line>Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.</line>
+      </lines>
+    </verse>
+    <verse name="v5">
+      <lines>
+        <line><chord name="G"/>Standing on the promises, I cannot fall,</line>
+        <line><chord name="C"/>List'ning every moment to the <chord name="G"/>Spirit's call,</line>
+        <line><chord name="G"/>Resting in my Saviour as my All-in-All,</line>
+        <line>Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.</line>
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        <line><chord name="G"/>Standing, <chord name="C"/>stan<chord name="Em"/>ding,</line>
+        <line><chord name="D"/>Standing on the promises of <chord name="G"/>Christ my <chord name="C"/>Sav<chord name="G"/>iour;</line>
+        <line>Standing, <chord name="C"/>standing</line>
+        <line>I'm <chord name="G"/>standing on the <chord name="Dsus"/>promi<chord name="D"/>ses of <chord name="G"/>God.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

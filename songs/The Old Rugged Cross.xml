@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:08:59.292388">
+  <properties>
+    <titles>
+      <title>The Old Rugged Cross</title>
+    </titles>
+    <authors>
+      <author>George Bennard</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>19722</ccliNo>
+    <themes>
+      <theme id="7">Atonement</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>On a <chord name="A"/>hill far away stood an <chord name="D"/>old rugged cross, The <chord name="E7"/>emblem of suff'ring and <chord name="A"/>shame;</line>
+        <line>And I <chord name="A"/>love that old cross where the <chord name="D"/>dearest and best, For a <chord name="E7"/>world of lost sinners was <chord name="A"/>slain.</line>
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        <line>So I'll <chord name="E7"/>cherish the old rugged <chord name="A"/>cross,</line>
+        <line>Till my <chord name="D"/>trophies at last I lay <chord name="A"/>down;</line>
+        <line>I will <chord name="A"/>cling to the old rugged <chord name="D"/>cross,</line>
+        <line>And ex<chord name="A"/>change it some <chord name="E7"/>day for a <chord name="A"/>crown.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line>Oh that <chord name="A"/>old rugged cross, so de<chord name="D"/>spised by the world, Has a <chord name="E7"/>wondrous attraction for <chord name="A"/>me;</line>
+        <line>For the <chord name="A"/>dear Lamb of God left His <chord name="A"/>glory above, To <chord name="E7"/>bear it to dark Calva<chord name="A"/>ry.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line>In the <chord name="A"/>old rugged cross, stained with <chord name="D"/>blood so divine, A <chord name="E7"/>wondrous beauty I <chord name="A"/>see;</line>
+        <line>For twas <chord name="A"/>on that old cross Jesus <chord name="D"/>suffered and died, To <chord name="E7"/>pardon and sanctify <chord name="A"/>me.</line>
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <line>To the <chord name="A"/>old rugged cross I will <chord name="D"/>ever be true, Its <chord name="E7"/>shame and reproach gladly <chord name="A"/>bear;</line>
+        <line>Then He'll <chord name="A"/>call me some day to my <chord name="D"/>home far away, Where his <chord name="E7"/>glory forever I'll <chord name="A"/>share.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

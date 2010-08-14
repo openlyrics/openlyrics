@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:01:17.155820">
+  <properties>
+    <titles>
+      <title>Crown Him With Many Crowns</title>
+    </titles>
+    <authors>
+      <author>Godfrey Thring</author>
+      <author>Matthew Bridges</author>
+    </authors>
+    <ccliNo>2647528</ccliNo>
+    <themes>
+      <theme id="99">Praise</theme>
+      <theme id="2">Adoration</theme>
+      <theme id="140">Victory</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line><chord name="C"/>Crown Him with <chord name="Am"/>many <chord name="F"/>crowns, the <chord name="Em"/>Lamb u<chord name="F"/>pon His <chord name="Gsus"/>throne;</line>
+        <line><chord name="G"/>Hark <chord name="C"/>how the <chord name="Am"/>heavenly <chord name="D"/>anthem <chord name="G"/>drowns, <chord name="C"/>all <chord name="G"/>music <chord name="D"/>but its <chord name="G"/>own;</line>
+        <line>A<chord name="C"/>wake my soul and <chord name="F"/>sing, of <chord name="D"/>Him who died for <chord name="G"/>Thee,</line>
+        <line>And <chord name="C"/>hail Him <chord name="F"/>as Thy <chord name="Dm7"/>matchless <chord name="C"/>King through <chord name="Dm7"/>all e<chord name="G"/>terni<chord name="C"/>ty.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line><chord name="C"/>Crown Him the <chord name="Am"/>Lord of <chord name="F"/>life, who <chord name="Em"/>triumphed <chord name="F"/>o’er the <chord name="Gsus"/>grave;</line>
+        <line><chord name="G"/>And <chord name="C"/>rose vic<chord name="Am"/>torious <chord name="D"/>in the <chord name="G"/>strife, <chord name="C"/>for <chord name="G"/>those He <chord name="D"/>came to <chord name="G"/>save;</line>
+        <line>His <chord name="C"/>glories now we <chord name="F"/>sing, who <chord name="D"/>died and rose on <chord name="G"/>high,</line>
+        <line>Who <chord name="C"/>died e<chord name="F"/>ternal <chord name="Dm7"/>life to <chord name="C"/>bring and <chord name="Dm7"/>lives that <chord name="G"/>death may <chord name="C"/>die.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line><chord name="C"/>Crown Him the <chord name="Am"/>Lord of <chord name="F"/>love, be<chord name="Em"/>hold His <chord name="F"/>hands and <chord name="Gsus"/>side;</line>
+        <line><chord name="G"/>Rich <chord name="C"/>wounds yet <chord name="Am"/>visi<chord name="D"/>ble a<chord name="G"/>bove, <chord name="C"/>in <chord name="G"/>beauty <chord name="D"/>glori<chord name="G"/>fied;</line>
+        <line>All <chord name="C"/>hail Redeemer <chord name="F"/>hail, for <chord name="D"/>Thou hast died for <chord name="G"/>me,</line>
+        <line>Thy <chord name="C"/>praise shall <chord name="F"/>never, <chord name="Dm7"/>never <chord name="C"/>fail, through<chord name="Dm7"/>out e<chord name="G"/>terni<chord name="C"/>ty.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>
