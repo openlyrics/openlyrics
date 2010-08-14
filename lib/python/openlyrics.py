@@ -622,7 +622,10 @@ class Line(object):
     
     # TODO allow creating empty Line() object without ElementTree 'elem'
     def __init__(self, elem):
-        self.markup = _element_contents_to_string(elem)
+        if isinstance(elem, (str,unicode)):
+            self.markup = elem
+        else:
+            self.markup = _element_contents_to_string(elem)
     
     def _get_text(self):
         'Get the text for this line.'
