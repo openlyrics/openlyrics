@@ -532,7 +532,7 @@ class Theme(object):
     
 # Verse element and subelements
 
-class Verse(object):
+class Verse(list, object):
     '''
     A verse for a song.
     '''
@@ -542,7 +542,6 @@ class Verse(object):
         self.lang = None
         self.translit = None
         self.name = None
-        self.lines = []
     
     def _from_xml(self, tree, namespace):
         'Convert to XML.'
@@ -552,7 +551,7 @@ class Verse(object):
         for lines_elem in tree.findall(_path(u'lines', namespace)):
             lines = Lines()
             lines._from_xml(lines_elem, namespace)
-            self.lines.append(lines)
+            self.append(lines)
     
     def _to_xml(self):
         'Create the XML element.'
@@ -563,7 +562,7 @@ class Verse(object):
             verse.set(u'lang', self.lang)
         if self.translit:
             verse.set(u'translit', self.translit)
-        for lines in self.lines:
+        for lines in self:
             verse.append(lines._to_xml())
         return verse
 
@@ -572,7 +571,7 @@ class Verse(object):
 
     def __unicode__(self):
         'Return a unicode representation.'
-        return u''.join(unicode(l) for l in self.lines)
+        return u''.join(unicode(l) for l in self)
 
 
 class Lines(list, object):
