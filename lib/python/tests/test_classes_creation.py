@@ -23,18 +23,20 @@ import openlyrics
 
 from tests import paths, patterns
 
+EMPTY = len([]) # == 0, length of empty list
+
 
 def test_props_values(test_case, props):
     test = test_case
     p = props
 
     # List types
-    test.assertEqual([], p.titles)
-    test.assertEqual([], p.authors)
-    test.assertEqual([], p.songbooks)
-    test.assertEqual([], p.themes)
-    test.assertEqual([], p.comments)
-    test.assertEqual([], p.verse_order)
+    test.assertEqual(EMPTY, len(p.titles))
+    test.assertEqual(EMPTY, len(p.authors))
+    test.assertEqual(EMPTY, len(p.songbooks))
+    test.assertEqual(EMPTY, len(p.themes))
+    test.assertEqual(EMPTY, len(p.comments))
+    test.assertEqual(EMPTY, len(p.verse_order))
 
     # String Types
     test.assertEqual(u'', p.release_date)
@@ -56,7 +58,7 @@ class InitSongClassTestCase(unittest.TestCase):
         s = openlyrics.Song()
 
         self.assertEqual(u'0.7', s._version)
-        self.assertEqual([], s.verses)
+        self.assertEqual(EMPTY, len(s)) # no Verse present
         self.assertEqual(u'OpenLyrics Python Library 0.1', s.createdIn)
         self.assertEqual(u'OpenLyrics Python Library 0.1', s.modifiedIn)
         self.assertEqual(u'', s.modifiedDate)
@@ -113,7 +115,7 @@ class InitLyricsClassesTestCase(unittest.TestCase):
     def test_Lines(self):
         l = openlyrics.Lines()
         # TODO Do we need to do this, now that l.lines became l?
-        self.assertEqual([], l)
+        self.assertEqual(EMPTY, len(l))
 
     def test_Line(self):
         l = openlyrics.Line()

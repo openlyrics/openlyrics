@@ -69,22 +69,20 @@ def parse(filename):
     return song
 
 
-class Song(object):
+class Song(list):
     '''
-    Definition of an song.
+    Definition of an song. Song is a list of verses (class Verse).
     '''
     
     def __init__(self, filename=None):
         'Create the instance.'
         self.__ns = OLYR_NS
         self._version = OLYR_VERSION
-        
-        self.verses = []
-        self.props = Properties()
-        
         self.createdIn = OLYR_CREATED_IN
         self.modifiedIn = OLYR_MODIFIED_IN
         self.modifiedDate = u''
+        
+        self.props = Properties()
 
         if filename:
             self.parse(filename)
@@ -119,11 +117,12 @@ class Song(object):
         
         self.props._from_xml(tree, self.__ns)
         
-        self.verses = []
+        #self.verses = []
         for verse_elem in tree.findall(_path(u'lyrics/verse',self.__ns)):
             verse = Verse()
             verse._from_xml(verse_elem, self.__ns)
-            self.verses.append(verse)
+            # Song is a list of verses
+            self.append(verse)
     
     def _to_xml(self, pretty_print=True, update_metadata=True):
         'Convert to XML.'
@@ -147,7 +146,7 @@ class Song(object):
         root.append(props)
         
         lyrics_elem = etree.Element(u'lyrics')
-        for verse in self.verses:
+        for verse in self:
             lyrics_elem.append(verse._to_xml())
         root.append(lyrics_elem)
         
@@ -587,7 +586,6 @@ class Lines(list):
         'Convert to XML.'
         for line_elem in elem.findall(_path(u'line', namespace)):
             # TODO: This returns the outer element, but it should not.
-            
             self.append( Line(line_elem.text) )
     
     def _to_xml(self):
