@@ -71,7 +71,7 @@ def parse(filename):
 
 class Song(list):
     '''
-    Definition of an song. Song is a list of verses (class Verse).
+    Definition of an song. Song is a list of Verse objects.
     '''
     
     def __init__(self, filename=None):
@@ -95,7 +95,7 @@ class Song(list):
     def write(self, filename, pretty_print=True, update_metadata=True):
         'Save to a file.'
         tree = self._to_xml(pretty_print, update_metadata)
-        # argument 'encoding' adds xml declaration:
+        # argument 'encoding' adds xml declaration like:
         # <?xml version='1.0' encoding='UTF-8'?>
         tree.write(filename, encoding=u'UTF-8')
     
@@ -145,10 +145,9 @@ class Song(list):
         props = self.props._to_xml()
         root.append(props)
         
-        lyrics_elem = etree.Element(u'lyrics')
+        lyrics_elem = etree.SubElement(root, u'lyrics')
         for verse in self:
             lyrics_elem.append(verse._to_xml())
-        root.append(lyrics_elem)
         
         #TODO: Verses
 
@@ -533,7 +532,7 @@ class Theme(object):
 
 class Verse(list):
     '''
-    A verse for a song.
+    A verse for a song. A verse is a list of Line objects.
     '''
     
     def __init__(self):
@@ -547,10 +546,12 @@ class Verse(list):
         self.name = tree.get(u'name', None)
         self.lang = tree.get(u'lang', None)
         self.translit = tree.get(u'translit', None)
-        for lines_elem in tree.findall(_path(u'lines', namespace)):
-            lines = Lines()
-            lines._from_xml(lines_elem, namespace)
-            self.append(lines)
+
+        for ls_elem in tree.findall(_path(u'lines', namespace)):
+            part = ls_elem.get(u'part', None)
+            for l_elem in ls_elem.findall(_path(u'line', namespace)):
+                line = Line(l_elem.text, part)
+                self.append(line)
     
     def _to_xml(self):
         'Create the XML element.'
@@ -561,8 +562,20 @@ class Verse(list):
             verse.set(u'lang', self.lang)
         if self.translit:
             verse.set(u'translit', self.translit)
-        for lines in self:
-            verse.append(lines._to_xml())
+        # init <lines> element
+        part = self[0].part
+        ls_elem = etree.SubElement(verse, 'lines')
+        if part: ls_elem.set('part', part)
+        
+        for line in self:
+            # start new <lines> section
+            if part != line.part:
+                part = line.part
+                ls_elem = etree.SubElement(verse, 'lines')
+                if part: ls_elem.set('part', part)
+            l_elem = etree.SubElement(ls_elem, 'line')
+            l_elem.text = line.text
+
         return verse
 
     def __str__(self):
@@ -572,38 +585,6 @@ class Verse(list):
         'Return a unicode representation.'
         return u''.join(unicode(l) for l in self)
 
-
-class Lines(list):
-    '''
-    A container for Line objects and element <lines>.
-    '''
-    
-    def __init__(self):
-        'Create the instance.'
-        pass
-    
-    def _from_xml(self, elem, namespace):
-        'Convert to XML.'
-        for line_elem in elem.findall(_path(u'line', namespace)):
-            # TODO: This returns the outer element, but it should not.
-            self.append( Line(line_elem.text) )
-    
-    def _to_xml(self):
-        'Create the XML element.'
-        lines_elem = etree.Element('lines')
-        for line in self:
-            line_elem = etree.Element('line')
-            line_elem.text = line.text
-            lines_elem.append(line_elem)
-        return lines_elem
-    
-    def __str__(self):
-        'Return a string representation.'
-        return unicode(self).encode('UTF-8') 
-    
-    def __unicode__(self):
-        'Return a unicode representation.'
-        return u'\n'.join(unicode(l) for l in self)
 
 # TODO add chords handling - use good internal representation
 
