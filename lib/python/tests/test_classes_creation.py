@@ -114,11 +114,11 @@ class InitLyricsClassesTestCase(unittest.TestCase):
         l = openlyrics.Lines()
         # TODO Do we need to do this, now that l.lines became l?
         self.assertEqual([], l)
-        self.assertEqual(u'', l.part)
 
-    # FIXME add tests for initialization of Line class
     def test_Line(self):
-        pass
+        l = openlyrics.Line()
+        self.assertEqual(u'', l.text)
+        self.assertEqual(None, l.part)
 
 
 def suite():

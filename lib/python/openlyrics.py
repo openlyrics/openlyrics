@@ -581,11 +581,10 @@ class Lines(list):
     
     def __init__(self):
         'Create the instance.'
-        self.part = u''
+        pass
     
     def _from_xml(self, elem, namespace):
         'Convert to XML.'
-        self.part = elem.get(u'part', u'')
         for line_elem in elem.findall(_path(u'line', namespace)):
             # TODO: This returns the outer element, but it should not.
             
