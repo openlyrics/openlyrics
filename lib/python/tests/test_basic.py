@@ -23,6 +23,8 @@ import openlyrics
 
 from tests import paths, patterns
 
+EMPTY = len([]) # == 0, length of empty list
+
 
 class ParsingTestCase(unittest.TestCase):
 
@@ -43,25 +45,22 @@ class ParsingTestCase(unittest.TestCase):
 
         # verse order
         order = song.props.verse_order
-        self.assertEqual([], order)
-
-        # verses
-        verses = song.verses
+        self.assertEqual(EMPTY, len(order))
 
         # verse count
-        self.assertEqual(len(verses), 3)
+        self.assertEqual(3, len(song))
 
         # verse name
-        self.assertEqual(u'v1', verses[0].name)
-        self.assertEqual(u'v2', verses[1].name)
-        self.assertEqual(u'v3', verses[2].name)
+        self.assertEqual(u'v1', song[0].name)
+        self.assertEqual(u'v2', song[1].name)
+        self.assertEqual(u'v3', song[2].name)
 
         # lines count
-        for ver in verses:
+        for ver in song:
             self.assertEqual(4, len(ver[0]))
 
         # verse content
-        lines = verses[1][0]
+        lines = song[1][0]
         lst = [u'Have we trials and temptations? Is there trouble anywhere?',
             u'We should never be discouraged, Take it to the Lord in prayer.',
             u'Can we find a friend so faithful? Who will all our sorrows share?',
@@ -84,26 +83,23 @@ class ParsingTestCase(unittest.TestCase):
         order = song.props.verse_order
         self.assertEqual([u'v1', u'c', u'v2', u'c', u'v3', u'c'], order)
 
-        # verses
-        verses = song.verses
-
         # verse count
-        self.assertEqual(len(verses), 4)
+        self.assertEqual(4, len(song))
 
         # verse name
-        self.assertEqual(u'v1', verses[0].name)
-        self.assertEqual(u'c', verses[1].name)
-        self.assertEqual(u'v2', verses[2].name)
-        self.assertEqual(u'v3', verses[3].name)
+        self.assertEqual(u'v1', song[0].name)
+        self.assertEqual(u'c', song[1].name)
+        self.assertEqual(u'v2', song[2].name)
+        self.assertEqual(u'v3', song[3].name)
 
         # lines count
-        self.assertEqual(6, len(verses[0][0]))
-        self.assertEqual(4, len(verses[1][0]))
-        self.assertEqual(6, len(verses[2][0]))
-        self.assertEqual(6, len(verses[3][0]))
+        self.assertEqual(6, len(song[0][0]))
+        self.assertEqual(4, len(song[1][0]))
+        self.assertEqual(6, len(song[2][0]))
+        self.assertEqual(6, len(song[3][0]))
 
         # 1st verse content
-        lines = verses[0][0]
+        lines = song[0][0]
         lst = [u'Mám zde přítele,',
             u'Pána Ježíše,',
             u'a na rámě jeho spoléhám;',
@@ -114,7 +110,7 @@ class ParsingTestCase(unittest.TestCase):
             self.assertEqual(lst[i], lines[i].text)
 
         # chorus content
-        lines = verses[1][0]
+        lines = song[1][0] # lines from Verse with index 0
         lst = [u'Boží rámě',
             u'je v soužení náš pevný hrad;',
             u'Boží rámě,',
