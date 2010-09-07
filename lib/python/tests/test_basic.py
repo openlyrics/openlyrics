@@ -57,16 +57,16 @@ class ParsingTestCase(unittest.TestCase):
 
         # lines count
         for ver in song:
-            self.assertEqual(4, len(ver[0]))
+            self.assertEqual(4, len(ver))
 
         # verse content
-        lines = song[1][0]
+        verse = song[1]
         lst = [u'Have we trials and temptations? Is there trouble anywhere?',
             u'We should never be discouraged, Take it to the Lord in prayer.',
             u'Can we find a friend so faithful? Who will all our sorrows share?',
             u'Jesus knows our every weakness; Take it to the Lord in prayer.',]
         for i in range(0, len(lst)):
-            self.assertEqual(lst[i], lines[i].text)
+            self.assertEqual(lst[i], verse[i].text)
 
     def check_localized_song(self, song):
         # test properties
@@ -93,13 +93,13 @@ class ParsingTestCase(unittest.TestCase):
         self.assertEqual(u'v3', song[3].name)
 
         # lines count
-        self.assertEqual(6, len(song[0][0]))
-        self.assertEqual(4, len(song[1][0]))
-        self.assertEqual(6, len(song[2][0]))
-        self.assertEqual(6, len(song[3][0]))
+        self.assertEqual(6, len(song[0]))
+        self.assertEqual(4, len(song[1]))
+        self.assertEqual(6, len(song[2]))
+        self.assertEqual(6, len(song[3]))
 
         # 1st verse content
-        lines = song[0][0]
+        verse = song[0]
         lst = [u'Mám zde přítele,',
             u'Pána Ježíše,',
             u'a na rámě jeho spoléhám;',
@@ -107,16 +107,16 @@ class ParsingTestCase(unittest.TestCase):
             u'pokoj nalézám,',
             u'když na rámě jeho spoléhám!',]
         for i in range(0, len(lst)):
-            self.assertEqual(lst[i], lines[i].text)
+            self.assertEqual(lst[i], verse[i].text)
 
         # chorus content
-        lines = song[1][0] # lines from Verse with index 0
+        verse = song[1] # lines from Verse with index 0
         lst = [u'Boží rámě',
             u'je v soužení náš pevný hrad;',
             u'Boží rámě,',
             u'uč se na ně vždycky spoléhat!',]
         for i in range(0, len(lst)):
-            self.assertEqual(lst[i], lines[i].text)
+            self.assertEqual(lst[i], verse[i].text)
 
     def readtext(self, filename):
         '''return unicode string'''
