@@ -594,11 +594,9 @@ class Lines(list):
     def _to_xml(self):
         'Create the XML element.'
         lines_elem = etree.Element('lines')
-        #if self.part:
-            #lines_elem.set('part', self.part)
         for line in self:
-            line = u'<line>%s</line>' % line.text
-            line_elem = etree.fromstring(line.encode('UTF-8'))
+            line_elem = etree.Element('line')
+            line_elem.text = line.text
             lines_elem.append(line_elem)
         return lines_elem
     
@@ -616,8 +614,6 @@ class Line(object):
     '''
     A single line in a group of lines.
     '''
-    
-    # TODO allow creating empty Line() object without ElementTree 'elem'
     def __init__(self, text=u'', part=None):
         self.text = text
         self.part = part
