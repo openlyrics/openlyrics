@@ -532,7 +532,7 @@ class Theme(object):
     
 # Verse element and subelements
 
-class Verse(list, object):
+class Verse(list):
     '''
     A verse for a song.
     '''
@@ -574,9 +574,9 @@ class Verse(list, object):
         return u''.join(unicode(l) for l in self)
 
 
-class Lines(list, object):
+class Lines(list):
     '''
-    A group of lines in a verse.
+    A container for Line objects and element <lines>.
     '''
     
     def __init__(self):
@@ -589,15 +589,15 @@ class Lines(list, object):
         for line_elem in elem.findall(_path(u'line', namespace)):
             # TODO: This returns the outer element, but it should not.
             
-            self.append( Line(line_elem) )
+            self.append( Line(line_elem.text) )
     
     def _to_xml(self):
         'Create the XML element.'
         lines_elem = etree.Element('lines')
-        if self.part:
-            lines_elem.set('part', self.part)
+        #if self.part:
+            #lines_elem.set('part', self.part)
         for line in self:
-            line = u'<line>%s</line>' % line.markup
+            line = u'<line>%s</line>' % line.text
             line_elem = etree.fromstring(line.encode('UTF-8'))
             lines_elem.append(line_elem)
         return lines_elem
@@ -610,40 +610,21 @@ class Lines(list, object):
         'Return a unicode representation.'
         return u'\n'.join(unicode(l) for l in self)
 
-# TODO add chords handling
+# TODO add chords handling - use good internal representation
 
 class Line(object):
     '''
     A single line in a group of lines.
     '''
-    __chords_regex = re.compile(u'<chord[^>]*>')
     
     # TODO allow creating empty Line() object without ElementTree 'elem'
-    def __init__(self, elem):
-        if isinstance(elem, (str,unicode)):
-            self.markup = elem
-        else:
-            self.markup = _element_contents_to_string(elem)
-    
-    def _get_text(self):
-        'Get the text for this line.'
-        return self.__chords_regex.sub(u'',self.markup)
-    
-    def _set_text(self, value):
-        'Set the text for this line. This removes all chords.'
-        self.markup = value
-    
-    text = property(_get_text, _set_text)
-    
-    def _get_chords(self):
-        'Get the chords for this line.'
-        self.__chords_regex.findall(self.markup)
-    
-    chords = property(_get_chords)
+    def __init__(self, text=u'', part=None):
+        self.text = text
+        self.part = part
     
     def __str__(self):
         'Return a string representation.'
-        return unicode(self).encode('UTF-8') 
+        return self.text.encode('UTF-8') 
     
     def __unicode__(self):
         'Return a unicode representation.'
@@ -665,32 +646,32 @@ def _path(tag, ns=None):
 
 
 # FIXME simplify handling mixed content of XML
-def _element_contents_to_string(elem):
-    '''
-    Get a string representation of an XML Element, excluding the tag of the
-    element itself.
-    '''
-    s = u""
-    if elem.text:
-        s += _get_text(elem)
-    if s == None:
-        s = u""
-    for sub in elem.getchildren():
-        # Strip the namespace
-        if sub.tag.partition("}")[2]:
-            tag = sub.tag.partition("}")[2]
-        else:
-            tag = sub.tag
-        subtag = ' '.join((tag,) + tuple('%s="%s"' % i for i in sub.items()))
-        subtext = _element_contents_to_string(sub)
-        if subtext:
-            s += '<%(tag)s>%(text)s</%(tag)s>' % \
-                    {"tag": subtag, 'text': subtext}
-        else:
-            s += "<%(tag)s />" % {'tag': subtag}
-        if sub.tail:
-            s += sub.tail
-    return unicode(s)
+#def _element_contents_to_string(elem):
+    #'''
+    #Get a string representation of an XML Element, excluding the tag of the
+    #element itself.
+    #'''
+    #s = u""
+    #if elem.text:
+        #s += _get_text(elem)
+    #if s == None:
+        #s = u""
+    #for sub in elem.getchildren():
+        ## Strip the namespace
+        #if sub.tag.partition("}")[2]:
+            #tag = sub.tag.partition("}")[2]
+        #else:
+            #tag = sub.tag
+        #subtag = ' '.join((tag,) + tuple('%s="%s"' % i for i in sub.items()))
+        #subtext = _element_contents_to_string(sub)
+        #if subtext:
+            #s += '<%(tag)s>%(text)s</%(tag)s>' % \
+                    #{"tag": subtag, 'text': subtext}
+        #else:
+            #s += "<%(tag)s />" % {'tag': subtag}
+        #if sub.tail:
+            #s += sub.tail
+    #return unicode(s)
 
 def _get_text(elem):
     'Strip whitespace and return the element'
