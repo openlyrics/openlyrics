@@ -114,9 +114,9 @@ class Song(list):
                 if verse.lang != lang: continue
             if translit is not None:
                 if verse.translit != translit: continue
-            yield verse
+            yield verse # return verses
     
-    def verses_by_order(lang=None, translit=None, verse_order=True):
+    def verses_by_order(self, lang=None, translit=None, use_order=True):
         '''
         Select verses by a language and return them ordered.
 
@@ -124,9 +124,27 @@ class Song(list):
         if this property is found. Otherwise they are returned in the order
         as it is in XML file.
 
+        If no 'lang' is given and the song contains verse translations,
+        verses with the same name and different translations are grouped.
+
         Return  generator with verses
         '''
-        pass
+        # If verse_order is not used, return verses as they are in XML
+        # but translations are grouped.
+        order = self.props.verse_order if use_order and \
+                self.props.verse_order else self.raw_verse_order
+
+        for name in order:
+            for v in self.verses_by_name(name, lang, translit):
+                yield v # return verses
+
+    @property
+    def raw_verse_order(self):
+        'Read verse order in XML'
+        order = []
+        for v in self:
+            if v.name not in order: order.append(v.name)
+        return order
     
     def _from_xml(self, tree):
         'Read from XML.'
