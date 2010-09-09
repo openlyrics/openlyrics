@@ -98,6 +98,35 @@ class Song(list):
         # argument 'encoding' adds xml declaration like:
         # <?xml version='1.0' encoding='UTF-8'?>
         tree.write(filename, encoding=u'UTF-8')
+
+    def verses_by_name(self, name, lang=None, translit=None):
+        '''
+        Select verses by its name.
+
+        When a song is localized into multiple languages and 'lang' is not
+        given, all localizations of verse containing 'name' are returned.
+
+        Return  generator with verses
+        '''
+        for verse in self:
+            if verse.name != name: continue
+            if lang is not None:
+                if verse.lang != lang: continue
+            if translit is not None:
+                if verse.translit != translit: continue
+            yield verse
+    
+    def verses_by_order(lang=None, translit=None, verse_order=True):
+        '''
+        Select verses by a language and return them ordered.
+
+        By default verses are ordered as specified in property 'verseOrder'
+        if this property is found. Otherwise they are returned in the order
+        as it is in XML file.
+
+        Return  generator with verses
+        '''
+        pass
     
     def _from_xml(self, tree):
         'Read from XML.'
@@ -117,7 +146,6 @@ class Song(list):
         
         self.props._from_xml(tree, self.__ns)
         
-        #self.verses = []
         for verse_elem in tree.findall(_path(u'lyrics/verse',self.__ns)):
             verse = Verse()
             verse._from_xml(verse_elem, self.__ns)
