@@ -217,6 +217,18 @@ class WeirdTestCase(unittest.TestCase):
         fname = paths.invalid_song
         self.assertRaises(SyntaxError, openlyrics.Song, fname)
      
+     
+class TranslatedSongTestCase(unittest.TestCase):
+    'Test parsing of song with translations'
+    def test_parsing(self):
+        s = openlyrics.Song(paths.translated_song)
+        # contains verses v1,c,b in English, Hebrew and transliteration
+        # of Hebrew to English
+        self.assertEqual(9, len(s))
+        # title in EN, HE, and transliteration to EN
+        self.assertEqual(3, len(s.props.titles))
+        
+
 
 def suite():
     suite = unittest.TestSuite()
@@ -225,6 +237,7 @@ def suite():
     suite.addTest(unittest.makeSuite(ParsingCp1250TestCase, 'test'))
     suite.addTest(unittest.makeSuite(UnicodeFilenameTestCase, 'test'))
     suite.addTest(unittest.makeSuite(WeirdTestCase, 'test'))
+    suite.addTest(unittest.makeSuite(TranslatedSongTestCase, 'test'))
 
     return suite
 
