@@ -36,7 +36,6 @@ def test_props_values(test_case, props):
     test.assertEqual(EMPTY, len(p.songbooks))
     test.assertEqual(EMPTY, len(p.themes))
     test.assertEqual(EMPTY, len(p.comments))
-    test.assertEqual(EMPTY, len(p.verse_order))
 
     # String Types
     test.assertEqual(u'', p.release_date)
@@ -63,6 +62,9 @@ class InitSongClassTestCase(unittest.TestCase):
         self.assertEqual(u'OpenLyrics Python Library 0.1', s.modifiedIn)
         self.assertEqual(u'', s.modifiedDate)
         self.assertNotEqual(None, s.props)
+
+        self.assertEqual(EMPTY, len(s.verse_order))
+        self.assertEqual(EMPTY, len(s.raw_verse_order))
 
         test_props_values(self, s.props)
 

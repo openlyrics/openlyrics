@@ -42,10 +42,9 @@ class ParsingTestCase(unittest.TestCase):
         self.assertEqual(u'Christ: Love/Mercy', song.props.themes[0].name)
         self.assertEqual(u'Fruit: Peace/Comfort', song.props.themes[1].name)
                     
-
         # verse order
-        order = song.props.verse_order
-        self.assertEqual(EMPTY, len(order))
+        self.assertEqual(EMPTY, len(song.verse_order))
+        self.assertEqual(u'v1 v2 v3', ' '.join(song.raw_verse_order))
 
         # verse count
         self.assertEqual(3, len(song))
@@ -77,11 +76,10 @@ class ParsingTestCase(unittest.TestCase):
         authors = [u'A.J. Showalter', u'E.A. Hoffman']
         for i in range(0, len(authors)):
             self.assertEqual(authors[i], song.props.authors[i].name)
-                    
 
         # verse order
-        order = song.props.verse_order
-        self.assertEqual([u'v1', u'c', u'v2', u'c', u'v3', u'c'], order)
+        self.assertEqual(u'v1 c v2 c v3 c', ' '.join(song.verse_order))
+        self.assertEqual(u'v1 c v2 v3', ' '.join(song.raw_verse_order))
 
         # verse count
         self.assertEqual(4, len(song))
