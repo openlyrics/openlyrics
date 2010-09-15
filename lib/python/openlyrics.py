@@ -17,7 +17,7 @@
 
 __version__ = '0.1'
 __all__ = ['fromstring', 'tostring', 'parse', 'Song', 'Properties',
-        'Title', 'Author', 'Songbook', 'Theme', 'Verse', 'Lines', 'Line']
+        'Title', 'Author', 'Songbook', 'Theme', 'Verse', 'Line']
 
 '''
 Provides a module to access OpenLyrics data type.
@@ -358,88 +358,72 @@ class Properties(object):
         props = etree.Element(u'properties')
         
         if len(self.titles):
-            elem1 = etree.Element(u'titles')
+            elem = etree.SubElement(props, u'titles')
             for t in self.titles:
-                elem1.append(t._to_xml())
-            props.append(elem1)
+                elem.append(t._to_xml())
         
         if len(self.authors):
-            elem1 = etree.Element(u'authors')
+            elem = etree.SubElement(props, u'authors')
             for a in self.authors:
-                elem1.append(a._to_xml())
-            props.append(elem1)
+                elem.append(a._to_xml())
         
         if len(self.songbooks):
-            elem1 = etree.Element(u'songbooks')
+            elem = etree.SubElement(props, u'songbooks')
             for s in self.songbooks:
-                elem1.append(s._to_xml())
-            props.append(elem1)
+                elem.append(s._to_xml())
         
         if len(self.themes):
-            elem1 = etree.Element(u'themes')
+            elem = etree.SubElement(props, u'themes')
             for t in self.themes:
-                elem1.append(t._to_xml())
-            props.append(elem1)
+                elem.append(t._to_xml())
         
         if len(self.comments):
-            elem1 = etree.Element(u'comments')
+            elem1 = etree.SubElement(props, u'comments')
             for c in self.comments:
-                elem2 = etree.Element(u'comment')
+                elem2 = etree.SubElement(elem1, u'comment')
                 elem2.text = str(c)
-                elem1.append(elem2)
-            props.append(elem1)
         
         if self.copyright:
-            elem1 = etree.Element(u'copyright')
-            elem1.text = str(self.copyright)
-            props.append(elem1)
+            elem = etree.SubElement(props, u'copyright')
+            elem.text = str(self.copyright)
         
         if self.ccli_no:
-            elem1 = etree.Element(u'ccliNo')
-            elem1.text = str(self.ccli_no)
-            props.append(elem1)
+            elem = etree.SubElement(props, u'ccliNo')
+            elem.text = str(self.ccli_no)
         
         if self.release_date:
-            elem1 = etree.Element(u'releaseDate')
-            elem1.text = str(self.release_date)
-            props.append(elem1)
+            elem = etree.SubElement(props, u'releaseDate')
+            elem.text = str(self.release_date)
         
         if self.tempo:
-            elem1 = etree.Element(u'tempo')
+            elem = etree.SubElement(props, u'tempo')
             if self.tempo_type:
-                elem1.set(u'type',self.tempo_type)
-            elem1.text = self.tempo
-            props.append(elem1)
+                elem.set(u'type',self.tempo_type)
+            elem.text = self.tempo
         
         if self.key:
-            elem1 = etree.Element(u'key')
-            elem1.text = self.key
-            props.append(elem1)
+            elem = etree.SubElement(props, u'key')
+            elem.text = self.key
         
         if self.keywords:
-            elem1 = etree.Element(u'keywords')
-            elem1.text = self.keywords
-            props.append(elem1)
+            elem = etree.SubElement(props, u'keywords')
+            elem.text = self.keywords
         
         if self.transposition and not self.transposition == u'0':
-            elem1 = etree.Element(u'transposition')
-            elem1.text = self.transposition
-            props.append(elem1)
+            elem = etree.SubElement(props, u'transposition')
+            elem.text = self.transposition
         
         if self.variant:
-            elem1 = etree.Element(u'variant')
-            elem1.text = self.variant
-            props.append(elem1)
+            elem = etree.SubElement(props, u'variant')
+            elem.text = self.variant
         
         if self.publisher:
-            elem1 = etree.Element(u'publisher')
-            elem1.text = self.publisher
-            props.append(elem1)
+            elem = etree.SubElement(props, u'publisher')
+            elem.text = self.publisher
         
         if self.custom_version:
-            elem1 = etree.Element(u'customVersion')
-            elem1.text = self.custom_version
-            props.append(elem1)
+            elem = etree.SubElement(props, u'customVersion')
+            elem.text = self.custom_version
         
         return props
     
@@ -654,7 +638,7 @@ class Line(object):
         return self.text
 
 
-# Various functions
+# Various functions private classes
 
 def _path(tag, ns=None):
     '''
