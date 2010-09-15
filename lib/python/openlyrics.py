@@ -72,6 +72,9 @@ def parse(filename):
 class Song(list):
     '''
     Definition of an song. Song is a list of Verse objects.
+
+    verse_order:      The verse names in a specified order.
+    raw_verse_order:  The verse names in order as in XML file.
     '''
     
     def __init__(self, filename=None):
@@ -81,6 +84,8 @@ class Song(list):
         self.createdIn = OLYR_CREATED_IN
         self.modifiedIn = OLYR_MODIFIED_IN
         self.modifiedDate = u''
+
+        self.verse_order = []
         
         self.props = Properties()
 
@@ -131,8 +136,8 @@ class Song(list):
         '''
         # If verse_order is not used, return verses as they are in XML
         # but translations are grouped.
-        order = self.props.verse_order if use_order and \
-                self.props.verse_order else self.raw_verse_order
+        order = self.verse_order if use_order and \
+                self.verse_order else self.raw_verse_order
 
         for name in order:
             for v in self.verses_by_name(name, lang, translit):
@@ -164,6 +169,10 @@ class Song(list):
         
         self.props._from_xml(tree, self.__ns)
         
+        elem = root.find(_path(u'properties/verseOrder', self.__ns))
+        if elem != None:
+            self.verse_order = _get_text(elem).strip().split()
+        
         for verse_elem in tree.findall(_path(u'lyrics/verse',self.__ns)):
             verse = Verse()
             verse._from_xml(verse_elem, self.__ns)
@@ -189,6 +198,11 @@ class Song(list):
         root.set(u'xmlns', self.__ns)
         
         props = self.props._to_xml()
+
+        if self.verse_order:
+            elem = etree.SubElement(props, u'verseOrder')
+            elem.text = ' '.join(self.verse_order)
+        
         root.append(props)
         
         lyrics_elem = etree.SubElement(root, u'lyrics')
@@ -238,7 +252,6 @@ class Properties(object):
     tempo_type:     Unit of measurement of tempo. Example: "bpm".
     key:            Key of a string. Example: "Eb".
     transposition:  Key adjustment up or down. Integer value.
-    verse_order:    The verse names in a specified order.
     variant:        A string describing differentiating it from other songs
                     with a common title.
     keywords:       
@@ -253,7 +266,6 @@ class Properties(object):
         self.songbooks = []
         self.themes = []
         self.comments = []
-        self.verse_order = []
         
         # String Types
         self.release_date = u''
@@ -320,10 +332,6 @@ class Properties(object):
         elem = tree.find(_path(u'properties/key',namespace))
         if elem != None:
             self.key = _get_text(elem)
-        
-        elem = tree.find(_path(u'properties/verseOrder',namespace))
-        if elem != None:
-            self.verse_order = _get_text(elem).strip().split()
         
         elem = tree.find(_path(u'properties/keywords',namespace))
         if elem != None:
@@ -406,11 +414,6 @@ class Properties(object):
         if self.key:
             elem1 = etree.Element(u'key')
             elem1.text = self.key
-            props.append(elem1)
-        
-        if self.verse_order:
-            elem1 = etree.Element(u'verseOrder')
-            elem1.text = ' '.join(self.verse_order)
             props.append(elem1)
         
         if self.keywords:
