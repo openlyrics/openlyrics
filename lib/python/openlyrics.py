@@ -640,6 +640,63 @@ class Line(object):
 
 # Various functions private classes
 
+class OrderedDict(dict):
+
+    def __init__(self, *args):
+        self._keys = []
+        super(OrderedDict, self).__init__(*args)
+
+    def __delitem__(self, key):
+        super(OrderedDict, self).__delitem__(key)
+        self._keys.remove(key)
+
+    def __setitem__(self, key, item):
+        super(OrderedDict, self).__setitem__(key, item)
+        if key not in self._keys: self._keys.append(key)
+
+    def clear(self):
+        super(OrderedDict, self).clear()
+        self._keys = []
+
+    def copy(self):
+        dict_copy = super(OrderedDict, self).copy()
+        dict_copy._keys = self._keys[:]
+        return dict_copy
+
+    def items(self):
+       return zip(self._keys, self.values())
+
+    def keys(self):
+        return self._keys
+
+    def pop(self):
+        return self._keys
+
+    def popitem(self):
+        try:
+            key = self._keys[-1]
+        except IndexError:
+            raise KeyError('dictionary is empty')
+
+        val = self[key]
+        del self[key]
+
+        return (key, val)
+
+    def setdefault(self, key, failobj = None):
+        super(OrderedDict, self).setdefault(key, failobj)
+        if key not in self._keys: self._keys.append(key)
+
+    def update(self, d):
+        super(OrderedDict, self).update(dict)
+        for key in d.keys():
+            if key not in self._keys: self._keys.apend(key)
+
+    def values(self):
+        return map(self.get, self._keys)
+
+
+
 def _path(tag, ns=None):
     '''
     If a namespace is on a document, the XPath requires {ns}tag for every
