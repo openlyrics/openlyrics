@@ -15,9 +15,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-__version__ = '0.1'
+__version__ = '0.2'
 __all__ = ['fromstring', 'tostring', 'parse', 'Song', 'Properties',
-        'Title', 'Author', 'Songbook', 'Theme', 'Verse', 'Line']
+        'Title', 'Author', 'Songbook', 'Theme', 'Verse', 'Language', 'Line']
 
 '''
 Provides a module to access OpenLyrics data type.
@@ -69,9 +69,65 @@ def parse(filename):
     return song
 
 
-class Song(list):
+class OrderedDict(dict):
+
+    def __init__(self, *args):
+        self._keys = []
+        super(OrderedDict, self).__init__(*args)
+
+    def __delitem__(self, key):
+        super(OrderedDict, self).__delitem__(key)
+        self._keys.remove(key)
+
+    def __setitem__(self, key, item):
+        super(OrderedDict, self).__setitem__(key, item)
+        if key not in self._keys: self._keys.append(key)
+
+    def clear(self):
+        super(OrderedDict, self).clear()
+        self._keys = []
+
+    def copy(self):
+        dict_copy = super(OrderedDict, self).copy()
+        dict_copy._keys = self._keys[:]
+        return dict_copy
+
+    def items(self):
+       return zip(self._keys, self.values())
+
+    def keys(self):
+        return self._keys
+
+    def pop(self):
+        return self._keys
+
+    def popitem(self):
+        try:
+            key = self._keys[-1]
+        except IndexError:
+            raise KeyError('dictionary is empty')
+
+        val = self[key]
+        del self[key]
+
+        return (key, val)
+
+    def setdefault(self, key, failobj = None):
+        super(OrderedDict, self).setdefault(key, failobj)
+        if key not in self._keys: self._keys.append(key)
+
+    def update(self, d):
+        super(OrderedDict, self).update(dict)
+        for key in d.keys():
+            if key not in self._keys: self._keys.apend(key)
+
+    def values(self):
+        return map(self.get, self._keys)
+
+
+class Song(OrderedDict):
     '''
-    Definition of an song. Song is a list of Verse objects.
+    Definition of an song. Song is an ordered dictionary with Verse objects.
 
     verse_order:      The verse names in a specified order.
     raw_verse_order:  The verse names in order as in XML file.
@@ -79,6 +135,7 @@ class Song(list):
     
     def __init__(self, filename=None):
         'Create the instance.'
+        super(Song, self).__init__()
         self.__ns = OLYR_NS
         self._version = OLYR_VERSION
         self.createdIn = OLYR_CREATED_IN
@@ -146,10 +203,10 @@ class Song(list):
     @property
     def raw_verse_order(self):
         'Read verse order in XML'
-        order = []
-        for v in self:
-            if v.name not in order: order.append(v.name)
-        return order
+        #order = []
+        #for v in self:
+            #if v.name not in order: order.append(v.name)
+        return self.keys()
     
     def _from_xml(self, tree):
         'Read from XML.'
@@ -174,10 +231,7 @@ class Song(list):
             self.verse_order = _get_text(elem).strip().split()
         
         for verse_elem in tree.findall(_path(u'lyrics/verse',self.__ns)):
-            verse = Verse()
-            verse._from_xml(verse_elem, self.__ns)
-            # Song is a list of verses
-            self.append(verse)
+            self._verse_from_xml(verse_elem)
     
     def _to_xml(self, pretty_print=True, update_metadata=True):
         'Convert to XML.'
@@ -205,17 +259,85 @@ class Song(list):
         
         root.append(props)
         
+        # convert Verses
         lyrics_elem = etree.SubElement(root, u'lyrics')
-        for verse in self:
-            lyrics_elem.append(verse._to_xml())
+        for name in self.keys():
+            for lang in self[name].keys():
+                words = self[name][lang]
+                verse = self._verse_to_xml(name, words, lang)
+                lyrics_elem.append(verse)
+                # Handle transliterations
+                if len(words.translit) > 0:
+                    for trans in words.translit.keys():
+                        lines = words.translit[trans]
+                        verse = self._verse_to_xml(name, lines, lang, trans)
+                        lyrics_elem.append(verse)
         
-        #TODO: Verses
 
         if pretty_print:
             self._indent(root)
         
         tree = etree.ElementTree(root)
         return tree
+
+    def _verse_from_xml(self, tree):
+        # Code 1
+        #name = verse_elem.get(u'name', None)
+        #verse = Verse()
+        #verse._from_xml(verse_elem, self.__ns)
+        # Song is a list of verses
+        #self[name] = verse
+
+        # Parse element 'song/lyrics/verse'
+        name = tree.get(u'name', None)
+        lang = tree.get(u'lang', None)
+        trans = tree.get(u'translit', None) # transliteration name
+
+        lines = []
+        for ls_elem in tree.findall(_path(u'lines', self.__ns)):
+            part = ls_elem.get(u'part', None)
+            for l_elem in ls_elem.findall(_path(u'line', self.__ns)):
+                line = Line(l_elem.text, part)
+                lines.append(line)
+
+        # Find right place for text
+
+        if self.get(name) is None:
+            # Verse with 'name' does not exits - create one
+            self[name] = Verse()
+        if self[name].get(lang) is None:
+            # Verse with 'name' does not have 'lang' translation - create one
+            self[name][lang] = Language()
+        translation = self[name][lang]
+        if trans and self[name][lang].translit.get(trans) is None:
+            # Text is transliteration
+            self[name][lang].translit[trans] = lines
+        else:
+            # Text is just translation
+            for l in lines: self[name][lang].append(l)
+
+    def _verse_to_xml(self, name, lines, lang=None, translit=None):
+        'Create the XML element.'
+        verse = etree.Element('verse')
+        if name: verse.set(u'name', name)
+        if lang: verse.set(u'lang', lang)
+        if translit: verse.set(u'translit', translit)
+
+        # init <lines> element
+        part = lines[0].part
+        ls_elem = etree.SubElement(verse, 'lines')
+        if part: ls_elem.set('part', part)
+        
+        for line in lines:
+            # start new <lines> section
+            if part != line.part:
+                part = line.part
+                ls_elem = etree.SubElement(verse, 'lines')
+                if part: ls_elem.set('part', part)
+            l_elem = etree.SubElement(ls_elem, 'line')
+            l_elem.text = line.text
+
+        return verse
 
     # http://infix.se/2007/02/06/gentlemen-indent-your-xml
     def _indent(self, elem, level=0):
@@ -563,53 +685,63 @@ class Theme(object):
     
 # Verse element and subelements
 
-class Verse(list):
+class Verse(dict):
     '''
     A verse for a song. A verse is a list of Line objects.
     '''
+    pass
     
-    def __init__(self):
-        'Create the instance.'
-        self.lang = None
-        self.translit = None
-        self.name = None
+    #def __init__(self):
+        #'Create the instance.'
+        #self.lang = None
+        #self.translit = None
+        #self.name = None
     
-    def _from_xml(self, tree, namespace):
-        'Convert to XML.'
-        self.name = tree.get(u'name', None)
-        self.lang = tree.get(u'lang', None)
-        self.translit = tree.get(u'translit', None)
+    #def _from_xml(self, tree, namespace):
+        #'Convert to XML.'
+        #self.name = tree.get(u'name', None)
+        #self.lang = tree.get(u'lang', None)
+        #self.translit = tree.get(u'translit', None)
 
-        for ls_elem in tree.findall(_path(u'lines', namespace)):
-            part = ls_elem.get(u'part', None)
-            for l_elem in ls_elem.findall(_path(u'line', namespace)):
-                line = Line(l_elem.text, part)
-                self.append(line)
+        #for ls_elem in tree.findall(_path(u'lines', namespace)):
+            #part = ls_elem.get(u'part', None)
+            #for l_elem in ls_elem.findall(_path(u'line', namespace)):
+                #line = Line(l_elem.text, part)
+                #self.append(line)
     
-    def _to_xml(self):
-        'Create the XML element.'
-        verse = etree.Element('verse')
-        if self.name:
-            verse.set(u'name', self.name)
-        if self.lang:
-            verse.set(u'lang', self.lang)
-        if self.translit:
-            verse.set(u'translit', self.translit)
+    #def _to_xml(self):
+        #'Create the XML element.'
+        #verse = etree.Element('verse')
+        #if self.name:
+            #verse.set(u'name', self.name)
+        #if self.lang:
+            #verse.set(u'lang', self.lang)
+        #if self.translit:
+            #verse.set(u'translit', self.translit)
         # init <lines> element
-        part = self[0].part
-        ls_elem = etree.SubElement(verse, 'lines')
-        if part: ls_elem.set('part', part)
+        #part = self[0].part
+        #ls_elem = etree.SubElement(verse, 'lines')
+        #if part: ls_elem.set('part', part)
         
-        for line in self:
+        #for line in self:
             # start new <lines> section
-            if part != line.part:
-                part = line.part
-                ls_elem = etree.SubElement(verse, 'lines')
-                if part: ls_elem.set('part', part)
-            l_elem = etree.SubElement(ls_elem, 'line')
-            l_elem.text = line.text
+            #if part != line.part:
+                #part = line.part
+                #ls_elem = etree.SubElement(verse, 'lines')
+                #if part: ls_elem.set('part', part)
+            #l_elem = etree.SubElement(ls_elem, 'line')
+            #l_elem.text = line.text
 
-        return verse
+        #return verse
+
+
+class Language(list):
+    '''
+    A translation of a verse including also transliterations
+    '''
+    def __init__(self, lst=[]):
+        self += lst
+        self.translit = dict()
 
     def __str__(self):
         return unicode(self).encode('UTF-8') 
@@ -623,7 +755,7 @@ class Verse(list):
 
 class Line(object):
     '''
-    A single line in a group of lines.
+    A single line.
     '''
     def __init__(self, text=u'', part=None):
         self.text = text
@@ -639,61 +771,6 @@ class Line(object):
 
 
 # Various functions private classes
-
-class OrderedDict(dict):
-
-    def __init__(self, *args):
-        self._keys = []
-        super(OrderedDict, self).__init__(*args)
-
-    def __delitem__(self, key):
-        super(OrderedDict, self).__delitem__(key)
-        self._keys.remove(key)
-
-    def __setitem__(self, key, item):
-        super(OrderedDict, self).__setitem__(key, item)
-        if key not in self._keys: self._keys.append(key)
-
-    def clear(self):
-        super(OrderedDict, self).clear()
-        self._keys = []
-
-    def copy(self):
-        dict_copy = super(OrderedDict, self).copy()
-        dict_copy._keys = self._keys[:]
-        return dict_copy
-
-    def items(self):
-       return zip(self._keys, self.values())
-
-    def keys(self):
-        return self._keys
-
-    def pop(self):
-        return self._keys
-
-    def popitem(self):
-        try:
-            key = self._keys[-1]
-        except IndexError:
-            raise KeyError('dictionary is empty')
-
-        val = self[key]
-        del self[key]
-
-        return (key, val)
-
-    def setdefault(self, key, failobj = None):
-        super(OrderedDict, self).setdefault(key, failobj)
-        if key not in self._keys: self._keys.append(key)
-
-    def update(self, d):
-        super(OrderedDict, self).update(dict)
-        for key in d.keys():
-            if key not in self._keys: self._keys.apend(key)
-
-    def values(self):
-        return map(self.get, self._keys)
 
 
 

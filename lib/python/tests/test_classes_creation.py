@@ -58,8 +58,8 @@ class InitSongClassTestCase(unittest.TestCase):
 
         self.assertEqual(u'0.7', s._version)
         self.assertEqual(EMPTY, len(s)) # no Verse present
-        self.assertEqual(u'OpenLyrics Python Library 0.1', s.createdIn)
-        self.assertEqual(u'OpenLyrics Python Library 0.1', s.modifiedIn)
+        self.assertEqual(u'OpenLyrics Python Library 0.2', s.createdIn)
+        self.assertEqual(u'OpenLyrics Python Library 0.2', s.modifiedIn)
         self.assertEqual(u'', s.modifiedDate)
         self.assertNotEqual(None, s.props)
 
@@ -108,10 +108,16 @@ class InitLyricsClassesTestCase(unittest.TestCase):
 
     def test_Verse(self):
         v = openlyrics.Verse()
-        self.assertEqual(None, v.lang)
-        self.assertEqual(None, v.translit)
-        self.assertEqual(None, v.name)
-        self.assertEqual(EMPTY, len(v)) # no text line is present
+        #self.assertEqual(None, v.lang)
+        #self.assertEqual(None, v.translit)
+        #self.assertEqual(None, v.name)
+        #self.assertEqual(EMPTY, len(v)) # no text line is present
+
+    def test_Language(self):
+        lang = openlyrics.Language()
+        # by default no lines with words
+        self.assertEqual(EMPTY, len(lang))
+        self.assertEqual(EMPTY, len(lang.translit.keys()))
 
     def test_Line(self):
         l = openlyrics.Line()
