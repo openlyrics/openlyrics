@@ -43,7 +43,6 @@ def suite():
     suite = unittest.TestSuite()
     suite.addTest(test_basic.suite())
     suite.addTest(test_classes_creation.suite())
-    #suite.addTest(test_verses.suite())
 
     return suite
 
