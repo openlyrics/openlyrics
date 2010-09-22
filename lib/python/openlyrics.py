@@ -267,9 +267,9 @@ class Song(OrderedDict):
                 verse = self._verse_to_xml(name, words, lang)
                 lyrics_elem.append(verse)
                 # Handle transliterations
-                if len(words.translit) > 0:
-                    for trans in words.translit.keys():
-                        lines = words.translit[trans]
+                if len(words.transliterations) > 0:
+                    for trans in words.transliterations.keys():
+                        lines = words.transliterations[trans]
                         verse = self._verse_to_xml(name, lines, lang, trans)
                         lyrics_elem.append(verse)
         
@@ -309,9 +309,9 @@ class Song(OrderedDict):
             # Verse with 'name' does not have 'lang' translation - create one
             self[name][lang] = Language()
         translation = self[name][lang]
-        if trans and self[name][lang].translit.get(trans) is None:
+        if trans and self[name][lang].transliterations.get(trans) is None:
             # Text is transliteration
-            self[name][lang].translit[trans] = lines
+            self[name][lang].transliterations[trans] = lines
         else:
             # Text is just translation
             for l in lines: self[name][lang].append(l)
@@ -740,8 +740,8 @@ class Language(list):
     A translation of a verse including also transliterations
     '''
     def __init__(self, lst=[]):
-        self += lst
-        self.translit = dict()
+        for i in lst: self.append(i)
+        self.transliterations = dict()
 
     def __str__(self):
         return unicode(self).encode('UTF-8') 
