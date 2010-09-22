@@ -100,16 +100,15 @@ class ParsingTestCase(unittest.TestCase):
             u'v něm své stěstí mám,',
             u'pokoj nalézám,',
             u'když na rámě jeho spoléhám!',]
-        for line, li in zip(lines, song['v1'][None]):
+        for line, l in zip(lines, song['v1'][None]):
             self.assertEqual(line, l.text)
 
         # chorus content
-        verse = song[1] # lines from Verse with index 0
         lines = [u'Boží rámě',
             u'je v soužení náš pevný hrad;',
             u'Boží rámě,',
             u'uč se na ně vždycky spoléhat!',]
-        for line, li in zip(lines, song['c'][None]):
+        for line, l in zip(lines, song['c'][None]):
             self.assertEqual(line, l.text)
 
     def readtext(self, filename):
@@ -215,10 +214,27 @@ class WeirdTestCase(unittest.TestCase):
 class TranslatedSongTestCase(unittest.TestCase):
     'Test parsing of song with translations'
     def test_parsing(self):
+        # Contains 3 verses v1,c,b, every verse is in English and Hebrew.
+        # Hebrew contains also transliteration to English of Hebrew to English
         s = openlyrics.Song(paths.translated_song)
-        # contains verses v1,c,b in English, Hebrew and transliteration
-        # of Hebrew to English
-        self.assertEqual(9, len(s))
+
+        # verse count
+        self.assertEqual(3, len(s))
+
+        line_counts = [3, 3, 5]
+
+        # lines count in EN translation
+        for name, count in zip(s.raw_verse_order, line_counts):
+            self.assertEqual(count, len(s[name]['en']))
+
+        # lines count in HE translation
+        for name, count in zip(s.raw_verse_order, line_counts):
+            self.assertEqual(count, len(s[name]['he']))
+
+        # lines count in EN transliteration of Hebrew
+        for name, count in zip(s.raw_verse_order, line_counts):
+            self.assertEqual(count, len(s[name]['he'].translit['en']))
+
         # title in EN, HE, and transliteration to EN
         self.assertEqual(3, len(s.props.titles))
         
@@ -227,11 +243,11 @@ class TranslatedSongTestCase(unittest.TestCase):
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ParsingAsciiTestCase, 'test'))
-    #suite.addTest(unittest.makeSuite(ParsingUtf8TestCase, 'test'))
-    #suite.addTest(unittest.makeSuite(ParsingCp1250TestCase, 'test'))
-    #suite.addTest(unittest.makeSuite(UnicodeFilenameTestCase, 'test'))
-    #suite.addTest(unittest.makeSuite(WeirdTestCase, 'test'))
-    #suite.addTest(unittest.makeSuite(TranslatedSongTestCase, 'test'))
+    suite.addTest(unittest.makeSuite(ParsingUtf8TestCase, 'test'))
+    suite.addTest(unittest.makeSuite(ParsingCp1250TestCase, 'test'))
+    suite.addTest(unittest.makeSuite(UnicodeFilenameTestCase, 'test'))
+    suite.addTest(unittest.makeSuite(WeirdTestCase, 'test'))
+    suite.addTest(unittest.makeSuite(TranslatedSongTestCase, 'test'))
 
     return suite
 

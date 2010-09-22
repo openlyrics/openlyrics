@@ -111,7 +111,7 @@ class InitLyricsClassesTestCase(unittest.TestCase):
         #self.assertEqual(None, v.lang)
         #self.assertEqual(None, v.translit)
         #self.assertEqual(None, v.name)
-        #self.assertEqual(EMPTY, len(v)) # no text line is present
+        self.assertEqual(EMPTY, len(v)) # no text line is present
 
     def test_Language(self):
         lang = openlyrics.Language()
