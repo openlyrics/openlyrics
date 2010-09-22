@@ -233,7 +233,7 @@ class TranslatedSongTestCase(unittest.TestCase):
 
         # lines count in EN transliteration of Hebrew
         for name, count in zip(s.raw_verse_order, line_counts):
-            self.assertEqual(count, len(s[name]['he'].translit['en']))
+            self.assertEqual(count, len(s[name]['he'].transliterations['en']))
 
         # title in EN, HE, and transliteration to EN
         self.assertEqual(3, len(s.props.titles))
