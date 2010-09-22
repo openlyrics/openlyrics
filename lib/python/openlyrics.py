@@ -161,51 +161,9 @@ class Song(OrderedDict):
         # <?xml version='1.0' encoding='UTF-8'?>
         tree.write(filename, encoding=u'UTF-8')
 
-    def verses_by_name(self, name, lang=None, translit=None):
-        '''
-        Select verses by its name.
-
-        When a song is localized into multiple languages and 'lang' is not
-        given, all localizations of verse containing 'name' are returned.
-
-        Return  generator with verses
-        '''
-        for verse in self:
-            if verse.name != name: continue
-            if lang is not None:
-                if verse.lang != lang: continue
-            if translit is not None:
-                if verse.translit != translit: continue
-            yield verse # return verses
-    
-    def verses_by_order(self, lang=None, translit=None, use_order=True):
-        '''
-        Select verses by a language and return them ordered.
-
-        By default verses are ordered as specified in property 'verseOrder'
-        if this property is found. Otherwise they are returned in the order
-        as it is in XML file.
-
-        If no 'lang' is given and the song contains verse translations,
-        verses with the same name and different translations are grouped.
-
-        Return  generator with verses
-        '''
-        # If verse_order is not used, return verses as they are in XML
-        # but translations are grouped.
-        order = self.verse_order if use_order and \
-                self.verse_order else self.raw_verse_order
-
-        for name in order:
-            for v in self.verses_by_name(name, lang, translit):
-                yield v # return verses
-
     @property
     def raw_verse_order(self):
-        'Read verse order in XML'
-        #order = []
-        #for v in self:
-            #if v.name not in order: order.append(v.name)
+        'Read verse order as in XML'
         return self.keys()
     
     def _from_xml(self, tree):
@@ -272,7 +230,6 @@ class Song(OrderedDict):
                         lines = words.transliterations[trans]
                         verse = self._verse_to_xml(name, lines, lang, trans)
                         lyrics_elem.append(verse)
-        
 
         if pretty_print:
             self._indent(root)
@@ -281,13 +238,6 @@ class Song(OrderedDict):
         return tree
 
     def _verse_from_xml(self, tree):
-        # Code 1
-        #name = verse_elem.get(u'name', None)
-        #verse = Verse()
-        #verse._from_xml(verse_elem, self.__ns)
-        # Song is a list of verses
-        #self[name] = verse
-
         # Parse element 'song/lyrics/verse'
         name = tree.get(u'name', None)
         lang = tree.get(u'lang', None)
@@ -687,52 +637,12 @@ class Theme(object):
 
 class Verse(dict):
     '''
-    A verse for a song. A verse is a list of Line objects.
+    A verse for a song. A verse is a dict with translations.
     '''
-    pass
-    
-    #def __init__(self):
-        #'Create the instance.'
-        #self.lang = None
-        #self.translit = None
-        #self.name = None
-    
-    #def _from_xml(self, tree, namespace):
-        #'Convert to XML.'
-        #self.name = tree.get(u'name', None)
-        #self.lang = tree.get(u'lang', None)
-        #self.translit = tree.get(u'translit', None)
-
-        #for ls_elem in tree.findall(_path(u'lines', namespace)):
-            #part = ls_elem.get(u'part', None)
-            #for l_elem in ls_elem.findall(_path(u'line', namespace)):
-                #line = Line(l_elem.text, part)
-                #self.append(line)
-    
-    #def _to_xml(self):
-        #'Create the XML element.'
-        #verse = etree.Element('verse')
-        #if self.name:
-            #verse.set(u'name', self.name)
-        #if self.lang:
-            #verse.set(u'lang', self.lang)
-        #if self.translit:
-            #verse.set(u'translit', self.translit)
-        # init <lines> element
-        #part = self[0].part
-        #ls_elem = etree.SubElement(verse, 'lines')
-        #if part: ls_elem.set('part', part)
-        
-        #for line in self:
-            # start new <lines> section
-            #if part != line.part:
-                #part = line.part
-                #ls_elem = etree.SubElement(verse, 'lines')
-                #if part: ls_elem.set('part', part)
-            #l_elem = etree.SubElement(ls_elem, 'line')
-            #l_elem.text = line.text
-
-        #return verse
+    @property
+    def langs(self):
+        'Return available translations of verse.'
+        return self.keys()
 
 
 class Language(list):
