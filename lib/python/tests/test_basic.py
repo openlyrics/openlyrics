@@ -54,17 +54,17 @@ class ParsingTestCase(unittest.TestCase):
         for name in u'v1 v2 v3'.split():
             self.assertNotEqual(None, song.get(name))
 
-        # lines count - default (None - not specified) language
+        # lines count - default ('' - not specified) language
         for ver in song.values():
-            self.assertEqual(4, len(ver[None]))
+            self.assertEqual(4, len(ver['']))
 
         # verse content
         lines = [u'Have we trials and temptations? Is there trouble anywhere?',
             u'We should never be discouraged, Take it to the Lord in prayer.',
             u'Can we find a friend so faithful? Who will all our sorrows share?',
             u'Jesus knows our every weakness; Take it to the Lord in prayer.',]
-        # 'None' - translation for verse was not specified
-        for line, l in zip(lines, song['v2'][None]):
+        # '' - translation for verse was not specified
+        for line, l in zip(lines, song['v2']['']):
             self.assertEqual(line, l.text)
 
     def check_localized_song(self, song):
@@ -91,7 +91,7 @@ class ParsingTestCase(unittest.TestCase):
         # lines count
         counts = {'v1':6, 'c':4, 'v2':6, 'v3':6}
         for name, count in counts.items():
-            self.assertEqual(count, len(song[name][None]))
+            self.assertEqual(count, len(song[name]['']))
 
         # 1st verse content
         lines = [u'Mám zde přítele,',
@@ -100,7 +100,7 @@ class ParsingTestCase(unittest.TestCase):
             u'v něm své stěstí mám,',
             u'pokoj nalézám,',
             u'když na rámě jeho spoléhám!',]
-        for line, l in zip(lines, song['v1'][None]):
+        for line, l in zip(lines, song['v1']['']):
             self.assertEqual(line, l.text)
 
         # chorus content
@@ -108,7 +108,7 @@ class ParsingTestCase(unittest.TestCase):
             u'je v soužení náš pevný hrad;',
             u'Boží rámě,',
             u'uč se na ně vždycky spoléhat!',]
-        for line, l in zip(lines, song['c'][None]):
+        for line, l in zip(lines, song['c']['']):
             self.assertEqual(line, l.text)
 
     def readtext(self, filename):
@@ -242,12 +242,12 @@ class TranslatedSongTestCase(unittest.TestCase):
         self.assertEqual(3, len(s.props.themes))
 
         # test select titles and themes by lang
-        self.assertEqual(0, len(s.props.titles_by_lang(None)))
+        self.assertEqual(0, len(s.props.titles_by_lang('')))
         self.assertEqual(1, len(s.props.titles_by_lang('en')))
         self.assertEqual(2, len(s.props.titles_by_lang('he')))
         self.assertEqual(1, len(s.props.titles_by_lang('he', 'en')))
 
-        self.assertEqual(0, len(s.props.themes_by_lang(None)))
+        self.assertEqual(0, len(s.props.themes_by_lang('')))
         self.assertEqual(1, len(s.props.themes_by_lang('en')))
         self.assertEqual(2, len(s.props.themes_by_lang('he')))
         self.assertEqual(1, len(s.props.themes_by_lang('he', 'en')))
