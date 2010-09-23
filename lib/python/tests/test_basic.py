@@ -237,6 +237,20 @@ class TranslatedSongTestCase(unittest.TestCase):
 
         # title in EN, HE, and transliteration to EN
         self.assertEqual(3, len(s.props.titles))
+
+        # theme in EN, HE, and transliteration to EN
+        self.assertEqual(3, len(s.props.themes))
+
+        # test select titles and themes by lang
+        self.assertEqual(0, len(s.props.titles_by_lang(None)))
+        self.assertEqual(1, len(s.props.titles_by_lang('en')))
+        self.assertEqual(2, len(s.props.titles_by_lang('he')))
+        self.assertEqual(1, len(s.props.titles_by_lang('he', 'en')))
+
+        self.assertEqual(0, len(s.props.themes_by_lang(None)))
+        self.assertEqual(1, len(s.props.themes_by_lang('en')))
+        self.assertEqual(2, len(s.props.themes_by_lang('he')))
+        self.assertEqual(1, len(s.props.themes_by_lang('he', 'en')))
         
 
 
