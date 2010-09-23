@@ -351,20 +351,41 @@ class Properties(object):
         self.copyright = u''
         self.publisher = u''
         self.custom_version = u''
+
+    def titles_by_lang(self, lang, translit=None):
+        'Select titles only in one language.'
+        return self._items_by_lang(self.titles, lang, translit)
+        
+    def themes_by_lang(self, lang, translit=None):
+        'Select themes only in one language.'
+        return self._items_by_lang(self.themes, lang, translit)
+
+    def _items_by_lang(self, items, lang, translit):
+        'Select titles or themes in one language.'
+        selection = []
+        for i in items:
+            if i.lang == lang:
+                if translit is None:
+                    # transliteration doesn't matter
+                    selection.append(i)
+                elif i.translit == translit:
+                    selection.append(i)
+        return selection
         
     def _from_xml(self, tree, namespace):
         'Load xml into the properties.'
         self.titles = []
         elem = tree.findall(_path(u'properties/titles/title',namespace))
         for el in elem:
-            title = Title(_get_text(el), el.get(u'lang',None))
+            title = Title(_get_text(el), el.get(u'lang',None),
+                    el.get(u'translit',None))
             self.titles.append(title)
         
         self.authors = []
         elem = tree.findall(_path(u'properties/authors/author',namespace))
         for el in elem:
             author = Author(_get_text(el), el.get(u'type',None),
-                            el.get(u'lang',None))
+                    el.get(u'lang',None))
             self.authors.append(author)
         
         self.songbooks = []
@@ -376,7 +397,8 @@ class Properties(object):
         self.themes = []
         elem = tree.findall(_path(u'properties/themes/theme',namespace))
         for el in elem:
-            theme = Theme(_get_text(el), el.get(u'id',None), el.get(u'lang',None))
+            theme = Theme(_get_text(el), el.get(u'id',None),
+                    el.get(u'lang',None), el.get(u'translit',None))
             self.themes.append(theme)
         
         self.comments = []
@@ -506,18 +528,23 @@ class Title(object):
     
     text:  The title as a string.
     lang:  A language code, in the format of "xx", or "xx-YY".
+    translit:  A transliteration language code, in the format of "xx",
+                    or "xx-YY".
     '''
     
-    def __init__(self, text=u'', lang=None):
+    def __init__(self, text=u'', lang=None, translit=None):
         'Create the instance.'
         self.text = text
         self.lang = lang
+        self.translit = translit
     
     def _to_xml(self):
         'Create the XML element.'
         elem = etree.Element(u'title')
         if self.lang:
             elem.set(u'lang', self.lang)
+        if self.translit:
+            elem.set(u'translit', self.translit)
         elem.text = self.text
         return elem
     
@@ -606,13 +633,16 @@ class Theme(object):
     id:    A number from the standardized CCLI list.
                  http://www.ccli.com.au/owners/themes.cfm
     lang:  A language code, in the format of "xx", or "xx-YY".
+    translit:  A transliteration language code, in the format of "xx",
+                or "xx-YY".
     '''
     
-    def __init__(self, name=u'', id=None, lang=None):
+    def __init__(self, name=u'', id=None, lang=None, translit=None):
         'Create the instance.'
         self.name = name
         self.id = id
         self.lang = lang
+        self.translit = translit
     
     def _to_xml(self):
         'Create the XML element.'
@@ -621,6 +651,8 @@ class Theme(object):
             elem.set(u'id',self.id)
         if self.lang:
             elem.set(u'lang',self.lang)
+        if self.translit:
+            elem.set(u'translit',self.translit)
         elem.text = self.name
         return elem
     
