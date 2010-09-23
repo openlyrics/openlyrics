@@ -240,7 +240,7 @@ class Song(OrderedDict):
     def _verse_from_xml(self, tree):
         # Parse element 'song/lyrics/verse'
         name = tree.get(u'name', None)
-        lang = tree.get(u'lang', None)
+        lang = tree.get(u'lang', '')
         trans = tree.get(u'translit', None) # transliteration name
 
         lines = []
@@ -266,7 +266,7 @@ class Song(OrderedDict):
             # Text is just translation
             for l in lines: self[name][lang].append(l)
 
-    def _verse_to_xml(self, name, lines, lang=None, translit=None):
+    def _verse_to_xml(self, name, lines, lang='', translit=None):
         'Create the XML element.'
         verse = etree.Element('verse')
         if name: verse.set(u'name', name)
