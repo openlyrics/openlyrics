@@ -115,7 +115,7 @@ class InitLyricsClassesTestCase(unittest.TestCase):
         lang = openlyrics.Language()
         # by default no lines with words
         self.assertEqual(EMPTY, len(lang))
-        self.assertEqual(EMPTY, len(lang.transliterations))
+        self.assertEqual(EMPTY, len(lang.translits)) # no transliteration
 
     def test_Line(self):
         l = openlyrics.Line()
