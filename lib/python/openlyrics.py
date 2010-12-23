@@ -148,6 +148,12 @@ class Song(OrderedDict):
 
         if filename:
             self.parse(filename)
+
+    def __setitem__(self, key, value):
+        # new verse can be created from multiple types
+        if type(value) in (str, unicode, list):
+            value = Verse(value)
+        super(Song, self).__setitem__(key, value)
     
     def parse(self, filename):
         'Read from the file.'
@@ -219,17 +225,20 @@ class Song(OrderedDict):
         
         # convert Verses
         lyrics_elem = etree.SubElement(root, u'lyrics')
-        for name in self.keys():
-            for lang in self[name].keys():
-                words = self[name][lang]
-                verse = self._verse_to_xml(name, words, lang)
+        for n in self.raw_verse_order:
+            # add default translation (unspecified)
+            verse = self._verse_to_xml(n, self[n])
+            lyrics_elem.append(verse)
+            # add translations
+            for l in self[n].langs:
+                # add default transliteration (unspecified)
+                verse = self._verse_to_xml(name, self[n].lang[l], l)
                 lyrics_elem.append(verse)
                 # Handle transliterations
-                if len(words.transliterations) > 0:
-                    for trans in words.transliterations.keys():
-                        lines = words.transliterations[trans]
-                        verse = self._verse_to_xml(name, lines, lang, trans)
-                        lyrics_elem.append(verse)
+                for t in self[n].lang[l].translits:
+                    lines = self[n].lang[l].translit[t]
+                    verse = self._verse_to_xml(n, lines, l, t)
+                    lyrics_elem.append(verse)
 
         if pretty_print:
             self._indent(root)
@@ -240,7 +249,7 @@ class Song(OrderedDict):
     def _verse_from_xml(self, tree):
         # Parse element 'song/lyrics/verse'
         name = tree.get(u'name', None)
-        lang = tree.get(u'lang', '')
+        lang = tree.get(u'lang', None)
         trans = tree.get(u'translit', None) # transliteration name
 
         lines = []
@@ -250,23 +259,28 @@ class Song(OrderedDict):
                 line = Line(l_elem.text, part)
                 lines.append(line)
 
-        # Find right place for text
+        ## Find right place for text
 
-        if self.get(name) is None:
-            # Verse with 'name' does not exits - create one
-            self[name] = Verse()
-        if self[name].get(lang) is None:
-            # Verse with 'name' does not have 'lang' translation - create one
-            self[name][lang] = Language()
-        translation = self[name][lang]
-        if trans and self[name][lang].transliterations.get(trans) is None:
+        # Verse with 'name' does not exits - create one
+        if self.get(name) is None: self[name] = Verse()
+        position = self[name]
+
+        # Text is translation
+        if lang:
+            # Verse 'name' does not have 'lang' translation - create one
+            if position.lang.get(lang) is None:
+                position.lang[lang] = Language()
+            position = position.lang[lang]
             # Text is transliteration
-            self[name][lang].transliterations[trans] = lines
-        else:
-            # Text is just translation
-            for l in lines: self[name][lang].append(l)
+            if trans:
+                # Translation 'lang' does not have transliteration - create one
+                if position.translit.get(trans) is None:
+                    position.translit[trans] = [] # empty list
+                position = position.translit[trans]
+        # Add text to right position
+        for l in lines: position.append(l)
 
-    def _verse_to_xml(self, name, lines, lang='', translit=None):
+    def _verse_to_xml(self, name, lines, lang=None, translit=None):
         'Create the XML element.'
         verse = etree.Element('verse')
         if name: verse.set(u'name', name)
@@ -667,23 +681,54 @@ class Theme(object):
     
 # Verse element and subelements
 
-class Verse(dict):
+class Verse(list):
     '''
-    A verse for a song. A verse is a dict with translations.
+    A verse for a song. A verse is a list of lines and with attribute
+    containing translations.
     '''
+    def __init__(self, text=[]):
+        '''
+        Verse can be created from several object types: str, unicode,
+        list of str or unicode or list of Line()
+        '''
+        if type(text) in (str, unicode):
+            text = text.splitlines()
+        for l in text:
+            if type(l) is not Line:
+                l = Line(l)
+            self.append(l)
+
+        self.lang = LanguageDict()
+
     @property
     def langs(self):
         'Return available translations of verse.'
-        return self.keys()
+        return self.lang.keys()
 
+
+class LanguageDict(dict):
+    '''
+    Allows parsing text of language or transliteration from several data types.
+    '''
+    def __setitem__(self, key, value):
+        if type(value) in (str, unicode):
+            value = value.splitlines()
+        if type(value) is list:
+            value = Language(value)
+        super(LanguageDict, self).__setitem__(key, value)
+  
 
 class Language(list):
     '''
     A translation of a verse including also transliterations
     '''
-    def __init__(self, lst=[]):
-        for i in lst: self.append(i)
-        self.transliterations = dict()
+    def __init__(self, text=[]):
+        for l in text:
+            if type(l) is not Line:
+                l = Line(l)
+            self.append(l)
+
+        self.translit = TranslitDict()
 
     def __str__(self):
         return unicode(self).encode('UTF-8') 
@@ -691,6 +736,26 @@ class Language(list):
     def __unicode__(self):
         'Return a unicode representation.'
         return u''.join(unicode(l) for l in self)
+
+    @property
+    def translits(self):
+        '''Return available transliterations of current language.'''
+        return self.translit.keys()
+
+
+class TranslitDict(dict):
+    '''
+    Allows parsing text of transliteration from several data types.
+    '''
+    def __setitem__(self, key, value):
+        if type(value) in (str, unicode):
+            value = value.splitlines()
+        lines = []
+        for v in value:
+            if v is not Line:
+                v = Line(v)
+            lines.append(v)
+        super(TranslitDict, self).__setitem__(key, lines)
 
 
 # TODO add chords handling - use good internal representation
@@ -700,8 +765,9 @@ class Line(object):
     A single line.
     '''
     def __init__(self, text=u'', part=None):
-        self.text = text
-        self.part = part
+        '''Text can be string or unicode'''
+        self.text = unicode(text)
+        self.part = unicode(part) if type(part) is str else part
     
     def __str__(self):
         'Return a string representation.'

@@ -54,17 +54,17 @@ class ParsingTestCase(unittest.TestCase):
         for name in u'v1 v2 v3'.split():
             self.assertNotEqual(None, song.get(name))
 
-        # lines count - default ('' - not specified) language
+        # lines count - default (not specified) language
         for ver in song.values():
-            self.assertEqual(4, len(ver['']))
+            self.assertEqual(4, len(ver))
 
         # verse content
         lines = [u'Have we trials and temptations? Is there trouble anywhere?',
             u'We should never be discouraged, Take it to the Lord in prayer.',
             u'Can we find a friend so faithful? Who will all our sorrows share?',
             u'Jesus knows our every weakness; Take it to the Lord in prayer.',]
-        # '' - translation for verse was not specified
-        for line, l in zip(lines, song['v2']['']):
+        # translation for verse was not specified
+        for line, l in zip(lines, song['v2']):
             self.assertEqual(line, l.text)
 
     def check_localized_song(self, song):
@@ -91,7 +91,7 @@ class ParsingTestCase(unittest.TestCase):
         # lines count
         counts = {'v1':6, 'c':4, 'v2':6, 'v3':6}
         for name, count in counts.items():
-            self.assertEqual(count, len(song[name]['']))
+            self.assertEqual(count, len(song[name]))
 
         # 1st verse content
         lines = [u'Mám zde přítele,',
@@ -100,7 +100,7 @@ class ParsingTestCase(unittest.TestCase):
             u'v něm své stěstí mám,',
             u'pokoj nalézám,',
             u'když na rámě jeho spoléhám!',]
-        for line, l in zip(lines, song['v1']['']):
+        for line, l in zip(lines, song['v1']):
             self.assertEqual(line, l.text)
 
         # chorus content
@@ -108,7 +108,7 @@ class ParsingTestCase(unittest.TestCase):
             u'je v soužení náš pevný hrad;',
             u'Boží rámě,',
             u'uč se na ně vždycky spoléhat!',]
-        for line, l in zip(lines, song['c']['']):
+        for line, l in zip(lines, song['c']):
             self.assertEqual(line, l.text)
 
     def readtext(self, filename):
@@ -225,15 +225,15 @@ class TranslatedSongTestCase(unittest.TestCase):
 
         # lines count in EN translation
         for name, count in zip(s.raw_verse_order, line_counts):
-            self.assertEqual(count, len(s[name]['en']))
+            self.assertEqual(count, len(s[name].lang['en']))
 
         # lines count in HE translation
         for name, count in zip(s.raw_verse_order, line_counts):
-            self.assertEqual(count, len(s[name]['he']))
+            self.assertEqual(count, len(s[name].lang['he']))
 
         # lines count in EN transliteration of Hebrew
         for name, count in zip(s.raw_verse_order, line_counts):
-            self.assertEqual(count, len(s[name]['he'].transliterations['en']))
+            self.assertEqual(count, len(s[name].lang['he'].translit['en']))
 
         # title in EN, HE, and transliteration to EN
         self.assertEqual(3, len(s.props.titles))
