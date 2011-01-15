@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-'''Unit test creating OpenLyrics objects and their initial values.'''
+'''Tests to check initial values of OpenLyrics objects'''
 
 import unittest
 import openlyrics

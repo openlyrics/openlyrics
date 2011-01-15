@@ -16,111 +16,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-'''Unit test example using unittest module.'''
+'''Core tests'''
 
 import unittest
 import openlyrics
 
 from tests import paths, patterns
+from parsing import ParsingCheckerTestCase
 
 EMPTY = len([]) # == 0, length of empty list
 
 
-class ParsingTestCase(unittest.TestCase):
-
-    def check_english_song(self, song):
-        # test properties
-
-        titles = [u'What A Friend We Have In Jesus']
-        for title, t in zip(titles, song.props.titles):
-            self.assertEqual(title, t.text)
-        authors = [u'Joseph M. Scriven', u'Charles C. Convers']
-        for author, a in zip(authors, song.props.authors):
-            self.assertEqual(author, a.name)
-        self.assertEqual(u'Public Domain', song.props.copyright)
-        self.assertEqual(u'27714', song.props.ccli_no)
-        themes = [u'Christ: Love/Mercy', u'Fruit: Peace/Comfort']
-        for theme, t in zip(themes, song.props.themes):
-            self.assertEqual(theme, t.name)
-                    
-        # verse order
-        self.assertEqual(EMPTY, len(song.verse_order))
-        self.assertEqual(u'v1 v2 v3', ' '.join(song.raw_verse_order))
-
-        # verse count
-        self.assertEqual(3, len(song))
-
-        # verse name
-        for name in u'v1 v2 v3'.split():
-            self.assertNotEqual(None, song.get(name))
-
-        # lines count - default (not specified) language
-        for ver in song.values():
-            self.assertEqual(4, len(ver))
-
-        # verse content
-        lines = [u'Have we trials and temptations? Is there trouble anywhere?',
-            u'We should never be discouraged, Take it to the Lord in prayer.',
-            u'Can we find a friend so faithful? Who will all our sorrows share?',
-            u'Jesus knows our every weakness; Take it to the Lord in prayer.',]
-        # translation for verse was not specified
-        for line, l in zip(lines, song['v2']):
-            self.assertEqual(line, l.text)
-
-    def check_localized_song(self, song):
-        # test properties
-
-        titles = [u'Mám zde přítele']
-        for title, t in zip(titles, song.props.titles):
-            self.assertEqual(title, t.text)
-        authors = [u'A.J. Showalter', u'E.A. Hoffman']
-        for author, a in zip(authors, song.props.authors):
-            self.assertEqual(author, a.name)
-
-        # verse order
-        self.assertEqual(u'v1 c v2 c v3 c', ' '.join(song.verse_order))
-        self.assertEqual(u'v1 c v2 v3', ' '.join(song.raw_verse_order))
-
-        # verse count
-        self.assertEqual(4, len(song))
-
-        # verse name
-        for name in u'v1 c v2 v3'.split():
-            self.assertNotEqual(None, song[name])
-
-        # lines count
-        counts = {'v1':6, 'c':4, 'v2':6, 'v3':6}
-        for name, count in counts.items():
-            self.assertEqual(count, len(song[name]))
-
-        # 1st verse content
-        lines = [u'Mám zde přítele,',
-            u'Pána Ježíše,',
-            u'a na rámě jeho spoléhám;',
-            u'v něm své stěstí mám,',
-            u'pokoj nalézám,',
-            u'když na rámě jeho spoléhám!',]
-        for line, l in zip(lines, song['v1']):
-            self.assertEqual(line, l.text)
-
-        # chorus content
-        lines = [u'Boží rámě',
-            u'je v soužení náš pevný hrad;',
-            u'Boží rámě,',
-            u'uč se na ně vždycky spoléhat!',]
-        for line, l in zip(lines, song['c']):
-            self.assertEqual(line, l.text)
-
-    def readtext(self, filename):
-        '''return unicode string'''
-        import codecs
-        f = codecs.open(filename, 'r', 'UTF-8')
-        text = f.read()
-        f.close()
-        return text
-
-
-class ParsingAsciiTestCase(ParsingTestCase):
+class ParsingAsciiTestCase(ParsingCheckerTestCase):
 
     def test_english_song(self):
         song = openlyrics.Song(paths.eng_song)
@@ -144,7 +51,7 @@ class ParsingAsciiTestCase(ParsingTestCase):
         self.assertNotEqual(patterns.prettyprint_eng_song, text_not_pretty)
 
 
-class ParsingUtf8TestCase(ParsingTestCase):
+class ParsingUtf8TestCase(ParsingCheckerTestCase):
 
     def test_localized_song(self):
         song = openlyrics.Song(paths.l10n_song)
@@ -168,7 +75,7 @@ class ParsingUtf8TestCase(ParsingTestCase):
         self.assertNotEqual(patterns.prettyprint_l10n_song, text_not_pretty)
 
 
-class ParsingCp1250TestCase(ParsingTestCase):
+class ParsingCp1250TestCase(ParsingCheckerTestCase):
 
     def test_localized_song(self):
         song = openlyrics.Song(paths.l10n_song_cp1250)

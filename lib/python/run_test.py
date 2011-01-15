@@ -25,7 +25,9 @@ import os
 import unittest
 from os import path
 
-from tests import test_basic, test_classes_creation, test_verses
+from tests import test_core
+from tests import test_default_values
+from tests import test_creating_song
 
 
 # use relative paths
@@ -41,8 +43,9 @@ sys.path.insert(0, '.')
 def suite():
 
     suite = unittest.TestSuite()
-    suite.addTest(test_basic.suite())
-    suite.addTest(test_classes_creation.suite())
+    suite.addTest(test_core.suite())
+    suite.addTest(test_default_values.suite())
+    suite.addTest(test_creating_song.suite())
 
     return suite
 
