@@ -232,7 +232,7 @@ class Song(OrderedDict):
             # add translations
             for l in self[n].langs:
                 # add default transliteration (unspecified)
-                verse = self._verse_to_xml(name, self[n].lang[l], l)
+                verse = self._verse_to_xml(n, self[n].lang[l], l)
                 lyrics_elem.append(verse)
                 # Handle transliterations
                 for t in self[n].lang[l].translits:
