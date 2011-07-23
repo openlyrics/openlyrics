@@ -262,7 +262,7 @@ u'''<?xml version='1.0' encoding='UTF-8'?>
 
 song_with_default_values = \
 u'''<?xml version='1.0' encoding='UTF-8'?>
-<song createdIn="OpenLyrics Python Library 0.1" modifiedDate="2010-06-04T21:51:57" modifiedIn="OpenLyrics Python Library 0.1" version="0.7" xmlns="http://openlyrics.info/namespace/2009/song">
+<song createdIn="OpenLyrics Python Library 0.2" modifiedDate="2010-06-04T21:51:57" modifiedIn="OpenLyrics Python Library 0.2" version="0.7" xmlns="http://openlyrics.info/namespace/2009/song">
   <properties />
   <lyrics />
 </song>'''
