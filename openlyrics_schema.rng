@@ -357,6 +357,11 @@
           <ref name="nonEmptyContent"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="break">
+          <value>optional</value>
+        </attribute>
+      </optional>
       <oneOrMore>
         <optional>
           <element name="comment">
