@@ -9,6 +9,9 @@
     <element name="song">
       <ref name="songAttributes"/>
       <ref name="properties"/>
+      <optional>
+        <ref name="format"/>
+      </optional>
       <ref name="lyrics"/>
     </element>
   </start>
@@ -69,6 +72,13 @@
       </interleave>
     </element>
   </define>
+
+  <define name="format">
+    <element name="format">
+        <ref name="formatTags"/>
+    </element>
+  </define>
+
 
   <define name="lyrics">
     <element name="lyrics">
@@ -295,6 +305,34 @@
     </element>
   </define>
 
+  <!-- FORMAT -->
+
+  <define name="formatTags">
+    <!-- Allow only one set of formatting tags for lyrics -->
+    <element name="tags">
+      <attribute name="application">
+        <ref name="nonEmptyContent"/>
+      </attribute>
+      <oneOrMore>
+        <ref name="formatTagsTag"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="formatTagsTag">
+    <element name="tag">
+      <attribute name="name">
+        <ref name="nonEmptyContent"/>
+      </attribute>
+      <element name="open">
+        <ref name="nonEmptyContent"/>
+      </element>
+      <element name="close">
+        <ref name="nonEmptyContent"/>
+      </element>
+    </element>
+  </define>
+
  <!-- LYRICS -->
 
   <define name="verse">
@@ -319,6 +357,11 @@
           <ref name="nonEmptyContent"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="break">
+          <value>optional</value>
+        </attribute>
+      </optional>
       <oneOrMore>
         <optional>
           <element name="comment">
@@ -330,6 +373,10 @@
           <zeroOrMore>
             <optional>
               <ref name="chord"/>
+            </optional>
+            <!-- allow tag 'tag' inside regular text - mixed content -->
+            <optional>
+              <ref name="tag"/>
             </optional>
             <text/>
           </zeroOrMore>
@@ -343,6 +390,16 @@
       <attribute name="name">
         <ref name="nonEmptyContent"/>
       </attribute>
+      <empty/>
+    </element>
+  </define>
+ 
+  <define name="tag">
+    <element name="tag">
+      <attribute name="name">
+        <ref name="nonEmptyContent"/>
+      </attribute>
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
  

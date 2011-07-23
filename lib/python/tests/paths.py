@@ -39,3 +39,6 @@ editing_l10n_song = join(SONGDIR, u'NotPrettyPrint - Mám zde přítele.xml')
 
 # filename contains Czech and Swedish characters
 unicode_filename = join(SONGDIR, u'UnicodeFilename - ěščřžýáíé åäö.xml')
+
+# song with localizations and transliteration
+translated_song = join(SONGDIR, u'Hava Nagila.xml')
