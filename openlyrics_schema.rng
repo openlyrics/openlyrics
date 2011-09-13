@@ -399,7 +399,12 @@
       <attribute name="name">
         <ref name="nonEmptyContent"/>
       </attribute>
-      <ref name="nonEmptyContent"/>
+      <!-- allow using more formatting tags for text -->
+      <!-- e.g. <tag name="bold"><tag name="red">my text</tag></tag> -->
+      <choice>
+        <ref name="nonEmptyContent"/>
+        <ref name="tag"/>
+      </choice>
     </element>
   </define>
  
