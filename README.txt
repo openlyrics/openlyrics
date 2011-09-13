@@ -1,4 +1,4 @@
-Open Lyrics
+OpenLyrics
 ===========
 
 OpenLyrics is a free, open XML standard for Christian worship songs.
