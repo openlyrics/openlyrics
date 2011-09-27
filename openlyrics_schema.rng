@@ -327,9 +327,13 @@
       <element name="open">
         <ref name="nonEmptyContent"/>
       </element>
-      <element name="close">
-        <ref name="nonEmptyContent"/>
-      </element>
+      <!-- Close element is optional. Formatting without text may be present.
+           e.g. <br/> -->
+      <optional>
+        <element name="close">
+          <ref name="nonEmptyContent"/>
+        </element>
+      </optional>
     </element>
   </define>
 
@@ -362,26 +366,10 @@
           <value>optional</value>
         </attribute>
       </optional>
-      <oneOrMore>
-        <optional>
-          <element name="comment">
-            <ref name="nonEmptyContent"/>
-          </element>
-        </optional>
-        <element name="line">
-          <!-- allow tag chord inside regular text - mixed content -->
-          <zeroOrMore>
-            <optional>
-              <ref name="chord"/>
-            </optional>
-            <!-- allow tag 'tag' inside regular text - mixed content -->
-            <optional>
-              <ref name="tag"/>
-            </optional>
-            <text/>
-          </zeroOrMore>
-        </element>
-      </oneOrMore>
+      <zeroOrMore>
+        <ref name="linesContent"/>
+      </zeroOrMore>
+      <ref name="linesContent"/>
     </element>
   </define>
  
@@ -402,8 +390,12 @@
       <!-- allow using more formatting tags for text -->
       <!-- e.g. <tag name="bold"><tag name="red">my text</tag></tag> -->
       <choice>
-        <ref name="nonEmptyContent"/>
-        <ref name="tag"/>
+        <oneOrMore>
+          <ref name="linesContent"/>
+        </oneOrMore>
+        <!-- Allow empty tag. Formatting without text may be present.
+             e.g. <tag name="br"/> -->
+        <empty/>
       </choice>
     </element>
   </define>
@@ -467,6 +459,29 @@
     <data type="string">
       <param name="minLength">1</param>
     </data>
+  </define>
+
+  <define name="linesContent">
+    <!-- allow tag 'tag' inside regular text - mixed content -->
+    <optional>
+      <ref name="tag"/>
+    </optional>
+    <!-- allow tag 'comment' inside regular text - mixed content -->
+    <optional>
+      <element name="comment">
+        <ref name="nonEmptyContent"/>
+      </element>
+    </optional>
+    <!-- allow tag 'chord' inside regular text - mixed content -->
+    <optional>
+      <ref name="chord"/>
+    </optional>
+    <text/>
+    <optional>
+      <element name="br">
+        <empty/>
+      </element>
+    </optional>
   </define>
 
 </grammar>
