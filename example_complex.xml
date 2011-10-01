@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <song xmlns="http://openlyrics.info/namespace/2009/song"
-      version="0.6"
+      version="0.8"
       createdIn="OpenLP 1.9.0"
       modifiedIn="ChangingSong 0.0.1"
-      modifiedDate="2008-11-28T13:15:30+01:00"><!-- date format: ISO 8601 -->
+      modifiedDate="2010-12-29T13:15:30+01:00"><!-- date format: ISO 8601 -->
   <properties>
     <titles>
       <title original="true" lang="en-US" >Amazing Grace</title>
@@ -60,61 +60,30 @@
 
   <lyrics>
     <verse name="v1" lang="en">
-      <lines>
-        <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
-      </lines>
-      <lines part="women">
-        <line>A b c</line>
-        <line>D e f</line>
-      </lines>
+      <lines>Amazing grace how sweet the sound that saved a wretch like me;</lines>
+      <lines part="women">A b c<br/>D e f</lines>
     </verse>
 
     <verse name="v1" lang="de">
-      <lines>
-        <line><chord name="B"/>Erstaunliche Ahmut, wie</line>
-      </lines>
+      <lines><chord name="B"/>Erstaunliche Ahmut, wie</lines>
     </verse>
 
     <verse name="c">
-      <lines>
-        <comment>any comment</comment>
-        <line>Line content.</line>
-      </lines>
+      <lines><comment>any comment</comment><br/>Line content.</lines>
     </verse>
 
     <verse name="v2" lang="en-US">
-      <lines part="men">
-        <comment>any text</comment>
-        <line>Amazing grace how sweet the sound that saved a wretch like me;</line>
-        <comment>any text</comment>
-        <line><chord name="D"/>Amazing grace how sweet <chord name="D"/>the sound that saved a wretch like me;<chord name="B7"/></line>
-        <line>Amazing grace<chord name="G7"/> how sweet the sound that saved a wretch like me;</line>
-      </lines>
-      <lines part="women">
-        <line>A b c</line>
-        <line/>
-        <line></line>
-        <line>D e f</line>
-      </lines>
+      <lines part="men"><comment>any text</comment><br/>Amazing grace how sweet the sound that saved a wretch like me;<br/><comment>any text</comment><br/><chord name="D"/>Amazing grace how sweet <chord name="D"/>the sound that saved a wretch like me;<chord name="B7"/><br/>Amazing grace<chord name="G7"/> how sweet the sound that saved a wretch like me;</lines>
+      <lines part="women">A b c<br/><br/>D e f</lines>
     </verse>
 
     <verse name="emptyline" lang="de">
-      <lines>
-        <line/>
-      </lines>
-      <lines>
-        <line/>
-        <line></line>
-        <line></line>
-        <line/>
-        <line/>
-      </lines>
+      <lines><br/></lines>
+      <lines><br/><br/><br/><br></br></lines>
     </verse>
 
     <verse name="e" lang="de">
-      <lines>
-        <line>This is text of ending.</line>
-      </lines>
+      <lines>This is text of ending.</lines>
     </verse>
 
   </lyrics>
