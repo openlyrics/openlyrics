@@ -1,3 +1,10 @@
+Release 0.8 (03 Oct 2010)
+=========================
+
+* add support for application specific formatting tags in <lines> element
+* drop element ``<line>``,  for line endings is used element <br/>
+
+
 Release 0.7 (24 Mar 2010)
 =========================
 

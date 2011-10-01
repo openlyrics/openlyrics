@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="OpenLP 1.9.7" modifiedIn="OpenLP 1.9.7" modifiedDate="2011-09-06T20:49:59">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="OpenLP 1.9.5" modifiedIn="OpenLP 1.9.5" modifiedDate="2011-09-06T20:49:59">
   <properties>
     <titles>
       <title>Jezu Kriste, štědrý kněže</title>
@@ -41,62 +41,33 @@
         <open>&lt;span style="-webkit-text-fill-color:green"&gt;</open>
         <close>&lt;/span&gt;</close>
       </tag>
+      <tag name="aq">
+        <open>&lt;span style="-webkit-text-fill-color:#10F7E2"&gt;</open>
+        <close>&lt;/span&gt;</close>
+      </tag>
+      <tag name="br">
+        <open>&lt;br&gt;</open>
+      </tag>
     </tags>
   </format>
   <lyrics>
     <verse name="v1">
-      <lines>
-        <line><tag name="r">Jezu Kriste</tag>, štědrý kněže,</line>
-        <line>s <tag name="bl">Otcem, Duchem</tag> jeden <tag name="y">Bože</tag>,</line>
-        <line>štědrost Tvá je naše zboží,</line>
-        <line>z <tag name="o"><tag name="st">Tvé</tag></tag> <tag name="it">milosti</tag>.</line>
-      </lines>
+      <lines><tag name="r">Jezu Kriste</tag>, štědrý kněže,<br/>s <tag name="bl">Otcem, Duchem</tag> jeden <tag name="y">Bože</tag>,<br/>štědrost Tvá je naše zboží,<br/>z <tag name="o"><tag name="st">Tvé</tag></tag> <tag name="it">milosti</tag>.</lines>
     </verse>
     <verse name="v2">
-      <lines>
-        <line><tag name="bl">Ty</tag> jsi v světě, bydlil s námi,</line>
-        <line>Tvé tělo trpělo rány</line>
-        <line>za nás za hříšné křesťany,</line>
-        <line>z <tag name="bl">Tvé</tag> milosti.</line>
-      </lines>
+      <lines><tag name="bl">Ty</tag> jsi v světě, bydlil s námi,<br/>Tvé tělo trpělo rány<br/>za nás za hříšné křesťany,<br/>z <tag name="bl">Tvé</tag> milosti.</lines>
     </verse>
     <verse name="v3">
-      <lines>
-        <line>Ó, <tag name="g">Tvá dobroto</tag> důstojná</line>
-        <line>a k nám milosti přehojná!</line>
-        <line>Dáváš nám bohatství mnohá</line>
-        <line>
-          <tag name="st">
-            <tag name="y">z Tvé milosti.</tag>
-          </tag>
-        </line>
-      </lines>
+      <lines>Ó, <tag name="g">Tvá dobroto</tag> důstojná<br/>a k nám milosti přehojná!<br/>Dáváš nám bohatství mnohá<br/><tag name="st"><tag name="y">z Tvé milosti.</tag></tag></lines>
     </verse>
     <verse name="v4">
-      <lines>
-        <line>Ráčils nás sám zastoupiti,</line>
-        <line>
-          <tag name="it">život za nás položiti,</tag>
-        </line>
-        <line>tak smrt věčnou zahladiti,</line>
-        <line>z Tvé milosti.</line>
-      </lines>
+      <lines>Ráčils nás sám zastoupiti,<br/><tag name="it">život za nás položiti,</tag><br/>tak smrt věčnou zahladiti,<br/>z Tvé milosti.</lines>
     </verse>
     <verse name="v5">
-      <lines>
-        <line>Ó, křesťané, z bludů vstaňme,</line>
-        <line>dané dobro nám poznejme,</line>
-        <line>k Synu Božímu chvátejme,</line>
-        <line>k té milosti!</line>
-      </lines>
+      <lines><tag name="st">Ó, <tag name="r">křesťané</tag>, z bludů</tag> vstaňme,<br/>dané dobro nám poznejme,<br/>k <tag name="aq">Synu Božímu</tag> chvátejme,<br/>k té milosti!</lines>
     </verse>
     <verse name="v6">
-      <lines>
-        <line>Chvála budiž Bohu Otci,</line>
-        <line>Synu jeho téže moci,</line>
-        <line>Duchu jeho rovné moci,</line>
-        <line>z též milosti!</line>
-      </lines>
+      <lines>Chvála<tag name="br"/>budiž<tag name="br"/>Bohu<tag name="br"/>Otci,<br/><tag name="st">Synu jeho téže moci,<br/>Duchu jeho rovné moci,<br/>z též milosti!</tag></lines>
     </verse>
   </lyrics>
 </song>
