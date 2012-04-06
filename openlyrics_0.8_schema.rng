@@ -205,15 +205,15 @@
       </choice>
     </element>
   </define>
- 
+
 
   <define name="key">
     <element name="key">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
-  <!-- OTHER INFO --> 
+
+  <!-- OTHER INFO -->
 
   <define name="variant">
     <element name="variant">
@@ -353,7 +353,7 @@
       </oneOrMore>
     </element>
   </define>
- 
+
   <define name="lines">
     <element name="lines">
       <optional>
@@ -372,7 +372,7 @@
       <ref name="linesContent"/>
     </element>
   </define>
- 
+
   <define name="chord">
     <element name="chord">
       <attribute name="name">
@@ -381,7 +381,7 @@
       <empty/>
     </element>
   </define>
- 
+
   <define name="tag">
     <element name="tag">
       <attribute name="name">
@@ -399,15 +399,15 @@
       </choice>
     </element>
   </define>
- 
+
   <define name="verseAttributes">
     <attribute name="name">
       <ref name="verseNameType"/>
     </attribute>
   </define>
- 
+
   <define name="songAttributes">
-    <!-- by default: value of type string is required in attr -->     
+    <!-- by default: value of type string is required in attr -->
     <attribute name="version">
       <data type="NMTOKEN"> <!-- one word value -->
         <!-- allow only values like: '0.1' '11.2' '13.14.15'
