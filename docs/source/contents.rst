@@ -1,7 +1,7 @@
 .. _contents:
 
 Documentation Contents
-=================================
+======================
 
 .. toctree::
    :maxdepth: 3
