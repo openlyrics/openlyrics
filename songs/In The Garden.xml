@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:06:35.065159">
+  <properties>
+    <titles>
+      <title>In The Garden</title>
+    </titles>
+    <authors>
+      <author>C. Austin Miles</author>
+    </authors>
+    <ccliNo>62858</ccliNo>
+    <verseOrder>v1 c v2 c v3 c</verseOrder>
+    <themes>
+      <theme>Intimacy</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>I <chord name="G"/>come to the garden alone, While the <chord name="C"/>dew is still on the <chord name="G"/>roses;</line>
+        <line>And the <chord name="D"/>voice I hear falling <chord name="G"/>on my ear, The <chord name="A7"/>Son of God dis<chord name="D"/>closes.</line>
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        <line>And He <chord name="G"/>walks with me, and He <chord name="D"/>talks with me,</line>
+        <line>And He <chord name="C"/>tells me <chord name="D7"/>I am His <chord name="G"/>own;</line>
+        <line>And the <chord name="G"/>joy we <chord name="B7"/>share as we <chord name="Em"/>tarry <chord name="C"/>there,</line>
+        <line>None <chord name="G"/>other has <chord name="D7"/>ever <chord name="G"/>known.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line>He <chord name="G"/>speaks, and the sound of His voice Is so <chord name="C"/>sweet the birds hush their <chord name="G"/>singing;</line>
+        <line>And the <chord name="D"/>melody that He <chord name="G"/>gave to me, With<chord name="A7"/>in my heart is <chord name="D"/>ringing.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line>I'd <chord name="G"/>stay in the garden with Him, Though the <chord name="C"/>night around me be <chord name="G"/>falling;</line>
+        <line>But He <chord name="D"/>bids me go; thru the <chord name="G"/>voice of woe, His <chord name="A7"/>voice to me is <chord name="D"/>calling.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

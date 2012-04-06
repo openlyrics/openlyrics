@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T14:45:34.172503">
+  <properties>
+    <titles>
+      <title>I Have Decided To Follow Jesus</title>
+    </titles>
+    <verseOrder>v1 v2 v3</verseOrder>
+    <themes>
+      <theme id="25">Commitment</theme>
+      <theme id="95">Obedience</theme>
+      <theme id="38">Declaration</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line>I have de<chord name="C"/>ci<chord name="Em/B"/>ded<chord name="Am"/> to follow <chord name="C"/>Jesus,</line>
+        <line>I have de<chord name="F"/>ci<chord name="Am/E"/>ded<chord name="F"/> to follow <chord name="C"/>Jesus,<chord name="C/G"/></line>
+        <line>I have de<chord name="C"/>ci<chord name="Em/B"/>ded<chord name="Am"/> to follow <chord name="C"/>Jesus,<chord name="Am"/></line>
+        <line>No turning <chord name="C"/>ba<chord name="Am"/>ck,<chord name="G"/> no turning <chord name="C"/>back.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line>The world be<chord name="C"/>hind <chord name="Em/B"/>me,<chord name="Am"/> the cross be<chord name="C"/>fore me,</line>
+        <line>The world be<chord name="F"/>hind <chord name="Am/E"/>me,<chord name="F"/> the cross be<chord name="C"/>fore me,<chord name="C/G"/></line>
+        <line>The world be<chord name="C"/>hind <chord name="Em/B"/>me,<chord name="Am"/> the cross be<chord name="C"/>fore me,<chord name="Am"/></line>
+        <line>No turning <chord name="C"/>ba<chord name="Am"/>ck,<chord name="G"/> no turning <chord name="C"/>back.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line>Though none go <chord name="C"/>with <chord name="Em/B"/>me,<chord name="Am"/> still I will <chord name="C"/>follow,</line>
+        <line>Though none go <chord name="F"/>with <chord name="Am/E"/>me,<chord name="F"/> still I will <chord name="C"/>follow,<chord name="C/G"/></line>
+        <line>Though none go <chord name="C"/>with <chord name="Em/B"/>me,<chord name="Am"/> still I will <chord name="C"/>follow,<chord name="Am"/></line>
+        <line>No turning <chord name="C"/>ba<chord name="Am"/>ck,<chord name="G"/> no turning <chord name="C"/>back.</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>

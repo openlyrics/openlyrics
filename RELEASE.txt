@@ -1,0 +1,70 @@
+Release 0.8 (03 Oct 2010)
+=========================
+
+* add support for application specific formatting tags in <lines> element
+* drop element ``<line>``,  for line endings is used element <br/>
+
+
+Release 0.7 (24 Mar 2010)
+=========================
+
+* move attribute 'xml:lang' to just 'lang' since the element could not always
+  contain text in another language but also transliteration
+* allow empty lines by using syntax ``<line/>`` or ``<line></line>`` for that
+* add 'e' (ending) as a new reserved (standardized) name for verses (including
+  other variants like e1, e2, e1a, ea, ...): ``<verse name="e">``
+* add transliteration support, attribute ``translit=""``
+  can be used in elements ``<title>``, ``<theme>``, ``<verse>``
+* add multiple songbooks entries. Syntax changed from elements ``<collection>``
+  and ``<trackNo>`` to::
+
+    <songbooks>
+      <songbook name="This is a Songbook Name" entry="123"/>
+    </songbooks>
+
+* add script 'opensong2openlyrics.py' to convert OpenSong songs to OpenLyrics
+  format
+* add examples of some public domain songs or not copyrighted
+
+
+Release 0.6 (22 Dec 2009)
+=========================
+
+* drop element ``<customData>`` (is ambiguous)
+
+
+Release 0.5 (06 Dec 2009) - final draft
+========================================
+
+* Allow custom verse names ``<verse name="custom_name_name">``
+* custom tempo ``<tempo type="custom">steadily</tempo>``
+* stay with only one key (any text) ``<key>C#</key>``
+* allow any chord notation (any text)
+* restrict ccli theme 'id' to range 1-999
+* theme value can't be empty
+* namespace changed  from ``http://www.openlyrics.info/2009/song/namespace``
+  to ``http://openlyrics.info/namespace/2009/song``
+* content of an optional element is mandatory, when the element present in xml.
+
+
+Release 0.4 (21 Nov 2009) - draft
+==================================
+
+* move to RelaxNG xml schema
+* tag attribute change. xml:lang describes the language of an element. Change
+  from ``<author type="translation" xml:lang="cs">``
+  to `` <author type="translation" lang="cs">``
+* xml schema: in 'author' element attribute 'lang' is required when attribute
+  'type' contains value 'translation' ``<author type="translation" lang="cs">``
+
+
+Release 0.3 (18 Nov 2009) - draft
+==================================
+
+
+Release 0.2 (16 Nov 2009) - draft
+==================================
+
+
+Release 0.1 (28 Nov 2008) - draft
+==================================

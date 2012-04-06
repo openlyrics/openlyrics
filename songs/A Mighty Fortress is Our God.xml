@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:32:34.974160">
+  <properties>
+    <titles>
+      <title>A Mighty Fortress is Our God</title>
+    </titles>
+    <authors>
+      <author>Martin Luther</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <transposition>3</transposition>
+    <verseOrder>v1 v2 v3 v4</verseOrder>
+    <themes>
+      <theme id="6">Assurance</theme>
+      <theme id="137">Trust</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <line><chord name="Bb"/>A mighty <chord name="F"/>fortress <chord name="Eb"/>is our <chord name="Bb"/>God, a <chord name="Gm"/>Bulwark <chord name="Bb"/>never <chord name="Eb"/>fa<chord name="F"/>i<chord name="Bb"/>ling;</line>
+        <line><chord name="Bb"/>Our Helper <chord name="F"/>He a<chord name="Eb"/>mid the <chord name="Bb"/>flood of <chord name="Gm"/>mortal <chord name="Bb"/>ills pre<chord name="Eb"/>va<chord name="F"/>i<chord name="Bb"/>ling;</line>
+        <line>For <chord name="Gm"/>still our <chord name="Csus"/>an<chord name="C"/>cient <chord name="F"/>Foe doth <chord name="Bb"/>seek to <chord name="Eb"/>work us <chord name="Gm"/>woe;</line>
+        <line>His <chord name="Gm"/>craft and <chord name="Csus"/>pow'r <chord name="C"/>are <chord name="F"/>great, and <chord name="Gm"/>armed with <chord name="Cm"/>cruel <chord name="D"/>hate,</line>
+        <line>On <chord name="Gm"/>earth is <chord name="Bb"/>not his <chord name="Eb"/>e<chord name="F"/><chord name="Bb"/>qual.</line>
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <line><chord name="Bb"/>Did we in <chord name="F"/>our own <chord name="Eb"/>strength con<chord name="Bb"/>fide, our <chord name="Gm"/>striving <chord name="Bb"/>would be <chord name="Eb"/>lo<chord name="F"/><chord name="Bb"/>sing;</line>
+        <line><chord name="Bb"/>Were not the <chord name="F"/>right Man <chord name="Eb"/>on our <chord name="Bb"/>side, the <chord name="Gm"/>Man of <chord name="Bb"/>God's own <chord name="Eb"/>cho<chord name="F"/>o<chord name="Bb"/>sing;</line>
+        <line>Dost<chord name="Gm"/> ask who <chord name="Csus"/>that <chord name="C"/>may <chord name="F"/>be: Christ <chord name="Bb"/>Jesus <chord name="Eb"/>it is <chord name="Gm"/>He;</line>
+        <line>Lord <chord name="Gm"/>Sabba<chord name="Csus"/>oth  <chord name="C"/>His <chord name="F"/>name, from  <chord name="Gm"/>age to <chord name="Cm"/>age the <chord name="D"/>same,</line>
+        <line>And <chord name="Gm"/>He must <chord name="Bb"/>win the <chord name="Eb"/>bat<chord name="F"/><chord name="Bb"/>tle.</line>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <line><chord name="Bb"/>And though this <chord name="F"/>world with <chord name="Eb"/>devils <chord name="Bb"/>filled should <chord name="Gm"/>threaten <chord name="Bb"/>to un<chord name="Eb"/>do <chord name="F"/>  <chord name="Bb"/>us;</line>
+        <line><chord name="Bb"/>We will not <chord name="F"/>fear for <chord name="Eb"/>God hath <chord name="Bb"/>willed His <chord name="Gm"/>truth to <chord name="Bb"/>triumph <chord name="Eb"/>thr<chord name="F"/>ough <chord name="Bb"/>us:</line>
+        <line>The <chord name="Gm"/>prince of <chord name="Csus"/>dark<chord name="C"/>ness <chord name="F"/>grim, we <chord name="Bb"/>tremble <chord name="Eb"/>not for <chord name="Gm"/>him;</line>
+        <line>His <chord name="Gm"/>rage we <chord name="Csus"/>can  <chord name="C"/>en<chord name="F"/>dure for <chord name="Gm"/>lo, his <chord name="Cm"/>doom is <chord name="D"/>sure,</line>
+        <line>One <chord name="Gm"/>little <chord name="Bb"/>word shall <chord name="Eb"/>fel<chord name="F"/>l <chord name="Bb"/>him.</line>
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <line><chord name="Bb"/>That Word a<chord name="F"/>bove all <chord name="Eb"/>earthly <chord name="Bb"/>pow'r, no <chord name="Gm"/>thanks to <chord name="Bb"/>them a<chord name="Eb"/>bid<chord name="F"/><chord name="Bb"/>eth;</line>
+        <line><chord name="Bb"/>The Spirit <chord name="F"/>and the <chord name="Eb"/>gifts are <chord name="Bb"/>ours through <chord name="Gm"/>Him who <chord name="Bb"/>with us <chord name="Eb"/>si<chord name="F"/><chord name="Bb"/>deth;</line>
+        <line>Let <chord name="Gm"/>goods and <chord name="Csus"/>kin<chord name="C"/>dred  <chord name="F"/>go, this <chord name="Bb"/>mortal <chord name="Eb"/>life al<chord name="Gm"/>so;</line>
+        <line>The <chord name="Gm"/>body <chord name="Csus"/>they  <chord name="C"/>may <chord name="F"/>kill; God's <chord name="Gm"/>truth a<chord name="Cm"/>bideth <chord name="D"/>still,</line>
+        <line>His <chord name="Gm"/>kingdom <chord name="Bb"/>is for<chord name="Eb"/>e<chord name="F"/><chord name="Bb"/>ver!</line>
+      </lines>
+    </verse>
+  </lyrics>
+</song>
