@@ -5,17 +5,17 @@
 Data Validation
 ===============
 
-Data validation is a process how to ensure that the data structure conforms
-to the defined format. This is useful especially for developers when they
-add support for a data format to their application. It makes developers happier when there is formal way how to test the right structure of newly
-created data in the new format.
+Data validation is the process of ensuring that the structure of the data
+confirms to a defined format. This is especially useful for developers when
+they add support for a data format to their application. They are able to
+test that the data they produce is correct and conforms to the format.
 
-In the world of XML validation means to check names of elements, their nesting, names of attribues and the type of values in 
-elements and attributes. There exist several `XML Schema languages
-<http://en.wikipedia.org/wiki/XML_schema>`_ for formal definition of XML
-structure. For OpenLyrics data format was created XML schema by using
-the language `RelaxNG <http://en.wikipedia.org/wiki/RELAX_NG>`_.
-
+In the world of XML, validation involves checking the names of elements,
+their nesting, names of attribues and the type of values in elements and
+attributes. Several `XML Schema languages <http://en.wikipedia.org/wiki/XML_schema>`_
+exist for the formal definition of an XML structure. For the OpenLyrics data
+format the `RelaxNG <http://en.wikipedia.org/wiki/RELAX_NG>`_ chosen and
+used to create the format definition.
 
 Bundled CLI Script
 ---------------------------
@@ -35,7 +35,7 @@ is available in your system:
 Usage
 ^^^^^
 
-To execute the scrit use the following command::
+To execute the script, use the following command::
 
     python validate.py  openlyrics_schema.rng  xmlfile.xml
 
@@ -47,21 +47,24 @@ Tools and Libraries
 -------------------------
 
 The OpenLyrics RelaxNG XML schema can be used in any programming language
-for which there exist libraries with support for XML schemas. It is also possible to some extend convert RelaxNG schemas to other languages, like
+which has libraries with support for XML schemas. It is also possible, to
+some extent, to convert RelaxNG schemas to other languages, like
 `DTD <http://en.wikipedia.org/wiki/Document_Type_Definition>`_ or
 `W3C XML Schema <http://en.wikipedia.org/wiki/XML_Schema_(W3C)>`_.
 
-* `Sun Multi-Schema Validator <https://msv.dev.java.net/>`_: Java technology 
+* `Sun Multi-Schema Validator <https://msv.dev.java.net/>`_: Java technology
   tool to validate XML documents against several kinds of XML schemata.
-* `lxml <http://codespeak.net/lxml/>`_: Pythonic xml library, offers support 
+* `lxml <http://codespeak.net/lxml/>`_: Pythonic xml library, offers support
   for XPath, RelaxNG, XML Schema, XSLT, C14N and more.
-* `On-line validator <http://validator.nu/>`_:
-* `Jing <http://relaxng.org/#software>`_: A RELAX NG validator in Java
-* `XSD to Relax NG Converter <http://debeissat.nicolas.free.fr/XSDtoRNG.php>`_: Web-based converter
-* `Libxml2 <http://www.xmlsoft.org/>`_: XML C library, with support for 
-  RELAX NG validation.
+* `On-line validator <http://validator.nu/>`_.
+* `Jing <http://relaxng.org/#software>`_: A validator written in Java.
+* `XSD to Relax NG <http://debeissat.nicolas.free.fr/XSDtoRNG.php>`_: An
+  online converter.
+* `Libxml2 <http://www.xmlsoft.org/>`_: XML C library, with support for
+  RelaxNG validation.
 
-List of other software for RelaxNG: http://relaxng.org/#software
+A list of other software for RelaxNG can be found on the
+`RelaxNG site <http://relaxng.org/#software>`_.
 
 
 RelaxNG XML schema
