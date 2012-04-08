@@ -32,7 +32,7 @@
           <ref name="ccliNo"/>
         </optional>
         <optional>
-          <ref name="releaseDate"/>
+          <ref name="released"/>
         </optional>
         <!-- Music Info -->
         <optional>
@@ -52,7 +52,7 @@
           <ref name="publisher"/>
         </optional>
         <optional>
-          <ref name="customVersion"/>
+          <ref name="version"/>
         </optional>
         <optional>
           <ref name="keywords"/>
@@ -155,8 +155,8 @@
     </element>
   </define>
 
-  <define name="releaseDate">
-    <element name="releaseDate">
+  <define name="released">
+    <element name="released">
       <!-- allowed values
            1779
            1779-12
@@ -227,8 +227,8 @@
     </element>
   </define>
 
-  <define name="customVersion">
-    <element name="customVersion">
+  <define name="version">
+    <element name="version">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
