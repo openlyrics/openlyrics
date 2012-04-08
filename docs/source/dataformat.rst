@@ -300,9 +300,9 @@ the title, or the song contains lyrics in multiple languages::
       <title lang="pl">Cudowna Boża łaska</title>
     </titles>
 
-Additionally, it is possible use attribute ``original="true"``. This
-attribute indicates that the title it is attached to is the original title
-of the song::
+Additionally, it is possible use the attribute ``original="true"``. This
+attribute indicates that the title which it is attached to is the original
+title of the song::
 
     <titles>
       <title lang="en" original="true">Amazing Grace</title>
@@ -365,11 +365,11 @@ Or::
 CCLI Number
 ^^^^^^^^^^^
 
-`CCLI <http://www.ccli.com/>`_
-stands for *Christian Copyright Licensing International*. CCLI offers
-copyright licensing of songs and other resource materials for use in Christian
-worship. For registered churches CCLI offers songs and other resources
-for download. At CCLI an ID is assigned to every song. This element
+`CCLI <http://www.ccli.com/>`_ stands for *Christian Copyright Licensing
+International*. CCLI is an organisation that offers copyright licensing of
+songs and other resource materials to churches and Christian organisations for
+use in Christian worship. For registered churches CCLI offers songs and other
+resources for download. A CCLI ID is assigned to every song. This element
 provides integration with CCLI.
 
 CCLI number (id) must be a positive integer::
