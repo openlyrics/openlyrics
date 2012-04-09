@@ -3,25 +3,25 @@
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://openlyrics.info/namespace/2009/song">
 
+
   <!-- TOP LEVEL -->
+
 
   <start>
     <element name="song">
       <ref name="songAttributes"/>
       <ref name="properties"/>
-      <optional>
-        <ref name="format"/>
-      </optional>
       <ref name="lyrics"/>
     </element>
   </start>
+
 
   <define name="properties">
     <element name="properties">
       <interleave> <!-- allow occur in any order -->
         <!-- at least one title is always required -->
         <ref name="titles"/>
-        <!-- other properties items are optional -->
+      <!-- other properties items are optional -->
         <optional>
           <ref name="authors"/>
         </optional>
@@ -32,9 +32,9 @@
           <ref name="ccliNo"/>
         </optional>
         <optional>
-          <ref name="released"/>
+          <ref name="releaseDate"/>
         </optional>
-        <!-- Music Info -->
+      <!-- MusicInfo -->
         <optional>
           <ref name="transposition"/>
         </optional>
@@ -44,7 +44,7 @@
         <optional>
           <ref name="key"/>
         </optional>
-        <!-- Other Info -->
+      <!-- OtherInfo -->
         <optional>
           <ref name="variant"/>
         </optional>
@@ -52,7 +52,7 @@
           <ref name="publisher"/>
         </optional>
         <optional>
-          <ref name="version"/>
+          <ref name="customVersion"/>
         </optional>
         <optional>
           <ref name="keywords"/>
@@ -61,7 +61,10 @@
           <ref name="verseOrder"/>
         </optional>
         <optional>
-          <ref name="songbooks"/>
+          <ref name="collection"/>
+        </optional>
+        <optional>
+          <ref name="trackNo"/>
         </optional>
         <optional>
           <ref name="themes"/>
@@ -70,12 +73,6 @@
           <ref name="comments"/>
         </optional>
       </interleave>
-    </element>
-  </define>
-
-  <define name="format">
-    <element name="format">
-        <ref name="formatTags"/>
     </element>
   </define>
 
@@ -89,7 +86,9 @@
     </element>
   </define>
 
+
   <!-- PROPERTIES -->
+
 
   <define name="titles">
     <element name="titles">
@@ -98,9 +97,6 @@
           <ref name="nonEmptyContent"/>
           <optional>
             <ref name="langAttribute"/>
-            <optional>
-              <ref name="translitAttribute"/>
-            </optional>
           </optional>
           <optional>
             <attribute name="original">
@@ -112,7 +108,9 @@
     </element>
   </define>
 
-  <!-- AUTHOR info -->
+
+  <!-- AuthorInfo -->
+
 
   <define name="authors">
     <element name="authors">
@@ -134,7 +132,9 @@
                 <attribute name="type">
                   <value>translation</value>
                 </attribute>
-                <ref name="langAttribute"/>
+                <attribute name="lang">
+                  <data type="language"/>
+                </attribute>
               </group>
             </choice>
           </optional>
@@ -142,21 +142,24 @@
       </oneOrMore>
     </element>
   </define>
+ 
 
   <define name="copyright">
     <element name="copyright">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
+ 
 
   <define name="ccliNo">
     <element name="ccliNo">
       <data type="positiveInteger"/>
     </element>
   </define>
+ 
 
-  <define name="released">
-    <element name="released">
+  <define name="releaseDate">
+    <element name="releaseDate">
       <!-- allowed values
            1779
            1779-12
@@ -170,8 +173,10 @@
       </choice>
     </element>
   </define>
+ 
 
-  <!-- MUSIC INFO -->
+  <!-- MusicInfo -->
+ 
 
   <define name="transposition">
     <element name="transposition">
@@ -181,6 +186,7 @@
       </data>
     </element>
   </define>
+ 
 
   <define name="tempo">
     <element name="tempo">
@@ -205,39 +211,45 @@
       </choice>
     </element>
   </define>
-
+ 
 
   <define name="key">
     <element name="key">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
-
-  <!-- OTHER INFO -->
+ 
+ 
+  <!-- Other Info --> 
+ 
 
   <define name="variant">
     <element name="variant">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
+ 
 
   <define name="publisher">
     <element name="publisher">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
+ 
 
-  <define name="version">
-    <element name="version">
+  <define name="customVersion">
+    <element name="customVersion">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
+ 
 
   <define name="keywords">
     <element name="keywords">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
+ 
 
   <define name="verseOrder">
     <element name="verseOrder">
@@ -248,26 +260,21 @@
       </list>
     </element>
   </define>
+ 
 
-  <define name="songbooks">
-    <element name="songbooks">
-      <oneOrMore>
-        <element name="songbook">
-          <attribute name="name">
-            <ref name="nonEmptyContent"/>
-          </attribute>
-          <optional>
-            <!-- 'entry' is like song number but song number must not
-                 always be integer and it can contain letters.
-                 examples: '153c' or '023', etc. -->
-            <attribute name="entry">
-              <ref name="nonEmptyContent"/>
-            </attribute>
-          </optional>
-        </element>
-      </oneOrMore>
+  <define name="collection">
+    <element name="collection">
+      <ref name="nonEmptyContent"/>
     </element>
   </define>
+ 
+
+  <define name="trackNo">
+    <element name="trackNo">
+      <data type="positiveInteger"/>
+    </element>
+  </define>
+ 
 
   <define name="themes">
     <element name="themes">
@@ -286,14 +293,12 @@
           </optional>
           <optional>
             <ref name="langAttribute"/>
-            <optional>
-              <ref name="translitAttribute"/>
-            </optional>
           </optional>
         </element>
       </oneOrMore>
     </element>
   </define>
+ 
 
   <define name="comments">
     <element name="comments">
@@ -304,56 +309,24 @@
       </oneOrMore>
     </element>
   </define>
-
-  <!-- FORMAT -->
-
-  <define name="formatTags">
-    <!-- Allow only one set of formatting tags for lyrics -->
-    <element name="tags">
-      <attribute name="application">
-        <ref name="nonEmptyContent"/>
-      </attribute>
-      <oneOrMore>
-        <ref name="formatTagsTag"/>
-      </oneOrMore>
-    </element>
-  </define>
-
-  <define name="formatTagsTag">
-    <element name="tag">
-      <attribute name="name">
-        <ref name="nonEmptyContent"/>
-      </attribute>
-      <element name="open">
-        <ref name="nonEmptyContent"/>
-      </element>
-      <!-- Close element is optional. Formatting without text may be present.
-           e.g. <br/> -->
-      <optional>
-        <element name="close">
-          <ref name="nonEmptyContent"/>
-        </element>
-      </optional>
-    </element>
-  </define>
+ 
 
  <!-- LYRICS -->
+
 
   <define name="verse">
     <element name="verse">
       <ref name="verseAttributes"/>
       <optional>
         <ref name="langAttribute"/>
-        <optional>
-          <ref name="translitAttribute"/>
-        </optional>
       </optional>
       <oneOrMore>
         <ref name="lines"/>
       </oneOrMore>
     </element>
   </define>
-
+ 
+ 
   <define name="lines">
     <element name="lines">
       <optional>
@@ -361,59 +334,48 @@
           <ref name="nonEmptyContent"/>
         </attribute>
       </optional>
-      <optional>
-        <attribute name="break">
-          <value>optional</value>
-        </attribute>
-      </optional>
-      <zeroOrMore>
-        <ref name="linesContent"/>
-      </zeroOrMore>
-      <ref name="linesContent"/>
+      <oneOrMore>
+        <optional>
+          <element name="comment">
+            <ref name="nonEmptyContent"/>
+          </element>
+        </optional>
+        <element name="line">
+          <!-- allow tag chord inside regular text - mixed content -->
+          <oneOrMore>
+            <optional>
+              <ref name="chord"/>
+            </optional>
+            <text/>
+          </oneOrMore>
+        </element>
+      </oneOrMore>
     </element>
   </define>
-
+ 
+ 
   <define name="chord">
     <element name="chord">
       <attribute name="name">
         <ref name="nonEmptyContent"/>
       </attribute>
-      <empty/>
     </element>
   </define>
-
-  <define name="tag">
-    <element name="tag">
-      <attribute name="name">
-        <ref name="nonEmptyContent"/>
-      </attribute>
-      <!-- allow using more formatting tags for text -->
-      <!-- e.g. <tag name="bold"><tag name="red">my text</tag></tag> -->
-      <choice>
-        <oneOrMore>
-          <ref name="linesContent"/>
-        </oneOrMore>
-        <!-- Allow empty tag. Formatting without text may be present.
-             e.g. <tag name="br"/> -->
-        <empty/>
-      </choice>
-    </element>
-  </define>
-
+ 
+ 
   <define name="verseAttributes">
     <attribute name="name">
       <ref name="verseNameType"/>
     </attribute>
   </define>
 
+ 
   <define name="songAttributes">
-    <!-- by default: value of type string is required in attr -->
+    <!-- by default: value of type string is required in attr -->     
     <attribute name="version">
       <data type="NMTOKEN"> <!-- one word value -->
-        <!-- allow only values like: '0.1' '11.2' '13.14.15'
-        <param name="pattern">[0-9]+\.[0-9]+(\.[0-9]+)?</param> -->
-        <!-- RelaxNG xml schema is specific for openlyrics version -->
-        <param name="pattern">0\.8</param>
+        <!-- allow only values like: '0.1' '11.2' '13.14.15' -->
+        <param name="pattern">[0-9]+\.[0-9]+(\.[0-9]+)?</param>
       </data>
     </attribute>
     <attribute name="createdIn">
@@ -428,6 +390,7 @@
     </attribute>
   </define>
 
+
   <define name="verseNameType">
     <choice>
       <data type="NMTOKEN">
@@ -435,55 +398,26 @@
         <!-- verse - v1, v2, v1a, ...  3 letters: [verse][verse_number][verse_part]
              chorus c, c1, c2, c1a, ca, ...
              pre-chorus - p, p1, p2, p1a, pa, ...
-             bridge - b, b1, b2, b1a, ba, ...
-             ending - e, e1, e2, e1a, ea, ... -->
-        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpbe][a-z]?)|([cpbe][1-9]\d?[a-z]?)</param>
+             bridge - b, b1, b2, b1a, ba, ... -->
+        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
       </data>
       <!-- custom values of verse name - one word name -->
       <data type="NMTOKEN"/>
     </choice>
   </define>
 
+
   <define name="langAttribute">
-    <attribute name="lang">
+    <attribute name="xml:lang">
       <data type="language"/>
     </attribute>
   </define>
 
-  <!-- transliteration -->
-  <define name="translitAttribute">
-    <attribute name="translit">
-      <data type="language"/>
-    </attribute>
-  </define>
 
   <define name="nonEmptyContent">
     <data type="string">
       <param name="minLength">1</param>
     </data>
-  </define>
-
-  <define name="linesContent">
-    <!-- allow tag 'tag' inside regular text - mixed content -->
-    <optional>
-      <ref name="tag"/>
-    </optional>
-    <!-- allow tag 'comment' inside regular text - mixed content -->
-    <optional>
-      <element name="comment">
-        <ref name="nonEmptyContent"/>
-      </element>
-    </optional>
-    <!-- allow tag 'chord' inside regular text - mixed content -->
-    <optional>
-      <ref name="chord"/>
-    </optional>
-    <text/>
-    <optional>
-      <element name="br">
-        <empty/>
-      </element>
-    </optional>
   </define>
 
 </grammar>
