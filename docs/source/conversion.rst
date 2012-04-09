@@ -2,19 +2,21 @@
 
 .. _conversion:
 
-Conversion from other formats
+Conversion From Other Formats
 =============================
 
-Conversion of songs from other format is necessary for migration to 
-OpenLyrics format and for compatibility with other applications.
+Being able to convert songs from other formats to OpenLyrics is necessary to
+speed up the adoption of the OpenLyrics format and for compatibility with
+other applications which already support OpenLyrics.
+
 
 OpenSong
 --------
 
-This section describes how to convert OpenSong songs into OpenLyrics format.
-The conversion process should work in most situation. However, it is 
-recommended to ensure that the conversion was successfull. For the conversion
-will be used a script in command prompt.
+One of the tools bundled with the OpenLyrics source documents is a command
+line tool to convert `OpenSong <http://www.opensong.org/>`_ song files to
+OpenLyrics. The conversion script should work in most situations, but do
+make sure that the conversion was successful before removing the old files.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -28,16 +30,23 @@ is available in your system:
 Usage
 ^^^^^
 
-To execute the scrit use the following command::
+To execute the script use the following command::
 
     python ./opensong2openlyrics.py opensong_file  openlyrics_file.xml
 
-where ``opensong_file`` is the original song in OpenSong format and
+Where ``opensong_file`` is the original song in OpenSong format and
 ``openlyrics_file.xml`` is the name of the song in OpenLyrics format.
 
 
-Other formats
-------------------
+OpenLP
+------
 
-Conversion to Other formats is not currently supported. It will follow.
+`OpenLP <http://openlp.org/>`_ already supports the OpenLyrics format via
+both importing and exporting. Simply choose "OpenLyrics" from the list when
+importing songs.
 
+
+Other Formats
+-------------
+
+Conversion to other formats is not currently supported.
