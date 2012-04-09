@@ -61,7 +61,10 @@
           <ref name="verseOrder"/>
         </optional>
         <optional>
-          <ref name="songbooks"/>
+          <ref name="collection"/>
+        </optional>
+        <optional>
+          <ref name="trackNo"/>
         </optional>
         <optional>
           <ref name="themes"/>
@@ -94,9 +97,6 @@
           <ref name="nonEmptyContent"/>
           <optional>
             <ref name="langAttribute"/>
-            <optional>
-              <ref name="translitAttribute"/>
-            </optional>
           </optional>
           <optional>
             <attribute name="original">
@@ -132,7 +132,9 @@
                 <attribute name="type">
                   <value>translation</value>
                 </attribute>
-                <ref name="langAttribute"/>
+                <attribute name="lang">
+                  <data type="language"/>
+                </attribute>
               </group>
             </choice>
           </optional>
@@ -260,23 +262,16 @@
   </define>
  
 
-  <define name="songbooks">
-    <element name="songbooks">
-      <oneOrMore>
-        <element name="songbook">
-          <attribute name="name">
-            <ref name="nonEmptyContent"/>
-          </attribute>
-          <optional>
-            <!-- 'entry' is like song number but song number must not
-                 always be integer and it can contain letters.
-                 examples: '153c' or '023', etc. -->
-            <attribute name="entry">
-              <ref name="nonEmptyContent"/>
-            </attribute>
-          </optional>
-        </element>
-      </oneOrMore>
+  <define name="collection">
+    <element name="collection">
+      <ref name="nonEmptyContent"/>
+    </element>
+  </define>
+ 
+
+  <define name="trackNo">
+    <element name="trackNo">
+      <data type="positiveInteger"/>
     </element>
   </define>
  
@@ -298,9 +293,6 @@
           </optional>
           <optional>
             <ref name="langAttribute"/>
-            <optional>
-              <ref name="translitAttribute"/>
-            </optional>
           </optional>
         </element>
       </oneOrMore>
@@ -327,9 +319,6 @@
       <ref name="verseAttributes"/>
       <optional>
         <ref name="langAttribute"/>
-        <optional>
-          <ref name="translitAttribute"/>
-        </optional>
       </optional>
       <oneOrMore>
         <ref name="lines"/>
@@ -353,12 +342,12 @@
         </optional>
         <element name="line">
           <!-- allow tag chord inside regular text - mixed content -->
-          <zeroOrMore>
+          <oneOrMore>
             <optional>
               <ref name="chord"/>
             </optional>
             <text/>
-          </zeroOrMore>
+          </oneOrMore>
         </element>
       </oneOrMore>
     </element>
@@ -409,9 +398,8 @@
         <!-- verse - v1, v2, v1a, ...  3 letters: [verse][verse_number][verse_part]
              chorus c, c1, c2, c1a, ca, ...
              pre-chorus - p, p1, p2, p1a, pa, ...
-             bridge - b, b1, b2, b1a, ba, ...
-             ending - e, e1, e2, e1a, ea, ... -->
-        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpbe][1-9]\d?[a-z]?)</param>
+             bridge - b, b1, b2, b1a, ba, ... -->
+        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpb][a-z]?)|([cpb][1-9]\d?[a-z]?)</param>
       </data>
       <!-- custom values of verse name - one word name -->
       <data type="NMTOKEN"/>
@@ -420,15 +408,7 @@
 
 
   <define name="langAttribute">
-    <attribute name="lang">
-      <data type="language"/>
-    </attribute>
-  </define>
-
-
-  <!-- transliteration -->
-  <define name="translitAttribute">
-    <attribute name="translit">
+    <attribute name="xml:lang">
       <data type="language"/>
     </attribute>
   </define>
