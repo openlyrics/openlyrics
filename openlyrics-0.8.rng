@@ -413,7 +413,7 @@
         <!-- allow only values like: '0.1' '11.2' '13.14.15'
         <param name="pattern">[0-9]+\.[0-9]+(\.[0-9]+)?</param> -->
         <!-- RelaxNG xml schema is specific for openlyrics version -->
-        <param name="pattern">0.8</param>
+        <param name="pattern">0\.8</param>
       </data>
     </attribute>
     <attribute name="createdIn">
