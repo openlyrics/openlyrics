@@ -129,7 +129,7 @@ Required Data Items
 Here is an example of a song containing only the required XML tags::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.7"
+          version="0.8"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
           modifiedDate="2010-01-28T13:15:30+01:00">
@@ -141,39 +141,38 @@ Here is an example of a song containing only the required XML tags::
       <lyrics>
         <verse name="v1">
           <lines>
-            <line>Amazing grace how sweet the sound</line>
+            Amazing grace how sweet the sound
           </lines>
         </verse>
       </lyrics>
     </song>
 
-As you can see from this example, a minimal song should contain
-only:
+As you can see from this example, a minimal song should only contain:
 
 * metadata
 * title
 * verse with one line of text
 
-**Elements with empty values are not allowed. If a tag is empty, it should
+**Tags with empty values are not allowed. If a tag is empty, it should
 be excluded from the XML.**
 
 
 Metadata
 --------
 
-Metadata is **required** to be present in every song. The metadata is useful
-in the debugging of OpenLyrics implementations in applications.
+Metadata is **mandatory** and should be present in every song. The metadata
+is useful in the debugging of OpenLyrics implementations in applications.
 
 Metadata is enclosed in the ``<song>`` tag as attributes::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.7"
+          version="0.8"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
           modifiedDate="2010-01-28T13:15:30+01:00">
 
 ``xmlns``
-    Defines an xml namespace. The value should be always
+    Defines an XML namespace. The value should be always
     ``http://openlyrics.info/namespace/2009/song``
 
 ``version``
@@ -187,21 +186,26 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
     should not be changed with additional updates and modification to the
     song, even when the song is edited in another application. The
     recommended content of this attribute is *application name* and
-    *version*, e.g. ``OpenLP 1.9.8``.
+    *version*, e.g. ``OpenLP 1.9.0``.
 
 ``modifiedIn``
     String to identify the application where a song was edited for most
     recently. This attribute should be set with every modification. The
     recommended content of this attribute is *application name* and
-    *version*, e.g. ``OpenLP 1.9.8``.
+    *version*, e.g. ``OpenLP 1.9.0``.
 
 ``modifiedDate``
-    Date and time of last modification. This attribute should be set with
-    every modification. This attribute should use the
+    Date and time of the last modification. This attribute should be set
+    with every modification of the song. This attribute should use the
     `ISO 8601 <http://en.wikipedia.org/wiki/ISO_8601>`_ date format, which
     looks like this::
 
         YYYY-MM-DDThh:mm:ss±[hh]:[mm]
+
+    For example, the 28th of January, 2010, at 30 seconds past 1:15pm in the
+    UTC+1 timezone would look like this::
+
+        2010-01-28T13:15:30+01:00
 
 
 Encoding and Filenames
@@ -210,18 +214,18 @@ Encoding and Filenames
 Encoding
 ^^^^^^^^
 
-It is recommended using the `UTF-8 <http://en.wikipedia.org/wiki/Utf8>`_
-encoding for the content of XML files in OpenLyrics format. *UTF-8* is well
-supported among programming libraries and means that OpenLyrics can have
-text in multiple languages in one file.
+The recommended encoding for OpenLyrics files is the ubiquitous
+`UTF-8 <http://en.wikipedia.org/wiki/Utf8>`_ encoding. *UTF-8* is supported
+by most programming languages, and using this encoding means that OpenLyrics
+files can have more than one language per file.
 
 File Names
 ^^^^^^^^^^
 
 When creating and saving OpenLyrics files, it is recommended that the song
-contained in the file should be easily identifiable just by looking at the
-file name. A well-named file would probably use a combination of one or more
-of the following fields:
+contained in the file should be easily identifiable by looking at the file
+name. A well-named file would probably use a combination of one or more of
+the following fields:
 
 * ``<titles>``
 * ``<variant>``
@@ -252,10 +256,11 @@ this format is known to handle non-ASCII file names well.
 Song Properties
 ---------------
 
-The ``<properties>`` tag groups a number of elements together which describe
-the song. These elements include the ``<titles>`` and ``<authors>`` tags.
-The order of elements enclosed in this tag is arbitrary. For example, it
-doesn't matter if the ``<titles>`` tag occurs before the ``<authors>`` tag::
+The ``<properties>`` tag groups a number of property tags together which
+describe the song. These tags include the ``<titles>`` and ``<authors>``
+tags. The order of tags within the ``<properties>`` tag is arbitrary. For
+example, it doesn't matter if the ``<titles>`` tag occurs before the
+``<authors>`` tag::
 
     <titles><title>Amazing Grace</title></titles>
     <authors><author>John Newton</author></authors>
@@ -266,13 +271,13 @@ Or if the ``<titles>`` tag occurs after the ``<authors>`` tag::
     <titles><title>Amazing Grace</title></titles>
 
 **An application implementing the OpenLyrics format should not depend on any
-order of elements enclosed in the tag ``<properties>``.**
+order of tags enclosed in the ``<properties>`` tag.**
 
 Titles
 ^^^^^^
 
-The title element is a **mandatory element**. Every song must contain at
-least one title::
+The ``<titles>`` tag is **mandatory**, and every song must contain at least
+one title::
 
     <titles><title>Amazing Grace</title></titles>
 
@@ -283,16 +288,16 @@ However, there could be any number of titles::
       <title>Amazing</title>
     </titles>
 
-The ``<title>`` tag can have an attribute called ``lang`` which defines the
-language of the title. The format of this attribute should be ``xx`` or
-``xx-YY``, where ``xx`` is a language code from the
+An optional ``lang`` attribute can be added to the ``<title>`` tag. This
+attribute defines the language of the title. The format of this attribute
+should be ``xx`` or ``xx-YY``, where ``xx`` is a language code from the
 `ISO-639 <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_ standard,
 and ``YY`` is a `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_.
 For more details see `BCP 47 <http://www.rfc-editor.org/rfc/bcp/bcp47.txt>`_.
 
 The ``lang`` attribute comes in handy when the song is translated from one
-language to another and there is a need to know the translated version of
-the title, or the song contains lyrics in multiple languages::
+language to another and it is necessary to know the translated version of
+the title, or when a song contains lyrics in multiple languages::
 
     <titles>
       <title lang="en">Amazing Grace</title>
@@ -300,9 +305,9 @@ the title, or the song contains lyrics in multiple languages::
       <title lang="pl">Cudowna Boża łaska</title>
     </titles>
 
-Additionally, it is possible use the attribute ``original="true"``. This
-attribute indicates that the title which it is attached to is the original
-title of the song::
+An additional ``original`` attribute, containing a boolean value of either
+``true`` or ``false``, can be used to indicate that the associated title
+is the original title of the song::
 
     <titles>
       <title lang="en" original="true">Amazing Grace</title>
@@ -313,8 +318,8 @@ title of the song::
 Authors
 ^^^^^^^
 
-The ``<authors>`` tag is an optional element. When this element is present
-in the song, there should be at least one ``<author>`` sub-element::
+The ``<authors>`` tag is optional. When this tag is present in the song,
+there should be at least one ``<author>`` sub-tag::
 
     <authors><author>John Newton</author></authors>
 
@@ -350,12 +355,12 @@ Copyright
 The ``<copyright>`` tag contains the copyright information of the song. In
 some countries it is a legal requirement to display copyright information
 during the presentation of songs. The ``<copyright>`` tag has no specific
-format, though it is recommended that the text at least contains the year
+format, though it is recommended that the value contains at least the year
 and copyright holder of the song.
 
 For example::
 
-    <copyright>public domain</copyright>
+    <copyright>Public Domain</copyright>
 
 Or::
 
@@ -367,12 +372,12 @@ CCLI Number
 
 `CCLI <http://www.ccli.com/>`_ stands for *Christian Copyright Licensing
 International*. CCLI is an organisation that offers copyright licensing of
-songs and other resource materials to churches and Christian organisations for
-use in Christian worship. For registered churches CCLI offers songs and other
-resources for download. A CCLI ID is assigned to every song. This element
+songs and other resource materials to churches and Christian organisations
+for use in Christian worship. For registered churches, CCLI offers songs and
+other resources for download. A CCLI ID is assigned to every song. This tag
 provides integration with CCLI.
 
-CCLI number (id) must be a positive integer::
+The CCLI number (ID) must be a positive integer::
 
     <ccliNo>22025</ccliNo>
 
@@ -382,19 +387,19 @@ Release Date
 
 Release date is a date/time when the song was released or published.
 
-It can be just year::
+It can be just a year::
 
     <releaseDate>1779</releaseDate>
 
-year-month::
+Or a year and a month::
 
     <releaseDate>1779-09</releaseDate>
 
-year-month-day::
+Or a year, month and day::
 
     <releaseDate>1779-12-30</releaseDate>
 
-year-month-day and time::
+Or even a year, month, day and time::
 
     <releaseDate>1779-12-31T13:15</releaseDate>
 
@@ -402,14 +407,15 @@ year-month-day and time::
 Transposition
 ^^^^^^^^^^^^^
 
-This element is used when there is a need to move the key or the pitch of
-chords up or down. The value must be a positive or negative integer.
+The ``<transposition>`` tag is used when it is necessary to move the key or
+the pitch of chords up or down. The value must be a positive or negative
+integer.
 
-The negative integer moves the pitch down by a fixed number of semitones::
+A negative value moves the pitch down by a fixed number of semitones::
 
     <transposition>-3</transposition>
 
-The positive integer moves the pitch up by a fixed number of semitones::
+A positive value moves the pitch up by a fixed number of semitones::
 
     <transposition>4</transposition>
 
@@ -417,15 +423,20 @@ The positive integer moves the pitch up by a fixed number of semitones::
 Tempo
 ^^^^^
 
-Tempo means how the song should be played. It could be expressed in beats
-per minute (bpm) or as any text value.
+The tempo of a song defines the speed at which a song is to be played. It
+could be expressed in beats per minute (BPM) or as any text value. The
+``<tempo>`` tag has a ``type`` attribute which defines whether the tempo is
+measured in BPM or a phrase. The ``type`` attribute therefore has two
+values, ``bpm`` or ``text``.
 
-Tempo in bpm must be a positive integer in the range 30-250::
+If the tempo is measured in BPM, it must be a positive integer in the range
+of 30-250::
 
     <tempo type="bpm">90</tempo>
 
-Tempo expressed as text can contain any arbitrary text. For example
-``Very Fast``, ``Fast``, ``Moderate``, ``Slow``, ``Very Slow``, etc.::
+If the tempo is expressed as a phrase, it can contain any arbitrary text.
+For example ``Very Fast``, ``Fast``, ``Moderate``, ``Slow``, ``Very Slow``,
+etc.::
 
     <tempo type="text">Moderate</tempo>
 
@@ -433,8 +444,8 @@ Tempo expressed as text can contain any arbitrary text. For example
 Key
 ^^^
 
-Key determines the musical scale of a song. The value could be ``A``, ``B``,
-``C#``, ``D``, ``Eb``, ``F#``, ``Ab``, etc.
+The key determines the musical scale of a song. The value could be ``A``,
+``B``, ``C#``, ``D``, ``Eb``, ``F#``, ``Ab``, etc.
 
 Example::
 
@@ -444,18 +455,18 @@ Example::
 Variant
 ^^^^^^^
 
-Variant should be used in situation, where there are 2 songs with the same
-title and it is needed to distinguish those songs.
+The ``<variant>`` tag is used to differentiate between songs which are
+identical, but may be performed or sung differently.
 
-For example there could be two songs with the title *Amazing grace*. One song
-published many years ago and one song published by a well known band, say
-for instance *Newsboys*.
+For example, there could be two songs with the title *Amazing Grace*. One
+song was published many years ago and one song was published by a well known
+band, say for instance the *Newsboys*.
 
-For the old song it could be::
+For the old song the ``<variant>`` could be::
 
-    <variant>old hymn</variant>
+    <variant>Original Hymn</variant>
 
-For the song from a well known band::
+While the ``<variant>`` by the well known band would list their name::
 
     <variant>Newsboys</variant>
 
@@ -476,7 +487,7 @@ contains just a title and lyrics. In the future the song will be updated
 and more data will be added. This could help users distinguish different
 versions of the same song.
 
-This element can contain any arbitrary text which could help the user to
+This tag can contain any arbitrary text which could help the user to
 distinguish various song versions.
 
 It could contain for example a version number::
@@ -515,7 +526,7 @@ Verse name can appear in ``<verseOrder>`` multiple times.
 Verse names should be in lowercase.
 
 For example when in the lyrics part are verses with names *v1*, *v2*, and *c*,
-this element could be::
+this tag could be::
 
     <verseOrder>v1 c v2 c v1 c</verseOrder>
 
@@ -600,7 +611,7 @@ Song lyrics
 Description of the possible syntax enclosed in tag ``<lyrics>``. This tag
 contain text of a song and other stuff related to it.
 
-Lyrics part of OpenLyrics format will mostly contain elements like
+Lyrics part of OpenLyrics format will mostly contain tags like
 ``<verse>``, ``<lines>`` or ``<line>``. A song should contain at least
 **one verse with one line**.::
 
@@ -614,7 +625,7 @@ Lyrics part of OpenLyrics format will mostly contain elements like
 
 In ``<line>`` should be enclosed all text for one line. An empty line is
 expressed by ``<line/>`` or ``<line></line>``. More lines of text
-can be in element ``<lines>``::
+can be in tag ``<lines>``::
 
     <lines>
       <line>This is the first line of the text.</line>
@@ -646,7 +657,7 @@ And of course it can contain more verses::
 The tag ``<verse>`` is meant for all song parts, not only verses but
 also for *chorus*, *bridge*, *pre-chorus*, etc.
 
-It is recommended enclose in one element ``<verse>`` text for one slide.
+It is recommended enclose in one tag ``<verse>`` text for one slide.
 
 
 Verse Name
@@ -716,11 +727,11 @@ OpenLyrics format allows storing chords. Having chords can be handy in
 some situations. For example when printing leadsheets or when preseting
 a song during band training.
 
-The element containing a chord name looks like::
+The tag containing a chord name looks like::
 
     <chord name="D7"/>
 
-Elements ``<chord>`` are mixed with the text of a song. This element should be
+Tags ``<chord>`` are mixed with the text of a song. This tag should be
 placed immediately before the letters where it should be played::
 
     <lyrics>
@@ -832,7 +843,7 @@ This feature means the ability marking words for different groups of people.
 For example some words should be sung by men and some by women.
 
 This feature is the reason why there is the tag ``<lines>``. This ability is
-implemented by adding attribute ``part=""`` to the element ``<lines>``.
+implemented by adding attribute ``part=""`` to the tag ``<lines>``.
 The value of this attribute is any arbitrary text.
 
 Example of lyrics containing one verse with some words for men and soe word
