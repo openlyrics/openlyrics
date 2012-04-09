@@ -140,21 +140,21 @@
       </oneOrMore>
     </element>
   </define>
- 
+
 
   <define name="copyright">
     <element name="copyright">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
+
 
   <define name="ccliNo">
     <element name="ccliNo">
       <data type="positiveInteger"/>
     </element>
   </define>
- 
+
 
   <define name="releaseDate">
     <element name="releaseDate">
@@ -171,10 +171,10 @@
       </choice>
     </element>
   </define>
- 
+
 
   <!-- MusicInfo -->
- 
+
 
   <define name="transposition">
     <element name="transposition">
@@ -184,7 +184,7 @@
       </data>
     </element>
   </define>
- 
+
 
   <define name="tempo">
     <element name="tempo">
@@ -209,45 +209,45 @@
       </choice>
     </element>
   </define>
- 
+
 
   <define name="key">
     <element name="key">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
- 
-  <!-- Other Info --> 
- 
+
+
+  <!-- Other Info -->
+
 
   <define name="variant">
     <element name="variant">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
+
 
   <define name="publisher">
     <element name="publisher">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
+
 
   <define name="customVersion">
     <element name="customVersion">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
+
 
   <define name="keywords">
     <element name="keywords">
       <ref name="nonEmptyContent"/>
     </element>
   </define>
- 
+
 
   <define name="verseOrder">
     <element name="verseOrder">
@@ -258,7 +258,7 @@
       </list>
     </element>
   </define>
- 
+
 
   <define name="songbooks">
     <element name="songbooks">
@@ -279,7 +279,7 @@
       </oneOrMore>
     </element>
   </define>
- 
+
 
   <define name="themes">
     <element name="themes">
@@ -306,7 +306,7 @@
       </oneOrMore>
     </element>
   </define>
- 
+
 
   <define name="comments">
     <element name="comments">
@@ -317,7 +317,7 @@
       </oneOrMore>
     </element>
   </define>
- 
+
 
  <!-- LYRICS -->
 
@@ -336,8 +336,8 @@
       </oneOrMore>
     </element>
   </define>
- 
- 
+
+
   <define name="lines">
     <element name="lines">
       <optional>
@@ -363,8 +363,8 @@
       </oneOrMore>
     </element>
   </define>
- 
- 
+
+
   <define name="chord">
     <element name="chord">
       <attribute name="name">
@@ -372,17 +372,17 @@
       </attribute>
     </element>
   </define>
- 
- 
+
+
   <define name="verseAttributes">
     <attribute name="name">
       <ref name="verseNameType"/>
     </attribute>
   </define>
 
- 
+
   <define name="songAttributes">
-    <!-- by default: value of type string is required in attr -->     
+    <!-- by default: value of type string is required in attr -->
     <attribute name="version">
       <data type="NMTOKEN"> <!-- one word value -->
         <!-- allow only values like: '0.1' '11.2' '13.14.15' -->
