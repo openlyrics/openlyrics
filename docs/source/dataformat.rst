@@ -474,7 +474,7 @@ While the ``<variant>`` by the well known band would list their name::
 Publisher
 ^^^^^^^^^
 
-Name of the publisher of the song::
+The ``<publisher>`` tag contains the name of the publisher of the song::
 
     <publisher>Sparrow Records</publisher>
 
@@ -482,23 +482,24 @@ Name of the publisher of the song::
 Custom Version
 ^^^^^^^^^^^^^^
 
-Many songs aren't written at once. When a new song is written, it usually
-contains just a title and lyrics. In the future the song will be updated
-and more data will be added. This could help users distinguish different
-versions of the same song.
+No song is created once, never to be edited again. Songs are updated over
+time, sometimes to add additional verses, sometimes to fix spelling or
+grammatical errors. OpenLyrics tries to add in some rudimentary version
+control in the form of a ``<customVersion>`` tag, which could be updated
+whenever a song changes significantly.
 
 This tag can contain any arbitrary text which could help the user to
-distinguish various song versions.
+distinguish between various versions of a song.
 
-It could contain for example a version number::
+For example, it could contain a version number::
 
     <customVersion>0.99</customVersion>
 
-or date::
+Or a date::
 
     <customVersion>2010-02-04</customVersion>
 
-or anything else::
+Or almost anything else::
 
     <customVersion>this is previous version</customVersion>
 
@@ -506,12 +507,12 @@ or anything else::
 Keywords
 ^^^^^^^^
 
-Keywords are used to get more precise results when searching for a song in the
-song database.
+Keywords are used to get more precise results when searching for a song in
+the song database. These keywords are stored in the ``<keywords>`` tag.
 
-For the song *Amazing Grace* it could be::
+For example, in *Amazing Grace*::
 
-    <keywords>amazing grace, how sweet the sound, a wretch like me</keywords>
+    <keywords>amazing grace, how sweet the sound, God's grace</keywords>
 
 
 Verse Order
