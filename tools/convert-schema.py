@@ -1,4 +1,5 @@
-#!/usr/bin/env python			# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 #########################################################################
 #                                                                       #
@@ -25,9 +26,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 # History:
-# 0.1  Initial release
+# 1.0  Initial release: convert from OpenLyrics 0.6 and 0.7 to 0.8
 
-__version__ = '0.1'
+__version__ = '1.0'
 
 '''
 Convert old OpenLyrics files to the latest schema.
@@ -48,513 +49,121 @@ From schema 0.7 to 0.8:
     replace <releaseDate> with <released>
 
 Usage:
-    python convert-schema.py OLD-OPENLYRICS-FILE.xml NEW-OPENLYRICS-FILE.xml
+    convert-schema.py OLD-OPENLYRICS-FILE.xml NEW-OPENLYRICS-FILE.xml
 '''
 
 import locale
 import os.path
 import sys
+from datetime import datetime
+
+
+#########################################################################
+# Utility definitions
+
+def error(s):
+    sys.stderr.write(os.path.basename(sys.argv[0]) + ': ' + s + '\n');
+    exit(1)
+
+
+#########################################################################
+# LXML module
 
 try:
     from lxml import etree
 except ImportError:
-    print 'lxml python module required, please install it.'
-    print 'See http://pypi.python.org/pypi/lxml/'
-    exit(1)
+    error('lxml python module not found\n\n' +
+          'This program requires the lxml python module.  Please install it from\n' +
+          'http://pypi.python.org/pypi/lxml/')
 
+
+#########################################################################
+# Constants and global variables
 
 NAMESPACE             = 'http://openlyrics.info/namespace/2009/song'
-LATEST_OPENLYRICS_VER = '0.8'
-OLD_OPENLYRICS_VER    = ['0.6', '0.7']
+TARGET_OPENLYRICS_VER = '0.8'
+OPENLYRICS_VERSIONS   = ['0.6', '0.7', '0.8']
 
 SCRIPTPATH = os.path.dirname(unicode(__file__, locale.getpreferredencoding()))
 SCHEMAFILE = os.path.join(SCRIPTPATH, '..', 'openlyrics-0.8.rng')
 
 
 #########################################################################
-# map_to_ccli_themes: Try to map OpenSong theme to CCLI equivalent
+# OpenLyrics XML parser and converter
 
-def map_to_ccli_themes(name):
-    if name == "Christ: Attributes" :
-        map = ['Christ']
-    elif name == "Christ: Birth" :
-        map = ['Seasonal / Christmas']
-    elif name == "Christ: Death/Atonement" :
-        map = ['Atonement']
-    elif name == "Christ: Power/Majesty" :
-        map = ["God's Attributes / Power", "God's Attributes / Majesty"]
-    elif name == "Christ: Love/Mercy" :
-        map = ['Love', 'Mercy']
-    elif name == "Christ: Resurrection" :
-        map = ['Resurrection']
-    elif name == "Christ: Second Coming" :
-        map = ['Second Coming']
-    elif name == "Christ: Victory" :
-        map = ['Victory']
-    elif name == "Church: Commitment/Obedience" :
-        map = ['Commitment', 'Obedience']
-    elif name == "Church: Country" :
-        map = ['Country']
-    elif name == "Church: Eternal Life/Heaven" :
-        map = ['Eternal Life', 'Heaven']
-    elif name == "Church: Evangelism" :
-        map = ['Evangelism']
-    elif name == "Church: Family/Fellowship" :
-        map = ['Family', 'Fellowship']
-    elif name == "Church: Fellowship w/ God" :
-        map = ['Fellowship']
-    elif name == "Church: Purity/Holiness" :
-        map = ['Cleansing', 'Holiness']
-    elif name == "Church: Repentance/Salvation" :
-        map = ['Repentance', 'Salvation']
-    elif name == "Church: Renewal" :
-        map = ['Renewal']
-    elif name == "Church: Service/Ministry" :
-        map = ['Service ']
-    elif name == "Church: Spiritual Hunger" :
-        map = ['Spiritual Hunger']
-    elif name == "Fruit: Faith/Hope" :
-        map = ['Faith', 'Hope']
-    elif name == "Fruit: Love" :
-        map = ['Love']
-    elif name == "Fruit: Joy" :
-        map = ['Joy']
-    elif name == "Fruit: Peace/Comfort" :
-        map = ['Peace']
-    elif name == "Fruit: Patience/Kindness" :
-        map = ['Patience', 'Kindness']
-    elif name == "Fruit: Humility/Meekness" :
-        map = ['Humility']
-    elif name == "God: Attributes" :
-        map = ["God's Attributes"]
-    elif name == "God: Creator/Creation" :
-        map = ['Creator', 'Creation']
-    elif name == "God: Father" :
-        map = ["God's Attributes / Father"]
-    elif name == "God: Guidance/Care" :
-        map = ['Guidance', 'Care']
-    elif name == "God: Holy Spirit" :
-        map = ['Holy Spirit']
-    elif name == "God: Holiness" :
-        map = ['Holiness']
-    elif name == "God: Love/Mercy" :
-        map = ["God's Attributes / Love", "God's Attributes / Mercy"]
-    elif name == "God: Power/Majesty" :
-        map = ["God's Attributes / Power", "God's Attributes / Majesty"]
-    elif name == "God: Promises" :
-        map = ['Promise']
-    elif name == "God: Victory" :
-        map = ['Victory']
-    elif name == "God: Word" :
-        map = ["God's Word"]
-    elif name == "Worship: Assurance/Trust" :
-        map = ['Assurance', 'Trust']
-    elif name == "Worship: Call/Opening" :
-        map = ['Call', 'Opening']
-    elif name == "Worship: Celebration" :
-        map = ['Celebration']
-    elif name == "Worship: Declaration" :
-        map = ['Declaration']
-    elif name == "Worship: Intimacy" :
-        map = ['Intimacy']
-    elif name == "Worship: Invitation" :
-        map = ['Invitation']
-    elif name == "Worship: Praise/Adoration" :
-        map = ['Praise', 'Adoration ']
-    elif name == "Worship: Prayer/Devotion" :
-        map = ['Prayer', 'Devotion']
-    elif name == "Worship: Provision/Deliverance" :
-        map = ['Provision', 'Deliverance']
-    elif name == "Worship: Thankfulness":
-        map = ['Thankfulness']
-    else:
-        map = [name]
+class OpenLyricsTree(object):
+    '''
+    Parse and convert an OpenLyrics XML stream.
+    '''
 
-    return map
-
-
-#########################################################################
-
-class LyricsParser(object):
-
-    def __init__(self):
-        pass
-
-    # public API
-
-    def parse(self, os_lyrics):
-        tree = etree.Element('lyrics')
-        lines = os_lyrics.splitlines()
-
-        # line with chords (line starts with '.'
-        linechords = None
-
-        for line in lines:
-            if line.startswith('['):
-                versename = line.strip().strip('[]')
-                self._add_verse(tree, versename)
-            elif line.startswith('.'):
-                linechords = line.strip().lstrip('.') # remove leading '.'
-            elif line.startswith(' '):
-                line = line.strip()
-                self._add_line(tree, line, linechords)
-                # init chord line for another line with text
-                linechords = None
-
-        return tree
-
-    # other methods
-
-    def _add_verse(self, tree, versename):
-        versename = versename.lower()
-        vtag = etree.SubElement(tree, 'verse')
-        vtag.set('name', versename)
-
-    def _parse_line(self, text, linechords):
+    def __init__(self, old_file):
         '''
-        Example of a line with chords:
-            .D     Bm    A  D   G          D
-             Holy, holy, ho_ly, Lord God Almighty,
-        OpenLyrics:
-            <chord name="D"/>Holy, <chord name="Bm">holy, \
-            <chord name="A"/>ho<chord name="G"/>ly, \
-            <chord name="G"/>Lord God Al<chord name="D"/>mighty,
-
-        Works even if 'linechords' is an empty string.
+        Read in and parse an OpenLyrics XML stream.
         '''
-        if not linechords:
-            linechords = ''
-        # parse chords and remember position of a chord
-        chords = {} # empty dict
-        i = 0
-        prev = ' ' # previous character
-        curr = ' ' # current character
-        key = None #  position for current chords (when chord consists of more letters)
-        while i < len(linechords):
-            curr = linechords[i]
-            # start a new chord
-            if prev == ' ' and curr != ' ':
-                key = i
-                chords[key] = curr
-            # continue with a chord
-            elif curr != ' ':
-                chords[key] += curr
 
-            prev = curr
-            i += 1
+        self.old_file = old_file
+        self.modified = False
 
-        #print(chords)
+        parser = etree.XMLParser(ns_clean=True, remove_blank_text=False)
+        self.tree = etree.parse(self.old_file, parser)
 
-        # dict type is not sorted
-        keys = chords.keys()
-        keys.sort()
-        #print 'keys', keys
+        self.root = self.tree.getroot()
+        if self.root.tag != '{' + NAMESPACE + '}song':
+            error('%s: not an OpenLyrics XML file (expected <song>, found <%s>)'
+                  % (old_file, self.root.tag))
 
-        # construct xml tree with chords
-        root = etree.Element('line')
-        for key in keys:
-            # add chord tags
-            elem = etree.SubElement(root, 'chord')
-            elem.set('name', chords[key])
-
-        #print(etree.tostring(root))
-
-        # split text to snippets
-        snippets = []
-        id1 = 0
-        id2 = 0
-        for k in keys:
-            id2 = k
-            snippets.append(text[id1:id2])
-            id1 = id2
-        snippets.append(text[id1:]) # last snippet
-
-        #print(snippets)
-
-        # remove underscores '_' - are used in opensong format
-        temp = []
-        for s in snippets:
-            clean = ''
-            for char in s:
-                if char != '_':
-                    clean += char
-            temp.append(clean)
-        snippets = temp
-
-        #print(snippets)
-
-        # assign text snippets to chords in xml structure
-        root.text = snippets.pop(0)
-        for chord_elem in root.getchildren():
-            chord_elem.tail = snippets.pop(0)
-
-        #print(etree.tostring(root))
-
-        return root
-
-    def _add_line(self, tree, linetext, chords):
-        # ignore empty line
-        if not linetext.strip():
-            return
-
-        # vertical bar '|' means in opensong new line of text for presentation
-        texts = linetext.split('|')
-        chordlines = [''] * len(texts) # init chordlines to empty strings
-        # add chords to line if chords are available
-        if chords:
-            offset = 0
-            for i in range(len(texts)):
-                length = len(texts[i])
-                chordlines[i] = chords[offset : offset+length]
-                offset += length + 1
-                #print(chordlines[i])
-
-        #print(chordlines)
-
-        # create element <lines> if necessary
-        last_verse_tree = tree[-1]
-        if len(last_verse_tree) == 0: # no subelement <lines>
-            lines_tree = etree.SubElement(last_verse_tree, 'lines')
-        else:
-            lines_tree = last_verse_tree[-1] # last subelement <lines>
-
-        # parse lines and create xml structure
-        for i in range(len(texts)):
-            line_tree = self._parse_line(texts[i], chordlines[i])
-            lines_tree.append(line_tree)
+        self.old_version = self.root.attrib["version"]
+        if not self.old_version in OPENLYRICS_VERSIONS:
+            error('%s: unsupported OpenLyrics XML version %s'
+                  % (self.old_file, self.old_version))
 
 
-#########################################################################
+    def save(self, new_file):
+        '''
+        Save the possibly-modified XML tree to a new stream.
+        '''
 
-class OpenLyricsConverter(object):
+        if self.modified:
+            self.root.attrib["modifiedIn"]   = os.path.basename(sys.argv[0])
+            self.root.attrib["modifiedDate"] = datetime.now().isoformat()
 
-    def __init__(self, opensong_file):
-        print('Parsing...')
-        parser = etree.XMLParser(remove_blank_text=True)
-        self.osong = etree.parse(opensong_file)
-        self.olyrics = etree.ElementTree(etree.Element('song'))
+        self.tree.write(new_file, pretty_print=True, xml_declaration=True,
+                        encoding='UTF-8')
 
-    # public API
 
     def convert(self):
-        print('Converting...')
-        osong = self.osong.getroot()
-        olyrics = self.olyrics.getroot()
-        olprop = etree.SubElement(olyrics, 'properties')
-
-        # properties
-        self._copy_subelement(osong, 'title', olprop, 'titles', 'title')
-        self._copy_subelement(osong, 'aka', olprop, 'titles', 'title')
-        self._conv_author(osong, olprop)
-        self._copy_element(osong, 'copyright', olprop, 'copyright')
-        self._copy_element(osong, 'ccli', olprop, 'ccliNo')
-        self._copy_element(osong, 'capo', olprop, 'transposition')
-        self._conv_tempo(osong, 'tempo', olprop, 'tempo')
-        self._copy_element(osong, 'key', olprop, 'key')
-        self._copy_element(osong, 'key_line', olprop, 'keywords')
-        self._conv_verseorder(osong, 'presentation', olprop, 'verseOrder')
-        self._copy_element(osong, 'hymn_number', olprop, 'trackNo')
-        self._conv_themes(osong, 'theme', olprop)
-        self._conv_themes(osong, 'alttheme', olprop)
-        self._copy_subelement(osong, 'user1', olprop, 'comments', 'comment')
-        self._copy_subelement(osong, 'user2', olprop, 'comments', 'comment')
-        self._copy_subelement(osong, 'user3', olprop, 'comments', 'comment')
-
-
-        # other
-        self._conv_lyrics(osong, olyrics)
-        self._set_metadata(olyrics)
-
-    def save(self, openlyrics_file):
-        print('Saving...')
-        # write openlyrics
-        self.olyrics.write(openlyrics_file, encoding='utf-8', pretty_print=True,
-                xml_declaration=True)
-
-    def validate(self, ol_file, relaxng_schema):
-        print('Validating...')
-        tree = etree.parse(ol_file)
-        schema = etree.RelaxNG(relaxng_schema)
-        schema.assertValid(tree)
-
-    # other methods
-
-    def _copy_element(self, os_tree, os_elem, ol_tree, ol_elem):
         '''
-        Add content from element in one tree into element
-        in another tree. Element in another tree are created.
-
-        return  tree element with copied content or None when element not
-                present or empty content
+        Convert the parsed XML tree to the latest version of OpenLyrics.
         '''
-        orig_elem = os_tree.find(os_elem)
-        # OpenLyrics specification doesn't allow elements with emtpy content.
-        if orig_elem is None or not orig_elem.text:
-            elem = None
-        else:
-            elem = etree.SubElement(ol_tree, ol_elem)
-            elem.text = orig_elem.text
-        return elem
 
-    def _copy_subelement(self, os_tree, os_elem, ol_tree, ol_elem, ol_subelem):
-        '''
-        Add content from element in one tree into subelement
-        in another tree. Element and/or subelement in another
-        tree are created.
+        if self.old_version != TARGET_OPENLYRICS_VER:
+            self.root.attrib["version"] = TARGET_OPENLYRICS_VER
+            self.modified = True
 
-        return  etree element with copied content or None when element not
-                present or empty content
-        '''
-        orig_elem = os_tree.find(os_elem)
-        if orig_elem is None or not orig_elem.text:
-            elem = None
-        else:
-            elem = ol_tree.find(ol_elem)
-            # no previous subelement
-            if elem is None:
-                elem = etree.SubElement(ol_tree, ol_elem)
-            elem = etree.SubElement(elem, ol_subelem)
-            elem.text = orig_elem.text
-        return elem
-
-    def _conv_author(self, os_tree, ol_tree):
-        text = os_tree.find('author')
-        # existing element
-        if text is not None:
-            return
-        # not empty - continue
-        text = text.text
-        if not text:
-            return
-
-        text = text.strip()
-        authors = []
-        # more names are usually separated by ',', ';', '&' or 'and'
-        for a in text.split(','):
-            for b in a.split(';'):
-                for c in b.split('&'):
-                    for d in c.split('and'):
-                        d = d.strip()
-                        if d: authors.append(d)
-        # add authors to openlyrics structure
-        elem = etree.SubElement(ol_tree, 'authors')
-        for author in authors:
-            subelem = etree.SubElement(elem, 'author')
-            subelem.text = author
-
-
-
-    def _conv_verseorder(self, os_tree, os_elem, ol_tree, ol_elem):
-        elem = self._copy_element(os_tree, os_elem, ol_tree, ol_elem)
-        # verseOrder in lowercase
-        if elem is not None:
-            elem.text = elem.text.lower()
-
-    # TODO implement
-    def _conv_tempo(self, os_tree, os_elem, ol_tree, ol_elem):
-        orig_elem = os_tree.find(os_elem)
-        if orig_elem is None or not orig_elem.text:
-            return
-        # bpm value
-        try:
-            int(orig_elem.text.strip())
-            type = 'bpm'
-        # text value
-        except ValueError:
-            type = 'text'
-        elem = etree.SubElement(ol_tree, ol_elem)
-        elem.set('type', type)
-        elem.text = orig_elem.text
-
-    # TODO implement
-    def _conv_themes(self, os_tree, os_elem, ol_tree):
-        os_elem = os_tree.find(os_elem)
-        if os_elem is not None and os_elem.text is not None:
-
-            # themes are sometimes separated by semicolon
-            theme_list = os_elem.text.split(';')
-            # remove white spaces and empty items
-            cleaned_list = []
-            for theme in theme_list:
-                theme = theme.strip()
-                if theme:
-                    cleaned_list.append(theme)
-
-            ## construct xml tree
-            themes_elem = ol_tree.find('themes')
-            # no previous element <themes>
-            if themes_elem is None:
-                themes_elem = etree.SubElement(ol_tree, 'themes')
-            for theme in cleaned_list:
-                # OpenSong theme could be mapped to more themes
-                ths = map_to_ccli_themes(theme)
-                for t in ths:
-                    t = t.strip()
-                    elem = etree.SubElement(themes_elem, 'theme')
-                    elem.text = t
-                    # if ccli theme - add 'ID' attribute (index ccli theme list)
-                    try:
-                        #id = CCLITHEMES.index(t)
-                        elem.set('id', unicode(id + 1)) # indexing beginns with '1'
-                    except ValueError:
-                        pass
-
-
-    def _conv_lyrics(self, os_tree, ol_tree):
-        text = os_tree.find('lyrics').text
-        parser = LyricsParser()
-        lyrics_tree = parser.parse(text)
-        ol_tree.append(lyrics_tree)
-
-    def _set_metadata(self, ol_root):
-        from datetime import datetime
-        ol_root.set('xmlns', NAMESPACE)
-        ol_root.set('version', OPENLYRICS_VER)
-        progname = '%s %s' % (os.path.basename(__file__), __version__)
-        ol_root.set('createdIn', progname)
-        ol_root.set('modifiedIn', progname)
-        ol_root.set('modifiedDate', datetime.utcnow().isoformat())
+        # @@@ To be completed...
 
 
 #########################################################################
 # Main program
 
 def main():
-
-    '''
     if len(sys.argv) != 3:
-        print('Usage:')
-        print('  python %s openlyrics_0.7_file.xml  openlyrics_0.8_file.xml' % __file__)
-        exit(1)
-
+        error('Missing command line arguments.\n\n' +
+              'Usage:\n' +
+              '    %s OLD-OPENLYRICS-FILE.xml NEW-OPENLYRICS-FILE.xml'
+              % __file__)
     else:
-        old_f = sys.argv[1]
-        new_f = sys.argv[2]
-        for f in [old_f, new_f]:
-            if not os.path.exists(opensong_file):
-                print('ERROR: File %s does not exists.' % opensong_file)
-                exit(2)
-    '''
+        old_file = sys.argv[1]
+        new_file = sys.argv[2]
 
-    old_f = 'What A Friend We Have In Jesus.xml'
-    tree = etree.parse(old_f)
-    # convert verse
-    v = tree.getroot().find('song').find('lyrics').find('verse')
-    for lines in v:
-        print repr(lines)
-    # print converted
-    print etree.tostring(tree)
+    if not os.path.isfile(old_file):
+        error('%s: file not found' % old_file)
+    if os.path.exists(new_file):
+        error('%s: file exists' % new_file)
 
-
-
-
-
-    #converter = OpenLyricsConverter(opensong_file)
-    #converter.convert()
-    #converter.save(openlyrics_file)
-    #schema = etree.parse(SCHEMAFILE)
-    #converter.validate(openlyrics_file, schema.getroot())
-
+    converter = OpenLyricsTree(old_file)
+    converter.convert()
+    converter.save(new_file)
 
 
 if __name__ == '__main__':
