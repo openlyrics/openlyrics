@@ -3,10 +3,10 @@
       version="0.8"
       createdIn="OpenLP 1.9.0"
       modifiedIn="ChangingSong 0.0.1"
-      modifiedDate="2010-12-29T13:15:30+01:00"><!-- date format: ISO 8601 -->
+      modifiedDate="2012-04-10T22:00:00+10:00"><!-- date format: ISO 8601 -->
   <properties>
     <titles>
-      <title original="true" lang="en-US" >Amazing Grace</title>
+      <title original="true" lang="en-US">Amazing Grace</title>
       <title lang="en">Amazing Grace</title>
       <title>Amazing</title>
       <title lang="de-DE">Erstaunliche Anmut</title>
@@ -46,7 +46,7 @@
     <themes>
       <theme>Adoration</theme>
       <theme id="1" lang="en-US">Grace</theme>
-      <theme id="2" lang="en-US">Praise</theme> 
+      <theme id="2" lang="en-US">Praise</theme>
       <theme id="3" lang="en-US">Salvation</theme>
       <theme id="1" lang="pt-BR">Graça</theme>
       <theme id="2" lang="pt-BR">Adoração</theme>
