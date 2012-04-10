@@ -44,8 +44,8 @@ From schema 0.6 to 0.7:
 From schema 0.7 to 0.8:
     - Replace <customVersion> with <version>
     - Replace <releaseDate> with <released>
-    - Replace <line> with <br/> in the appropriate places
     - Add <br/> to the end of <comment> lines
+    - Replace <line> with <br/> in the appropriate places
 
 Usage:
     convert-schema.py OLD-OPENLYRICS-FILE.xml NEW-OPENLYRICS-FILE.xml
@@ -166,6 +166,8 @@ class OpenLyricsTree(object):
     def convert(self):
         '''
         Convert the parsed XML tree to the latest version of OpenLyrics.
+        Note that the order of conversions DOES MATTER: subtle bugs may
+        be introduced by rearranging conversion rules.
         '''
 
         if self.old_version in ['0.6']:
@@ -226,20 +228,6 @@ class OpenLyricsTree(object):
                 elem.tag = 'released'
                 self.modified = True
 
-            # Replace <line> with <br/> in the appropriate places
-            ''' @@@ to be completed
-            for elem in self.xpath('/ol:song/ol:lyrics/ol:verse/ol:lines//ol:line'):
-                prev_elem = elem.getprevious()
-                if prev_elem == None:
-                    if elem.text != None:
-                        elem.getparent().text += elem.text
-                    if list(elem) == []:
-                        elem.getparent().text += elem.tail
-                        elem.getparent().remove(elem)
-                    else:
-                        None
-            '''
-
             # Add <br/> to the end of <comment> lines
             for elem in self.xpath('/ol:song/ol:lyrics/ol:verse/ol:lines//ol:comment'):
                 next_elem = elem.getnext()
@@ -249,6 +237,92 @@ class OpenLyricsTree(object):
                     br_elem.tail = elem.tail
                     elem.tail = None
                     elem.getparent().insert(elem_pos + 1, br_elem)
+
+            # Replace <line> with <br/> in the appropriate places
+            for elem in self.xpath('/ol:song/ol:lyrics/ol:verse/ol:lines//ol:line'):
+                text = elem.text
+                tail = elem.tail
+                prev_elem = elem.getprevious()
+                next_elem = elem.getnext()
+                parent = elem.getparent()
+                br_elem = etree.Element('br')
+                elem_pos = parent.index(elem)
+
+                if prev_elem == None:
+                    # elem is the first child in this subtree
+                    if text != None:
+                        if parent.text != None:
+                            parent.text += text
+                        else:
+                            parent.text = text
+
+                    if list(elem) == []:
+                        # elem has no children of its own
+                        if next_elem != None and next_elem.tag != 'br':
+                            br_elem.tail = tail
+                            parent.replace(elem, br_elem)
+                        else:
+                            # Add to parent's text
+                            if tail != None:
+                                if parent.text != None:
+                                    parent.text += tail
+                                else:
+                                    parent.text = tail
+                            parent.remove(elem)
+                    else:
+                        # elem has children: move these to the parent
+                        for child in list(elem):
+                            parent.insert(elem_pos, child)
+                            elem_pos += 1
+                        if next_elem != None and next_elem.tag != 'br':
+                            br_elem.tail = tail
+                            parent.replace(elem, br_elem)
+                        else:
+                            if tail != None:
+                                # Assume child is still valid after iteration
+                                if child.tail != None:
+                                    child.tail += tail
+                                else:
+                                    child.tail = tail
+                            parent.remove(elem)
+
+                else:
+                    # elem is NOT the first child in this subtree
+                    if text != None:
+                        if prev_elem.tail != None:
+                            prev_elem.tail += text
+                        else:
+                            prev_elem.tail = text
+
+                    if list(elem) == []:
+                        # elem has no children of its own
+                        if next_elem != None and next_elem.tag != 'br':
+                            br_elem.tail = tail
+                            parent.replace(elem, br_elem)
+                        else:
+                            # Add to previous element's TAIL (not text!)
+                            if tail != None:
+                                if prev_elem.tail != None:
+                                    prev_elem.tail += tail
+                                else:
+                                    dest.text = tail
+                            parent.remove(elem)
+                    else:
+                        # elem has children: move these to the parent
+                        for child in list(elem):
+                            parent.insert(elem_pos, child)
+                            elem_pos += 1
+                        if next_elem != None and next_elem.tag != 'br':
+                            br_elem.tail = tail
+                            parent.replace(elem, br_elem)
+                        else:
+                            if tail != None:
+                                # Once again, assume child is last child
+                                if child.tail != None:
+                                    child.tail += tail
+                                else:
+                                    child.tail = tail
+                            parent.remove(elem)
 
         # Update the version number
         if self.old_version != TARGET_OPENLYRICS_VER:
