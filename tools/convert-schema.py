@@ -51,7 +51,7 @@ Usage:
     convert-schema.py OLD-OPENLYRICS-FILE.xml NEW-OPENLYRICS-FILE.xml
 '''
 
-import locale
+
 import os.path
 import sys
 from datetime import datetime
@@ -65,8 +65,13 @@ TARGET_OPENLYRICS_VER = '0.8'
 OPENLYRICS_VERSIONS   = ['0.6', '0.7', '0.8']
 LIBXML2_BUGGY         = True	# Does libxml2 have bugs processing 'xml:lang'?
 
-SCRIPTPATH = os.path.dirname(unicode(__file__, locale.getpreferredencoding()))
-SCHEMAFILE = os.path.join(SCRIPTPATH, '..', 'openlyrics-0.8.rng')
+# LIBXML2_BUGGY should be defined as True almost indefinitely, until it
+# is certain no old systems are left in the world...  The problem is that
+# xmlValidateNCName() in libxml2 considers 'xml:lang' to be an invalid
+# attribute name (no colons are allowed); it makes no special provision
+# for the 'xml' namespace.  lxml's Element.set(), of course, calls
+# xmlValidateNCName(), while _Attrib.__delitem__() cannot find 'xml:lang'
+# (it generates a KeyError exception).
 
 
 #########################################################################
