@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:07:42.318057">
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.994428">
   <properties>
     <titles>
       <title>Nothing But The Blood</title>
@@ -17,28 +17,28 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <line><chord name="E"/>What can wash a<chord name="C#m7"/>way my sin? <chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;</line>
-        <line><chord name="E"/>What can make me <chord name="C#m7"/>whole again? <chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+        <chord name="E"/>What can wash a<chord name="C#m7"/>way my sin? <chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;<br/>
+        <chord name="E"/>What can make me <chord name="C#m7"/>whole again? <chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        <line><chord name="E"/>Oh precious <chord name="C#m7"/>is the flow,</line>
-        <line><chord name="Bsus"/>That makes me white as snow;</line>
-        <line><chord name="E"/>No other <chord name="C#m7"/>fount I know,</line>
-        <line><chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+        <chord name="E"/>Oh precious <chord name="C#m7"/>is the flow,<br/>
+        <chord name="Bsus"/>That makes me white as snow;<br/>
+        <chord name="E"/>No other <chord name="C#m7"/>fount I know,<br/>
+        <chord name="A2"/>Nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <line><chord name="E"/>For my pardon <chord name="C#m7"/>this I see, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;</line>
-        <line><chord name="E"/>For my cleansing <chord name="C#m7"/>this my plea, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+        <chord name="E"/>For my pardon <chord name="C#m7"/>this I see, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;<br/>
+        <chord name="E"/>For my cleansing <chord name="C#m7"/>this my plea, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <line><chord name="E"/>This is all my <chord name="C#m7"/>hope and peace, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;</line>
-        <line><chord name="E"/>This is all my <chord name="C#m7"/>righteousness, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.</line>
+        <chord name="E"/>This is all my <chord name="C#m7"/>hope and peace, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus;<br/>
+        <chord name="E"/>This is all my <chord name="C#m7"/>righteousness, <chord name="A2"/>nothing but the blood of <chord name="Bsus"/>Je<chord name="E"/>sus.
       </lines>
     </verse>
   </lyrics>

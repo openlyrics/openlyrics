@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T13:42:58.826276">
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.095641">
   <properties>
     <titles>
       <title>He Leadeth Me</title>
@@ -18,26 +18,26 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <line>He <chord name="D"/>leadeth me! <chord name="D/F#"/>O    <chord name="G"/>blessed thought! O <chord name="D"/>words with heavenly comfort <chord name="A"/>fraught!</line>
-        <line>What<chord name="D"/>e'er I do, <chord name="D/F#"/>where'<chord name="G"/>er I be, Still <chord name="D"/>'tis God's <chord name="Bm"/>hand that <chord name="D"/>lea<chord name="A"/>deth <chord name="D"/>me.</line>
+        He <chord name="D"/>leadeth me! <chord name="D/F#"/>O    <chord name="G"/>blessed thought! O <chord name="D"/>words with heavenly comfort <chord name="A"/>fraught!<br/>
+        What<chord name="D"/>e'er I do, <chord name="D/F#"/>where'<chord name="G"/>er I be, Still <chord name="D"/>'tis God's <chord name="Bm"/>hand that <chord name="D"/>lea<chord name="A"/>deth <chord name="D"/>me.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <line>Lord, <chord name="D"/>I would clasp <chord name="D/F#"/>Thy  <chord name="G"/>hand in mine, Nor <chord name="D"/>ever murmur nor re<chord name="A"/>pine,</line>
-        <line>Con<chord name="D"/>tent, what<chord name="D/F#"/>ever  <chord name="G"/>lot I see, Since <chord name="D"/>God through <chord name="Bm"/>Jordan <chord name="D"/>lea<chord name="A"/>deth <chord name="D"/>me.</line>
+        Lord, <chord name="D"/>I would clasp <chord name="D/F#"/>Thy  <chord name="G"/>hand in mine, Nor <chord name="D"/>ever murmur nor re<chord name="A"/>pine,<br/>
+        Con<chord name="D"/>tent, what<chord name="D/F#"/>ever  <chord name="G"/>lot I see, Since <chord name="D"/>God through <chord name="Bm"/>Jordan <chord name="D"/>lea<chord name="A"/>deth <chord name="D"/>me.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <line>And <chord name="D"/>when my task o<chord name="D/F#"/>n    <chord name="G"/>earth is done, When <chord name="D"/>by Thy grace the victory's <chord name="A"/>won,</line>
-        <line>E'en <chord name="D"/>death's cold wave <chord name="D/F#"/>I    <chord name="G"/>will not flee, Since <chord name="D"/>God through <chord name="Bm"/>Jordan <chord name="D"/>lea<chord name="A"/>deth <chord name="D"/>me.</line>
+        And <chord name="D"/>when my task o<chord name="D/F#"/>n    <chord name="G"/>earth is done, When <chord name="D"/>by Thy grace the victory's <chord name="A"/>won,<br/>
+        E'en <chord name="D"/>death's cold wave <chord name="D/F#"/>I    <chord name="G"/>will not flee, Since <chord name="D"/>God through <chord name="Bm"/>Jordan <chord name="D"/>lea<chord name="A"/>deth <chord name="D"/>me.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        <line>He <chord name="D"/>leadeth <chord name="A"/>me, He <chord name="D"/>lead<chord name="G"/>eth <chord name="D"/>me; By His own <chord name="Bm"/>hand He <chord name="D"/>leadeth <chord name="A"/>me:</line>
-        <line>His <chord name="D"/>faithful <chord name="A"/>follower <chord name="D"/>I <chord name="G"/>would <chord name="D"/>be, For <chord name="Bm"/>by His <chord name="D"/>hand He <chord name="A"/>leadeth <chord name="D"/>me.</line>
+        He <chord name="D"/>leadeth <chord name="A"/>me, He <chord name="D"/>lead<chord name="G"/>eth <chord name="D"/>me; By His own <chord name="Bm"/>hand He <chord name="D"/>leadeth <chord name="A"/>me:<br/>
+        His <chord name="D"/>faithful <chord name="A"/>follower <chord name="D"/>I <chord name="G"/>would <chord name="D"/>be, For <chord name="Bm"/>by His <chord name="D"/>hand He <chord name="A"/>leadeth <chord name="D"/>me.
       </lines>
     </verse>
   </lyrics>

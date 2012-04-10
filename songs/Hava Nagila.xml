@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song"
-      version="0.7"
-      createdIn="Trac 0.11.2"
-      modifiedIn="Vim 7.2"
-      modifiedDate="2010-03-14T13:15:30+01:00">
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="Trac 0.11.2" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.006882">
   <properties>
     <titles>
       <title lang="he">הבה נגילה</title>
@@ -24,73 +20,73 @@
 
     <verse name="v1" lang="he">
       <lines>
-        <line>הבה נגילה</line>
-        <line>הבה נגילה</line>
-        <line>הבה נגילה ונשמחה</line>
+        הבה נגילה<br/>
+        הבה נגילה<br/>
+        הבה נגילה ונשמחה
       </lines>
     </verse>
     <verse name="v1" lang="he" translit="en">
       <lines>
-        <line>Hava nagila</line>
-        <line>Hava nagila</line>
-        <line>Hava nagila vi nis'mecha</line>
+        Hava nagila<br/>
+        Hava nagila<br/>
+        Hava nagila vi nis'mecha
       </lines>
     </verse>
     <verse name="v1" lang="en">
       <lines>
-        <line>Let's rejoice</line>
-        <line>Let's rejoice</line>
-        <line>Let's rejoice and be happy</line>
+        Let's rejoice<br/>
+        Let's rejoice<br/>
+        Let's rejoice and be happy
       </lines>
     </verse>
 
     <verse name="c" lang="he">
       <lines>
-        <line>הבה נרננה</line>
-        <line>הבה נרננה</line>
-        <line>הבה נרננה ונשמחה</line>
+        הבה נרננה<br/>
+        הבה נרננה<br/>
+        הבה נרננה ונשמחה
       </lines>
     </verse>
     <verse name="c" lang="he" translit="en">
       <lines>
-        <line>Hava neranenah</line>
-        <line>Hava neranenah</line>
-        <line>Hava neranenah vi nis'mecha</line>
+        Hava neranenah<br/>
+        Hava neranenah<br/>
+        Hava neranenah vi nis'mecha
       </lines>
     </verse>
     <verse name="c" lang="en">
       <lines>
-        <line>Let's sing</line>
-        <line>Let's sing</line>
-        <line>Let's sing and be happy</line>
+        Let's sing<br/>
+        Let's sing<br/>
+        Let's sing and be happy
       </lines>
     </verse>
 
     <verse name="b" lang="he">
       <lines>
-        <line>!עורו, עורו אחים</line>
-        <line>עורו אחים בלב שמח</line>
-        <line></line>
-        <line>!עורו אחים, עורו אחים</line>
-        <line>בלב שמח</line>
+        !עורו, עורו אחים<br/>
+        עורו אחים בלב שמח<br/>
+        <br/>
+        !עורו אחים, עורו אחים<br/>
+        בלב שמח
       </lines>
     </verse>
     <verse name="b" lang="he" translit="en">
       <lines>
-        <line>Uru, uru achim!</line>
-        <line>Uru achim b'lev sameach</line>
-        <line></line>
-        <line>Uru achim, uru achim!</line>
-        <line>B'lev sameach</line>
+        Uru, uru achim!<br/>
+        Uru achim b'lev sameach<br/>
+        <br/>
+        Uru achim, uru achim!<br/>
+        B'lev sameach
       </lines>
     </verse>
     <verse name="b" lang="en">
       <lines>
-        <line>Awake, awake, brothers!</line>
-        <line>Awake brothers with a happy heart</line>
-        <line></line>
-        <line>Awake, brothers, awake, brothers!</line>
-        <line>With a happy heart</line>
+        Awake, awake, brothers!<br/>
+        Awake brothers with a happy heart<br/>
+        <br/>
+        Awake, brothers, awake, brothers!<br/>
+        With a happy heart
       </lines>
     </verse>
 

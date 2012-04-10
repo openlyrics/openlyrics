@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.7" createdIn="opensong2openlyrics.py 0.3" modifiedIn="opensong2openlyrics.py 0.3" modifiedDate="2010-03-16T12:59:13.194102">
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.499155">
   <properties>
     <titles>
       <title>Be Thou My Vision</title>
@@ -18,34 +18,34 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <line><chord name="D"/>Be Thou my <chord name="Bm7"/>Vision, O <chord name="G"/>Lord of my <chord name="D"/>heart,</line>
-        <line><chord name="A"/>Naught be all <chord name="Bm7"/>else to me <chord name="G"/>save that Thou <chord name="A"/>art;</line>
-        <line><chord name="Gmaj7"/>Thou my best <chord name="F#m7"/>thought by <chord name="D"/>day or by <chord name="G"/>night<chord name="A"/>,</line>
-        <line><chord name="D"/>Waking or <chord name="Bm7"/>sleeping, Thy <chord name="G2"/>presence my <chord name="D"/>light.</line>
+        <chord name="D"/>Be Thou my <chord name="Bm7"/>Vision, O <chord name="G"/>Lord of my <chord name="D"/>heart,<br/>
+        <chord name="A"/>Naught be all <chord name="Bm7"/>else to me <chord name="G"/>save that Thou <chord name="A"/>art;<br/>
+        <chord name="Gmaj7"/>Thou my best <chord name="F#m7"/>thought by <chord name="D"/>day or by <chord name="G"/>night<chord name="A"/>,<br/>
+        <chord name="D"/>Waking or <chord name="Bm7"/>sleeping, Thy <chord name="G2"/>presence my <chord name="D"/>light.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <line><chord name="D"/>Be Thou my <chord name="Bm7"/>wisdom, be <chord name="G"/>Thou my true <chord name="D"/>Word,</line>
-        <line><chord name="A"/>I ever <chord name="Bm7"/>with Thee and <chord name="G"/>Thou with me, <chord name="A"/>Lord;</line>
-        <line><chord name="Gmaj7"/>Thou my great <chord name="F#m7"/>Father, and <chord name="D"/>I thy true <chord name="G"/>son<chord name="A"/>,</line>
-        <line><chord name="D"/>Thou in me <chord name="Bm7"/>dwelling, and <chord name="G2"/>I with Thee <chord name="D"/>one.</line>
+        <chord name="D"/>Be Thou my <chord name="Bm7"/>wisdom, be <chord name="G"/>Thou my true <chord name="D"/>Word,<br/>
+        <chord name="A"/>I ever <chord name="Bm7"/>with Thee and <chord name="G"/>Thou with me, <chord name="A"/>Lord;<br/>
+        <chord name="Gmaj7"/>Thou my great <chord name="F#m7"/>Father, and <chord name="D"/>I thy true <chord name="G"/>son<chord name="A"/>,<br/>
+        <chord name="D"/>Thou in me <chord name="Bm7"/>dwelling, and <chord name="G2"/>I with Thee <chord name="D"/>one.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <line><chord name="E"/>Riches I <chord name="C#m7"/>heed not, nor <chord name="A"/>man's empty <chord name="E"/>praise,</line>
-        <line><chord name="B"/>Thou mine In<chord name="C#m7"/>heritance <chord name="A"/>now and al<chord name="B"/>ways;</line>
-        <line><chord name="Amaj7"/>Thou and Thou <chord name="G#m7"/>only, <chord name="E"/>first in my <chord name="A"/>heart<chord name="B"/>,</line>
-        <line><chord name="E"/>High King of <chord name="C#m7"/>heaven, my <chord name="A2"/>Treasure Thou <chord name="E"/>art.</line>
+        <chord name="E"/>Riches I <chord name="C#m7"/>heed not, nor <chord name="A"/>man's empty <chord name="E"/>praise,<br/>
+        <chord name="B"/>Thou mine In<chord name="C#m7"/>heritance <chord name="A"/>now and al<chord name="B"/>ways;<br/>
+        <chord name="Amaj7"/>Thou and Thou <chord name="G#m7"/>only, <chord name="E"/>first in my <chord name="A"/>heart<chord name="B"/>,<br/>
+        <chord name="E"/>High King of <chord name="C#m7"/>heaven, my <chord name="A2"/>Treasure Thou <chord name="E"/>art.
       </lines>
     </verse>
     <verse name="v4">
       <lines>
-        <line><chord name="E"/>High King of <chord name="C#m7"/>heaven my <chord name="A"/>victory <chord name="E"/>won,</line>
-        <line><chord name="B"/>May I reach <chord name="C#m7"/>heaven's joys, <chord name="A"/>O bright heav'n's <chord name="B"/>Sun;</line>
-        <line><chord name="Amaj7"/>Heart of my <chord name="G#m7"/>own heart, what<chord name="E"/>ever be<chord name="A"/>fall<chord name="B"/>,</line>
-        <line><chord name="E"/>Still be my <chord name="C#m7"/>Vision, O <chord name="A2"/>Ruler of <chord name="E"/>all.</line>
+        <chord name="E"/>High King of <chord name="C#m7"/>heaven my <chord name="A"/>victory <chord name="E"/>won,<br/>
+        <chord name="B"/>May I reach <chord name="C#m7"/>heaven's joys, <chord name="A"/>O bright heav'n's <chord name="B"/>Sun;<br/>
+        <chord name="Amaj7"/>Heart of my <chord name="G#m7"/>own heart, what<chord name="E"/>ever be<chord name="A"/>fall<chord name="B"/>,<br/>
+        <chord name="E"/>Still be my <chord name="C#m7"/>Vision, O <chord name="A2"/>Ruler of <chord name="E"/>all.
       </lines>
     </verse>
   </lyrics>
