@@ -568,32 +568,24 @@ are wrapped in a ``<themes>`` tag::
 
     <themes><theme>Adoration</theme></themes>
 
-A ``<theme>`` tag has two optional attributes:
-
-    ``id``
-        The ``id`` attribute should be used when using a theme from the
-        `standardized CCLI list <http://www.ccli.com.au/owners/themes.cfm>`_. The
-        list can be found in the downloadable OpenLyrics archive, in the
-        ``themelist.txt`` file. The value of ``id`` is the line number of a
-        particular theme in this file. Standardized themes with id should ease
-        assigning translated themes to songs in an application.
-
-    ``lang``
-        The ``lang`` attribute defines the language of a theme. The value of this
-        attribute should be in the same format as the ``lang`` attribute of the
-        ``<title>`` tag.
+A ``<theme>`` tag has an optional ``lang`` attribute, which defines the language
+of the theme. The value of this attribute should be in the same format as the
+``lang`` attribute of the ``<title>`` tag.
 
 Some examples::
 
     <themes>
       <theme>Adoration</theme>
-      <theme id="1" lang="en-US">Grace</theme>
-      <theme id="2" lang="en-US">Praise</theme>
-      <theme id="3" lang="en-US">Salvation</theme>
-      <theme id="1" lang="pt-BR">Graça</theme>
-      <theme id="2" lang="pt-BR">Adoração</theme>
-      <theme id="3" lang="pt-BR">Salvação</theme>
+      <theme lang="en-US">Grace</theme>
+      <theme lang="pt-BR">Graça</theme>
+      <theme lang="en-US">Praise</theme>
+      <theme lang="pt-BR">Adoração</theme>
+      <theme lang="en-US">Salvation</theme>
+      <theme lang="pt-BR">Salvação</theme>
     </themes>
+
+It is highly recommended that themes should come from the list of themes on the
+CCLI web site: `<http://www.ccli.co.za/owners/themes.cfm>`_
 
 
 Comments
