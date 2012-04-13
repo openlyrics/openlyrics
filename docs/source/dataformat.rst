@@ -254,10 +254,14 @@ known to handle non-ASCII file names well.
 Song Properties
 ---------------
 
-The ``<properties>`` tag groups a number of property tags together which describe
-the song. These tags include the ``<titles>`` and ``<authors>`` tags. The order of
-tags within the ``<properties>`` tag is arbitrary. For example, it doesn't matter
-if the ``<titles>`` tag occurs before the ``<authors>`` tag::
+OpenLyrics songs are essentially divided into two sections. The first section,
+denoted by the ``<properties>`` tag, contains the various properties of the song,
+and the second section, denoted by the ``<lyrics>`` tag, contains the lyrics.
+
+The ``<properties>`` tag groups various song property tags together. These tags
+include the ``<titles>`` and ``<authors>`` tags. The order of tags within the
+``<properties>`` tag is arbitrary. For example, it doesn't matter if the
+``<titles>`` tag occurs before the ``<authors>`` tag::
 
     <titles><title>Amazing Grace</title></titles>
     <authors><author>John Newton</author></authors>
@@ -603,108 +607,101 @@ An example::
     </comments>
 
 
-Song lyrics
+Song Lyrics
 -----------
 
-Description of the possible syntax enclosed in tag ``<lyrics>``. This tag
-contain text of a song and other stuff related to it.
+The second section of an OpenLyrics song is defined by the ``<lyrics>`` tag. This
+tag contains words of a song and other data related to it.
 
-Lyrics part of OpenLyrics format will mostly contain tags like
-``<verse>``, ``<lines>`` or ``<line>``. A song should contain at least
-**one verse with one line**.::
+The ``<lyrics>`` tag contains one or more ``<verse>`` tags. Each ``<verse>`` tag
+defines a verse or stanza of a song, and contains a single mandatory attribute,
+``name``. Each verse can contain one or more ``<lines>`` tags, which holds a
+logical grouping of words.
+
+A song should contain at least **one verse**::
 
     <lyrics>
       <verse name="v1">
         <lines>
-          <line>This is the first line of the text.</line>
+          This is the first line of the text.
         </lines>
       </verse>
     </lyrics>
 
-In ``<line>`` should be enclosed all text for one line. An empty line is
-expressed by ``<line/>`` or ``<line></line>``. More lines of text
-can be in tag ``<lines>``::
-
-    <lines>
-      <line>This is the first line of the text.</line>
-      <line>This is the second line of the text.</line>
-    </lines>
-
-There can be more group of lines::
+There can be multiple ``<lines>`` tags::
 
     <verse name="v1">
       <lines>
-        <line>This is the first line of the text.</line>
+        This is the first line of the text.
       </lines>
       <lines>
-        <line>This is the second line of the text.</line>
+        This is the second line of the text.
       </lines>
     </verse>
 
-And of course it can contain more verses::
+And of course, a song can contain multiple verses::
 
     <lyrics>
       <verse name="v1">
-        <lines><line>First line of first verse.</line></lines>
+        <lines>First line of first verse.</lines>
       </verse>
       <verse name="v2">
-        <lines><line>First line of second verse.</line></lines>
+        <lines>First line of second verse.</lines>
       </verse>
     </lyrics>
 
-The tag ``<verse>`` is meant for all song parts, not only verses but
-also for *chorus*, *bridge*, *pre-chorus*, etc.
+The ``<verse>`` tag is not only used for verses, but also choruses, bridges, etc.
 
-It is recommended enclose in one tag ``<verse>`` text for one slide.
+
+Line Breaks
+^^^^^^^^^^^
+
+Within a ``<lines>`` tag, a ``<br/>`` tag is used to define breaks between lines.
+
+For example::
+
+    <lines>
+      Amazing grace, how sweet the sound<br/>
+      That saved a wretch like me!</br>
+      I once was lost, but now am found,<br/>
+      Was blind but now I see.<br/>
+    </lines>
 
 
 Verse Name
 ^^^^^^^^^^
 
-For every verse an attribute ``name`` with an unique value is required.
-*There shouldn't be two or more verses the same name*. (The exception is
-the situation when there are present more translations of a verse.)
+As previously mentioned, every ``<verse>`` tag has a mandatory ``name`` attribute.
+Verse names should be unique, written in **lower case**, a single word, and should
+follow the naming convention as laid out in the table below:
 
-The recommendation for standardized verse names follows:
-
-======================= ============================================
+======================= ==========================================================
 Name                    Description
-======================= ============================================
+======================= ==========================================================
 ``v1, v2, v3, ...``     first verse, second verse, third verse, ...
+``v1a, v1b, v1c, ...``  first verse part 1, first verse part two, ...
 ``c``                   chorus
-``c1, c2, ...``         more choruses
+``c1, c2, ...``         first chorus, second chorus, ...
+``c1a, c1b, ...``       first chorus part 1, first chorus part 2, ...
 ``p``                   pre-chorus
-``p1, p2, ...``         more pre-choruses
+``p1, p2, ...``         first pre-chorus, second pre-chorus, ...
+``p1a, p1b, ...``       first pre-chorus part 1, first pre-chorus part 2, ...
 ``b``                   bridge
-``b1, b2, ...``         more bridges
+``b1, b2, ...``         first bridge, second bridge, ...
+``b1a, b1b, b1c, ...``  first bridge part 1, first bridge part 2, ...
 ``e``                   ending
-``e1, e2, ...``         more endings
-``v1a, v1b, v1c, ...``  this schema is for splitting verse to more parts
-                        (e.g. for splitting verse over more slides)
-``ca, cb, ...``         splitting chorus to more parts
-``c1a, c1b, ...``       splitting chorus to more parts
-``pa, pb, ...``         splitting pre-chorus to more parts
-``p1a, p1b, ...``       splitting pre-chorus to more parts
-``ba, bb, bc, ...``     splitting bridge to more parts
-``b1a, b1b, b1c, ...``  splitting bridge to more parts
-``ea, eb, ec, ...``     splitting ending to more parts
-``e1a, e1b, e1c, ...``  splitting ending to more parts
-======================= ============================================
+``e1, e2, ...``         first ending, second ending, ...
+``e1a, e1b, e1c, ...``  first ending part 1, first ending part 2, ...
+======================= ==========================================================
 
-In recommended naming schema are names in **lowercase**.
-The value of the ``name`` attribute could be any *one word*.
-
-Example of a song containing two verses (*v1, v2*), a chorus (*c*),
-bridge (*b*) and ending (*e*). Second verse is splited into more slides::
+According to the table above, a song containing two verses (*v1, v2*), a chorus
+(*c*), a bridge (*b*) and an ending (*e*) would look like this::
 
     <lyrics>
       <verse name="v1">
         ...
       </verse>
-      <verse name="v2a">
-        ...
-      </verse>
-      <verse name="v2b">
+      <verse name="v2">
         ...
       </verse>
       <verse name="c">
@@ -717,6 +714,7 @@ bridge (*b*) and ending (*e*). Second verse is splited into more slides::
         ...
       </verse>
     </lyrics>
+
 
 Chords
 ^^^^^^
@@ -735,10 +733,8 @@ placed immediately before the letters where it should be played::
     <lyrics>
       <verse name="v1">
         <lines>
-          <line><chord name="D7"/>Amazing grace how
-                <chord name="E"/>sweet the sound</line>
-          <line>That saved <chord name="A"/>a wretch
-                <chord name="F#"/>like me.</line>
+          <chord name="D7"/>Amazing grace how <chord name="E"/>sweet the sound<br/>
+          That saved <chord name="A"/>a wretch <chord name="F#"/>like me.
         </lines>
       </verse>
     </lyrics>
@@ -768,10 +764,10 @@ Example of a song containg English and German translation for the first verse::
 
     <lyrics>
       <verse name="v1" lang="en">
-        <lines><line>This text is in English.</line></lines>
+        <lines>This text is in English.</lines>
       </verse>
       <verse name="v1" lang="de">
-        <lines><line>Dieses Text ist auf Deutsch.</line></lines>
+        <lines>Dieses Text ist auf Deutsch.</lines>
       </verse>
     </lyrics>
 
@@ -820,13 +816,13 @@ to English ``<verse name="v1" lang="en">``::
 
     <lyrics>
       <verse name="v1" lang="he">
-        <lines><line>הבה נגילה</line></lines>
+        <lines>הבה נגילה</lines>
       </verse>
       <verse name="v1" lang="he" translit="en">
-        <lines><line>Hava nagila</line></lines>
+        <lines>Hava nagila</lines>
       </verse>
       <verse name="v1" lang="en">
-        <lines><line>Let's rejoice</line></lines>
+        <lines>Let's rejoice</lines>
       </verse>
     </lyrics>
 
@@ -850,12 +846,12 @@ for women::
     <lyrics>
       <verse name="v1">
         <lines part="men">
-          <line>First line of words sung by men.</line>
-          <line>Second line of words sung by men.</line>
+          First line of words sung by men.<br/>
+          Second line of words sung by men.
         </lines>
         <lines part="women">
-          <line>First line of words sung by women.</line>
-          <line>Second line of words sung by women.</line>
+          First line of words sung by women.<br/>
+          Second line of words sung by women.
         </lines>
       </verse>
     </lyrics>
@@ -874,16 +870,16 @@ Example::
       <verse name="v1">
         <lines>
           <comment>Singing loudly.</comment>
-          <line>Text of verse.</line>
+          Text of verse.<br/>
           <comment>Singing quietly.</comment>
-          <line>Text of verse.</line>
+          Text of verse.
         </lines>
       </verse>
       <verse name="c">
         <lines>
           <comment>Singing loudly.</comment>
-          <line>Line content.</line>
-          <line>Line content.</line>
+          Line content.<br/>
+          Line content.
         </lines>
       </verse>
     </lyrics>
@@ -927,34 +923,34 @@ Here's an example of the XML::
       <lyrics>
         <verse name="v1">
           <lines>
-            <line>Amazing grace how sweet the sound</line>
-            <line>That saved a wretch like me.</line>
-            <line>I once was lost, but now am found,</line>
-            <line>Was blind but now I see.</line>
+            Amazing grace how sweet the sound<br/>
+            That saved a wretch like me.<br/>
+            I once was lost, but now am found,<br/>
+            Was blind but now I see.
           </lines>
         </verse>
         <verse name="v2">
           <lines>
-            <line>T'was grace that taught my heart to fear,</line>
-            <line>And grace my fears;</line>
-            <line>How precious did that grace appear</line>
-            <line>The hour I first believed.</line>
+            'Twas grace that taught my heart to fear,<br/>
+            And grace my fears;<br/>
+            How precious did that grace appear<br/>
+            The hour I first believed.
           </lines>
         </verse>
         <verse name="v3">
           <lines>
-            <line>Through many dangers, toil and snares,</line>
-            <line>I have already come;</line>
-            <line>'Tis grace has brought me safe thus far,</line>
-            <line>And grace will lead me home.</line>
+            Through many dangers, toil and snares,<br/>
+            I have already come;<br/>
+            'Tis grace has brought me safe thus far,<br/>
+            And grace will lead me home.
           </lines>
         </verse>
         <verse name="v4">
           <lines>
-            <line>When we've been there ten thousand years</line>
-            <line>Bright shining as the sun,</line>
-            <line>We've no less days to sing God's praise</line>
-            <line>Than when we've first begun.</line>
+            When we've been there ten thousand years<br/>
+            Bright shining as the sun,<br/>
+            We've no less days to sing God's praise<br/>
+            Than when we've first begun.
           </lines>
         </verse>
       </lyrics>
