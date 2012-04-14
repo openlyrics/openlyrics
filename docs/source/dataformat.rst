@@ -719,15 +719,12 @@ According to the table above, a song containing two verses (*v1, v2*), a chorus
 Chords
 ^^^^^^
 
-OpenLyrics format allows storing chords. Having chords can be handy in
-some situations. For example when printing leadsheets or when preseting
-a song during band training.
-
-The tag containing a chord name looks like::
+The OpenLyrics format also provides the ability to include chords in the lyrics of
+songs. The tag containing a chord name looks like this::
 
     <chord name="D7"/>
 
-Tags ``<chord>`` are mixed with the text of a song. This tag should be
+The ``<chord>`` tags are mixed in with the lyrics of a song. This tag should be
 placed immediately before the letters where it should be played::
 
     <lyrics>
@@ -739,28 +736,27 @@ placed immediately before the letters where it should be played::
       </verse>
     </lyrics>
 
-At the moment there is no a fixed notation for chords. But if you would like
-to see some examples how chords can be written, see
-:ref:`chord examples <chordlist>`.
+Chords should be written according to this :ref:`list of chords <chordlist>`.
 
 Multiple Languages (Lyrics Translations)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Lyrics translation can be useful for example in situation when the worship band
-is singing a song in a foreing language and wants to display translation
-of the text for others to understand.
+The translation of lyrics can be useful for situations where a song is written in
+a language that the majority of the congregation does not know. A translation of
+the song can be displayed in a language common to most of the congregation.
 
-Translations are at the verse level. They can be added by translating a text of
-a ``<verse>`` and by adding attribute ``lang=""`` to ``<verse>``.
-The value of this attribute should be in the format ``xx`` or ``xx-YY``
-where ``xx`` is an `ISO-639 language code <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
-and YY is an `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
-more details see `bcp47 <ftp://ftp.rfc-editor.org/in-notes/bcp/bcp47.txt>`_.
+OpenLyrics supports the translation of verses by adding a ``lang`` attribute to
+``<verse>`` tags. To add translations to a particular verse, the ``<verse>`` tag
+should be repeated, with the same ``name`` attribute value as the verse to be
+translated, and with ``lang`` attribute set to the language of the translation.
+The value of the ``lang`` attribute should be in the same format as the ``lang``
+attribute used in other tags.
 
-More translations of a verse should have the same value of the attribute
-``name=""`` but different values of ``lang=""``.
+Multiple translations of a verse should have the same value of the ``name``
+attribute but different values of ``lang``.
 
-Example of a song containg English and German translation for the first verse::
+For example, this song is written in English and has a German translation for the
+first verse::
 
     <lyrics>
       <verse name="v1" lang="en">
@@ -771,48 +767,35 @@ Example of a song containg English and German translation for the first verse::
       </verse>
     </lyrics>
 
-Because translations are defined at the verse level, there can be also
-situation, that some verses have translations and some do not.
-
 
 Transliteration
 ^^^^^^^^^^^^^^^
 
-`Transliteration <http://en.wikipedia.org/wiki/Transliteration>`_ comes handy in
-situation when singing for instance a Hebrew song but the congregation is not
-able read Hebrew aplhabet.
+`Transliteration <http://en.wikipedia.org/wiki/Transliteration>`_ is the process
+whereby words from one writing system are converted to another writing system. For
+instance there might be a Hebrew song, written in the Hebrew alphabet, which is
+then rewritten into the English alphabet (but not into English) so that it is
+easier for the congregation to pronounce the Hebrew words.
 
-Transliteration allows to distinguish in one song:
+Transliteration can be defined by adding a ``translit`` attribute to the
+``<title>``, ``<theme>`` or ``<verse>`` tags. The value of this attribute should
+be the same format as the ``lang`` tags.
 
-* text written in original alphabet (e.g. Hebrew)
-* pronunciation of original aplhabet mapped to requested alphabet (e.g. Hebrew
-  pronunciation written in English)
-* translation of the song to requested language (e.g. English translation)
+The ``translit`` attribute must be used in conjunction with the ``lang``
+attribute. This is because one writing system can be transliterated into different
+languages in different ways. For example, Hebrew is transliterated into English a
+different way than when it is transliterated into French.
 
-Transliteration can be defined by adding attribute ``translit=""`` to
-``<title>``, ``<theme>`` or ``<verse>``.
-The value of this attribute should be in the format ``xx`` or ``xx-YY``
-where ``xx`` is an `ISO-639 language code <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_
-and YY is an `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For
-more details see `bcp47 <ftp://ftp.rfc-editor.org/in-notes/bcp/bcp47.txt>`_.
-
-The attribute ``translit=""`` must be used in conjunction with attribute
-``lang=""``. This is because one writting system can be transliterated
-to different languages differently. For example Hebrew is transliterated
-differently to English and French.
-
-In the following example the attribute ``lang=""`` means the language of
-original alphabet (Hebrew) and ``translit=""`` means the language to what
-the song was transliterated (English)::
+In the following example the ``lang`` attribute defines the language of original
+alphabet (Hebrew) and ``translit`` defines the language into which the song was
+transliterated (English)::
 
     <verse name="v1" lang="he" translit="en">
     ...
     </verse>
 
-Example of lyrics containing original text written in Hebrew
-``<verse name="v1" lang="he">``, transliterated to English
-``<verse name="v1" lang="he" translit="en">`` and translated
-to English ``<verse name="v1" lang="en">``::
+As an example, here is a song which was originally written in Hebrew, then
+transliterated to the English alphabet, and then finally translated into English::
 
     <lyrics>
       <verse name="v1" lang="he">
@@ -830,17 +813,13 @@ to English ``<verse name="v1" lang="en">``::
 Verse Parts (Groups of Lines)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the term *verse parts* or *group of lines* could be misleading but
-It was hard to find any other meaningful name for this feature.
+In some songs, certain lines or sections of the song may be sung by a particular
+group of people. For example, some songs contain sections where only the men or
+only the women sing. The ``part`` attribute, attached to the ``<lines>`` tag,
+marks these different sections (or parts) of songs. The value of this attribute is
+can be any arbitrary text.
 
-This feature means the ability marking words for different groups of people.
-For example some words should be sung by men and some by women.
-
-This feature is the reason why there is the tag ``<lines>``. This ability is
-implemented by adding attribute ``part=""`` to the tag ``<lines>``.
-The value of this attribute is any arbitrary text.
-
-Example of lyrics containing one verse with some words for men and soe word
+For example, a song containing one verse with some words for men and some words
 for women::
 
     <lyrics>
@@ -856,15 +835,16 @@ for women::
       </verse>
     </lyrics>
 
+
 Comments in Lyrics
 ^^^^^^^^^^^^^^^^^^
 
-OpenLyrics format supports adding comments. Comments must be put before
-a line with text. Comments could be useful for printing leadsheets.
-They can contain various information. For example it could contain information
-how to play or sing any particular text.
+The OpenLyrics format also supports comments within lyrics. Comments are useful
+for adding non-visible information. For example, a comment could contain the style
+in which to play or sing any particular set of lyrics. Once again, comments are
+defined by the ``<comment>`` tag.
 
-Example::
+For example::
 
     <lyrics>
       <verse name="v1">
@@ -888,10 +868,10 @@ Example::
 Advanced Example
 ----------------
 
-More song examples can be found in folder ''songs'' distributed with the
-OpenLyrics ZIP archive.
+More song examples can be found in the ``songs`` directory distributed with the
+OpenLyrics archive.
 
-Here's an example of the XML::
+Here's an advanced example of the XML::
 
     <?xml version="1.0" encoding="UTF-8"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song"
