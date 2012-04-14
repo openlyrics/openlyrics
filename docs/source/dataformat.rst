@@ -595,7 +595,7 @@ CCLI web site: `<http://www.ccli.co.za/owners/themes.cfm>`_
 Comments
 ^^^^^^^^
 
-The ``<comnment>`` tag is used to store any additional, unspecified user data in
+The ``<comment>`` tag is used to store any additional, unspecified user data in
 a free-form text field. A song can contain multiple ``<comment>`` tags, and thus
 they are wrapped in a ``<comments>`` tag.
 
