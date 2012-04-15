@@ -9,9 +9,9 @@
     </authors>
     <ccliNo>817404</ccliNo>
     <themes>
-      <theme id="72">Holiness</theme>
-      <theme id="99">Praise</theme>
-      <theme id="2">Adoration</theme>
+      <theme>Holiness</theme>
+      <theme>Praise</theme>
+      <theme>Adoration</theme>
     </themes>
   </properties>
   <lyrics>

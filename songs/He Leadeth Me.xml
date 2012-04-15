@@ -11,7 +11,7 @@
     <copyright>Public Domain</copyright>
     <verseOrder>v1 c v2 c v3 c</verseOrder>
     <themes>
-      <theme id="68">Guidance</theme>
+      <theme>Guidance</theme>
       <theme>Care</theme>
     </themes>
   </properties>

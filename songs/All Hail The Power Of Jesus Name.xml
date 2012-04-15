@@ -12,8 +12,8 @@
     <copyright>Public Domain</copyright>
     <verseOrder>v1 v2 v3 v4</verseOrder>
     <themes>
-      <theme id="62">God's Attributes / Power</theme>
-      <theme id="60">God's Attributes / Majesty</theme>
+      <theme>God's Attributes / Power</theme>
+      <theme>God's Attributes / Majesty</theme>
     </themes>
   </properties>
   <lyrics>

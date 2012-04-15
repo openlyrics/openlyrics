@@ -8,8 +8,8 @@
     <ccliNo>101740</ccliNo>
     <verseOrder>v1 c v2 c v3 c v4 c</verseOrder>
     <themes>
-      <theme id="140">Victory</theme>
-      <theme id="97">Peace</theme>
+      <theme>Victory</theme>
+      <theme>Peace</theme>
     </themes>
   </properties>
   <lyrics>

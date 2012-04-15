@@ -6,8 +6,8 @@
     </titles>
     <verseOrder>v1 c v2 c v3 c</verseOrder>
     <themes>
-      <theme id="103">Promise</theme>
-      <theme id="68">Guidance</theme>
+      <theme>Promise</theme>
+      <theme>Guidance</theme>
       <theme>Care</theme>
     </themes>
   </properties>

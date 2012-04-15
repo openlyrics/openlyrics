@@ -10,8 +10,8 @@
     <copyright>Public Domain</copyright>
     <verseOrder>v1 c v2 c v3 c</verseOrder>
     <themes>
-      <theme id="59">God's Attributes / Love</theme>
-      <theme id="61">God's Attributes / Mercy</theme>
+      <theme>God's Attributes / Love</theme>
+      <theme>God's Attributes / Mercy</theme>
     </themes>
   </properties>
   <lyrics>

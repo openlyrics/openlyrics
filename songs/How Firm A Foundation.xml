@@ -11,7 +11,7 @@
       <songbook name="Rippon's Selection of Hymns"/>
     </songbooks>
     <themes>
-      <theme id="68">Guidance</theme>
+      <theme>Guidance</theme>
       <theme>Care</theme>
     </themes>
   </properties>

@@ -8,8 +8,8 @@
       <author>Edwin O. Excell</author>
     </authors>
     <themes>
-      <theme id="111">Repentance</theme>
-      <theme id="116">Salvation</theme>
+      <theme>Repentance</theme>
+      <theme>Salvation</theme>
     </themes>
   </properties>
   <lyrics>

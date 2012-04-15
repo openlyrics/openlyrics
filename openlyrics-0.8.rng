@@ -275,16 +275,6 @@
         <element name="theme">
           <ref name="nonEmptyContent"/>
           <optional>
-            <!-- id: line in a ccli theme list from
-                 http://www.ccli.com.au/owners/themes.cfm -->
-            <attribute name="id">
-              <data type="positiveInteger">
-                <param name="minInclusive">1</param>
-                <param name="maxInclusive">999</param>
-              </data>
-            </attribute>
-          </optional>
-          <optional>
             <ref name="langAttribute"/>
             <optional>
               <ref name="translitAttribute"/>
