@@ -1,8 +1,8 @@
 Release 0.8 (15 Apr 2012)
 =========================
 
-* Add support for application specific formatting tags in <lines> element.
-* Drop element ``<line>``,  for line endings is used element <br/>
+* Add support for application specific formatting tags in <lines> tag.
+* Drop tag ``<line>``,  for line endings is used tag <br/>
 * Rename ``<customVersion>`` to ``<version>``.
 * Rename ``<releaseDate>`` to ``<released>``.
 * Remove the 'id' attribute of the ``<theme>`` tag, as it was based on a line
@@ -12,14 +12,14 @@ Release 0.8 (15 Apr 2012)
 Release 0.7 (24 Mar 2010)
 =========================
 
-* Move attribute 'xml:lang' to just 'lang' since the element could not always
+* Move attribute 'xml:lang' to just 'lang' since the tag could not always
   contain text in another language but also transliteration.
 * Allow empty lines by using syntax ``<line/>`` or ``<line></line>`` for that.
 * Add 'e' (ending) as a new reserved (standardized) name for verses (including
   other variants like e1, e2, e1a, ea, ...): ``<verse name="e">``.
 * Add transliteration support, attribute ``translit=""``.
-  can be used in elements ``<title>``, ``<theme>``, ``<verse>``.
-* Add multiple songbooks entries. Syntax changed from elements ``<collection>``
+  can be used in tags ``<title>``, ``<theme>``, ``<verse>``.
+* Add multiple songbooks entries. Syntax changed from tags ``<collection>``
   and ``<trackNo>`` to::
 
     <songbooks>
@@ -34,7 +34,7 @@ Release 0.7 (24 Mar 2010)
 Release 0.6 (22 Dec 2009)
 =========================
 
-* Drop element ``<customData>`` (is ambiguous).
+* Drop tag ``<customData>`` (is ambiguous).
 
 
 Release 0.5 (06 Dec 2009) - final draft
@@ -48,17 +48,17 @@ Release 0.5 (06 Dec 2009) - final draft
 * Theme value can't be empty.
 * Namespace changed  from ``http://www.openlyrics.info/2009/song/namespace``
   to ``http://openlyrics.info/namespace/2009/song``.
-* Content of an optional element is mandatory, when the element present in xml.
+* Content of an optional tag is mandatory, when the tag present in xml.
 
 
 Release 0.4 (21 Nov 2009) - draft
 ==================================
 
 * Move to RelaxNG xml schema.
-* Tag attribute change. xml:lang describes the language of an element. Change
+* Tag attribute change. xml:lang describes the language of an tag. Change
   from ``<author type="translation" xml:lang="cs">``
   to `` <author type="translation" lang="cs">``.
-* Xml schema: in 'author' element attribute 'lang' is required when attribute
+* Xml schema: in 'author' tag attribute 'lang' is required when attribute
   'type' contains value 'translation' ``<author type="translation" lang="cs">``.
 
 
