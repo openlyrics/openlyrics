@@ -7,6 +7,8 @@ Release 0.8 (15 Apr 2012)
 * Rename ``<releaseDate>`` to ``<released>``.
 * Remove the 'id' attribute of the ``<theme>`` tag, as it was based on a line
   number in a file, which is not very accurate, nor very reliable.
+* Add script 'tools/convert-schema.py' to convert songs from older OpenLyrics
+  versions.
 
 
 Release 0.7 (24 Mar 2010)
