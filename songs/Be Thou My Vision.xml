@@ -11,8 +11,8 @@
     <ccliNo>248328</ccliNo>
     <variant>Irish Folk Hymn</variant>
     <themes>
-      <theme id="25">Commitment</theme>
-      <theme id="95">Obedience</theme>
+      <theme>Commitment</theme>
+      <theme>Obedience</theme>
     </themes>
   </properties>
   <lyrics>

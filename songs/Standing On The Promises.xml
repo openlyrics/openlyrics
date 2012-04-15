@@ -8,9 +8,9 @@
     <ccliNo>31803</ccliNo>
     <verseOrder>v1 v2 v3 c v4 c v5 c</verseOrder>
     <themes>
-      <theme id="6">Assurance</theme>
-      <theme id="137">Trust</theme>
-      <theme id="103">Promise</theme>
+      <theme>Assurance</theme>
+      <theme>Trust</theme>
+      <theme>Promise</theme>
     </themes>
     <comments>
       <comment>2 Peter 1:4</comment>

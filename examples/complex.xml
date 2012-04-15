@@ -37,7 +37,7 @@
     <keywords>something to help with more accurate results</keywords>
     <!--
       -->
-    <verseOrder>v1 v2 v1a v1b v3 c v4 c1 c2 b b1 b2</verseOrder>
+    <verseOrder>v1 v2  v3 c v4 c1 c2 b b1 b2</verseOrder>
     <songbooks>
       <songbook name="Songbook without Number"/>
       <songbook name="Songbook with Number" entry="48"/>
@@ -45,12 +45,12 @@
     </songbooks>
     <themes>
       <theme>Adoration</theme>
-      <theme id="1" lang="en-US">Grace</theme>
-      <theme id="2" lang="en-US">Praise</theme>
-      <theme id="3" lang="en-US">Salvation</theme>
-      <theme id="1" lang="pt-BR">Graça</theme>
-      <theme id="2" lang="pt-BR">Adoração</theme>
-      <theme id="3" lang="pt-BR">Salvação</theme>
+      <theme lang="en-US">Grace</theme>
+      <theme lang="en-US">Praise</theme>
+      <theme lang="en-US">Salvation</theme>
+      <theme lang="pt-BR">Graça</theme>
+      <theme lang="pt-BR">Adoração</theme>
+      <theme lang="pt-BR">Salvação</theme>
     </themes>
 
     <comments>

@@ -12,9 +12,9 @@
     <ccliNo>25376</ccliNo>
     <verseOrder>v1 c v2 c v3 c v4 c</verseOrder>
     <themes>
-      <theme id="97">Peace</theme>
-      <theme id="6">Assurance</theme>
-      <theme id="137">Trust</theme>
+      <theme>Peace</theme>
+      <theme>Assurance</theme>
+      <theme>Trust</theme>
     </themes>
   </properties>
   <lyrics>

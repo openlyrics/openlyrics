@@ -11,8 +11,8 @@
     <transposition>3</transposition>
     <verseOrder>v1 v2 v3 v4</verseOrder>
     <themes>
-      <theme id="6">Assurance</theme>
-      <theme id="137">Trust</theme>
+      <theme>Assurance</theme>
+      <theme>Trust</theme>
     </themes>
   </properties>
   <lyrics>

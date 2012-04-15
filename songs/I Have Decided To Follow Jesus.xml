@@ -6,9 +6,9 @@
     </titles>
     <verseOrder>v1 v2 v3</verseOrder>
     <themes>
-      <theme id="25">Commitment</theme>
-      <theme id="95">Obedience</theme>
-      <theme id="38">Declaration</theme>
+      <theme>Commitment</theme>
+      <theme>Obedience</theme>
+      <theme>Declaration</theme>
     </themes>
   </properties>
   <lyrics>

@@ -11,9 +11,9 @@
     <copyright>Public Domain</copyright>
     <ccliNo>27714</ccliNo>
     <themes>
-      <theme id="90">Love</theme>
-      <theme id="91">Mercy</theme>
-      <theme id="97">Peace</theme>
+      <theme>Love</theme>
+      <theme>Mercy</theme>
+      <theme>Peace</theme>
     </themes>
   </properties>
   <lyrics>

@@ -10,9 +10,9 @@
     </authors>
     <ccliNo>2647528</ccliNo>
     <themes>
-      <theme id="99">Praise</theme>
-      <theme id="2">Adoration</theme>
-      <theme id="140">Victory</theme>
+      <theme>Praise</theme>
+      <theme>Adoration</theme>
+      <theme>Victory</theme>
     </themes>
   </properties>
   <lyrics>
