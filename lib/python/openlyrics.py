@@ -476,7 +476,7 @@ class Author(object):
         self.name = name
         if type_ and type_ not in (u'words',u'music',u'translation'):
             raise ValueError(u'`type` must be one of "words", "music", or' +
-                    '"translator".')
+                    '"translation".')
         self.type = type_
         self.lang = lang
     
@@ -487,7 +487,7 @@ class Author(object):
         elem = etree.Element(u'author')
         if self.type:
             elem.set(u'type',self.type)
-            if self.type == u'translator' and self.lang:
+            if self.type == u'translation' and self.lang:
                 elem.set(u'lang',self.lang)
         elem.text = self.name
         return elem
