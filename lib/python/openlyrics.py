@@ -147,7 +147,6 @@ class Song(object):
 
         # for unit tests it's helpful to not update following items
         if update_metadata:
-            self.modifiedIn = OLYR_MODIFIED_IN
             self.modifiedDate = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
             self._version = OLYR_VERSION
 
