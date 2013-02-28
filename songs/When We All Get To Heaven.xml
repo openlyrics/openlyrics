@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.527427">
+  <properties>
+    <titles>
+      <title>When We All Get To Heaven</title>
+    </titles>
+    <authors>
+      <author>Eliza E. Hewitt</author>
+      <author>Emily D. Wilson</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>24597</ccliNo>
+    <themes>
+      <theme>Celebration</theme>
+      <theme>Eternal Life</theme>
+      <theme>Heaven</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <chord name="A"/>Sing the wondrous love of Jesus, <chord name="E7"/>Sing His mercy and His <chord name="A"/>grace;<br/>
+        <chord name="A"/>In the mansions <chord name="D"/>bright and blessed, <chord name="A"/>He'll pre<chord name="E7"/>pare for us a <chord name="A"/>place.
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        When we <chord name="A"/>all get to heaven, What a day of re<chord name="B7"/>joicing that will <chord name="E7"/>be;<br/>
+        When we <chord name="A"/>all see <chord name="D"/>Jesus, We'll <chord name="A"/>sing and <chord name="E7"/>shout the victo<chord name="A"/>ry.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <chord name="A"/>While we walk the pilgrim pathway, <chord name="E7"/>Clouds will over spread the <chord name="A"/>sky;<br/>
+        <chord name="A"/>But when travelling <chord name="D"/>days are over, <chord name="A"/>Not a <chord name="E7"/>shadow, not a <chord name="A"/>sigh.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <chord name="A"/>Let us then be true and faithful, <chord name="E7"/>Trusting serving every<chord name="A"/>day;<br/>
+        <chord name="A"/>Just one glimpse of <chord name="D"/>Him in glory, <chord name="A"/>Will the <chord name="E7"/>toils of life re<chord name="A"/>pay.
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <chord name="A"/>Onward to the prize before us, <chord name="E7"/>Soon His beauty we'll be<chord name="A"/>hold;<br/>
+        <chord name="A"/>Soon the pearly <chord name="D"/>gates will open, <chord name="A"/>We shall <chord name="E7"/>tread the streets of <chord name="A"/>gold.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.184508">
+  <properties>
+    <titles>
+      <title>Holy Holy Holy</title>
+    </titles>
+    <authors>
+      <author>E.L. Ashford</author>
+    </authors>
+    <ccliNo>817404</ccliNo>
+    <themes>
+      <theme>Holiness</theme>
+      <theme>Praise</theme>
+      <theme>Adoration</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <chord name="D"/>Holy, <chord name="Bm"/>holy, <chord name="A"/>ho<chord name="D"/>ly, <chord name="G"/>Lord God Al<chord name="D"/>mighty,<br/>
+        <chord name="A"/>Early in the <chord name="Bm"/>mor<chord name="A"/>ning my <chord name="E"/>song shall rise to <chord name="A"/>Thee;<br/>
+        <chord name="D"/>Holy, <chord name="Bm"/>holy, <chord name="A"/>ho<chord name="D"/>ly, <chord name="G"/>merciful and <chord name="D"/>mighty,<br/>
+        <chord name="Bm"/>God <chord name="Bm/A"/>in three <chord name="G"/>per<chord name="D"/>sons, <chord name="Em"/>blessed <chord name="A"/>Trini<chord name="D"/>ty.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <chord name="D"/>Holy, <chord name="Bm"/>holy, <chord name="A"/>ho<chord name="D"/>ly, <chord name="G"/>all the saints a<chord name="D"/>dore Thee,<br/>
+        <chord name="A"/>Casting down their <chord name="Bm"/>golden <chord name="A"/>crowns a<chord name="E"/>round the glassy <chord name="A"/>sea;<br/>
+        <chord name="D"/>Cheru<chord name="Bm"/>bim and <chord name="A"/>sera<chord name="D"/>phim, <chord name="G"/>falling down be<chord name="D"/>fore Thee,<br/>
+        <chord name="Bm"/>Which, <chord name="Bm/A"/>wert and <chord name="G"/>art <chord name="D"/>and <chord name="Em"/>ever <chord name="A"/>more shall <chord name="D"/>be.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <chord name="D"/>Holy, <chord name="Bm"/>holy, <chord name="A"/>ho<chord name="D"/>ly, <chord name="G"/>though the darkness <chord name="D"/>hide Thee,<br/>
+        <chord name="A"/>Though the eye of <chord name="Bm"/>sinful <chord name="A"/>men Thy <chord name="E"/>Glory may not <chord name="A"/>see;<br/>
+        <chord name="D"/>Only <chord name="Bm"/>Thou art <chord name="A"/>ho<chord name="D"/>ly, <chord name="G"/>there is none be<chord name="D"/>side Thee,<br/>
+        <chord name="Bm"/>Per<chord name="Bm/A"/>fect in <chord name="G"/>power, <chord name="D"/>in <chord name="Em"/>love and <chord name="A"/>puri<chord name="D"/>ty.
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        <chord name="D"/>Holy, <chord name="Bm"/>holy, <chord name="A"/>ho<chord name="D"/>ly, <chord name="G"/>Lord God Al<chord name="D"/>mighy,<br/>
+        <chord name="A"/>All Thy works shall <chord name="Bm"/>praise Thy <chord name="A"/>Name in <chord name="E"/>earth and sky and <chord name="A"/>sea;<br/>
+        <chord name="D"/>Holy, <chord name="Bm"/>holy, <chord name="A"/>ho<chord name="D"/>ly, <chord name="G"/>merciful and <chord name="D"/>mighty,<br/>
+        <chord name="Bm"/>God <chord name="Bm/A"/>in three <chord name="G"/>per<chord name="D"/>sons, <chord name="Em"/>blessed <chord name="A"/>Trini<chord name="D"/>ty.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

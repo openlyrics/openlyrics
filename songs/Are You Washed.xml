@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.411382">
+  <properties>
+    <titles>
+      <title>Are You Washed</title>
+    </titles>
+    <authors>
+      <author>Elisha Hoffman</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <verseOrder>v1 c v2 c v3 c v4 c</verseOrder>
+    <themes>
+      <theme>Atonement</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        Have you <chord name="D"/>been to Jesus for the <chord name="G"/>cleansing <chord name="D"/>power?<br/>
+        Are you washed in the blood of the <chord name="A7"/>Lamb?<br/>
+        Are you <chord name="D"/>fully trusting in His <chord name="G"/>grace this hour?<br/>
+        Are you <chord name="D"/>washed in the <chord name="A7"/>blood of the <chord name="D"/>Lamb?
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        Are you <chord name="D"/>walking daily by the <chord name="G"/>Savior’s <chord name="D"/>side?<br/>
+        Are you washed in the blood of the <chord name="A7"/>Lamb?<br/>
+        Do you <chord name="D"/>rest each moment in the <chord name="G"/>Crucified?<br/>
+        Are you <chord name="D"/>washed in the <chord name="A7"/>blood of the <chord name="D"/>Lamb?
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        When the <chord name="D"/>Bridegroom cometh, will your <chord name="G"/>robes be <chord name="D"/>white?<br/>
+        Pure and white in the blood of the <chord name="A7"/>Lamb?<br/>
+        Will your <chord name="D"/>souls be ready for the <chord name="G"/>mansions bright,<br/>
+        And be <chord name="D"/>washed in the <chord name="A7"/>blood of the <chord name="D"/>Lamb?
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        Lay a<chord name="D"/>side your garments that are <chord name="G"/>stained with <chord name="D"/>sin<br/>
+        And be washed in the blood of the <chord name="A7"/>Lamb.<br/>
+        There’s a <chord name="D"/>fountain flowing for the <chord name="G"/>soul unclean.<br/>
+        O, be <chord name="D"/>washed in the <chord name="A7"/>blood of the <chord name="D"/>Lamb?
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        Are you <chord name="D"/>washed in the <chord name="G"/>blood,<br/>
+        In the <chord name="D"/>soul-cleansing blood of the <chord name="A7"/>Lamb?<br/>
+        Are your <chord name="D"/>garments spotless are they <chord name="G"/>white as snow?<br/>
+        Are you <chord name="D"/>washed in the <chord name="A7"/>blood of the <chord name="D"/>Lamb?
+      </lines>
+    </verse>
+  </lyrics>
+</song>

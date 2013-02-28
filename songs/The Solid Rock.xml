@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.351916">
+  <properties>
+    <titles>
+      <title>The Solid Rock</title>
+    </titles>
+    <copyright>Public Domain</copyright>
+    <ccliNo>101740</ccliNo>
+    <verseOrder>v1 c v2 c v3 c v4 c</verseOrder>
+    <themes>
+      <theme>Victory</theme>
+      <theme>Peace</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        My <chord name="E"/>hope is built on <chord name="B"/>nothing less than <chord name="A"/>Jesus' blood and <chord name="B"/>righteous<chord name="E"/>ness;<br/>
+        I <chord name="E"/>dare not trust the <chord name="B"/>sweetest frame, but <chord name="A"/>wholly lean on <chord name="B"/>Jesus' <chord name="E"/>name.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        When <chord name="E"/>darkness veils His <chord name="B"/>lovely face, I <chord name="A"/>rest on His un<chord name="B"/>changing <chord name="E"/>grace.<br/>
+        In <chord name="E"/>every high and <chord name="B"/>stormy gale, my <chord name="A"/>anchor holds with<chord name="B"/>in the <chord name="E"/>veil.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        His  <chord name="E"/>oath, His cove<chord name="B"/>nant, His blood sup<chord name="A"/>port me in the <chord name="B"/>whelming <chord name="E"/>flood;<br/>
+        When <chord name="E"/>all around my <chord name="B"/>soul gives way, He <chord name="A"/>then is all my <chord name="B"/>hope and <chord name="E"/>stay.
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        When <chord name="E"/>He shall come with <chord name="B"/>trumpet sound, O <chord name="A"/>may I then in <chord name="B"/>Him be <chord name="E"/>found;<br/>
+        Dressed <chord name="E"/>in His righteous<chord name="B"/>ness alone, fault<chord name="A"/>less to stand be<chord name="B"/>fore the <chord name="E"/>throne.
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        On <chord name="E"/>Christ, the solid <chord name="A"/>rock I stand;<br/>
+        All <chord name="E"/>other ground is sinking <chord name="B"/>sand,<br/>
+        All <chord name="A"/>other ground is <chord name="B"/>sinking <chord name="E"/>sand.
+      </lines>
+    </verse>
+  </lyrics>
+</song>
