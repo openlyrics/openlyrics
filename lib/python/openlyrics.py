@@ -63,7 +63,7 @@ def tostring(song, pretty_print=True, update_metadata=True):
     Convert to a file.
     """
     tree = song._to_xml(pretty_print, update_metadata)
-    text = etree.tostring(tree.getroot(), encoding='UTF-8')
+    text = etree.tostring(tree.getroot(), encoding='UTF-8', method='html')
     return unicode(text, 'UTF-8') # convert to unicode string
 
 
@@ -71,7 +71,7 @@ def parse(filename):
     """
     Read from the file.
     """
-    tree = etree.parse(filename)
+    tree = etree.parse(filename, method='html')
     song = Song(tree)
     return song
 
@@ -147,7 +147,6 @@ class Song(object):
 
         # for unit tests it's helpful to not update following items
         if update_metadata:
-            self.modifiedIn = OLYR_MODIFIED_IN
             self.modifiedDate = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
             self._version = OLYR_VERSION
 
@@ -476,7 +475,7 @@ class Author(object):
         self.name = name
         if type_ and type_ not in (u'words',u'music',u'translation'):
             raise ValueError(u'`type` must be one of "words", "music", or' +
-                    '"translator".')
+                    '"translation".')
         self.type = type_
         self.lang = lang
     
@@ -487,7 +486,7 @@ class Author(object):
         elem = etree.Element(u'author')
         if self.type:
             elem.set(u'type',self.type)
-            if self.type == u'translator' and self.lang:
+            if self.type == u'translation' and self.lang:
                 elem.set(u'lang',self.lang)
         elem.text = self.name
         return elem
