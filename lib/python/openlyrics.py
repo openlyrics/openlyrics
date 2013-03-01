@@ -30,8 +30,6 @@ s = Song('song.xml')
 import re
 from datetime import datetime
 from xml.etree import cElementTree as etree
-import xml.etree.ElementTree
-from StringIO import StringIO
 
 
 OLYR_NS = u'http://openlyrics.info/namespace/2009/song'
