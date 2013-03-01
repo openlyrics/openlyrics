@@ -525,8 +525,9 @@ class Songbook(object):
         """
         elem = etree.Element(u'songbook')
         if self.entry:
-            elem.set(u'entry',self.entry)
-        elem.text = self.name
+            elem.set(u'entry', self.entry)
+        if self.name:
+            elem.set(u'name', self.name)
         return elem
     
     def __str__(self):
