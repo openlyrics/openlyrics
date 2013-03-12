@@ -65,8 +65,8 @@ class ParsingCheckerTestCase(unittest.TestCase):
         # translation for verse was not specified
         
         ##TODO
-        #for line, l in zip(lines, song.get_verse('v2')):
-        #    self.assertEqual(line, l.text)
+        for line, l in zip(lines, song.get_verse('v2').lines[0].lines):
+            self.assertEqual(line, l.text)
 
     def check_localized_song(self, song):
         # test properties
@@ -96,13 +96,13 @@ class ParsingCheckerTestCase(unittest.TestCase):
 
         # 1st verse content
         ##TODO
-        """lines = [u'Mám zde přítele,',
+        lines = [u'Mám zde přítele,',
             u'Pána Ježíše,',
             u'a na rámě jeho spoléhám;',
             u'v něm své stěstí mám,',
             u'pokoj nalézám,',
             u'když na rámě jeho spoléhám!',]
-        for line, l in zip(lines, song['v1']):
+        for line, l in zip(lines, song.get_verse('v1').lines[0].lines):
             self.assertEqual(line, l.text)
 
         # chorus content
@@ -110,8 +110,8 @@ class ParsingCheckerTestCase(unittest.TestCase):
             u'je v soužení náš pevný hrad;',
             u'Boží rámě,',
             u'uč se na ně vždycky spoléhat!',]
-        for line, l in zip(lines, song['c']):
-            self.assertEqual(line, l.text)"""
+        for line, l in zip(lines, song.get_verse('c').lines[0].lines):
+            self.assertEqual(line, l.text)
 
     def readtext(self, filename):
         '''return unicode string'''

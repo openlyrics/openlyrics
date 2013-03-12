@@ -772,7 +772,6 @@ class Line(object):
     """
     A single line in a group of lines.
     """
-    __chords_regex = re.compile(u'<chord[^>]*>')
     
     def __init__(self, markup):
         """
@@ -786,7 +785,7 @@ class Line(object):
         """
         Get the text for this line.
         """
-        return self.__chords_regex.sub(u'',self.markup)
+        return self.markup.strip()
     
     def _set_text(self, value):
         """
@@ -795,14 +794,6 @@ class Line(object):
         self.markup = value
     
     text = property(_get_text, _set_text)
-    
-    def _get_chords(self):
-        """
-        Get the chords for this line.
-        """
-        self.__chords_regex.findall(self.markup)
-    
-    chords = property(_get_chords)
     
     def __str__(self):
         """
@@ -814,7 +805,7 @@ class Line(object):
         """
         Return a unicode representation.
         """
-        return self.text.strip()
+        return self.text
 
 
 # Various functions
