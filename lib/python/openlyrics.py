@@ -133,6 +133,9 @@ class Song(object):
         verse_.lines = [lines]
         self.verses.append(verse_)
     
+    def get_version(self):
+        return self._version
+    
     def _from_xml(self, tree):
         """
         Read from XML.
@@ -694,7 +697,7 @@ class Verse(object):
     def __len__(self):
         'Number of Lines'
         try:
-            return len(self.lines.pop(0).lines)
+            return len(self.lines[0].lines)
         except IndexError:
             return 0 #No Lines
 
@@ -716,12 +719,18 @@ class Lines(object):
         Convert from XML.
         """
         self.part = elem.get(u'part', u'')
-        self.lines.append(Line(elem.text)) #First line
+        #self.lines.append(Line(elem.text)) #First line
         ct=1
+        cur_line = elem.text
         for child in elem:
             ct+=1
             if child.tag == "{%s}br"%OLYR_NS: #Line break
-                self.lines.append(Line(child.tail))
+                self.lines.append(Line(cur_line))
+                cur_line = child.tail
+            elif child.tail: # Skip <chord> and custom tags for now
+                cur_line += child.tail
+        
+        self.lines.append(Line(cur_line)) #Create Line object for the last line
     
     def _to_xml(self):
         """
@@ -799,13 +808,13 @@ class Line(object):
         """
         Return a string representation.
         """
-        return unicode(self).encode('UTF-8') 
+        return unicode(self).encode('UTF-8')
     
     def __unicode__(self):
         """
         Return a unicode representation.
         """
-        return self.text
+        return self.text.strip()
 
 
 # Various functions
