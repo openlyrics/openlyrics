@@ -33,7 +33,7 @@ from tests import test_creating_song
 # use relative paths
 # Workaround for placing openlyrics module in a path
 # with only ascii characters.
-scriptdir = path.join(path.dirname(__file__))
+scriptdir = path.realpath(path.join(path.dirname(__file__)))
 os.chdir(scriptdir)
 
 # add OpenLyric Python library to PYTHON_PATH

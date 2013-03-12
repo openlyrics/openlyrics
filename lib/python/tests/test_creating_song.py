@@ -23,44 +23,26 @@ import openlyrics
 
 
 constructed_song = u'''<?xml version='1.0' encoding='UTF-8'?>
-<song createdIn="OpenLyrics Python Library 0.2" modifiedDate="2011-01-15T12:07:10" modifiedIn="OpenLyrics Python Library 0.2" version="0.7" xmlns="http://openlyrics.info/namespace/2009/song">
+<song createdIn="OpenLyrics Python Library 0.2" modifiedDate="2011-01-15T12:07:10" modifiedIn="OpenLyrics Python Library 0.2" version="0.8" xmlns="http://openlyrics.info/namespace/2009/song">
   <properties />
   <lyrics>
     <verse name="v1">
-      <lines>
-        <line>Text v1 line1</line>
-        <line>Text v1 line2</line>
-      </lines>
-    </verse>
-    <verse lang="he" name="v1">
-      <lines>
-        <line>Text v1 he line1</line>
-        <line>Text v1 he line2</line>
-      </lines>
-    </verse>
-    <verse lang="he" name="v1" translit="en">
-      <lines>
-        <line>Text v1 he_en line1</line>
-        <line>Text v1 he_en line2</line>
-      </lines>
+      <lines>Text v1 line1<br />Text v1 line2</lines>
     </verse>
     <verse name="v2">
-      <lines>
-        <line>Text v2 line1</line>
-        <line>Text v2 line2</line>
-      </lines>
+      <lines>Text v2 line1<br />Text v2 line2</lines>
+    </verse>
+    <verse lang="he" name="v1">
+      <lines>Text v1 he line1<br />Text v1 he line2</lines>
     </verse>
     <verse lang="he" name="v2">
-      <lines>
-        <line>Text v2 he line1</line>
-        <line>Text v2 he line2</line>
-      </lines>
+      <lines>Text v2 he line1<br />Text v2 he line2</lines>
+    </verse>
+    <verse lang="he" name="v1" translit="en">
+      <lines>Text v1 he_en line1<br />Text v1 he_en line2</lines>
     </verse>
     <verse lang="he" name="v2" translit="en">
-      <lines>
-        <line>Text v2 he_en line1</line>
-        <line>Text v2 he_en line2</line>
-      </lines>
+      <lines>Text v2 he_en line1<br />Text v2 he_en line2</lines>
     </verse>
   </lyrics>
 </song>'''
@@ -72,6 +54,7 @@ class CreateSongTestCase(unittest.TestCase):
         pass
 
     def tearDown(self):
+        
         pass
 
     def test_create(self):
@@ -81,25 +64,26 @@ class CreateSongTestCase(unittest.TestCase):
         song.modifiedDate = '2011-01-15T12:07:10'
         song._version = openlyrics.OLYR_VERSION
 
-        lines = [Line('Text v1 line1'), Line('Text v1 line2')]
-        lines_he = [Line('Text v1 he line1'), Line('Text v1 he line2')]
-        lines_he_en = [Line('Text v1 he_en line1'), Line('Text v1 he_en line2')]
+        lines = 'Text v1 line1\nText v1 line2'
+        lines_he = 'Text v1 he line1\nText v1 he line2'
+        lines_he_en = 'Text v1 he_en line1\nText v1 he_en line2'
 
         # text without language
-        song['v1'] = lines
-        song['v2'] = '''Text v2 line1
-Text v2 line2'''
+        song.add_verse('v1', lines)
+        song.add_verse('v2', '''Text v2 line1
+Text v2 line2''')
 
         # translation for verse
-        song['v1'].lang['he'] = lines_he
-        song['v2'].lang['he'] = '''Text v2 he line1
-Text v2 he line2'''
+        song.add_verse('v1', lines_he, lang='he')
+        song.add_verse('v2', '''Text v2 he line1
+Text v2 he line2''', lang='he')
 
         # transliteration for translation
-        song['v1'].lang['he'].translit['en'] = lines_he_en
-        song['v2'].lang['he'].translit['en'] = '''Text v2 he_en line1
-Text v2 he_en line2'''
-
+        song.add_verse('v1', lines_he_en, lang='he', translit='en')
+        song.add_verse('v2', '''Text v2 he_en line1
+Text v2 he_en line2''', lang='he', translit='en')
+        
+        from xml.sax.saxutils import unescape
         text = openlyrics.tostring(song, update_metadata=False)
         self.assertEquals(constructed_song, text)
 

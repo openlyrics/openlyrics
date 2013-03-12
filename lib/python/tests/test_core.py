@@ -41,12 +41,12 @@ class ParsingAsciiTestCase(ParsingCheckerTestCase):
     def test_english_song_tostring(self):
         song = openlyrics.Song(paths.eng_song)
         text = openlyrics.tostring(song, update_metadata=False)
-        self.assertEqual(patterns.eng_song, text)
+        self.assertEquals(patterns.eng_song, text)
 
     def test_english_song_prettyprint(self):
         song = openlyrics.Song(paths.notprettyprint_eng_song)
         text = openlyrics.tostring(song, update_metadata=False)
-        self.assertEqual(patterns.prettyprint_eng_song, text)
+        self.assertEquals(patterns.prettyprint_eng_song, text)
         text_not_pretty = openlyrics.tostring(song, pretty_print=False, update_metadata=False)
         self.assertNotEqual(patterns.prettyprint_eng_song, text_not_pretty)
 
@@ -129,18 +129,18 @@ class TranslatedSongTestCase(unittest.TestCase):
         self.assertEqual(3, len(s))
 
         line_counts = [3, 3, 5]
-
+        
         # lines count in EN translation
-        for name, count in zip(s.raw_verse_order, line_counts):
-            self.assertEqual(count, len(s[name].lang['en']))
+        for name, count in zip(s.props.get_raw_verse_order(), line_counts):
+            self.assertEqual(count, len(s.get_verse(name, lang='en')))
 
         # lines count in HE translation
-        for name, count in zip(s.raw_verse_order, line_counts):
-            self.assertEqual(count, len(s[name].lang['he']))
+        for name, count in zip(s.props.get_raw_verse_order(), line_counts):
+            self.assertEqual(count, len(s.get_verse(name, lang='he')))
 
         # lines count in EN transliteration of Hebrew
-        for name, count in zip(s.raw_verse_order, line_counts):
-            self.assertEqual(count, len(s[name].lang['he'].translit['en']))
+        for name, count in zip(s.props.get_raw_verse_order(), line_counts):
+            self.assertEqual(count, len(s.get_verse(name, lang='he', translit='en')))
 
         # title in EN, HE, and transliteration to EN
         self.assertEqual(3, len(s.props.titles))
@@ -149,16 +149,13 @@ class TranslatedSongTestCase(unittest.TestCase):
         self.assertEqual(3, len(s.props.themes))
 
         # test select titles and themes by lang
-        self.assertEqual(0, len(s.props.titles_by_lang('')))
-        self.assertEqual(1, len(s.props.titles_by_lang('en')))
-        self.assertEqual(2, len(s.props.titles_by_lang('he')))
-        self.assertEqual(1, len(s.props.titles_by_lang('he', 'en')))
+        self.assertEqual(0, len(s.props.get_titles_by_lang('')))
+        self.assertEqual(1, len(s.props.get_titles_by_lang('en')))
+        self.assertEqual(1, len(s.props.get_titles_by_lang('he', translit="en")))
 
-        self.assertEqual(0, len(s.props.themes_by_lang('')))
-        self.assertEqual(1, len(s.props.themes_by_lang('en')))
-        self.assertEqual(2, len(s.props.themes_by_lang('he')))
-        self.assertEqual(1, len(s.props.themes_by_lang('he', 'en')))
-        
+        self.assertEqual(0, len(s.props.get_themes_by_lang('')))
+        self.assertEqual(1, len(s.props.get_themes_by_lang('en')))
+        self.assertEqual(1, len(s.props.get_themes_by_lang('he', translit="en")))
 
 
 def suite():

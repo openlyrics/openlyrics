@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song"
-      version="0.7"
-      createdIn="ChangingSong 0.0.3"
-      modifiedIn="ChangingSong 0.0.3"
-      modifiedDate="2008-11-28T13:15:30+01:00">
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="ChangingSong 0.0.3" modifiedIn="convert-schema.py" modifiedDate="2013-03-12T09:47:32.249946">
   <properties>
     <titles>
       <title>This is Song Title</title>
@@ -12,12 +8,12 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <line>This is first verse.</line>
+        This is first verse.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        <line>This is chorus.</line>
+        This is chorus.
       </lines>
     </verse>
   </lyrics>
