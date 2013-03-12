@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="WINDOWS-1250"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.6" createdIn="opensong2openlyrics.py 0.1" modifiedIn="opensong2openlyrics.py 0.1" modifiedDate="2009-12-31T07:36:37.405351">
+<?xml version='1.0' encoding='WINDOWS-1250'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.1" modifiedIn="convert-schema.py" modifiedDate="2013-03-12T09:39:37.348966">
   <properties>
     <titles>
       <title>Mám zde přítele</title>
@@ -13,40 +13,40 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <line>Mám zde přítele,</line>
-        <line>Pána Ježíše,</line>
-        <line>a na rámě jeho spoléhám;</line>
-        <line>v něm své stěstí mám,</line>
-        <line>pokoj nalézám,</line>
-        <line>když na rámě jeho spoléhám!</line>
+        Mám zde přítele,<br/>
+        Pána Ježíše,<br/>
+        a na rámě jeho spoléhám;<br/>
+        v něm své stěstí mám,<br/>
+        pokoj nalézám,<br/>
+        když na rámě jeho spoléhám!
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        <line>Boží rámě</line>
-        <line>je v soužení náš pevný hrad;</line>
-        <line>Boží rámě,</line>
-        <line>uč se na ně vždycky spoléhat!</line>
+        Boží rámě<br/>
+        je v soužení náš pevný hrad;<br/>
+        Boží rámě,<br/>
+        uč se na ně vždycky spoléhat!
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <line>Jak je sladké být,</line>
-        <line>v jeho družině,</line>
-        <line>když na rámě jeho spoléhám,</line>
-        <line>jak se života</line>
-        <line>cesta zjasňuje</line>
-        <line>když na rámě Boží spoléhám!</line>
+        Jak je sladké být,<br/>
+        v jeho družině,<br/>
+        když na rámě jeho spoléhám,<br/>
+        jak se života<br/>
+        cesta zjasňuje<br/>
+        když na rámě Boží spoléhám!
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <line>Čeho bych se bál,</line>
-        <line>čeho strachoval,</line>
-        <line>když na rámě Boží spoléhám?</line>
-        <line>Mír je v duši mé,</line>
-        <line>když On blízko je,</line>
-        <line>když na rámě jeho spoléhám.</line>
+        Čeho bych se bál,<br/>
+        čeho strachoval,<br/>
+        když na rámě Boží spoléhám?<br/>
+        Mír je v duši mé,<br/>
+        když On blízko je,<br/>
+        když na rámě jeho spoléhám.
       </lines>
     </verse>
   </lyrics>

@@ -38,7 +38,7 @@ def test_props_values(test_case, props):
     test.assertEqual(EMPTY, len(p.comments))
 
     # String Types
-    test.assertEqual(u'', p.release_date)
+    test.assertEqual(u'', p.released)
     test.assertEqual(u'', p.ccli_no)
     test.assertEqual(u'', p.tempo)
     test.assertEqual(u'', p.tempo_type)
@@ -48,7 +48,7 @@ def test_props_values(test_case, props):
     test.assertEqual(u'', p.keywords)
     test.assertEqual(u'', p.copyright)
     test.assertEqual(u'', p.publisher)
-    test.assertEqual(u'', p.custom_version)
+    test.assertEqual(u'', p.version)
 
 
 class InitSongClassTestCase(unittest.TestCase):
@@ -56,15 +56,15 @@ class InitSongClassTestCase(unittest.TestCase):
     def test_Song(self):
         s = openlyrics.Song()
 
-        self.assertEqual(u'0.7', s._version)
+        self.assertEqual(u'0.8', s._version)
         self.assertEqual(EMPTY, len(s)) # no Verse present
         self.assertEqual(u'OpenLyrics Python Library 0.2', s.createdIn)
         self.assertEqual(u'OpenLyrics Python Library 0.2', s.modifiedIn)
         self.assertEqual(u'', s.modifiedDate)
         self.assertNotEqual(None, s.props)
 
-        self.assertEqual(EMPTY, len(s.verse_order))
-        self.assertEqual(EMPTY, len(s.raw_verse_order))
+        self.assertEqual(EMPTY, len(s.props.verse_order))
+        self.assertEqual(EMPTY, len(s.props.get_raw_verse_order()))
 
         test_props_values(self, s.props)
 
@@ -100,7 +100,6 @@ class InitPropertiesClassesTestCase(unittest.TestCase):
     def test_Theme(self):
         t = openlyrics.Theme()
         self.assertEqual(u'', t.name)
-        self.assertEqual(None, t.id)
         self.assertEqual(None, t.lang)
 
 
@@ -108,20 +107,7 @@ class InitLyricsClassesTestCase(unittest.TestCase):
 
     def test_Verse(self):
         v = openlyrics.Verse()
-        self.assertEqual(EMPTY, len(v)) # no translation available
-        self.assertEqual(EMPTY, len(v.langs)) # no translation available
-
-    def test_Language(self):
-        lang = openlyrics.Language()
-        # by default no lines with words
-        self.assertEqual(EMPTY, len(lang))
-        self.assertEqual(EMPTY, len(lang.translits)) # no transliteration
-
-    def test_Line(self):
-        l = openlyrics.Line()
-        self.assertEqual(u'', l.text)
-        self.assertEqual(None, l.part)
-
+        self.assertEqual(EMPTY, len(v)) # no lines available
 
 def suite():
     suite = unittest.TestSuite()
