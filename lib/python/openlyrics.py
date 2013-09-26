@@ -172,7 +172,7 @@ class Song(object):
             self._version = OLYR_VERSION
         root = etree.Element(u'song')
 
-        # attribuses are sorted in alphabetic order by ElementTree
+        # attributes are sorted in alphabetic order by ElementTree
         root.set(u'createdIn', self.createdIn)
         root.set(u'modifiedDate', self.modifiedDate)
         root.set(u'modifiedIn', self.modifiedIn)
@@ -405,23 +405,23 @@ class Properties(object):
             elem1 = etree.Element(u'comments')
             for c in self.comments:
                 elem2 = etree.Element(u'comment')
-                elem2.text = str(c)
+                elem2.text = c
                 elem1.append(elem2)
             props.append(elem1)
         
         if self.copyright:
             elem1 = etree.Element(u'copyright')
-            elem1.text = str(self.copyright)
+            elem1.text = self.copyright
             props.append(elem1)
         
         if self.ccli_no:
             elem1 = etree.Element(u'ccliNo')
-            elem1.text = str(self.ccli_no)
+            elem1.text = self.ccli_no
             props.append(elem1)
         
         if self.released:
             elem1 = etree.Element(u'releaseDate')
-            elem1.text = str(self.released)
+            elem1.text = self.released
             props.append(elem1)
         
         if self.tempo:
@@ -737,7 +737,6 @@ class Lines(object):
         Create the XML element.
         """
         lines_elem = etree.Element('lines')
-        lines_markup = ""
         if self.part:
             lines_elem.set('part', self.part)
         ct = 0
