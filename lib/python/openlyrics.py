@@ -778,6 +778,8 @@ class Line(object):
         
         markup      A String containing the Line markup
         """
+        if markup is None:
+            markup = ""
         self.markup = markup
     
     def _get_text(self):
