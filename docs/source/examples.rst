@@ -16,7 +16,7 @@ ExpoSong
 ExpoSong uses the OpenLyrics format to store songs. ExpoSong also both imports
 and exports songs in the OpenLyrics format.
 
-* `<http://exposong.org/>`_
+* `<http://code.google.com/p/exposong/>`_
 
 FreeWorship
 -----------
@@ -32,6 +32,13 @@ MySongBook
 MySongBook is a webOS App to display and edit Lyrics and Chords from OpenLyrics 0.8.
 
 * `<http://www.webosnation.com/mysongbook/>`_
+
+mySongs
+-------
+
+mySongs is a browser application that can display OpenLyrics Songs from a Dropbox folder.
+
+* `<https://github.com/michote/mySongs>`_
 
 OpenLP
 ------
@@ -50,5 +57,24 @@ Project     Import Export Versions Translations       Parts Chords
 ExpoSong    Yes    Yes    0.7      No                 No    No
 FreeWorship Yes    Yes    0.7, 0.8 No                 No    No
 MySongBook  Yes    Yes    0.8      No                 No    Yes
-OpenLP      Yes    Yes    0.8      No                 No    No
+mySongs     Yes    Yes    0.8      No                 No    Yes
+OpenLP      Yes    Yes    0.7, 0.8 No                 No    No
 =========== ====== ====== ======== ================== ===== ======
+
+Libraries and other Tools
+=========================
+
+Java Library
+------------
+
+* `<https://github.com/isbm/jopenlyricslib>`_
+
+Python 2 Library
+----------------
+
+* `<http://code.google.com/p/openlyrics/source/browse/lib/python/openlyrics.py>`_
+
+Text to OpenLyrics Converter
+----------------------------
+
+* `<https://dl.dropboxusercontent.com/u/11474544/txt_to_openlyrics.html>`_
