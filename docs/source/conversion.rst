@@ -38,15 +38,9 @@ Where ``opensong_file`` is the original song in OpenSong format and
 ``openlyrics_file.xml`` is the name of the song in OpenLyrics format.
 
 
-OpenLP
-------
-
-`OpenLP <http://openlp.org/>`_ already supports the OpenLyrics format via
-both importing and exporting. Simply choose "OpenLyrics" from the list when
-importing songs.
-
-
 Other Formats
 -------------
 
-Conversion to other formats is not currently supported.
+`OpenLP <http://openlp.org/>`_ supports importing from a wide range of other formats.
+So you can use it to convert your songs to the OpenLyrics format. See
+`<http://manual.openlp.org/songs.html#song-importer>`_ for more information.
