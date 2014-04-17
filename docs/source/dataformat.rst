@@ -33,10 +33,10 @@ Features
         ``<verse><lines><comment/></lines></verse>``
 
     date of song release
-        ``<releaseDate>``
+        ``<released>``
 
     format version
-        ``<song version="0.7>``
+        ``<song version="0.8>``
 
     keywords for searching
         ``<keywords>``
@@ -73,9 +73,8 @@ Features
     slides
         ``<verse>``
 
-    song book
-        ``<collection>``
-        ``<trackNo>``
+    multiple song books
+        ``<songbooks>``
 
     song metadata
         ``<song version="">``
@@ -90,7 +89,7 @@ Features
         ``<variant>``
 
     song version
-        ``<customVersion>``
+        ``<version>``
 
     tagging verse type
         ``<verse name="v1">``
@@ -875,7 +874,7 @@ Here's an advanced example of the XML::
 
     <?xml version="1.0" encoding="UTF-8"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.7"
+          version="0.8"
           createdIn="OpenLP 2.0"
           modifiedIn="ChangingSong 0.0.2"
           <!-- date format: ISO 8601 -->
@@ -889,7 +888,7 @@ Here's an advanced example of the XML::
         </authors>
         <copyright>Public Domain</copyright>
         <ccliNo>2762836</ccliNo>
-        <releaseDate>1779</releaseDate>
+        <released>1779</released>
         <tempo type="text">moderate</tempo>
         <key>D</key>
         <verseOrder>v1 v2 v3 v4 v5 v6</verseOrder>
