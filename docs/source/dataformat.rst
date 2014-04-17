@@ -763,7 +763,7 @@ first verse::
         <lines>This text is in English.</lines>
       </verse>
       <verse name="v1" lang="de">
-        <lines>Dieses Text ist auf Deutsch.</lines>
+        <lines>Dieser Text ist auf Deutsch.</lines>
       </verse>
     </lyrics>
 
