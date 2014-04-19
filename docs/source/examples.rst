@@ -7,80 +7,56 @@ Projects using OpenLyrics
 
 This is an (incomplete) alphabetic list of projects that use OpenLyrics or are
 experimenting with it as their supported import/export format.
-Please write corrections/additions to the `OpenLyrics Mailing List <openlyrics@googlegroups.com>`_.
+Please send corrections/additions to the `OpenLyrics Mailing List <openlyrics@googlegroups.com>`_.
+
+============== ================== ====== ====== ======== ===================
+Project        Platforms          Import Export Versions Advanced Features *
+============== ================== ====== ====== ======== ===================
+`ExpoSong`_    |lin| |win|        |yes|  |yes|  0.7
+`FreeWorship`_ |win|              |yes|  |yes|  0.7, 0.8
+`MySongBook`_  WebOS              |yes|  |yes|  0.8      C
+`mySongs`_     Browser            |yes|  |yes|  0.8      C
+`OpenLP`_      |lin| |mac| |win|  |yes|  |yes|  0.7, 0.8
+`VideoPsalm`_  |win|              |yes|  |no|   0.8      C
+`ZionWorx`_    |win|              |yes|  |no|   0.8
+============== ================== ====== ====== ======== ===================
+
+\* L=Multiple Languages, C=Chords, P=Parts, T=Transliteration
 
 
-ExpoSong
---------
+.. _ExpoSong: http://code.google.com/p/exposong/
+.. _FreeWorship: http://freeworship.org.uk/
+.. _MySongBook: http://www.webosnation.com/mysongbook/
+.. _mySongs: https://github.com/michote/mySongs/
+.. _OpenLP: http://openlp.org/
+.. _VideoPsalm: http://myvideopsalm.weebly.com/
+.. _ZionWorx: http://zionworx.net/
 
-ExpoSong uses the OpenLyrics format to store songs. ExpoSong also both imports
-and exports songs in the OpenLyrics format.
 
-* `<http://code.google.com/p/exposong>`_
+.. |win| raw:: html
 
-FreeWorship
------------
+    <i class="fa fa-windows"></i>
 
-FreeWorship uses the OpenLyrics format to store songs. It supports importing
-from the OpenLyrics format.
+.. |lin| raw:: html
 
-* `<http://freeworship.org.uk>`_
+    <i class="fa fa-linux"></i>
 
-MySongBook
-----------
+.. |mac| raw:: html
 
-MySongBook is a webOS App to display and edit Lyrics and Chords from OpenLyrics 0.8.
+    <i class="fa fa-apple"></i>
 
-* `<http://www.webosnation.com/mysongbook>`_
+.. |yes| raw:: html
 
-mySongs
--------
+    <i class="fa fa-check"></i>
 
-mySongs is a browser application that can display OpenLyrics Songs from a Dropbox folder.
+.. |no| raw:: html
 
-* `<https://github.com/michote/mySongs>`_
+    <i class="fa fa-times"></i>
 
-OpenLP
-------
-
-OpenLP imports and exports songs using the OpenLyrics format. OpenLP also uses a
-stripped-down version of OpenLyrics internally to store the lyrics of songs.
-
-* `<http://openlp.org>`_
-
-VideoPsalm
-----------
-
-* `<http://myvideopsalm.weebly.com>`_
-
-Feature Comparison
-------------------
-
-=========== ====== ====== ======== ============ ===== ======
-Project     Import Export Versions Translations Parts Chords
-=========== ====== ====== ======== ============ ===== ======
-ExpoSong    Yes    Yes    0.7      No           No    No
-FreeWorship Yes    Yes    0.7, 0.8 No           No    No
-MySongBook  Yes    Yes    0.8      No           No    Yes
-mySongs     Yes    Yes    0.8      No           No    Yes
-OpenLP      Yes    Yes    0.7, 0.8 No           No    No
-VideoPsalm  Yes    No     0.8      No           No    Yes
-=========== ====== ====== ======== ============ ===== ======
 
 Libraries and other Tools
 =========================
 
-Java Library
-------------
-
-* `<https://github.com/isbm/jopenlyricslib>`_
-
-Python 2 Library
-----------------
-
-* `<http://code.google.com/p/openlyrics/source/browse/lib/python/openlyrics.py>`_
-
-Text to OpenLyrics Converter
-----------------------------
-
-* `<https://dl.dropboxusercontent.com/u/11474544/txt_to_openlyrics.html>`_
+* `Java Library <https://github.com/isbm/jopenlyricslib>`_
+* `Python 2 Library <http://code.google.com/p/openlyrics/source/browse/lib/python/openlyrics.py>`_
+* `Text to OpenLyrics Converter <https://dl.dropboxusercontent.com/u/11474544/txt_to_openlyrics.html>`_
