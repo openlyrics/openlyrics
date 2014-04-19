@@ -18,6 +18,7 @@ Project        Platforms          Import Export Versions Advanced Features *
 `MySongBook`_  WebOS              |yes|  |yes|  0.8      C
 `mySongs`_     Browser            |yes|  |yes|  0.8      C
 `OpenLP`_      |lin| |mac| |win|  |yes|  |yes|  0.7, 0.8
+`Praisenter`_  |lin| |mac| |win|  |yes|  |no|   0.8
 `VideoPsalm`_  |win|              |yes|  |no|   0.8      C
 `ZionWorx`_    |win|              |yes|  |no|   0.8
 ============== ================== ====== ====== ======== ===================
@@ -31,6 +32,7 @@ Project        Platforms          Import Export Versions Advanced Features *
 .. _MySongBook: http://www.webosnation.com/mysongbook/
 .. _mySongs: https://github.com/michote/mySongs/
 .. _OpenLP: http://openlp.org/
+.. _Praisenter: http://praisenter.org
 .. _VideoPsalm: http://myvideopsalm.weebly.com/
 .. _ZionWorx: http://zionworx.net/
 
