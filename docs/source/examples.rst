@@ -64,5 +64,10 @@ Libraries and other Tools
 =========================
 
 * `Java Library <https://github.com/isbm/jopenlyricslib>`_
+* Javascript
+
+  * `Import <https://github.com/michote/mySongs/blob/master/source/helper/ParseXml.js>`_
+  * `Export <https://github.com/michote/mySongs/blob/master/source/helper/WriteXml.js>`_
+  
 * `Python 2 Library <http://code.google.com/p/openlyrics/source/browse/lib/python/openlyrics.py>`_
 * `Text to OpenLyrics Converter <https://dl.dropboxusercontent.com/u/11474544/txt_to_openlyrics.html>`_
