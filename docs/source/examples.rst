@@ -7,7 +7,7 @@ Projects using OpenLyrics
 
 This is an (incomplete) alphabetic list of projects that use OpenLyrics or are
 experimenting with it as their supported import/export format.
-Please send corrections/additions to the `OpenLyrics Mailing List <openlyrics@googlegroups.com>`_.
+Please post corrections/additions on the `OpenLyrics Discussion Group <http://groups.google.com/group/openlyrics>`_.
 
 ============== ================== ====== ====== ======== ===================
 Project        Platforms          Import Export Versions Advanced Features *
