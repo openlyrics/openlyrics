@@ -12,6 +12,7 @@ Please post corrections/additions on the `OpenLyrics Discussion Group <http://gr
 ============== ================== ====== ====== ======== ===================
 Project        Platforms          Import Export Versions Advanced Features *
 ============== ================== ====== ====== ======== ===================
+`Chordially`_  |and|              |yes|  |yes|  0.8      C
 `ExpoSong`_    |lin| |win|        |yes|  |yes|  0.7
 `FreeWorship`_ |win|              |yes|  |yes|  0.7, 0.8
 `MySongBook`_  WebOS              |yes|  |yes|  0.8      C
@@ -24,6 +25,7 @@ Project        Platforms          Import Export Versions Advanced Features *
 \* L=Multiple Languages, C=Chords, P=Parts, T=Transliteration
 
 
+.. _Chordially: https://play.google.com/store/apps/details?id=uk.co.ottervalesoftware.chordially
 .. _ExpoSong: http://code.google.com/p/exposong/
 .. _FreeWorship: http://freeworship.org.uk/
 .. _MySongBook: http://www.webosnation.com/mysongbook/
@@ -44,6 +46,10 @@ Project        Platforms          Import Export Versions Advanced Features *
 .. |mac| raw:: html
 
     <i class="fa fa-apple"></i>
+
+.. |and| raw:: html
+
+    <i class="fa fa-android"></i>
 
 .. |yes| raw:: html
 
