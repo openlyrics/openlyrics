@@ -65,6 +65,7 @@ Project        Platforms          Import Export Versions Advanced Features *
 Libraries and other Tools
 =========================
 
+* `C Library <https://github.com/kfprimm/openlyrics>`_
 * `Java Library <https://github.com/isbm/jopenlyricslib>`_
 * Javascript
 
