@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.675831">
+  <properties>
+    <titles>
+      <title>Come Thou Fount</title>
+    </titles>
+    <authors>
+      <author>Robert Robinson</author>
+      <author>John Wyeth</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>108389</ccliNo>
+    <themes>
+      <theme>Spiritual Hunger</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        Come, Thou <chord name="D"/>Fount of every <chord name="A"/>blessing, Tune my <chord name="G"/>heart to sing Thy <chord name="D"/>grace;<br/>
+        Streams of <chord name="D"/>mercy, never <chord name="A"/>ceasing, Call for <chord name="G"/>songs of loudest <chord name="D"/>praise.<br/>
+        Teach me <chord name="D"/>some melodious <chord name="A"/>sonnet, Sung by <chord name="G"/>flaming tongues <chord name="D"/>above;<br/>
+        Praise the <chord name="D"/>mount, I'm fixed u<chord name="A"/>pon it, Mount of <chord name="G"/>Thy redeeming <chord name="D"/>love.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        Here I <chord name="D"/>raise mine Ebe<chord name="A"/>nezer, Hither <chord name="G"/>by Thy great help I <chord name="D"/>come;<br/>
+        And I <chord name="D"/>hope by Thy good <chord name="A"/>pleasure, Safely <chord name="G"/>to arrive at <chord name="D"/>home.<br/>
+        Jesus <chord name="D"/>sought me when a <chord name="A"/>stranger, Wandering <chord name="G"/>from the fold of <chord name="D"/>God;<br/>
+        He to <chord name="D"/>rescue me from <chord name="A"/>danger, Inter<chord name="G"/>posed His precious <chord name="D"/>blood.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        Oh to <chord name="D"/>grace how great a <chord name="A"/>debtor, Daily <chord name="G"/>I'm constrained to <chord name="D"/>be;<br/>
+        Let Thy <chord name="D"/>goodness, like a <chord name="A"/>fetter, Bind my <chord name="G"/>wandering heart to <chord name="D"/>Thee.<br/>
+        Prone to <chord name="D"/>wander, Lord I <chord name="A"/>feel it, Prone to <chord name="G"/>leave the God I <chord name="D"/>love;<br/>
+        Here's my <chord name="D"/>heart, Oh take and <chord name="A"/>seal it, Seal it <chord name="G"/>for Thy courts a<chord name="D"/>bove.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="ChangingSong 0.0.3" modifiedIn="convert-schema.py" modifiedDate="2013-03-12T09:47:32.249946">
+  <properties>
+    <titles>
+      <title>This is Song Title</title>
+    </titles>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        This is first verse.
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        This is chorus.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

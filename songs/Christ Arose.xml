@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.587349">
+  <properties>
+    <titles>
+      <title>Christ Arose</title>
+    </titles>
+    <authors>
+      <author>Robert Lowry</author>
+      <author>1874</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>27783</ccliNo>
+    <transposition>3</transposition>
+    <verseOrder>v1 c v2 c v3 c</verseOrder>
+    <themes>
+      <theme>Victory</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        <chord name="Bb"/>Low in the grave He lay, <chord name="F"/>Jesus my <chord name="Eb"/>Sav<chord name="Bb"/>ior!<br/>
+        <chord name="Eb"/>Waiting the <chord name="Bb"/>coming day, <chord name="Gm/Bb"/>Je<chord name="C"/>sus my <chord name="F"/>Lord!
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        (Spirited!) <chord name="Bb"/>Up from the grave He arose,<br/>
+        With a mighty <chord name="Cm"/>triumph o'er His <chord name="Bb"/>foes;<br/>
+        He a<chord name="F"/>rose a victor from the <chord name="Gm"/>dark <chord name="Eb"/>do<chord name="Bb"/>main,<br/>
+        And He <chord name="Eb"/>lives for<chord name="C"/>ever with His <chord name="F"/>saints <chord name="C7/G"/>to   <chord name="F/A"/>reign,<br/>
+        He a<chord name="Bb"/>rose! He a<chord name="Eb"/>rose! Halle<chord name="Bb"/>lujah! <chord name="F"/>Christ a<chord name="Bb"/>rose!
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        <chord name="Bb"/>Vainly they watch His bed, <chord name="F"/>Jesus my <chord name="Eb"/>Sav<chord name="Bb"/>ior!<br/>
+        <chord name="Eb"/>Vainly they <chord name="Bb"/>seal the dead, <chord name="Gm/Bb"/>Je<chord name="C"/>sus my <chord name="F"/>Lord!
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        <chord name="Bb"/>Death cannot keep his prey, <chord name="F"/>Jesus my <chord name="Eb"/>Sav<chord name="Bb"/>ior!<br/>
+        <chord name="Eb"/>He tore the <chord name="Bb"/>bars away, <chord name="Gm/Bb"/>Je<chord name="C"/>sus my <chord name="F"/>Lord!
+      </lines>
+    </verse>
+  </lyrics>
+</song>

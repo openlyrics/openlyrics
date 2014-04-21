@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='WINDOWS-1250'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.1" modifiedIn="convert-schema.py" modifiedDate="2013-03-12T09:39:37.348966">
+  <properties>
+    <titles>
+      <title>Mám zde přítele</title>
+    </titles>
+    <authors>
+      <author>A.J. Showalter</author>
+      <author>E.A. Hoffman</author>
+    </authors>
+    <verseOrder>v1 c v2 c v3 c</verseOrder>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        Mám zde přítele,<br/>
+        Pána Ježíše,<br/>
+        a na rámě jeho spoléhám;<br/>
+        v něm své stěstí mám,<br/>
+        pokoj nalézám,<br/>
+        když na rámě jeho spoléhám!
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        Boží rámě<br/>
+        je v soužení náš pevný hrad;<br/>
+        Boží rámě,<br/>
+        uč se na ně vždycky spoléhat!
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        Jak je sladké být,<br/>
+        v jeho družině,<br/>
+        když na rámě jeho spoléhám,<br/>
+        jak se života<br/>
+        cesta zjasňuje<br/>
+        když na rámě Boží spoléhám!
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        Čeho bych se bál,<br/>
+        čeho strachoval,<br/>
+        když na rámě Boží spoléhám?<br/>
+        Mír je v duši mé,<br/>
+        když On blízko je,<br/>
+        když na rámě jeho spoléhám.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.1" modifiedIn="convert-schema.py" modifiedDate="2013-03-12T09:13:04.212538">
+  <properties>
+    <titles>
+      <title>What A Friend We Have In Jesus</title>
+    </titles>
+    <authors>
+      <author>Joseph M. Scriven</author>
+      <author>Charles C. Convers</author>
+    </authors>
+    <copyright>Public Domain</copyright>
+    <ccliNo>27714</ccliNo>
+    <themes>
+      <theme>Christ: Love/Mercy</theme>
+      <theme>Fruit: Peace/Comfort</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        What a friend we have in Jesus, All ours sins and griefs to bear;<br/>
+        What a privilege to carry, Everything to God in prayer!<br/>
+        O what peace we often forfeit, O what needless pain we bear;<br/>
+        All because we do not carry, Everything to God in prayer!
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        Have we trials and temptations? Is there trouble anywhere?<br/>
+        We should never be discouraged, Take it to the Lord in prayer.<br/>
+        Can we find a friend so faithful? Who will all our sorrows share?<br/>
+        Jesus knows our every weakness; Take it to the Lord in prayer.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        Are we weak and heavy laden, Cumbered with a load of care?<br/>
+        Precious Saviour still our refuge; Take it to the Lord in prayer.<br/>
+        Do thy friends despise forsake thee? Take it to the Lord in prayer!<br/>
+        In His arms He’ll take and shield thee; Thou wilt find a solace there.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

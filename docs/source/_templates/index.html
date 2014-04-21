@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% set title = 'Overview' %}
+{% block body %}
+  <h1>Welcome</h1>
+
+  <p>
+    OpenLyrics is a free, open XML standard for Christian worship songs. The goal of
+    OpenLyrics is to provide an application-independant and operating
+    system-independant song format for interoperability between applications.
+  </p>
+  <p>
+    The following features can be seen in OpenLyrics:
+  </p>
+  <ul>
+    <li><b>XML format</b></li>
+    <li><b>Multiple languages</b></li>
+    <li><b>Chords</b></li>
+    <li><b>Transliteration</b></li>
+    <li><b>XML schema</b></li>
+    <li><b>and more...</b></li>
+  </ul>
+
+  <h2>Examples</h2>
+  <p>
+    Documentation on the song format description can be found on the <a href="{{ pathto("dataformat") }}">
+    OpenLyrics data format</a> page and song examples in the available
+    <a href="http://openlyrics.googlecode.com/files/openlyrics-{{ version }}.zip">zip archive</a>
+
+    Links to some implementations of OpenLyrics can be found on the
+    <a href="{{ pathto("examples") }}">Projects using OpenLyrics</a> page.
+  </p>
+
+  <h2>Get OpenLyrics</h2>
+  <p>
+    OpenLyrics is available as an
+    <a href="http://openlyrics.googlecode.com/files/openlyrics-{{ version }}.zip">
+    zip archive</a> containing some song examples, XML schema and a simple Python
+    script for validation.
+  </p>
+  <p>
+    The latest development version can be found in the
+    <a href="http://code.google.com/p/openlyrics/source/checkout">Mercurial repository</a>.
+  </p>
+  <p>Get a local copy of the repository with this command:</p>
+  <p>
+    <tt>hg clone https://openlyrics.googlecode.com/hg/ openlyrics</tt>
+  </p>
+
+{% endblock %}

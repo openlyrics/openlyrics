@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.137828">
+  <properties>
+    <titles>
+      <title>Amazing Grace</title>
+    </titles>
+    <authors>
+      <author>John Newton</author>
+    </authors>
+    <copyright>1982 Jubilate Hymns Limited</copyright>
+    <ccliNo>1037882</ccliNo>
+    <themes>
+      <theme>God's Attributes</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        A<chord name="D"/>mazing <chord name="D7"/>grace how <chord name="G"/>sweet the <chord name="D"/>sound that <chord name="Bm"/>saved a <chord name="E"/>wretch like <chord name="A"/>me;<br/>
+        I <chord name="D"/>once was <chord name="D7"/>lost but <chord name="G"/>now I'm <chord name="D"/>found, was <chord name="Bm"/>blind but <chord name="A"/>now I <chord name="G"/>see.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        Twas <chord name="D"/>grace that <chord name="D7"/>taught my <chord name="G"/>heart to <chord name="D"/>fear, and <chord name="Bm"/>grace my <chord name="E"/>fears re<chord name="A"/>lieved;<br/>
+        How <chord name="D"/>precious <chord name="D7"/>did that <chord name="G"/>grace ap<chord name="D"/>pear the <chord name="Bm"/>hour I <chord name="A"/>first be<chord name="G"/>lieved!
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        Through <chord name="D"/>many <chord name="D7"/>dangers, <chord name="G"/>toils, and <chord name="D"/>snares I <chord name="Bm"/>have al<chord name="E"/>ready <chord name="A"/>come;<br/>
+        'Tis <chord name="D"/>grace that <chord name="D7"/>brought me <chord name="G"/>safe thus <chord name="D"/>far and <chord name="Bm"/>grace will <chord name="A"/>lead me <chord name="G"/>home.
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        When <chord name="D"/>we've been <chord name="D7"/>there ten <chord name="G"/>thousand <chord name="D"/>years bright <chord name="Bm"/>shining <chord name="E"/>as the <chord name="A"/>sun;<br/>
+        We've <chord name="D"/>no less <chord name="D7"/>days to <chord name="G"/>sing God's <chord name="D"/>praise than <chord name="Bm"/>when we'd <chord name="A"/>first be<chord name="G"/>gun!
+      </lines>
+    </verse>
+  </lyrics>
+</song>

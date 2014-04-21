@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.087250">
+  <properties>
+    <titles>
+      <title>Since I Have Been Redeemed</title>
+    </titles>
+    <authors>
+      <author>Edwin O. Excell</author>
+    </authors>
+    <themes>
+      <theme>Repentance</theme>
+      <theme>Salvation</theme>
+    </themes>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        I <chord name="D"/>have a song I <chord name="A"/>love to <chord name="D"/>sing, since I have been re<chord name="A"/>deemed;<br/>
+        Of <chord name="D"/>my Redeemer, <chord name="A"/>Savior, <chord name="D"/>King, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+      </lines>
+    </verse>
+    <verse name="c">
+      <lines>
+        Since <chord name="D"/>I have been re<chord name="A"/>deemed, since <chord name="G"/>I have been redeemed I will <chord name="D"/>glory <chord name="A"/>in His <chord name="D"/>name;<br/>
+        Since <chord name="D"/>I have been re<chord name="A"/>deemed, I will <chord name="G"/>glory in my <chord name="A"/>Savior’s <chord name="D"/>name.
+      </lines>
+    </verse>
+    <verse name="v2">
+      <lines>
+        I <chord name="D"/>have a Christ Who <chord name="A"/>satis<chord name="D"/>fies, since I have been re<chord name="A"/>deemed;<br/>
+        To <chord name="D"/>do His will my <chord name="A"/>highest <chord name="D"/>prize, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        I <chord name="D"/>have a witness <chord name="A"/>bright and <chord name="D"/>clear, since I have been re<chord name="A"/>deemed;<br/>
+        Dis<chord name="D"/>pelling every <chord name="A"/>doubt and <chord name="D"/>fear, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        I <chord name="D"/>have a home pre<chord name="A"/>pared for <chord name="D"/>me, since I have been re<chord name="A"/>deemed;<br/>
+        Where <chord name="D"/>I shall dwell e<chord name="A"/>ternal<chord name="D"/>ly, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+      </lines>
+    </verse>
+  </lyrics>
+</song>
