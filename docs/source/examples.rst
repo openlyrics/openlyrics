@@ -9,30 +9,32 @@ This is an (incomplete) alphabetic list of projects that use OpenLyrics or are
 experimenting with it as their supported import/export format.
 Please post corrections/additions on the `OpenLyrics Discussion Group <http://groups.google.com/group/openlyrics>`_.
 
-============== ================== ====== ====== ======== ===================
-Project        Platforms          Import Export Versions Advanced Features *
-============== ================== ====== ====== ======== ===================
-`Chordially`_  |and|              |yes|  |yes|  0.8      C
-`ExpoSong`_    |lin| |win|        |yes|  |yes|  0.7
-`FreeWorship`_ |win|              |yes|  |yes|  0.7, 0.8
-`MySongBook`_  WebOS              |yes|  |yes|  0.8      C
-`mySongs`_     Browser            |yes|  |yes|  0.8      C
-`OpenLP`_      |lin| |mac| |win|  |yes|  |yes|  0.7, 0.8
-`Praisenter`_  |lin| |mac| |win|  |yes|  |no|   0.8
-`VideoPsalm`_  |win|              |yes|  |no|   0.8      C
-`ZionWorx`_    |win|              |yes|  |no|   0.8
-============== ================== ====== ====== ======== ===================
+========================= ================== ====== ====== ======== ===================
+Project                   Platforms          Import Export Versions Advanced Features *
+========================= ================== ====== ====== ======== ===================
+`Chordially`_             |and|              |yes|  |yes|  0.8      C
+`Church Music Organizer`_ |win|              |yes|  |yes|  0.8      
+`ExpoSong`_               |lin| |win|        |yes|  |yes|  0.7
+`FreeWorship`_            |win|              |yes|  |yes|  0.7, 0.8
+`MySongBook`_             WebOS              |yes|  |yes|  0.8      C
+`mySongs`_                Browser            |yes|  |yes|  0.8      C
+`OpenLP`_                 |lin| |mac| |win|  |yes|  |yes|  0.7, 0.8
+`Praisenter`_             |lin| |mac| |win|  |yes|  |no|   0.8
+`VideoPsalm`_             |win|              |yes|  |no|   0.8      C
+`ZionWorx`_               |win|              |yes|  |no|   0.8
+========================= ================== ====== ====== ======== ===================
 
 \* L=Multiple Languages, C=Chords, P=Parts, T=Transliteration
 
 
-.. _Chordially: https://play.google.com/store/apps/details?id=uk.co.ottervalesoftware.chordially
+.. _Chordially: https://play.google.com/store/apps/details?id=uk.co.ottervalesoftware.chordially/
+.. _Church Music Organizer: http://www.churchmusicorganiser.com/
 .. _ExpoSong: http://code.google.com/p/exposong/
 .. _FreeWorship: http://freeworship.org.uk/
 .. _MySongBook: http://www.webosnation.com/mysongbook/
 .. _mySongs: https://github.com/michote/mySongs/
 .. _OpenLP: http://openlp.org/
-.. _Praisenter: http://praisenter.org
+.. _Praisenter: http://praisenter.org/
 .. _VideoPsalm: http://myvideopsalm.weebly.com/
 .. _ZionWorx: http://zionworx.net/
 
