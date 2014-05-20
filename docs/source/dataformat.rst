@@ -159,8 +159,8 @@ excluded from the XML.**
 Metadata
 --------
 
-Metadata is **mandatory** and should be present in every song. The metadata is
-useful in the debugging of OpenLyrics implementations in applications.
+Metadata **should** be present in every song. This should ease debugging
+applications using OpenLyrics.
 
 Metadata is enclosed in the ``<song>`` tag as attributes::
 
@@ -177,19 +177,21 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 ``version``
     Version of the OpenLyrics format used by a song. This gives applications the
     ability to notify users if the application doesn't support newer versions of
-    OpenLyrics.
+    OpenLyrics. This element is **required**.
 
 ``createdIn``
-    String to identify the application where a song was created for the first
-    time. This attribute should be set when a new song is created. It should not
-    be changed with additional updates and modification to the song, even when the
-    song is edited in another application. The recommended content of this
-    attribute is *application name* and *version*, e.g. ``OpenLP 1.9.0``.
+    String to identify the application where a song was created for the
+    first time. This attribute should be set when a new song is
+    created. It should not be changed with additional updates and
+    modification to the song. Even when the song is edited in another
+    application. Recommended content of this attribute is *application
+    name* and *version* like ``OpenLP 1.9.0``. This element is optional.
 
 ``modifiedIn``
-    String to identify the application where a song was edited for most recently.
-    This attribute should be set with every modification. The recommended content
-    of this attribute is *application name* and *version*, e.g. ``OpenLP 1.9.0``.
+    String to identify the application where a song was edited for the
+    last time. This attribute should be set with every modification.
+    Recommended content of this attribute is *application name* and
+    *version* like ``OpenLP 1.9.0``. This element is optional.
 
 ``modifiedDate``
     Date and time of the last modification. This attribute should be set with
@@ -203,6 +205,8 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
     timezone would look like this::
 
         2010-01-28T13:15:30+01:00
+
+    This element is optional.
 
 
 Encoding and Filenames
