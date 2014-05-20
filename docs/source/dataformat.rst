@@ -35,7 +35,7 @@ Features
     date of song release
         ``<released>``
 
-    format version
+    OpenLyrics version
         ``<song version="0.8>``
 
     keywords for searching
@@ -45,7 +45,7 @@ Features
         ``<song modifiedDate="">``
 
     lines of text
-        ``<line>``
+        ``<lines>``
 
     multiple authors
         ``<authors>``
