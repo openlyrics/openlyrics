@@ -671,6 +671,28 @@ For example::
     </lines>
 
 
+Split Verse
+^^^^^^^^^^^
+
+Use the ``break="optional"`` attribute on the ``<lines>`` tag to tell the application
+about an optional split for a long verse.
+The application then can decide to break the verse in two slides if it
+doesn't fit on one screen::
+
+    <verse name="v1">
+      <lines break="optional">
+        Amazing grace, how sweet the sound<br/>
+        That saved a wretch like me!</br>
+      </lines>
+      <lines>
+        I once was lost, but now am found,<br/>
+        Was blind but now I see.<br/>
+      </lines>
+    </verse>
+
+This tells the application that it can split the verse after the
+line "That saved a wretch like me!"
+
 Verse Name
 ^^^^^^^^^^
 
