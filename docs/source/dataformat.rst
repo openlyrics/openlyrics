@@ -819,11 +819,8 @@ Verse Parts (Groups of Lines)
 In some songs, certain lines or sections of the song may be sung by a particular
 group of people. For example, some songs contain sections where only the men or
 only the women sing. The ``part`` attribute, attached to the ``<lines>`` tag,
-marks these different sections (or parts) of songs. The value of this attribute
+marks these different sections (or parts) of songs. The value of this attribute is
 can be any arbitrary text.
-
-The ``part`` attribute is mandatory when there is more than one ``<lines>`` tag
-in a verse.
 
 For example, a song containing one verse with some words for men and some words
 for women::

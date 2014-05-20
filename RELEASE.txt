@@ -1,9 +1,7 @@
 Release 0.9 (unreleased)
 ========================
 
-* Make ``<song>`` attributes createdIn, modifiedIn and modifiedDate optional
-* The 'part' attribute on the ``<lines>`` element is neccessary when there is
-  more than one ``<lines>`` element in a ``<verse>``
+* make ``<song>`` attributes createdIn, modifiedIn and modifiedDate optional
 
 Release 0.8 (15 Apr 2012)
 =========================
