@@ -11,5 +11,6 @@ then
 fi
 cp -R html public_html
 tar -czvf public_html.tar.gz public_html
-scp public_html.tar.gz openlyri@openlyrics.info:
-ssh openlyri@openlyrics.info 'tar -xzvf public_html.tar.gz; rm public_html.tar.gz; '
+# TODO new hosting is available and this old is no longer available
+#scp public_html.tar.gz openlyri@openlyrics.info:
+#ssh openlyri@openlyrics.info 'tar -xzvf public_html.tar.gz; rm public_html.tar.gz; '
