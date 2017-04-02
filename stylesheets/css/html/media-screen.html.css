@@ -1,0 +1,37 @@
+/**
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ * Screen media
+ */
+
+:root {
+  font-size: 16px; /* Root element size */
+  width: 40rem;
+  margin: 1rem auto 1rem auto;
+  color: black;
+}
+a {
+  color: black;
+}
+section.properties p.properties-other:not(:empty) {
+  background: rgba(240,240,240,1);
+}
+section.properties p.properties-main span {
+  border-color: rgba(240,240,240,1);
+  background: rgba(250,250,250,1);
+}
+section.properties p.properties-main:empty ~ p.properties-songbooks {
+  border-bottom-color: rgba(240,240,240,1);
+}
+section.lyrics > article.verse .verse-name,
+section.lyrics > article.verse .verse-lang,
+section.lyrics > article.verse .verse-translit,
+section.lyrics p.lines > .line-part {
+  color: blue;
+}
+section.lyrics p.lines > .lyrics-comment {
+  color: rgba(166,166,166,1);
+}
+.song[data-ol-version="0.8"] .chord {
+  color: red;
+}
+

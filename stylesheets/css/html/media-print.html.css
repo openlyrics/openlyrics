@@ -1,0 +1,69 @@
+/**
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ * Print media
+ */
+
+@page {
+  size: A4;
+  margin: 4.5rem 6rem 7.5rem 3rem;
+  @top-left { 
+    content: string(title);
+    font-size: .625rem;
+  }
+  @bottom-left {
+    content: string(root-properties);
+    font-size: .625rem;
+  }
+  @bottom-right {
+    content: counter(page);
+  }
+}
+@page:first {
+   @top-left {
+    content: none;
+  }
+}
+:root {
+  font-size: 12pt; /* Root element size */
+  color: cmyk(0, 0, 0, 1);
+}
+.song {
+  page-break-before: always;
+  string-set: root-properties attr(data-root-properties);
+}
+a {
+  color: cmyk(0, 0, 0, 1);
+}
+h1 {
+  string-set: title content();
+}
+footer .root-properties {
+  display: none;
+}
+section.properties p.properties-other:not(:empty) {
+  background: cmyk(0,0,0,0.0588);
+}
+section.properties p.properties-main span {
+  border-color: cmyk(0,0,0,0.0588);
+  background: cmyk(0,0,0,0.0196);
+}
+section.properties p.properties-main:empty ~ p.properties-songbooks {
+  border-bottom-color: cmyk(0,0,0,0.0588);
+}
+section.lyrics > article.verse .verse-name,
+section.lyrics > article.verse .verse-lang,
+section.lyrics > article.verse .verse-translit,
+section.lyrics p.lines > .line-part {
+  color: cmyk(1, 0, 0, 0);
+}
+section.lyrics p.lines > .lyrics-comment {
+  color: cmyk(0, 0, 0, 0.35);
+}
+section.lyrics > article.verse {
+  page-break-inside: avoid;
+}
+
+.song[data-ol-version="0.8"] .chord {
+  color: cmyk(0, 1, 1, 0);
+}
+
