@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locale xml:lang="en">
+  <properties>
+    <songbook>Songbook</songbook>
+    <language>Language</language>
+    <title>Title</title>
+    <originalTitle>Original title</originalTitle>
+    <subtitle>Subtitle</subtitle>
+    <author>Author</author>
+    <words>Words</words>
+    <music>Music</music>
+    <translation>Translation</translation>
+    <released>Released</released>
+    <version>Version</version>
+    <variant>Variant</variant>
+    <publisher>Publisher</publisher>
+    <copyright>Copyright</copyright>
+    <comment>Comment</comment>
+    <keywords>Keywords</keywords>
+    <key>Key</key>
+    <tempo>Tempo</tempo>
+    <transposition>Transposition</transposition>
+    <ccliNo>CCLI No.</ccliNo>
+    <themes>Themes</themes>
+    <verseOrder>Verse Order</verseOrder>
+    <creator>Creator</creator>
+  </properties>
+  <lyrics>
+    <part>Part</part>
+    <name>Name</name>
+    <lang>Language</lang>
+    <translit>Transliteration</translit>
+    <comment>Comment</comment>
+    <verseNames>
+      <v>Verse</v>
+      <c>Chorus</c>
+      <p>Pre-chorus</p>
+      <b>Bridge</b>
+      <e>Ending</e>
+      <i>Intro</i>
+      <m>Middle</m>
+      <o>Outro</o>
+      <s>Solo</s>
+    </verseNames>
+    <!-- Format of verse name.
+    @initial: Whitch is the 1st? "name" or "number"
+    @separator: Separating name and number
+    @translateFrom, @translateTo: If initial is "number" and name has number replace characters -->
+    <verseNameFormat initial="name" separator=" " />
+  </lyrics>
+  <languages>
+    <en>English</en>
+    <hu>Hungarian</hu>
+    <es>Spanish</es>
+    <it>Italian</it>
+    <he>Hebrew, Ivrit</he>
+  </languages>
+</locale>

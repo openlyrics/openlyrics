@@ -8,6 +8,14 @@
  xmlns="http://www.w3.org/1999/xhtml">
 <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
 
+  <!-- Locale-specific content -->
+  <xsl:variable name="locale-strings">
+    <xsl:text>../stylesheets/xsl/openlyrics.lang.</xsl:text>
+    <xsl:value-of select="//@xml:lang"/>
+    <xsl:text>.xml</xsl:text>
+  </xsl:variable>
+  <xsl:variable name="locale" select="document ($locale-strings)/locale"/>
+
   <!-- Main -->
   <xsl:template match="/">
     <html lang="{//@xml:lang}">
@@ -26,10 +34,10 @@
     <xsl:variable name="rootProperties">
       <xsl:text>OpenLyrics  </xsl:text><xsl:value-of select="@version"/>
       <xsl:if test="@createdIn">
-        <xsl:text> • </xsl:text><xsl:value-of select="@createdIn"/>
+        <xsl:text> • </xsl:text><xsl:value-of select="$locale/properties/creator/text()"/><xsl:text>: </xsl:text><xsl:value-of select="@createdIn"/>
       </xsl:if>
       <xsl:if test="@xml:lang">
-        <xsl:text> • </xsl:text><xsl:value-of select="@xml:lang"/>
+        <xsl:text> • </xsl:text><xsl:value-of select="$locale/properties/language/text()"/><xsl:text>: </xsl:text><xsl:value-of select="$locale/languages/*[local-name()=current()/@xml:lang]/text()"/>
       </xsl:if>
     </xsl:variable>
 
@@ -77,47 +85,52 @@
   </xsl:template>
   
   <xsl:template match="ol:title[1]">
-    <h1><xsl:value-of select="."/></h1>
+    <h1 title="{$locale/properties/title/text()}"><xsl:value-of select="."/></h1>
   </xsl:template>
   <xsl:template match="ol:title[@original]">
-    <span class="{local-name()} {name(@original)}">
+    <span class="{local-name()} {name(@original)}" title="{$locale/properties/originalTitle/text()}">
+      <em><xsl:value-of select="$locale/properties/originalTitle/text()"/>: </em>
       <xsl:value-of select="."/>
       <xsl:if test="@lang">
-        (<xsl:value-of select="@lang"/>)
+        (<xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>)
       </xsl:if>
     </span>
   </xsl:template>
   <xsl:template match="ol:title[position()>1][not(@original)]">
-    <span class="{local-name()}">
+    <span class="{local-name()}" title="{$locale/properties/subtitle/text()}">
+      <em><xsl:value-of select="$locale/properties/subtitle/text()"/>: </em>
       <xsl:value-of select="."/>
       <xsl:if test="@lang">
-        (<xsl:value-of select="@lang"/>)
+        (<xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>)
       </xsl:if>
     </span>
   </xsl:template>
 
   <xsl:template match="ol:author[not(@type)]">
-    <span class="{local-name()}">
+    <span class="{local-name()}" title="{$locale/properties/author/text()}">
+      <em><xsl:value-of select="$locale/properties/author/text()"/>: </em>
       <xsl:value-of select="."/>
     </span>
   </xsl:template>
   <xsl:template match="ol:author[@type='words']|ol:author[@type='music']">
-    <span class="{local-name()} {@type}">
-      <em><xsl:value-of select="@type"/>: </em>
+    <span class="{local-name()} {@type}" title="{$locale/properties/*[local-name()=current()/@type]/text()}">
+      <em><xsl:value-of select="$locale/properties/*[local-name()=current()/@type]/text()"/>: </em>
       <xsl:value-of select="."/>
     </span>
   </xsl:template>
   <xsl:template match="ol:author[@type='translation']">
-    <span class="{local-name()} {@type}">
+    <span class="{local-name()} {@type}" title="{$locale/properties/*[local-name()=current()/@type]/text()}">
+      <em><xsl:value-of select="$locale/properties/*[local-name()=current()/@type]/text()"/>: </em>
       <xsl:value-of select="."/>
       <xsl:if test="@lang">
-        (<xsl:value-of select="@lang"/>)
+        (<xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>)
       </xsl:if>
     </span>
   </xsl:template>
 
   <xsl:template match="ol:released|ol:version|ol:variant|ol:publisher|ol:copyright|ol:comment|ol:keywords|ol:key|ol:transposition|ol:ccliNo">
-    <span class="{local-name()}">
+    <span class="{local-name()}" title="{$locale/properties/*[local-name()=local-name(current())]/text()}">
+      <em><xsl:value-of select="$locale/properties/*[local-name()=local-name(current())]/text()"/>: </em>
       <xsl:choose>
         <xsl:when test="local-name()='ccliNo'">
           <a href="https://songselect.ccli.com/songs/{.}"><xsl:value-of select="."/></a>
@@ -131,7 +144,8 @@
   </xsl:template>
 
   <xsl:template match="ol:tempo">
-    <span class="{local-name()}">
+    <span class="{local-name()}" title="{$locale/properties/tempo/text()}">
+      <em><xsl:value-of select="$locale/properties/tempo/text()"/>: </em>
       <xsl:value-of select="."/>
       <xsl:if test="string(number(.))!='NaN'">
         <xsl:text> BMP</xsl:text>
@@ -141,7 +155,8 @@
   </xsl:template>
 
   <xsl:template match="ol:themes">
-    <span class="{local-name()}">
+    <span class="{local-name()}" title="{$locale/properties/themes/text()}">
+      <em><xsl:value-of select="$locale/properties/themes/text()"/>: </em>
       <xsl:for-each select="ol:theme">
         <xsl:if test="not(@lang)">
           <xsl:value-of select="."/>
@@ -149,14 +164,14 @@
         </xsl:if>
         <xsl:if test="@lang">
           <xsl:value-of select="."/>
-          (<xsl:value-of select="@lang"/>)<xsl:if test="position()!=last()">, <xsl:text/></xsl:if>
+          (<xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>)<xsl:if test="position()!=last()">, <xsl:text/></xsl:if>
         </xsl:if>
       </xsl:for-each>
     </span>
   </xsl:template>
 
   <xsl:template match="ol:songbook">
-    <div class="{local-name()}">
+    <div class="{local-name()}" title="{$locale/properties/songbook/text()}">
       <span class="songbook_name">
         <xsl:value-of select="@name"/>
       </span>
@@ -177,7 +192,8 @@
   </xsl:template>
 
   <xsl:template match="ol:verseOrder">
-    <span class="{local-name()}">
+    <span class="{local-name()}" title="{$locale/properties/verseOrder/text()}">
+      <em><xsl:value-of select="$locale/properties/verseOrder/text()"/>: </em>
       <div>
         <xsl:for-each select="str:tokenize(.,' ')">
           <xsl:call-template name="displayVerseName">
@@ -191,7 +207,30 @@
 
   <xsl:template name="displayVerseName">
     <xsl:param name="name" />
-    <xsl:value-of select="$name" />
+    <xsl:variable name="verseName" select="substring($name,1,1)" />
+    <xsl:variable name="verseNum"  select="substring($name,2,string-length(-1))" />
+    <xsl:if test="$verseNum!='' and $locale/lyrics/verseNameFormat[@initial='number']">
+      <xsl:value-of select="$verseNum" />
+      <xsl:value-of select="$locale/lyrics/verseNameFormat/@separator" />
+    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="$locale/lyrics/verseNameFormat[@initial='number'] and
+                      $verseNum!='' and
+                      $locale/lyrics/verseNameFormat[@translateFrom] and
+                      $locale/lyrics/verseNameFormat[@translateTo]">
+        <xsl:value-of select="translate( $locale/lyrics/verseNames/*[local-name()=$verseName]/text(),
+                                         $locale/lyrics/verseNameFormat/@translateFrom,
+                                         $locale/lyrics/verseNameFormat/@translateTo
+                                        )"/>
+      </xsl:when>
+      <xsl:otherwise>
+       <xsl:value-of select="$locale/lyrics/verseNames/*[local-name()=$verseName]/text()"/>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:if test="$verseNum!='' and $locale/lyrics/verseNameFormat[@initial='name']">
+      <xsl:value-of select="$locale/lyrics/verseNameFormat/@separator" />
+      <xsl:value-of select="$verseNum" />
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="ol:verse">
@@ -220,22 +259,25 @@
         <xsl:attribute name="data-verse-translit"><xsl:value-of select="@translit" /></xsl:attribute>
       </xsl:if>
       <xsl:if test="@name">
-        <div class="verse-name">
+        <div class="verse-name" title="{$locale/lyrics/name/text()}">
+          <em><xsl:value-of select="$locale/lyrics/name/text()"/>: </em>
           <xsl:call-template name="displayVerseName">
             <xsl:with-param name="name" select="@name"/>
           </xsl:call-template>
         </div>
       </xsl:if>
       <xsl:if test="@lang and not(@translit)">
-        <div class="verse-lang">
-          <xsl:value-of select="@lang"/>
+        <div class="verse-lang" title="{$locale/lyrics/lang/text()}">
+          <em><xsl:value-of select="$locale/lyrics/lang/text()"/>: </em>
+          <xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>
         </div>
       </xsl:if>
       <xsl:if test="@lang and @translit">
-        <div class="verse-translit">
-          <xsl:value-of select="@lang"/>
+        <div class="verse-translit" title="{$locale/lyrics/translit/text()}">
+          <em><xsl:value-of select="$locale/lyrics/translit/text()"/>: </em>
+          <xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>
           <xsl:text>→</xsl:text>
-          <xsl:value-of select="@translit"/>
+          <xsl:value-of select="$locale/languages/*[local-name()=current()/@translit]/text()"/>
         </div>
       </xsl:if>
       <xsl:apply-templates/>
@@ -250,7 +292,8 @@
     </xsl:variable>
     <p class="{local-name()}{$has-segments}">
       <xsl:if test="@part">
-        <span class="line-part">
+        <span class="line-part" title="{$locale/lyrics/part/text()}">
+          <em><xsl:value-of select="$locale/lyrics/part/text()"/>: </em>
           <xsl:value-of select="@part"/>
         </span>
       </xsl:if>
@@ -261,7 +304,8 @@
   <xsl:include href="../stylesheets/xsl/openlyrics.08chords.xsl" />
 
   <xsl:template match="ol:lyrics//ol:comment">
-    <span class="lyrics-{local-name()}">
+    <span class="lyrics-{local-name()}" title="{$locale/lyrics/comment/text()}">
+      <em><xsl:value-of select="$locale/lyrics/comment/text()"/>: </em>
       <xsl:value-of select="."/>
     </span>
   </xsl:template>

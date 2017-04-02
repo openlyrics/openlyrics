@@ -3,11 +3,18 @@
  * Print media
  */
 
+/* namespace for xml|lang attribute
+ * See: http://tei-l.970651.n3.nabble.com/Selecting-xml-attributes-using-CSS-attr-td4029412.html
+ * https://searchcode.com/codesearch/view/6658711/
+ * Chrome doesn't support
+ */
+@namespace xml url(http://www.w3.org/XML/1998/namespace);
+
 @page {
   size: A4;
   margin: 4.5rem 6rem 7.5rem 3rem;
   @top-left { 
-    content: "OpenLyrics " string(openlyrics-version);
+    content: "OpenLyrics " string(openlyrics-version) " • " string(openlyrics-language);
     font-size: .625rem;
   }
   @bottom-right {
@@ -17,7 +24,7 @@
 :root {
   font-size: 12pt; /* Root element size */
   color: cmyk(0, 0, 0, 1);
-  string-set: openlyrics-version attr(version);
+  string-set: openlyrics-version attr(version), openlyrics-language attr(xml|lang);
 }
 title:first-child {
   color: cmyk(0, 0, 0, 1);
