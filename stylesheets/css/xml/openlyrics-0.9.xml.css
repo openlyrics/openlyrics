@@ -1,0 +1,20 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * OpenLyrics 0.9
+ */
+
+song[version="0.9"] beat {
+  display: inline-block;
+}
+song[version="0.9"] beat::after {
+  content: '|';
+  padding: 0 .1em;
+}
+song[version="0.9"] beat:last-child::after {
+  content: none;
+}
+
+/* debug
+chord {
+  border: .063rem solid silver;
+} /* /debug */

@@ -301,6 +301,11 @@
     </p>
   </xsl:template>
 
+  <xsl:template match="ol:beat[position() != last()]">
+    <xsl:apply-templates/>
+    <span class="{local-name()}-sign">|</span>
+  </xsl:template>
+
   <xsl:include href="../stylesheets/xsl/openlyrics.08chords.xsl" />
 
   <xsl:template match="ol:lyrics//ol:comment">
