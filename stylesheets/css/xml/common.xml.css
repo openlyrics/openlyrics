@@ -111,17 +111,20 @@ lyrics {
   margin: .2rem 1rem;
   padding: 1rem 0;
 }
-lyrics > verse {
+lyrics > verse,
+lyrics > instrument {
   display: block;
   margin: 0 0 1rem 5rem;
   font-size: 1rem;
   position: relative;
 }
-lyrics > verse br::before { 
+lyrics > verse br::before,
+lyrics > instrument br::before {
   content: "\A"; 
   white-space: pre-line;
 }
-lyrics > verse::before { /* verse names */
+lyrics > verse::before, /* verse names */
+lyrics > instrument::before {
   position: absolute;
   width: 5rem;
   top: 1rem;
@@ -130,6 +133,9 @@ lyrics > verse::before { /* verse names */
   transform-origin: top left;
   text-align: left;
   font-size: .813rem;
+}
+lyrics > instrument::before {
+  top: 0;
 }
 lyrics > verse[lang]::after { /* verse translations and transliterations */
   content: attr(lang);
@@ -179,11 +185,27 @@ lyrics > verse[name^='e'] {
 lyrics > verse[name^='e'][lang] {
   counter-increment: ending 0;
 }
+lyrics > instrument[name^='i'] {
+  counter-increment: intro;
+}
+lyrics > instrument[name^='m'] {
+  counter-increment: middle;
+}
+lyrics > instrument[name^='o'] {
+  counter-increment: outro;
+}
+lyrics > instrument[name^='s'] {
+  counter-increment: solo;
+}
 lyrics > verse[name='v'],
 lyrics > verse[name='c'],
 lyrics > verse[name='p'],
 lyrics > verse[name='b'],
-lyrics > verse[name='e'] {
+lyrics > verse[name='e'],
+lyrics > instrument[name='i'],
+lyrics > instrument[name='m'],
+lyrics > instrument[name='o'],
+lyrics > instrument[name='s'] {
   counter-increment: none !important;
 }
 

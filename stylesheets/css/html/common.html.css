@@ -138,7 +138,8 @@ section.lyrics {
   margin: 1.5rem 1rem;
 }
 
-section.lyrics > article.verse {
+section.lyrics > article.verse,
+section.lyrics > article.instrument {
   margin: 0 0 1rem 5rem;
   font-size: 1rem;
   line-height: 1.2rem;
@@ -146,6 +147,7 @@ section.lyrics > article.verse {
 }
 
 section.lyrics > article.verse .verse-name, /* verse names */
+section.lyrics > article.instrument .verse-name,
 section.lyrics > article.verse .verse-lang,
 section.lyrics > article.verse .verse-translit {
   position: absolute;
@@ -156,6 +158,9 @@ section.lyrics > article.verse .verse-translit {
   transform-origin: top left;
   text-align: left;
   font-size: .813rem;
+}
+section.lyrics > article.instrument .verse-name {
+  top: 0;
 }
 section.lyrics > article.verse .verse-lang,
 section.lyrics > article.verse .verse-translit {

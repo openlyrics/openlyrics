@@ -37,6 +37,7 @@ lines comment {
   color: cmyk(0, 0, 0, 0.35);
 }
 lyrics > verse::before, 
+lyrics > instrument::before,
 lyrics > verse[lang]::after,
 lines[part]::before {
   color: cmyk(1, 0, 0, 0);
@@ -47,7 +48,8 @@ chord::before {
 beat::after {
   color: cmyk(0, 0, 0, 1);
 }
-lyrics > verse { 
+lyrics > verse,
+lyrics > instrument {
   page-break-inside: avoid;
 }
 

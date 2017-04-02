@@ -23,6 +23,7 @@ section.properties p.properties-main:empty ~ p.properties-songbooks {
   border-bottom-color: rgba(240,240,240,1);
 }
 section.lyrics > article.verse .verse-name,
+section.lyrics > article.instrument .verse-name,
 section.lyrics > article.verse .verse-lang,
 section.lyrics > article.verse .verse-translit,
 section.lyrics p.lines > .line-part {

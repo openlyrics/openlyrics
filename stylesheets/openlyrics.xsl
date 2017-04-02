@@ -233,7 +233,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="ol:verse">
+  <xsl:template match="ol:verse|ol:instrument">
     <xsl:variable name="verseId">
       <xsl:if test="@name">
         <xsl:value-of select="@name" />
