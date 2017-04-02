@@ -1,0 +1,38 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * English
+ */
+
+:lang(en) theme[lang=en]::after,
+:lang(en) author[type=translator][lang=en]::after  { content: " (English)" }
+:lang(en) title[lang=hu]::after,
+:lang(en) theme[lang=hu]::after,
+:lang(en) author[type=translation][lang=hu]::after { content: " (Hungarian)" }
+:lang(en) title[lang=es]::after,
+:lang(en) theme[lang=es]::after,
+:lang(en) author[type=translator][lang=ee]::after  { content: " (Spanish)" }
+:lang(en) title[lang=it]::after,
+:lang(en) theme[lang=it]::after,
+:lang(en) author[type=translator][lang=it]::after  { content: " (Italian)" }
+:lang(en) title[lang=he]::after,
+:lang(en) theme[lang=he]::after,
+:lang(en) author[type=translator][lang=he]::after  { content: " (Hebrew, Ivrit)" }
+
+:lang(en) lyrics > verse[name='v']::before          { content: "Verse" !important  }
+:lang(en) lyrics > verse[name^='v']::before         { content: "Verse " counter(verse)  }
+:lang(en) lyrics > verse[name='c']::before          { content: "Chorus" !important }
+:lang(en) lyrics > verse[name^='c']::before         { content: "Chorus " counter(chorus) }
+:lang(en) lyrics > verse[name='p']::before          { content: "Pre-chorus" !important }
+:lang(en) lyrics > verse[name^='p']::before         { content: "Pre-chorus " counter(prechorus) }
+:lang(en) lyrics > verse[name='b']::before          { content: "Bridge" !important }
+:lang(en) lyrics > verse[name^='b']::before         { content: "Bridge " counter(bridge) }
+:lang(en) lyrics > verse[name='e']::before          { content: "Ending" !important }
+:lang(en) lyrics > verse[name^='e']::before         { content: "Ending " counter(ending) }
+:lang(en) lyrics > instrument[name='i']::before     { content: "Intro" !important }
+:lang(en) lyrics > instrument[name^='i']::before    { content: "Intro " counter(intro) }
+:lang(en) lyrics > instrument[name='m']::before     { content: "Middle" !important }
+:lang(en) lyrics > instrument[name^='m']::before    { content: "Middle " counter(middle) }
+:lang(en) lyrics > instrument[name='o']::before     { content: "Outro" !important }
+:lang(en) lyrics > instrument[name^='o']::before    { content: "Outro " counter(outro) }
+:lang(en) lyrics > instrument[name='s']::before     { content: "Solo" !important }
+:lang(en) lyrics > instrument[name^='s']::before    { content: "Solo " counter(solo) }

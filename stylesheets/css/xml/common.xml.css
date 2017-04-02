@@ -1,0 +1,231 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * Common
+ */
+
+/* properties */
+properties {
+  display: block;
+  border-bottom-style: solid;
+  border-bottom-width: .083333333rem;
+  padding-bottom: .3rem;
+  font-size: .813rem;
+}
+title {
+  display: block;
+}
+title:first-child { /* title */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: .5rem 0;
+}
+title:not(:first-child) { /* alternate title */
+  text-align: center;
+}
+title:not(:first-child)::before {
+  font-weight: bold;
+}
+title:last-child {
+  margin-bottom: 1rem;
+}
+authors,
+copyright,
+ccliNo,
+released,
+transposition,
+tempo,
+key,
+variant,
+publisher,
+version,
+keywords,
+verseOrder,
+songbooks,
+themes,
+comments {
+  display: inline;
+  padding-right: .5rem;
+}
+title[original]::before,
+authors::before,
+author::before,
+copyright::before,
+ccliNo::before,
+released::before,
+transposition::before,
+tempo::before,
+key::before,
+variant::before,
+publisher::before,
+version::before,
+keywords::before,
+verseOrder::before,
+songbooks::before,
+themes::before,
+comments::before {
+  display: inline-block;
+  font-family: FontAwesome;
+  margin-right: .25rem;
+}
+title[original]::before          { content: "\f024"; /* flag */ }
+authors::before                  { content: "\f007"; /* user */ }
+author[type=words]::before       { content: "\f031"; /* font */ }
+author[type=music]::before       { content: "\f001"; /* music */ }
+author[type=translation]::before { content: "\f0ac"; /* globe */ }
+copyright::before                { content: "\f07a"; /* shopping-cart */ }
+ccliNo::before                   { content: "\f02a"; /* barcode */ }
+released::before                 { content: "\f073"; /* calendar */}
+transposition::before            { content: "\f0dc"; /* sort */}
+tempo::before                    { content: "\f017"; /* clock-o */}
+key::before                      { content: "\f084"; /* key */ }
+variant::before                  { content: "\f074"; /* random */ }
+publisher::before                { content: "\f1ad"; /* building */ }
+version::before                  { content: "\f126"; /* code-fork */ }
+keywords::before                 { content: "\f02b"; /* tag */ }
+verseOrder::before               { content: "\f061"; /* arrow-right */ }
+songbooks::before                { content: "\f02d"; /* book */ }
+themes::before                   { content: "\f069"; /* asterisk */ }
+comments::before                 { content: "\f075"; /* comment */ }
+
+tempo[type=bpm]::after {
+  content: " bpm";
+}
+songbook::before {
+  content: attr(name) " (" attr(entry) ")";
+}
+songbook:not(:last-child)::after,
+theme:not(:first-child)::before,
+properties comment:not(:first-child)::before {
+  content: " • ";
+}
+
+format,
+format * {
+  display: none;
+}
+
+/* lyrics, verse, instrument */
+lyrics { 
+  display: block;
+  margin: .2rem 1rem;
+  padding: 1rem 0;
+}
+lyrics > verse,
+lyrics > instrument {
+  display: block;
+  margin: 0 0 1rem 5rem;
+  font-size: 1rem;
+  position: relative;
+}
+lyrics > verse br::before,
+lyrics > instrument br::before {
+  content: "\A"; 
+  white-space: pre-line;
+}
+lyrics > verse::before, /* verse names */
+lyrics > instrument::before {
+  position: absolute;
+  width: 5rem;
+  top: 1rem;
+  left: -5rem;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  text-align: left;
+  font-size: .813rem;
+}
+lyrics > instrument::before {
+  top: 0;
+}
+lyrics > verse[lang]::after { /* verse translations and transliterations */
+  content: attr(lang);
+}
+lyrics > verse[lang][translit]::after {
+  content: attr(lang) " → " attr(translit);
+}
+lyrics > verse[lang]::after {
+  position: absolute;
+  width: 4rem;
+  top: 1rem;
+  left: -4rem;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  text-align: left;
+  font-size: .813rem;
+}
+
+/* verse, instrument numbers */
+lyrics > verse[name^='v'] {
+  counter-increment: verse;
+}
+lyrics > verse[name^='v'][lang] {
+  counter-increment: verse 0; /* don't increment verse translations and transliterations */
+}
+lyrics > verse[name^='c'] {
+  counter-increment: chorus;
+}
+lyrics > verse[name^='c'][lang] {
+  counter-increment: chorus 0;
+}
+lyrics > verse[name^='p'] {
+  counter-increment: prechorus;
+}
+lyrics > verse[name^='p'][lang] {
+  counter-increment: prechorus 0;
+}
+lyrics > verse[name^='b'] {
+  counter-increment: bridge;
+}
+lyrics > verse[name^='b'][lang] {
+  counter-increment: bridge 0;
+}
+lyrics > verse[name^='e'] {
+  counter-increment: ending;
+}
+lyrics > verse[name^='e'][lang] {
+  counter-increment: ending 0;
+}
+lyrics > instrument[name^='i'] {
+  counter-increment: intro;
+}
+lyrics > instrument[name^='m'] {
+  counter-increment: middle;
+}
+lyrics > instrument[name^='o'] {
+  counter-increment: outro;
+}
+lyrics > instrument[name^='s'] {
+  counter-increment: solo;
+}
+lyrics > verse[name='v'],
+lyrics > verse[name='c'],
+lyrics > verse[name='p'],
+lyrics > verse[name='b'],
+lyrics > verse[name='e'],
+lyrics > instrument[name='i'],
+lyrics > instrument[name='m'],
+lyrics > instrument[name='o'],
+lyrics > instrument[name='s'] {
+  counter-increment: none !important;
+}
+
+/* line part */
+lines[part]::before {
+  content: attr(part);
+  position: absolute;
+  width: 4rem;
+  margin-top: 1rem;
+  left: -4rem;
+  font-size: .813rem;
+}
+lines comment {
+  position: absolute;
+  width: 10rem;
+  margin-top: 1rem;
+  right: -1rem;
+  font-size: .625rem;
+  line-height: .625rem;
+  font-style: italic;
+  text-align: right;
+}
+

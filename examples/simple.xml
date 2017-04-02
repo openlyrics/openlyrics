@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song"
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="en"
       version="0.8"
       createdIn="OpenLP 1.9.0"
       modifiedIn="MyApp 0.0.1"

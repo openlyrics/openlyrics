@@ -1,0 +1,11 @@
+/**
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ */
+
+@import url("../fonts.css");
+
+@import url("common.html.css");
+@import url("openlyrics-0.8.html.css");
+@import url("openlyrics-0.9.html.css");
+@import url("media-print.html.css") print;
+@import url("media-screen.html.css") screen;
