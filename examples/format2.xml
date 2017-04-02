@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="OpenLP 1.9.7" modifiedIn="OpenLP 1.9.7" modifiedDate="2012-04-10T22:00:00+10:00">
+<?xml-stylesheet href="../stylesheets/openlyrics.xsl" type="text/xsl"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="cs" version="0.8" createdIn="OpenLP 1.9.7" modifiedIn="OpenLP 1.9.7" modifiedDate="2012-04-10T22:00:00+10:00">
   <properties>
     <titles>
       <title>Jezu Kriste, štědrý kněže</title>
