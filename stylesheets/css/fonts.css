@@ -1,0 +1,72 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ * Fonts
+ */
+
+:root {
+  font-family: "Linux Libertine";
+}
+song[version] chord[name]::before,
+song[version] chord[base]::before,
+.song[data-ol-version] .chord,
+.song[data-ol-version] footer #root-properties {
+  font-family: "Linux Biolinum";
+}
+
+@media print {
+  @page {
+    @top-left {
+      font-family: "Linux Biolinum";
+    }
+    @bottom-left {
+      font-family: "Linux Biolinum";
+    }
+    @bottom-right {
+      font-family: "Linux Libertine";
+    }
+  }
+}
+
+@font-face {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  src: local("FontAwesome"),
+       url(fonts/FontAwesome.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Libertine";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Linux Libertine O"),
+       url(fonts/LinLibertine_R.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Libertine";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Linux Libertine O Bold"),
+       url(fonts/LinLibertine_RB.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Libertine";
+  font-style: italic;
+  font-weight: normal;
+  src: local("Linux Libertine O Italic"),
+       url(fonts/LinLibertine_RI.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Biolinum";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Linux Biolinum O"),
+       url(fonts/LinBiolinum_R.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Biolinum";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Linux Biolinum O Bold"),
+       url(fonts/LinBiolinum_RB.otf) format('opentype');
+}

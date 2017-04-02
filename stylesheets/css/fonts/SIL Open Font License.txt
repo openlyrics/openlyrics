@@ -1,0 +1,14 @@
+Linux Libertine and Biolinum by Philipp H. Poll
+Copyright (c) 2003–2012, Philipp H. Poll (www.linuxlibertine.org | gillian at linuxlibertine.org),
+with Reserved Font Name "Linux Libertine" and "Biolinum".
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+http://scripts.sil.org/OFL
+
+-----------------------------------------------------------
+
+Font Awesome by Dave Gandy
+http://fontawesome.io
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+http://scripts.sil.org/OFL

@@ -1,0 +1,27 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * OpenLyrics 0.8
+ */
+
+song[version="0.8"] lines:after {
+  content: "\A"; 
+  white-space: pre-line;
+}
+song[version="0.8"] lines {
+  line-height: 2em;
+  padding: 0;
+  margin: 0;
+}
+song[version="0.8"] chord[name]:empty {
+  display: inline-block;
+  position: absolute;
+  line-height: 1em;
+}
+song[version="0.8"] chord[name]:empty::before {
+  display: block;
+  position: absolute;
+  line-height: 1em;
+  top: -.4em;
+  content: attr(name);
+  font-weight: bold;
+}
