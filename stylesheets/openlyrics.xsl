@@ -321,5 +321,7 @@
     </xsl:choose>
   </xsl:template>
   
+  <xsl:template match="ol:format"></xsl:template>
+
 </xsl:stylesheet>
 
