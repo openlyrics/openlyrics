@@ -3,6 +3,9 @@
  * OpenLyrics 0.9
  */
 
+.song[data-ol-version="0.9"] span.repeat-sign {}
+.song[data-ol-version="0.9"] span.repeat-sign.start {}
+.song[data-ol-version="0.9"] span.repeat-sign.end {}
 .song[data-ol-version="0.9"] span.beat-sign {
   display: inline-block;
   padding: 0 .15rem;
