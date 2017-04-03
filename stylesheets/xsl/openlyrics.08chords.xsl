@@ -6,7 +6,7 @@
  xmlns="http://www.w3.org/1999/xhtml">
 <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
 
-   <xsl:template match="ol:song[@version='0.8']//ol:lines/ol:chord">
+  <xsl:template match="ol:song[@version='0.8']//ol:lines/ol:chord">
     <span class="chord">
       <code>{</code>
       <xsl:value-of select="@name"/>

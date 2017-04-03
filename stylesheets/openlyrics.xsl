@@ -11,16 +11,16 @@
   <!-- Locale-specific content -->
   <xsl:variable name="locale-strings">
     <xsl:text>../stylesheets/xsl/openlyrics.lang.</xsl:text>
-    <xsl:value-of select="//@xml:lang"/>
+    <xsl:value-of select="ol:song/@xml:lang"/>
     <xsl:text>.xml</xsl:text>
   </xsl:variable>
   <xsl:variable name="locale" select="document ($locale-strings)/locale"/>
 
   <!-- Main -->
   <xsl:template match="/">
-    <html lang="{//@xml:lang}">
+    <html lang="{ol:song/@xml:lang}">
       <head>
-        <title><xsl:value-of select="//ol:song/ol:properties/ol:titles/ol:title[1]/text()"/></title>
+        <title><xsl:value-of select="ol:song/ol:properties/ol:titles/ol:title[1]/text()"/></title>
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="../stylesheets/css/html/openlyrics.html.css" />
       </head>
