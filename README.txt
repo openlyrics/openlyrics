@@ -7,7 +7,7 @@ system-independant song format for interoperability between applications.
 
 For more details see:
 
-  http://openlyrics.info
+  http://openlyrics.org
 
 
 Files
