@@ -25,14 +25,14 @@
 }
 :root {
   font-size: 12pt; /* Root element size */
-  color: cmyk(0, 0, 0, 1);
+  color: device-cmyk(0, 0, 0, 1);
 }
 .song {
   page-break-before: always;
   string-set: root-properties attr(data-root-properties);
 }
 a {
-  color: cmyk(0, 0, 0, 1);
+  color: device-cmyk(0, 0, 0, 1);
 }
 h1 {
   string-set: title content();
@@ -41,31 +41,37 @@ footer .root-properties {
   display: none;
 }
 section.properties p.properties-other:not(:empty) {
-  background: cmyk(0,0,0,0.0588);
+  background: device-cmyk(0, 0, 0, 0.0588);
 }
 section.properties p.properties-main span {
-  border-color: cmyk(0,0,0,0.0588);
-  background: cmyk(0,0,0,0.0196);
+  border-color: device-cmyk(0, 0, 0, 0.0588);
+  background: device-cmyk(0, 0, 0, 0.0196);
 }
 section.properties p.properties-main:empty ~ p.properties-songbooks {
-  border-bottom-color: cmyk(0,0,0,0.0588);
+  border-bottom-color: device-cmyk(0, 0, 0, 0.0588);
 }
 section.lyrics > article.verse .verse-name,
 section.lyrics > article.instrument .verse-name,
 section.lyrics > article.verse .verse-lang,
 section.lyrics > article.verse .verse-translit,
 section.lyrics p.lines > .line-part {
-  color: cmyk(1, 0, 0, 0);
+  color: device-cmyk(1, 0, 0, 0);
 }
 section.lyrics p.lines > .lyrics-comment {
-  color: cmyk(0, 0, 0, 0.35);
+  color: device-cmyk(0, 0, 0, 0.35);
 }
 section.lyrics > article.verse,
 section.lyrics > article.instrument {
   page-break-inside: avoid;
 }
 
-.song[data-ol-version="0.8"] .chord {
-  color: cmyk(0, 1, 1, 0);
+.song[data-ol-version="0.8"] .chord,
+.song[data-ol-version="0.9"] .segment .chord {
+  color: device-cmyk(0, 1, 1, 0);
 }
-
+.song[data-ol-version="0.9"] .segment .chord .chord-structure:not(:empty) {
+}
+.song[data-ol-version="0.9"] .segment .chord .chord-bassnotation,
+.song[data-ol-version="0.9"] .segment .chord .chord-bass:not(:empty) {
+  color: device-cmyk(1, 0, 1, 0);
+}

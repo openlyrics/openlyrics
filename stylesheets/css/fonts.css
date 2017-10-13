@@ -6,12 +6,18 @@
 
 :root {
   font-family: "Linux Libertine";
+  font-feature-settings: "ss01" on;
+  font-variant: prince-opentype(ss01(1));
 }
 song[version] chord[name]::before,
-song[version] chord[base]::before,
+song[version] chord[root]::before,
 .song[data-ol-version] .chord,
 .song[data-ol-version] footer #root-properties {
-  font-family: "Linux Biolinum";
+  font-family: "DejaVu Sans";
+}
+.song[data-ol-version] .chord-structure,
+.song[data-ol-version] .chord-bass {
+  font-family: "DejaVu Condensed Sans";
 }
 
 @media print {
@@ -69,4 +75,18 @@ song[version] chord[base]::before,
   font-weight: bold;
   src: local("Linux Biolinum O Bold"),
        url(fonts/LinBiolinum_RB.otf) format('opentype');
+}
+@font-face {
+  font-family: "DejaVu Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: local("DejaVu Sans Bold"),
+       url(fonts/DejaVuSans-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: "DejaVu Condensed Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: local("DejaVu Condensed Sans"),
+       url(fonts/DejaVuSansCondensed-Bold.ttf) format('truetype');
 }

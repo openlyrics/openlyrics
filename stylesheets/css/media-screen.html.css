@@ -32,7 +32,13 @@ section.lyrics p.lines > .line-part {
 section.lyrics p.lines > .lyrics-comment {
   color: rgba(166,166,166,1);
 }
-.song[data-ol-version="0.8"] .chord {
+.song[data-ol-version="0.8"] .chord,
+.song[data-ol-version="0.9"] .segment .chord {
   color: red;
 }
-
+.song[data-ol-version="0.9"] .segment .chord .chord-structure:not(:empty) {
+}
+.song[data-ol-version="0.9"] .segment .chord .chord-bassnotation,
+.song[data-ol-version="0.9"] .segment .chord .chord-bass:not(:empty) {
+  color: green;
+}
