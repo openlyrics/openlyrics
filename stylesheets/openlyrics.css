@@ -4,11 +4,12 @@
 
 @import url("css/fonts.css");
 
-@import url("css/xml/common.xml.css");
-@import url("css/xml/openlyrics-0.8.xml.css");
-@import url("css/xml/openlyrics-0.9.xml.css");
-@import url("css/xml/media-print.xml.css") print;
-@import url("css/xml/media-screen.xml.css") screen;
+@import url("css/common.xml.css");
+@import url("css/openlyrics-0.8.xml.css");
+@import url("css/openlyrics-0.9.xml.css");
+@import url("css/openlyrics-0.9-chord.xml.css");
+@import url("css/media-print.xml.css") print;
+@import url("css/media-screen.xml.css") screen;
 
-@import url("css/xml/openlyrics-lang-en.xml.css");
-@import url("css/xml/openlyrics-lang-hu.xml.css");
+@import url("css/lang-en.xml.css");
+@import url("css/lang-hu.xml.css");
