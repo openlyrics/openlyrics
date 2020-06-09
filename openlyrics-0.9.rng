@@ -407,6 +407,11 @@
       </data>
     </attribute>
     <optional>
+      <attribute name="xml:lang">
+        <data type="language"/>
+      </attribute>
+    </optional>
+    <optional>
         <attribute name="createdIn">
           <ref name="nonEmptyContent"/>
         </attribute>

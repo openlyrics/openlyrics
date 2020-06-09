@@ -77,6 +77,7 @@ Features
         ``<songbooks>``
 
     song metadata
+        ``<song xml:lang="">``
         ``<song version="">``
         ``<song createdIn="">``
         ``<song modifiedIn="">``
@@ -165,6 +166,7 @@ applications using OpenLyrics.
 Metadata is enclosed in the ``<song>`` tag as attributes::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
+          xml:lang="en"
           version="0.8"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
@@ -173,6 +175,17 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 ``xmlns``
     Defines an XML namespace. The value should be always
     ``http://openlyrics.info/namespace/2009/song``
+
+``xml:lang``
+    Language of the OpenLyrics document. It defines the default language for titles,
+    keywords, themes, comments, lyrics, etc. The format of this attribute should be
+    or ``xx-YY``, where ``xx`` is a language code from the
+    `ISO-639 <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_ standard, and
+    ``YY`` is a `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For more
+    details see `BCP 47 <http://www.rfc-editor.org/rfc/bcp/bcp47.txt>`_.
+    Default language can be overwriten for a specified element, see:
+    ``<title lang="">``, ``<theme lang="">``, ``<verse lang="">``.
+    This element is optional. If not specified, it means document language is ``"en"``.
 
 ``version``
     Version of the OpenLyrics format used by a song. This gives applications the

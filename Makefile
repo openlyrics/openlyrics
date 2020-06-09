@@ -20,6 +20,13 @@ validate: examples/*.xml songs/*.xml
 					--noout \
 					--relaxng openlyrics-0.8.rng \
 					"$$file"; \
+			elif grep -q 'version="0.9"' "$$file"; \
+			then \
+				echo -n "Validating (0.9)... " && \
+				xmllint \
+					--noout \
+					--relaxng openlyrics-0.9.rng \
+					"$$file"; \
 			fi; \
 		done
 

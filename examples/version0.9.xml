@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="hu" version="0.9">
+  <properties>
+    <titles>
+      <title lang="hu">A kapudat nyisd meg</title>
+    </titles>
+    <verseOrder>v1</verseOrder>
+    <authors>
+      <author>ismeretlen</author>
+    </authors>
+    <songbooks>
+      <songbook name="Teszt kömyv" entry="166"/>
+    </songbooks>
+  </properties>
+  <lyrics>
+    <verse name="v1">
+      <lines>
+        A kapudat nyisd meg, Jézusnak nyisd meg, jön, közeledik.<br/>
+        A kapudat nyisd meg, Jézusnak nyisd meg, jön, közeledik.<br/>
+      </lines>
+      <lines>
+        Nyisd meg, íme, jön, közeledik.<br/>
+        Nyisd meg, íme, jön, közeledik.
+      </lines>
+    </verse>
+  </lyrics>
+</song>

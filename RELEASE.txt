@@ -1,7 +1,8 @@
 Release 0.9 (unreleased)
 ========================
 
-* make ``<song>`` attributes createdIn, modifiedIn and modifiedDate optional
+* Make ``<song>`` attributes createdIn, modifiedIn and modifiedDate optional.
+* Add default language: ``xml:lang`` for ``<song>``.
 
 Release 0.8 (15 Apr 2012)
 =========================
