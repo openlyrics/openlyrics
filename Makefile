@@ -1,5 +1,5 @@
 .PHONY: all
-all: well-formed validate
+all: well-formed validate export-ol08
 
 .PHONY: well-formed
 well-formed: examples/*.xml songs/*.xml
@@ -19,6 +19,13 @@ validate: examples/*.xml songs/*.xml
 				xmllint \
 					--noout \
 					--relaxng openlyrics-0.8.rng \
+					"$$file"; \
+			elif grep -q 'version="0.9"' "$$file"; \
+			then \
+				echo -n "Validating (0.9)... " && \
+				xmllint \
+					--noout \
+					--relaxng openlyrics-0.9.rng \
 					"$$file"; \
 			fi; \
 		done
