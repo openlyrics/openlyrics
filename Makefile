@@ -1,5 +1,5 @@
 .PHONY: all
-all: well-formed validate
+all: well-formed validate export-ol08
 
 .PHONY: well-formed
 well-formed: examples/*.xml songs/*.xml
