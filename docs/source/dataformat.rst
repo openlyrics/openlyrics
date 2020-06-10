@@ -129,10 +129,7 @@ Required Data Items
 Here is an example of a song containing only the required XML tags::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.8"
-          createdIn="OpenLP 1.9.0"
-          modifiedIn="ChangingSong 0.0.1"
-          modifiedDate="2010-01-28T13:15:30+01:00">
+          version="0.9">
       <properties>
         <titles>
           <title>Amazing Grace</title>
