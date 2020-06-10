@@ -263,6 +263,15 @@ valid file name characters. It is recommended that files should be compressed
 using the `7-Zip <http://en.wikipedia.org/wiki/7zip>`_ format, as this format is
 known to handle non-ASCII file names well.
 
+Processing Instruction
+----------------------
+
+OpenLyrics, like all XML files, can contain `processing instructions <https://www.w3.org/TR/REC-xml/#sec-pi>`_.
+With ``xml-stylesheet`` processing instruction it is possible to `associate <https://www.w3.org/TR/xml-stylesheet/>`_
+CSS or XSLT style sheets with OpenLyrics document. Example::
+
+    <?xml-stylesheet href="ol.css" type="text/css"?>
+    <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9">
 
 Song Properties
 ---------------
