@@ -36,7 +36,7 @@ Features
         ``<released>``
 
     OpenLyrics version
-        ``<song version="0.8>``
+        ``<song version="0.9>``
 
     keywords for searching
         ``<keywords>``
@@ -129,10 +129,7 @@ Required Data Items
 Here is an example of a song containing only the required XML tags::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.8"
-          createdIn="OpenLP 1.9.0"
-          modifiedIn="ChangingSong 0.0.1"
-          modifiedDate="2010-01-28T13:15:30+01:00">
+          version="0.9">
       <properties>
         <titles>
           <title>Amazing Grace</title>
@@ -167,7 +164,7 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
           xml:lang="en"
-          version="0.8"
+          version="0.9"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
           modifiedDate="2010-01-28T13:15:30+01:00">
@@ -266,6 +263,15 @@ valid file name characters. It is recommended that files should be compressed
 using the `7-Zip <http://en.wikipedia.org/wiki/7zip>`_ format, as this format is
 known to handle non-ASCII file names well.
 
+Processing Instruction
+----------------------
+
+OpenLyrics, like all XML files, can contain `processing instructions <https://www.w3.org/TR/REC-xml/#sec-pi>`_.
+With ``xml-stylesheet`` processing instruction it is possible to `associate <https://www.w3.org/TR/xml-stylesheet/>`_
+CSS or XSLT style sheets with OpenLyrics document. Example::
+
+    <?xml-stylesheet href="ol.css" type="text/css"?>
+    <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9">
 
 Song Properties
 ---------------
@@ -913,7 +919,7 @@ Here's an advanced example of the XML::
 
     <?xml version="1.0" encoding="UTF-8"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.8"
+          version="0.9"
           createdIn="OpenLP 2.0"
           modifiedIn="ChangingSong 0.0.2"
           <!-- date format: ISO 8601 -->
