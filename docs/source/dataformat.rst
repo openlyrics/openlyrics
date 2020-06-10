@@ -36,7 +36,7 @@ Features
         ``<released>``
 
     OpenLyrics version
-        ``<song version="0.8>``
+        ``<song version="0.9>``
 
     keywords for searching
         ``<keywords>``
@@ -164,7 +164,7 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
           xml:lang="en"
-          version="0.8"
+          version="0.9"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
           modifiedDate="2010-01-28T13:15:30+01:00">
@@ -910,7 +910,7 @@ Here's an advanced example of the XML::
 
     <?xml version="1.0" encoding="UTF-8"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.8"
+          version="0.9"
           createdIn="OpenLP 2.0"
           modifiedIn="ChangingSong 0.0.2"
           <!-- date format: ISO 8601 -->
