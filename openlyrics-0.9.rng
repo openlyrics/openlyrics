@@ -430,18 +430,16 @@
   </define>
 
   <define name="verseNameType">
-    <choice>
-      <data type="NMTOKEN">
-        <param name="minLength">1</param>
-        <!-- 3 part: [verse][verse_number][verse_part]
-             verse      -    v1, v2, v1a, ...
-             chorus     - c, c1, c2, c1a, ca, ...
-             pre-chorus - p, p1, p2, p1a, pa, ...
-             bridge     - b, b1, b2, b1a, ba, ...
-             ending     - e, e1, e2, e1a, ea, ... -->
-        <param name="pattern">(v[1-9]\d*[a-z]?)|([cpbe][1-9]\d?[a-z]?)|([cpbe][a-z]?)</param>
-      </data>
-    </choice>
+    <data type="NMTOKEN">
+      <param name="minLength">1</param>
+      <!-- 3 part: [verse][verse_number][verse_part]
+           verse      -    v1, v2, v1a, ...
+           chorus     - c, c1, c2, c1a, ca, ...
+           pre-chorus - p, p1, p2, p1a, pa, ...
+           bridge     - b, b1, b2, b1a, ba, ...
+           ending     - e, e1, e2, e1a, ea, ... -->
+      <param name="pattern">(v[1-9]\d*[a-z]?)|([cpbe][1-9]\d?[a-z]?)|([cpbe][a-z]?)</param>
+    </data>
   </define>
 
   <define name="langAttribute">
