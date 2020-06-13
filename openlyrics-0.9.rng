@@ -430,7 +430,7 @@
   </define>
 
   <define name="verseNameType">
-    <data type="NMTOKEN">
+    <data type="ID">
       <param name="minLength">1</param>
       <!-- 3 part: [verse][verse_number][verse_part]
            verse      -    v1, v2, v1a, ...
