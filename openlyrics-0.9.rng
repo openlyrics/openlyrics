@@ -82,10 +82,15 @@
 
   <define name="lyrics">
     <element name="lyrics">
-      <!-- at least one verse is required -->
-      <oneOrMore>
-        <ref name="verse"/>
-      </oneOrMore>
+      <interleave>
+        <!-- at least one verse is required -->
+        <oneOrMore>
+          <ref name="verse"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="instrument"/>
+        </zeroOrMore>
+      </interleave>
     </element>
   </define>
 
@@ -482,6 +487,44 @@
         <empty/>
       </element>
     </optional>
+  </define>
+
+ <!-- INSTRUMENT -->
+
+  <define name="instrument">
+    <element name="instrument">
+      <attribute name="name">
+        <data type="ID">
+          <param name="minLength">1</param>
+          <!-- 3 part: [verse][verse_number][verse_part]
+               intro  - i, i1, i2, i1a, ...
+               middle - m, m1, m2, m1a, ma, ...
+               outro  - o, o1, o2, o1a, oa, ...
+               solo   - s, s1, s2, s1a, sa, ... -->
+          <param name="pattern">([imos][1-9]\d?[a-z]?)|([imos][a-z]?)</param>
+        </data>
+      </attribute>
+      <oneOrMore>
+        <element name="lines">
+          <choice>
+            <oneOrMore>
+              <ref name="beat"/>
+            </oneOrMore>
+            <oneOrMore>
+              <ref name="chord"/>
+            </oneOrMore>
+          </choice>
+        </element>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="beat">
+    <element name="beat">
+      <zeroOrMore>
+        <ref name="chord"/>
+      </zeroOrMore>
+    </element>
   </define>
 
 </grammar>
