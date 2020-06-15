@@ -14,10 +14,18 @@
     </songbooks>
   </properties>
   <lyrics>
+    <instrument name="i">
+      <lines>
+        <beat><chord name="h" /><chord name="A/C#" /></beat>
+        <beat><chord name="D" /></beat>
+        <beat><chord name="A" /></beat>
+        <beat><chord name="G" /></beat>
+      </lines>
+    </instrument>
     <verse name="v1">
       <lines>
         A kapudat nyisd meg, Jézusnak nyisd meg, jön, közeledik.<br/>
-        A kapudat nyisd meg, Jézusnak nyisd meg, jön, közeledik.<br/>
+        A kapudat nyisd meg, Jézusnak nyisd meg, jön, közeledik.
       </lines>
       <lines>
         Nyisd meg, íme, jön, közeledik.<br/>

@@ -3,6 +3,7 @@ Release 0.9 (unreleased)
 
 * Make ``<song>`` attributes createdIn, modifiedIn and modifiedDate optional.
 * Add default language: ``xml:lang`` for ``<song>``.
+* Add support for instrumental parts (``<instrumental>``) and beats (``<beat>``).
 
 Release 0.8 (15 Apr 2012)
 =========================

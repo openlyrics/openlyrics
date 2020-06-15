@@ -29,6 +29,9 @@ Features
     chords
         ``<chord name="D">``
 
+    beats
+        ``<beat><chord name="D"></beat>``
+
     comments in lyrics
         ``<verse><lines><comment/></lines></verse>``
 
@@ -97,6 +100,9 @@ Features
 
     translated lyrics
         ``<verse name="v1" lang="en">``
+
+    instrumental parts without lyrics
+        ``<instrumental name="i1">``
 
     translated song title
         ``<title lang="en">``
@@ -539,17 +545,17 @@ For example, in *Amazing Grace*::
 Verse Order
 ^^^^^^^^^^^
 
-The verse order of a song defines the order in which the verses are typically sung
-or performed. The verse order is denoted by the ``<verseOrder>`` tag.
+The verse order of a song defines the order in which the verses and instrumental parts
+are typically sung or performed. The verse order is denoted by the ``<verseOrder>`` tag.
 
-The verse order is a space-separated string of verse names (which are defined in
+The verse order is a space-separated string of verse and instrumental names (which are defined in
 the ``<lyrics>`` section of the file). Verse names can appear multiple times, and
 should be lowercase. See the ``<verse>`` section for more information on verse
 names.
 
 For example::
 
-    <verseOrder>v1 c v2 c v1 c</verseOrder>
+    <verseOrder>i v1 c v2 c v1 c o</verseOrder>
 
 
 Song Books
@@ -635,10 +641,12 @@ Song Lyrics
 The second section of an OpenLyrics song is defined by the ``<lyrics>`` tag. This
 tag contains words of a song and other data related to it.
 
-The ``<lyrics>`` tag contains one or more ``<verse>`` tags. Each ``<verse>`` tag
-defines a verse or stanza of a song, and contains a single mandatory attribute,
-``name``. Each verse can contain one or more ``<lines>`` tags, which holds a
-logical grouping of words.
+The ``<lyrics>`` tag contains one or more ``<verse>`` and ``<instrumental>`` tags.
+Each ``<verse>`` tag defines a verse or stanza of a song, and contains a single
+mandatory attribute, ``name``. Each ``<instrumental>`` tag defines an instrumental
+part (without lyrics) of a song, and contains a single mandatory attribute, name.
+Each verse and istreumental part can contain one or more ``<lines>`` tags, which holds a
+logical grouping of words and chords.
 
 A song should contain at least **one verse**::
 
@@ -712,36 +720,51 @@ doesn't fit on one screen::
 This tells the application that it can split the verse after the
 line "That saved a wretch like me!"
 
-Verse Name
-^^^^^^^^^^
+Verse/Instrumental Name
+^^^^^^^^^^^^^^^^^^^^^^^
 
-As previously mentioned, every ``<verse>`` tag has a mandatory ``name`` attribute.
-Verse names should be unique, written in **lower case**, a single word, and should
+As previously mentioned, every ``<verse>`` and ``instrumental`` tag has a mandatory ``name`` attribute.
+They should be unique, written in **lower case**, a single word, and should
 follow the naming convention as laid out in the table below:
 
 ======================= ==========================================================
 Name                    Description
 ======================= ==========================================================
-``v1, v2, v3, ...``     first verse, second verse, third verse, ...
-``v1a, v1b, v1c, ...``  first verse part 1, first verse part two, ...
+``v1, v2, ...``         first verse, second verse, ...
+``v1a, v1b, ...``       first verse part A, first verse part B, ...
 ``c``                   chorus
 ``c1, c2, ...``         first chorus, second chorus, ...
-``c1a, c1b, ...``       first chorus part 1, first chorus part 2, ...
+``ca, c1a, c1b, ...``   chorus part A, first chorus part A, first chorus part B, ...
 ``p``                   pre-chorus
 ``p1, p2, ...``         first pre-chorus, second pre-chorus, ...
-``p1a, p1b, ...``       first pre-chorus part 1, first pre-chorus part 2, ...
+``pa, p1a, p1b, ...``   pre-chrous part A, first pre-chorus part A, first pre-chorus part B, ...
 ``b``                   bridge
 ``b1, b2, ...``         first bridge, second bridge, ...
-``b1a, b1b, b1c, ...``  first bridge part 1, first bridge part 2, ...
+``ba, b1a, b1b, ...``   bridge part A, first bridge part A, first bridge part B, ...
 ``e``                   ending
 ``e1, e2, ...``         first ending, second ending, ...
-``e1a, e1b, e1c, ...``  first ending part 1, first ending part 2, ...
+``ea, e1a, e1b, ...``   ending part A, first ending part A, first ending part B, ...
+``i``                   instrumental intro
+``i1, i2, ...``         first intro, second intro, ...
+``ia, i1a, i1b, ...``   intro part A, first intro part A, first intro part B, ...
+``m``                   instrumental middle
+``m1, m2, ...``         first middle, second middle, ...
+``ma, m1a, m1b, ...``   middle part A, first middle part A, first middle part B, ...
+``o``                   instrumental outro
+``o1, o2, ...``         first outro, second outro, ...
+``oa, o1a, o1b, ...``   outro part A, first outro part A, first outro part B, ...
+``s``                   instrumental solo
+``s1, s2, ...``         first solo, second solo, ...
+``sa, s1a, s1b, ...``   solo part A, first solo part A, first solo part B, ...
 ======================= ==========================================================
 
-According to the table above, a song containing two verses (*v1, v2*), a chorus
+According to the table above, a song containing an istrumental intro (*i*) two verses (*v1, v2*), a chorus
 (*c*), a bridge (*b*) and an ending (*e*) would look like this::
 
     <lyrics>
+      <verse name="i">
+        ...
+      </verse>
       <verse name="v1">
         ...
       </verse>
@@ -763,7 +786,7 @@ According to the table above, a song containing two verses (*v1, v2*), a chorus
 Chords
 ^^^^^^
 
-The OpenLyrics format also provides the ability to include chords in the lyrics of
+The OpenLyrics format also provides the ability to include chords in the lyrics and instrumental part of
 songs. The tag containing a chord name looks like this::
 
     <chord name="D7"/>
@@ -908,6 +931,37 @@ For example::
       </verse>
     </lyrics>
 
+Instrumental parts
+^^^^^^^^^^^^^^^^^^
+
+In some songs there are parts without lyrics, instrumental sections or vamps.
+OpenLyrics supports describing these parts, very similar to ``<verse>`` tags::
+
+    <lyrics>
+      <instrument name="i">
+        <lines>
+          <beat><chord name="h" /><chord name="A/C#" /></beat>
+          <beat><chord name="D" /></beat>
+          <beat><chord name="A" /></beat>
+          <beat><chord name="G" /></beat>
+        </lines>
+      </instrument>
+    </lyrics>
+
+<instrumental> tags are siblings to <verse> tags. They can be in any order
+(described in ``<verseOrder>``). Name of an instrumental part can be intro (``name="i"``),
+middle (``name="m"``), outro (``name="o"``) or solo (``name="s"``), and can named similar to other
+verse names (``i, i1, i2, i1a, i1b``). Instrumental part can't contain lyrics, only ``<chord>`` and
+``<beat>`` tags. A ``<beat>`` represents a beat in the music. It is not
+mandatory to separate beats, instrumental parts can contains only chords.
+
+If a lyrics projector supports chords it can be display instrumental
+parts as a verse without lyrics. If a lyrics projector does not support
+chords, can simple omit instrumental parts.
+
+The example above should be displayed printed as::
+
+    {Intro} h A/C# | D | A | G
 
 Advanced Example
 ----------------
@@ -936,7 +990,7 @@ Here's an advanced example of the XML::
         <released>1779</released>
         <tempo type="text">moderate</tempo>
         <key>D</key>
-        <verseOrder>v1 v2 v3 v4 v5 v6</verseOrder>
+        <verseOrder>i v1 v2 v3 v4 v5 v6</verseOrder>
         <themes>
           <theme>Assurance</theme>
           <theme>Grace</theme>
@@ -945,6 +999,11 @@ Here's an advanced example of the XML::
         </themes>
       </properties>
       <lyrics>
+        <verse name="i">
+          <lines>
+            <chord name="Em"/><chord name="D"/><chord name="G"/>
+          </lines>
+        </verse>
         <verse name="v1">
           <lines>
             Amazing grace how sweet the sound<br/>
