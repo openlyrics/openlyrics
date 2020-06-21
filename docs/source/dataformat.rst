@@ -931,6 +931,29 @@ For example::
       </verse>
     </lyrics>
 
+Line repeat
+^^^^^^^^^^^^^^^^^^
+
+In some songs not only the verses but also the lines may be repeated. Repeated verse can be managed
+with the ``<verseOrder>`` tag::
+
+    <verseOrder>v1 v1 c v2 v2 c</verseOrder>
+
+Repeating lines can be described with an optional attribute for lines::
+
+    <lines repeat="2">O my Jesus.</lines>
+
+The value of this attribute schould be 2 or a larger integer.
+
+Lyrics projectors and processors can display the above example like this::
+
+    𝄆 O my Jesus. 𝄇×2
+
+Or simple::
+
+    O my Jesus.
+    O my Jesus.
+
 Instrumental parts
 ^^^^^^^^^^^^^^^^^^
 

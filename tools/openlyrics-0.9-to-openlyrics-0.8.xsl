@@ -65,8 +65,17 @@
     </xsl:element>
   </xsl:template>
 
+  <!-- Repeated lines -->
+  <xsl:template match="//ol:song/ol:lyrics/ol:verse/ol:lines[@repeat]">
+    <xsl:element name="lines">
+      <xsl:copy-of select="@*[name()!='repeat']"/>
+      <xsl:text>𝄆 </xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text> 𝄇×</xsl:text>
+      <xsl:value-of select="@repeat" />
+    </xsl:element>
+  </xsl:template>
   <!-- Remove parts not compliant with version 0.8 -->
-  <xsl:template match="//ol:song/ol:lyrics/ol:verse/ol:lines/@repeat"/>
   <xsl:template match="//ol:song/ol:lyrics/ol:instrument"/>
   <xsl:template match="//ol:song/ol:properties/ol:verseOrder">
     <xsl:element name="verseOrder">
