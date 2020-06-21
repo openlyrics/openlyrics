@@ -361,6 +361,13 @@
           <value>optional</value>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="repeat">
+          <data type="integer">
+            <param name="minInclusive">2</param>
+          </data>
+        </attribute>
+      </optional>
       <zeroOrMore>
         <ref name="linesContent"/>
       </zeroOrMore>
