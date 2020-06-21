@@ -42,7 +42,6 @@ export-ol08: songs/*.xml
 				echo -n "Converting to OpenLyrics 0.8... $$file\n" && \
 				name=$${file##*/} && \
 				xsltproc \
-					--stringparam datetime $$(date --iso-8601=seconds) \
 					--output export-openlyrics-0.8/"$$name" \
 					tools/openlyrics-0.9-to-openlyrics-0.8.xsl \
 					"$$file"; \
