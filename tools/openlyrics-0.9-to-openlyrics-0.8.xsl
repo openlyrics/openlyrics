@@ -3,6 +3,7 @@
  version="1.0"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:ol="http://openlyrics.info/namespace/2009/song"
+ xmlns:str="http://exslt.org/strings"
  xmlns="http://openlyrics.info/namespace/2009/song">
   <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
@@ -75,14 +76,27 @@
       <xsl:value-of select="@repeat" />
     </xsl:element>
   </xsl:template>
-  <!-- Remove parts not compliant with version 0.8 -->
-  <xsl:template match="//ol:song/ol:lyrics/ol:instrument"/>
+
+  <!-- Clean up verseOrder -->
   <xsl:template match="//ol:song/ol:properties/ol:verseOrder">
     <xsl:element name="verseOrder">
-      <xsl:value-of select="normalize-space(translate(., 'imos', '' ))"/>
-      <!-- XXX needs a better implementation to handle "i2" type declarations -->
+      <xsl:for-each select="str:split(normalize-space(.), ' ')">
+        <xsl:if test="starts-with(., 'v') or starts-with(., 'c') or starts-with(., 'p') or starts-with(., 'b') or starts-with(., 'e')">
+          <xsl:choose>
+            <xsl:when test="position() != last()">
+              <xsl:value-of select="concat(., ' ')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="."/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:if>
+      </xsl:for-each>
     </xsl:element>
   </xsl:template>
+
+  <!-- Remove other parts not compliant with version 0.8 -->
+  <xsl:template match="//ol:song/ol:lyrics/ol:instrument"/>
 
   <!-- Transform cords and cord's name respecting chordnotation -->
   <xsl:template match="//ol:chord">
