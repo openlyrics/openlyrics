@@ -932,7 +932,7 @@ For example::
     </lyrics>
 
 Line repeat
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^
 
 In some songs not only the verses but also the lines may be repeated. Repeated verse can be managed
 with the ``<verseOrder>`` tag::
