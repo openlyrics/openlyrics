@@ -4,11 +4,9 @@
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:ol="http://openlyrics.info/namespace/2009/song"
  xmlns:str="http://exslt.org/strings"
+ xmlns:date="http://exslt.org/dates-and-times"
  xmlns="http://openlyrics.info/namespace/2009/song">
   <xsl:output method="xml" encoding="utf-8" indent="yes"/>
-
-  <!-- Current datetime is given by Makefile -->
-  <xsl:param name="datetime"/>
 
   <!-- Chords -->
   <xsl:variable name="chordnotation" select="document('../stylesheets/xsl/openlyrics-0.9-chord.xml')/chordnotation"/>
@@ -59,7 +57,7 @@
       <xsl:attribute name="modifiedDate">
         <xsl:choose>
           <xsl:when test="//ol:song/@modifiedDate !=''"><xsl:value-of select="//ol:song/@modifiedDate" /></xsl:when>
-          <xsl:otherwise><xsl:value-of select="$datetime"/></xsl:otherwise>
+          <xsl:otherwise><xsl:value-of select="date:date-time()"/></xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
       <xsl:apply-templates/>
