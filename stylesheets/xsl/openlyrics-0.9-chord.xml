@@ -78,20 +78,20 @@
   </notation>
   <notation id="neolatin">
     <name class="C">Do</name>
-    <name class="C#">Do</name>
+    <name class="C#">Do♯</name>
     <name class="Db">Re♭</name>
     <name class="D">Re</name>
-    <name class="D#">Re</name>
+    <name class="D#">Re♯</name>
     <name class="Eb">Mi♭</name>
     <name class="E">Mi</name>
     <name class="F">Fa</name>
-    <name class="F#">Fa</name>
+    <name class="F#">Fa♯</name>
     <name class="Gb">Sol♭</name>
     <name class="G">Sol</name>
-    <name class="G#">Sl</name>
+    <name class="G#">Sol♯</name>
     <name class="Ab">La♭</name>
     <name class="A">La</name>
-    <name class="A#">La</name>
+    <name class="A#">La♯</name>
     <name class="Bb">Si♭</name>
     <name class="B">Si</name>
   </notation>

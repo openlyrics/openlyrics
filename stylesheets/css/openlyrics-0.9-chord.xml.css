@@ -173,7 +173,7 @@ chord[bass="B"]  { --chord-bass: "/B"  }
 :root[chordnotation=neolatin] chord[root="F#"] { --chord-root: "Fa♯"   }
 :root[chordnotation=neolatin] chord[root="Gb"] { --chord-root: "Sol♭"  }
 :root[chordnotation=neolatin] chord[root="G"]  { --chord-root: "Sol"   }
-:root[chordnotation=neolatin] chord[root="G#"] { --chord-root: "Sl♯"   }
+:root[chordnotation=neolatin] chord[root="G#"] { --chord-root: "Sol♯"   }
 :root[chordnotation=neolatin] chord[root="Ab"] { --chord-root: "La♭"   }
 :root[chordnotation=neolatin] chord[root="A"]  { --chord-root: "La"    }
 :root[chordnotation=neolatin] chord[root="A#"] { --chord-root: "La♯"   }
@@ -190,7 +190,7 @@ chord[bass="B"]  { --chord-bass: "/B"  }
 :root[chordnotation=neolatin] chord[bass="F#"] { --chord-bass: "/Fa♯"  }
 :root[chordnotation=neolatin] chord[bass="Gb"] { --chord-bass: "/Sol♭" }
 :root[chordnotation=neolatin] chord[bass="G"]  { --chord-bass: "/Sol"  }
-:root[chordnotation=neolatin] chord[bass="G#"] { --chord-bass: "/Sl♯"  }
+:root[chordnotation=neolatin] chord[bass="G#"] { --chord-bass: "/Sol♯"  }
 :root[chordnotation=neolatin] chord[bass="Ab"] { --chord-bass: "/La♭"  }
 :root[chordnotation=neolatin] chord[bass="A"]  { --chord-bass: "/La"   }
 :root[chordnotation=neolatin] chord[bass="A#"] { --chord-bass: "/La♯"  }
