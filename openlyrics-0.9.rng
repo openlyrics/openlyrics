@@ -604,6 +604,13 @@
       </attribute>
       <oneOrMore>
         <element name="lines">
+          <optional>
+            <attribute name="repeat">
+              <data type="integer">
+                <param name="minInclusive">2</param>
+              </data>
+            </attribute>
+          </optional>
           <choice>
             <oneOrMore>
               <ref name="beat"/>
