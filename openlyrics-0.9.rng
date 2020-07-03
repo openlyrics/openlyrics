@@ -380,11 +380,84 @@
 
   <define name="chord">
     <element name="chord">
-      <attribute name="name">
-        <ref name="nonEmptyContent"/>
+      <attribute name="root">
+        <ref name="musicalNote"/>
       </attribute>
+      <optional>
+        <attribute name="bass">
+          <ref name="musicalNote"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="structure">
+          <choice>
+            <value>power</value>
+            <value>min</value>
+            <value>aug</value>
+            <value>dim</value>
+            <value>dom7</value>
+            <value>maj7</value>
+            <value>min7</value>
+            <value>dim7</value>
+            <value>halfdim7</value>
+            <value>minmaj7</value>
+            <value>augmaj7</value>
+            <value>aug7</value>
+            <value>maj6</value>
+            <value>maj6b</value>
+            <value>min6</value>
+            <value>min6b</value>
+            <value>dom9</value>
+            <value>dom9b</value>
+            <value>maj9</value>
+            <value>min9</value>
+            <value>minmaj9</value>
+            <value>aug9</value>
+            <value>halfdim9</value>
+            <value>sus4</value>
+            <value>sus2</value>
+            <value>add9</value>
+            <data type="token">
+              <param name="minLength">1</param>
+              <!--
+              Notation
+                major      - [not marked] : 2
+                minor      - m            : m2
+                perfect    - [not marked] : 4
+                diminished - d            : d2
+                augmented  - a            : a2
+              Music intervals:
+              -->
+              <param name="pattern">2?-?(m?3)?-?4?-?((a|d)?5)?-?(m?6)?-?((m|d)?7)?-?(m?9)?-?(m?10)?-?((a|d)?11)?-?(13)?</param>
+            </data>
+          </choice>
+        </attribute>
+      </optional>
       <empty/>
     </element>
+  </define>
+
+  <define name="musicalNote">
+    <!-- Only English notation is allowed: C  C#  Db  D  D#  Eb  E  F  F#  Gb  G  G#  Ab  A  A#  Bb  B -->
+    <choice>
+      <value>C</value>
+      <value>C#</value>
+      <value>Db</value>
+      <value>D</value>
+      <value>D#</value>
+      <value>Eb</value>
+      <value>E</value>
+      <value>F</value>
+      <value>F#</value>
+      <value>Gb</value>
+      <value>G</value>
+      <value>G#</value>
+      <value>Ab</value>
+      <value>A</value>
+      <value>A#</value>
+      <value>Bb</value>
+      <value>B</value>
+    </choice>
   </define>
 
   <define name="tag">
@@ -427,20 +500,31 @@
       </attribute>
     </optional>
     <optional>
-        <attribute name="createdIn">
-          <ref name="nonEmptyContent"/>
-        </attribute>
+      <attribute name="createdIn">
+        <ref name="nonEmptyContent"/>
+      </attribute>
     </optional>
     <optional>
-        <attribute name="modifiedIn">
-          <ref name="nonEmptyContent"/>
-        </attribute>
+      <attribute name="modifiedIn">
+        <ref name="nonEmptyContent"/>
+      </attribute>
     </optional>
     <optional>
-        <attribute name="modifiedDate">
-          <!-- date format: ISO 8601 -->
-          <data type="dateTime"/>
-        </attribute>
+      <attribute name="modifiedDate">
+        <!-- date format: ISO 8601 -->
+        <data type="dateTime"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="chordnotation">
+        <choice>
+          <value>english</value>
+          <value>german</value>
+          <value>dutch</value>
+          <value>hungarian</value>
+          <value>neolatin</value>
+        </choice>
+      </attribute>
     </optional>
   </define>
 
