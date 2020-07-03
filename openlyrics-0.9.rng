@@ -433,7 +433,17 @@
           </choice>
         </attribute>
       </optional>
-      <empty/>
+      <optional>
+        <attribute name="upbeat">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <choice>
+        <oneOrMore>
+          <ref name="linesContent"/>
+        </oneOrMore>
+        <empty/>
+      </choice>
     </element>
   </define>
 
