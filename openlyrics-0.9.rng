@@ -390,47 +390,7 @@
       </optional>
       <optional>
         <attribute name="structure">
-          <choice>
-            <value>power</value>
-            <value>min</value>
-            <value>aug</value>
-            <value>dim</value>
-            <value>dom7</value>
-            <value>maj7</value>
-            <value>min7</value>
-            <value>dim7</value>
-            <value>halfdim7</value>
-            <value>minmaj7</value>
-            <value>augmaj7</value>
-            <value>aug7</value>
-            <value>maj6</value>
-            <value>maj6b</value>
-            <value>min6</value>
-            <value>min6b</value>
-            <value>dom9</value>
-            <value>dom9b</value>
-            <value>maj9</value>
-            <value>min9</value>
-            <value>minmaj9</value>
-            <value>aug9</value>
-            <value>halfdim9</value>
-            <value>sus4</value>
-            <value>sus2</value>
-            <value>add9</value>
-            <data type="token">
-              <param name="minLength">1</param>
-              <!--
-              Notation
-                major      - [not marked] : 2
-                minor      - m            : m2
-                perfect    - [not marked] : 4
-                diminished - d            : d2
-                augmented  - a            : a2
-              Music intervals:
-              -->
-              <param name="pattern">2?-?(m?3)?-?4?-?((a|d)?5)?-?(m?6)?-?((m|d)?7)?-?(m?9)?-?(m?10)?-?((a|d)?11)?-?(13)?</param>
-            </data>
-          </choice>
+          <ref name="chords"/>
         </attribute>
       </optional>
       <optional>
@@ -467,6 +427,206 @@
       <value>A#</value>
       <value>Bb</value>
       <value>B</value>
+    </choice>
+  </define>
+
+  <define name="chords">
+    <choice>
+      <!-- ** 2 note chords -->
+      <!-- perfect 5th; power chord -->
+      <value>5</value>
+      <value>power</value>
+
+      <!-- *** 3 note chords -->
+      <!-- major -->
+      <value>3-5</value>
+      <!-- minor -->
+      <value>m3-5</value>
+      <value>min</value>
+      <!-- augmented -->
+      <value>3-a5</value>
+      <value>aug</value>
+      <!-- diminished -->
+      <value>m3-d5</value>
+      <value>dim</value>
+
+      <!-- **** 4 note chords -->
+      <!-- dominant 7th -->
+      <value>3-5-m7</value>
+      <value>dom7</value>
+      <!-- major 7th -->
+      <value>3-5-7</value>
+      <value>maj7</value>
+      <!-- minor 7th -->
+      <value>m3-5-m7</value>
+      <value>min7</value>
+      <!-- diminished 7th -->
+      <value>m3-d5-d7</value>
+      <value>dim7</value>
+      <!-- half-diminished 7th -->
+      <value>m3-d5-m7</value>
+      <value>halfdim7</value>
+      <!-- minor major 7th -->
+      <value>m3-5-7</value>
+      <value>minmaj7</value>
+      <!-- augmented major 7th -->
+      <value>3-a5-7</value>
+      <value>augmaj7</value>
+      <!-- dominant 7th flat 5 -->
+      <value>3-d5-m7</value>
+      <!-- dominant 7th sharp 5; augmented 7th -->
+      <value>3-a5-m7</value>
+      <value>aug7</value>
+      <!-- diminished major 7th -->
+      <value>m3-d5-7</value>
+      <!-- major 7th flat 5 -->
+      <value>3-d5-7</value>
+      <!-- major 6th -->
+      <value>3-5-6</value>
+      <value>maj6</value>
+      <!-- (major minor 6th) -->
+      <value>3-5-m6</value>
+      <value>maj6b</value>
+      <!-- minor 6th -->
+      <value>m3-5-6</value>
+      <value>min6</value>
+      <!-- (minor minor 6th) -->
+      <value>m3-5-m6</value>
+      <value>min6b</value>
+
+      <!-- ***** 5 note chords -->
+      <!-- (dominant) 9th -->
+      <value>3-5-m7-9</value>
+      <value>dom9</value>
+      <!-- dominant minor 9th -->
+      <value>3-5-m7-m9</value>
+      <value>dom9b</value>
+      <!-- major 9th -->
+      <value>3-5-7-9</value>
+      <value>maj9</value>
+      <!-- minor (dominant)Í 9th -->
+      <value>m3-5-m7-9</value>
+      <value>min9</value>
+      <!-- minor major 9th -->
+      <value>m3-5-7-9</value>
+      <value>minmaj9</value>
+      <!-- augmented major 9th -->
+      <value>3-a5-7-9</value>
+      <!-- augmented (dominant) 9th -->
+      <value>3-a5-m7-9</value>
+      <value>aug9</value>
+      <!-- half-diminished 9th -->
+      <value>m3-d5-m7-9</value>
+      <value>halfdim9</value>
+      <!-- half-diminished minor 9th -->
+      <value>m3-d5-m7-m9</value>
+      <!-- diminished 9th -->
+      <value>m3-d5-d7-9</value>
+      <!-- diminished minor 9th -->
+      <value>m3-d5-d7-m9</value>
+      <!-- dominant flat 10 -->
+      <value>3-5-m7-m10</value>
+
+      <!-- ****** 6 note chords -->
+      <!-- (dominant) 11th -->
+      <value>3-5-m7-9-11</value>
+      <!-- major 11th -->
+      <value>3-5-7-9-11</value>
+      <!-- minor (dominant) 11th -->
+      <value>m3-5-m7-9-11</value>
+      <!-- minor major 11th -->
+      <value>m3-5-7-9-11</value>
+      <!-- acoustic (dominant) 11th -->
+      <value>3-5-m7-9-a11</value>
+      <!-- acoustic major 11th -->
+      <value>3-5-7-9-a11</value>
+      <!-- acoustic minor (dominant) 11th -->
+      <value>m3-5-m7-9-a11</value>
+      <!-- acoustic minor major 11th -->
+      <value>m3-5-7-9-a11</value>
+      <!-- augmented major 11th -->
+      <value>3-a5-7-9-11</value>
+      <!-- augmented (dominant) 11th -->
+      <value>3-a5-m7-9-11</value>
+      <!-- half-diminished 11th -->
+      <value>m3-d5-m7-m9-11</value>
+      <!-- diminished 11th -->
+      <value>m3-d5-d7-m9-d11</value>
+
+      <!-- 7 note chords -->
+      <!-- (dominant) 13th -->
+      <value>3-5-m7-9-11-13</value>
+      <!-- major 13th -->
+      <value>3-5-7-9-11-13</value>
+      <!-- minor (dominant) 13th -->
+      <value>m3-5-m7-9-11-13</value>
+      <!-- minor major 13th -->
+      <value>m3-5-7-9-11-13</value>
+      <!-- (dominant) 13th -->
+      <value>3-5-m7-9-a11-13</value>
+      <!-- major 13th -->
+      <value>3-5-7-9-a11-13</value>
+      <!-- minor (dominant) 13th -->
+      <value>m3-5-m7-9-a11-13</value>
+      <!-- minor major 13th -->
+      <value>m3-5-7-9-a11-13</value>
+      <!-- augmented major 13th -->
+      <value>3-a5-7-9-11-13</value>
+      <!-- augmented (dominant) 13th -->
+      <value>3-a5-m7-9-11-13</value>
+      <!-- half-diminished 13th -->
+      <value>m3-d5-m7-m9-11-13</value>
+
+      <!-- *** Figured 3 note chords -->
+      <!-- suspended 4th -->
+      <value>4-5</value>
+      <value>sus4</value>
+      <!-- suspended 2nd -->
+      <value>2-5</value>
+      <value>sus2</value>
+
+      <!-- **** Figured 4 note chords -->
+      <!-- dominant (7th) major 6th -->
+      <value>3-5-m7-13</value>
+      <!-- major 6th 9th -->
+      <value>3-5-6-9</value>
+      <!-- original name + added 9th -->
+      <value>3-5-9</value>
+      <value>add9</value>
+      <!-- dominant 7th suspended 4th -->
+      <value>4-5-m7</value>
+      <!-- dominant 7th suspended 2nd -->
+      <value>2-5-m7</value>
+      <!-- major 7th suspended 4th -->
+      <value>4-5-7</value>
+      <!-- major 7th suspended 2nd -->
+      <value>2-5-7</value>
+
+      <!-- ***** Figured 5 note chords -->
+      <!-- (dominant) 9th suspended 4th -->
+      <value>4-5-m7-9</value>
+      <!-- dominant minor 9th suspended 4th -->
+      <value>4-5-m7-m9</value>
+      <!-- major 9th suspended 4th -->
+      <value>4-5-7-9</value>
+      <!-- augmented major 9th suspended 4th -->
+      <value>4-a5-7-9</value>
+      <!-- augmented (dominant) 9th suspended 4th -->
+      <value>4-a5-m7-9</value>
+
+      <data type="token">
+        <param name="minLength">1</param>
+        <!--
+        Notation
+          major      - [not marked] : 2
+          minor      - m            : m2
+          perfect    - [not marked] : 4
+          diminished - d            : d2
+          augmented  - a            : a2
+        Music intervals:
+        -->
+        <param name="pattern">2?-?(m?3)?-?4?-?((a|d)?5)?-?(m?6)?-?((m|d)?7)?-?(m?9)?-?(m?10)?-?((a|d)?11)?-?(13)?</param>
+      </data>
     </choice>
   </define>
 
