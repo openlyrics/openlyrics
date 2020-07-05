@@ -712,7 +712,7 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="chordnotation">
+      <attribute name="chordNotation">
         <choice>
           <value>english</value>
           <value>german</value>

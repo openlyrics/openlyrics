@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="hu" version="0.9" chordnotation="hungarian">
+<song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="hu" version="0.9" chordNotation="hungarian">
   <properties>
     <titles>
       <title>Testing 0.9</title>

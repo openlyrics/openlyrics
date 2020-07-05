@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chordnotation>
+<chordNotation>
   <notation id="english">
     <name class="C">C</name>
     <name class="C#">C♯</name>
@@ -175,4 +175,4 @@
   <structure id="4-a5-7-9">+Δ9,4</structure><!-- +Δ9sus4 --><!-- Maj9(♯5)4 --><!-- +M9,4 --><!-- +M9sus4 --><!-- +Maj9,4 -->
   <structure id="4-a5-m7-9">9,4</structure><!-- +9sus4 --><!-- 9(♯5)sus4 -->
 
-</chordnotation>
+</chordNotation>
