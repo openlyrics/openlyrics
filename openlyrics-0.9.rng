@@ -617,15 +617,41 @@
       <data type="token">
         <param name="minLength">1</param>
         <!--
-        Notation
-          major      - [not marked] : 2
-          minor      - m            : m2
-          perfect    - [not marked] : 4
-          diminished - d            : d2
-          augmented  - a            : a2
+        Notation:
+        - major      - [not marked]
+        - minor      - m
+        - perfect    - [not marked]
+        - diminished - d
+        - augmented  - a
+
         Music intervals:
+        | Int. | Dim. | Min. | Per. | Maj. | Aug. |
+        |::::::|::::::|::::::|::::::|::::::|::::::|
+        |  1   |      |      |  1   |      |  a1  |
+        |  2   |  d2  |  m2  |      |  2   |  a2  |
+        |  3   |  d3  |  m3  |      |  3   |  a3  |
+        |  4   |  d4  |      |  4   |      |  a4  |
+        |  5   |  d5  |      |  5   |      |  a5  |
+        |  6   |  d6  |  m6  |      |  6   |  a6  |
+        |  7   |  d7  |  m7  |      |  7   |  a7  |
+        |  8   |  d8  |      |  8   |      |  a8  |
+        |  9   |  d9  |  m9  |      |  9   |  a9  |
+        | 10   | d10  | m10  |      |  10  | a10  |
+        | 11   | d11  |      |  11  |      | a11  |
+        | 12   | d12  |      |  12  |      | a12  |
+        | 13   | d13  | m13  |      |  13  | a13  |
+        | 14   | d14  | m14  |      |  14  | a14  |
+        | 15   | d15  |      |  15  |      | a15  |
+
+        Variants:
+        - Harmonics possible: (a?2)?-?(m?3)?-?((d|a)?4)?-?((d|a)?5)?-?(m?6)?-?((d|m)?7)?-?(d?8)?-?((m|a)?9)?-?(m?10)?-?((d|a)?11)?-?(m?13)?
+          Covers all variants from standardized 69 chords + a2, d4, a4, d8, a9, m13 (one per step)
+        - Logically possible: (d1)?-?(a1)?-?(d2)?-?(m2)?-?2?-?(a2)?-?(d3)?-?(m3)?-?3?-?(a3)?-?(d4)?-?4?-?(a4)?-?(d5)?-?5?-?(a5)?-?(d6)?-?(m6)?-?6?-?(a6)?-?(d7)?-?(m7)?-?7?-?(a7)?-?(d8)?-?8?-?(a8)?-?(d9)?-?(m9)?-?9?-?(a9)?-?(d10)?-?(m10)?-?(10)?-?(a10)?-?(d11)?-?(11)?-?(a11)?-?(d12)?-?(12)?-?(a12)?-?(d13)?-?(m13)?-?(13)?-?(a13)?-?(d14)?-?(m14)?-?(14)?-?(a14)?-?(d15)?-?(15)?-?(a15)?
+          Covers all possible variants (52) in ascending order.
+        - Logically possible (max. 6 notes): (([2-9]|1[0-5]|m([23679]|10|13|14)|(d|a)(1[0-5]|[1-9]))-){0,5}([2-9]|1[0-5]|m([23679]|10|13|14)|(d|a)(1[0-5]|[1-9]))
+          Covers all variants (52), but only 6 segments (in any order).
         -->
-        <param name="pattern">(a?2)?-?(m?3)?-?((d|a)?4)?-?((d|a)?5)?-?(m?6)?-?((d|m)?7)?-?(d?8)?-?((m|a)?9)?-?(m?10)?-?((d|a)?11)?-?(m?13)?</param>
+        <param name="pattern">(d1)?-?(a1)?-?(d2)?-?(m2)?-?2?-?(a2)?-?(d3)?-?(m3)?-?3?-?(a3)?-?(d4)?-?4?-?(a4)?-?(d5)?-?5?-?(a5)?-?(d6)?-?(m6)?-?6?-?(a6)?-?(d7)?-?(m7)?-?7?-?(a7)?-?(d8)?-?8?-?(a8)?-?(d9)?-?(m9)?-?9?-?(a9)?-?(d10)?-?(m10)?-?(10)?-?(a10)?-?(d11)?-?(11)?-?(a11)?-?(d12)?-?(12)?-?(a12)?-?(d13)?-?(m13)?-?(13)?-?(a13)?-?(d14)?-?(m14)?-?(14)?-?(a14)?-?(d15)?-?(15)?-?(a15)?</param>
       </data>
     </choice>
   </define>
