@@ -27,7 +27,7 @@ Features
         ``<ccliNo>``
 
     chords
-        ``<chord name="D">``
+        ``<chord root="D">``
 
     beats
         ``<beat><chord name="D"></beat>``
@@ -81,6 +81,7 @@ Features
 
     song metadata
         ``<song xml:lang="">``
+        ``<song chordNotation="">``
         ``<song version="">``
         ``<song createdIn="">``
         ``<song modifiedIn="">``
@@ -169,7 +170,8 @@ applications using OpenLyrics.
 Metadata is enclosed in the ``<song>`` tag as attributes::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          xml:lang="en"
+          xml:lang="de"
+          chordNotation="german"
           version="0.9"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
@@ -189,6 +191,11 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
     Default language can be overwriten for a specified element, see:
     ``<title lang="">``, ``<theme lang="">``, ``<verse lang="">``.
     This element is optional. If not specified, it means document language is ``"en"``.
+
+``chordNotation``
+    A string to idetify the preferred notation of the chords. Supported values are
+    ``english`` (default), ``german``, ``dutch``, ``hungarian``, ``neolatin``.
+    This element is optional.
 
 ``version``
     Version of the OpenLyrics format used by a song. This gives applications the
@@ -787,9 +794,85 @@ Chords
 ^^^^^^
 
 The OpenLyrics format also provides the ability to include chords in the lyrics and instrumental part of
-songs. The tag containing a chord name looks like this::
+songs. The tag containing a chord name looks like these::
 
-    <chord name="D7"/>
+    <chord root="C" structure="dom7">text...</chord>
+    <chord root="D" bass="F#">text...</chord>
+    <chord root="C" structure="min" bass="Eb"/>
+    <chord root="E" structure="3-5-m7-13">text...</chord>
+
+The ``root`` attribute describes the root note of the chord. The values are marked
+with English notation:
+
+========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+english    C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    Bb   B
+========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+german     C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   B    H
+dutch      C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   Bes  B
+hungarian  C   Cisz  Desz  D   Disz  Esz  E   F   Fisz  Gesz  G    Gisz  Asz  A   Aisz  B    H
+neolatin   Do  Do#   Reb   Re  Re#   Mib  Mi  Fa  Fa#   Solb  Sol  Sol#  Lab  La  La#   Sib  Si
+========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+
+The preferred notation for displaying can be noted with ``chordNotation`` attribute on root element.
+
+The optional ``bass`` attribute describes the foreign bass of the chord if any. The values are marked
+with English notation.
+
+The ``structure`` attribute describes the kind of the chord. This element is optional,
+if not present, de default value is the ``major``. It can be marked
+
+- with a sorthand code, or
+- with a chord formula (for experts).
+
+These are the built-in **sorthand codes**
+
+============ =================================== ========
+Shortcode    Chord Name                          Notation
+============ =================================== ========
+**power**    perfect 5th; power chord            5
+             major
+**min**      minor                               m
+**aug**      augmented                           \+
+**dim**      diminished                          °
+**dom7**     dominant 7th                        7
+**maj7**     major 7th                           Δ
+**min7**     minor 7th                           m7
+**dim7**     diminished 7th                      °7
+**halfdim7** half-diminished 7th                 ø
+**minmaj7**  minor major 7th                     mΔ
+**augmaj7**  augmented major 7th                 +Δ
+**aug7**     dominant 7th sharp 5; augmented 7th 7
+**maj6**     major 6th                           6
+**maj6b**    (major minor 6th)                   6♭
+**min6**     minor 6th                           m6
+**min6b**    (minor minor 6th)                   m6♭
+**dom9**     (dominant) 9th                      9
+**dom9b**    dominant minor 9th                  7,9♭
+**maj9**     major 9th                           Δ9
+**min9**     minor (dominant)Í 9th               m9
+**minmaj9**  minor major 9th                     mΔ9
+**aug9**     augmented (dominant) 9th            9
+**halfdim9** half-diminished 9th                 ø9
+**sus4**     suspended 4th                       4
+**sus2**     suspended 2nd                       2
+**add9**     original name + added 9th           add9
+============ =================================== ========
+
+Other chords can be noted with **chord formulas**. OpenLyrics has 69 built-in chords defined by a formula.
+But with chord formula every author can write additional custom chords. Chord formulas are described
+in :ref:`list of chord formulas <chordlist>`.
+
+The processors should display chords as follows:
+
+- First display the ``root`` according to ``chordNotation``.
+- Immediately followed by the notation for the marked chord.
+- If there is a bass: immediately followed by a slash (/) and the ``root`` according to ``chordNotation``.
+
+The above examples are::
+    C7
+    D/F♯
+    Cm/E♭
+    E7,6
 
 The ``<chord>`` tags are mixed in with the lyrics of a song. This tag should be
 placed immediately before the letters where it should be played::
@@ -803,7 +886,6 @@ placed immediately before the letters where it should be played::
       </verse>
     </lyrics>
 
-Chords should be written according to this :ref:`list of chords <chordlist>`.
 
 Multiple Languages (Lyrics Translations)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -963,10 +1045,10 @@ OpenLyrics supports describing these parts, very similar to ``<verse>`` tags::
     <lyrics>
       <instrument name="i">
         <lines>
-          <beat><chord name="h" /><chord name="A/C#" /></beat>
-          <beat><chord name="D" /></beat>
-          <beat><chord name="A" /></beat>
-          <beat><chord name="G" /></beat>
+          <beat><chord root="B" structure="m3-5" /><chord root="A" bass="C#" /></beat>
+          <beat><chord root="D" /></beat>
+          <beat><chord root="A" /></beat>
+          <beat><chord root="G" /></beat>
         </lines>
       </instrument>
     </lyrics>
@@ -1024,7 +1106,7 @@ Here's an advanced example of the XML::
       <lyrics>
         <verse name="i">
           <lines>
-            <chord name="Em"/><chord name="D"/><chord name="G"/>
+            <chord root="E" structure="min" /><chord root="D"/><chord root="G"/>
           </lines>
         </verse>
         <verse name="v1">
