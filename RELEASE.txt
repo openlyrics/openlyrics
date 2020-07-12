@@ -5,7 +5,7 @@ Release 0.9 (unreleased)
 * Add default language: ``xml:lang`` for ``<song>``.
 * Add support for instrumental parts (``<instrumental>``) and beats (``<beat>``).
 * Add support for repeating lines (``<lines repeat="2">``)
-* Add support for chorNotation attribute (``chordNotation="hungarian"``)
+* Add support for chordNotation attribute (``chordNotation="hungarian"``)
 * Add support for non empty chords (``<chord root="C" structure="dom7">lyrics...</chord>``)
 * Add support for chord root, structure, bass attributes, remove chord name attribute (``<chord root="C" structure="min" bass="Eb"/>``)
 
