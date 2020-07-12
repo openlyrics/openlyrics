@@ -30,7 +30,7 @@ Features
         ``<chord root="D">``
 
     beats
-        ``<beat><chord name="D"></beat>``
+        ``<beat><chord root="D"></beat>``
 
     comments in lyrics
         ``<verse><lines><comment/></lines></verse>``
@@ -796,12 +796,15 @@ Chords
 The OpenLyrics format also provides the ability to include chords in the lyrics and instrumental part of
 songs. The tag containing a chord name looks like these::
 
-    <chord root="C" structure="dom7">text...</chord>
-    <chord root="D" bass="F#">text...</chord>
-    <chord root="C" structure="min" bass="Eb"/>
-    <chord root="E" structure="3-5-m7-13">text...</chord>
+    <chord root="C" structure="dom7">lyrics...</chord>
+    <chord root="D" bass="F#">lyrics...</chord>
+    <chord root="C" structure="min" bass="Eb"/>lyrics
+    <chord root="E" structure="3-5-m7-13">lyrics...</chord>
 
-The ``root`` attribute describes the root note of the chord. The values are marked
+The root note
+"""""""""""""
+
+The ``root`` attribute describes the root note of the chord. The values should marked
 with English notation:
 
 ========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
@@ -813,10 +816,16 @@ hungarian  C   Cisz  Desz  D   Disz  Esz  E   F   Fisz  Gesz  G    Gisz  Asz  A 
 neolatin   Do  Do#   Reb   Re  Re#   Mib  Mi  Fa  Fa#   Solb  Sol  Sol#  Lab  La  La#   Sib  Si
 ========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
 
-The preferred notation for displaying can be noted with ``chordNotation`` attribute on root element.
+The preferred notation for displaying can be marked with ``chordNotation`` attribute on root element.
 
-The optional ``bass`` attribute describes the foreign bass of the chord if any. The values are marked
+The bass
+""""""""
+
+The optional ``bass`` attribute describes the foreign bass of the chord if any. The values should marked
 with English notation.
+
+The chord structure
+"""""""""""""""""""
 
 The ``structure`` attribute describes the kind of the chord. This element is optional,
 if not present, de default value is the ``major``. It can be marked
@@ -824,7 +833,7 @@ if not present, de default value is the ``major``. It can be marked
 - with a sorthand code, or
 - with a chord formula (for experts).
 
-These are the built-in **sorthand codes**
+These are the built-in **sorthand codes**:
 
 ============ =================================== ========
 Shortcode    Chord Name                          Notation
@@ -860,32 +869,105 @@ Shortcode    Chord Name                          Notation
 
 Other chords can be noted with **chord formulas**. OpenLyrics has 69 built-in chords defined by a formula.
 But with chord formula every author can write additional custom chords. Chord formulas are described
-in :ref:`list of chord formulas <chordlist>`.
+in :ref:`chord formulas <chordlist>`.
 
-The processors should display chords as follows:
+To display root+structure+bass
+""""""""""""""""""""""""""""""
+
+The processors should display chords:
 
 - First display the ``root`` according to ``chordNotation``.
 - Immediately followed by the notation for the marked chord.
 - If there is a bass: immediately followed by a slash (/) and the ``root`` according to ``chordNotation``.
 
-The above examples are::
-    C7
-    D/F♯
-    Cm/E♭
-    E7,6
+Examples:
 
-The ``<chord>`` tags are mixed in with the lyrics of a song. This tag should be
-placed immediately before the letters where it should be played::
+=============================================== =========
+XML                                             Displayed
+=============================================== =========
+``<chord root="C" structure="dom7"/>``          C7
+``<chord root="D" bass="F#"/>``                 D/F♯
+``<chord root="C" structure="min" bass="Eb"/>`` Cm/E♭
+``<chord root="E" structure="3-5-m7-13"/>``     E7,6
+=============================================== =========
+
+Mixing lyrics and chords
+""""""""""""""""""""""""
+
+The ``<chord>`` tags are mixed in with the lyrics of a song::
 
     <lyrics>
       <verse name="v1">
         <lines>
-          <chord name="D7"/>Amazing grace how <chord name="E"/>sweet the sound<br/>
-          That saved <chord name="A"/>a wretch <chord name="F#"/>like me.
+          <chord root="D" structure="dom7"/>Amazing grace
+          how</chord> <chord root="E">sweet the sound</chord><br/>
+          That saved <chord root="A">a wretch</chord>
+          <chord root="F#"/>like me.</chord>
         </lines>
       </verse>
     </lyrics>
 
+This tag can be normal and empty.
+
+Normal tags:
+
+- Can mark normal chords with lyrics. They should be placed on the lyrics (syllables), to which the chord applies. With
+  this syntax overlapping can avoided::
+
+    Ho<chord root="E" bass="G#">san</chord><chord root="A">na,
+    ho</chord><chord root="B">san<chord root="C#" structure="min">na,<br/>
+    Ho</chord><chord root="A">sanna in the <chord root="C#"
+    structure="min">high</chord><chord root="B">est.</chord>
+
+      E/G# A     B  C#m
+    Hosan__na, hosanna,
+      A            C#m B
+    Hosanna in the highest.
+
+- Can mark upbeats using an optional ``upbeat`` attribute, when a chord starts with a music pause::
+
+    <chord root="D" upbeat="true">You are my
+    pas</chord><chord root="D" structure="sus2" bass="C#">sion</chord><br/>
+    <chord root="B" structure="min7" upbeat="true">Love of my</chord>
+    <chord root="G">life</chord>
+
+      D              D2 /C♯
+       You are my passion
+    Bm7           G
+       Love of my life
+
+- Can mark more that one chord on one syllable (nested tag)::
+
+    <chord root="A"><chord root="G"><chord root="D">Al</chord></chord></chord>
+    le<chord root="D">luja,</chord>
+
+    DGA    D
+    Al__leluja
+
+Empty tags:
+
+- Can mark chords without lyrics (chords on music pause). Example::
+
+    Aunque mis <chord root="E">ojos<br/>
+    no te puedan</chord> <chord root="C#" structure="min">ver,
+    te puedo sent<chord root="A">ir,<br/>
+    Sé que estás a</chord><chord root="E">quí.</chord><chord root="B"/>
+
+               E
+    Aunque mis ojos
+                 C#m               A
+    no te puedan ver, te puedo sentir,
+                   E  B
+    Sé que estás aquí.
+
+- Can mark chords without time specification like in version 0.8. They should be places immediately before the letters where it should be
+  played. (With this syntax chords can overlap.)::
+
+    A<chord root="G"/>mazing <chord root="G" structure="dom7" />Grace!
+    how <chord root="C"/>sweet the <chord root="G">sound.
+
+     G      G7         C         G
+    Amazing Grace! how sweet the sound.
 
 Multiple Languages (Lyrics Translations)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

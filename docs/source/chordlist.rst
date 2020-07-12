@@ -1,7 +1,50 @@
 .. _chordlist:
 
-List of Chord Formulas
-======================
+Chord Formulas
+==============
+
+OpenLyrics is waiting for the chord in this form:
+
+- The root note (1) should not be included.
+- All other intervals (see the table below) can be included once.
+- Intervals must be separated by a hyphen character (-).
+- Intervals should stay in ascending order (as in the table below).
+- Min 1, max. 12 intervals can be included.
+
+Notation for intervals:
+
+- major      = [not marked]
+- minor      = m
+- perfect    = [not marked]
+- diminished = d
+- augmented  = a
+
+========= ========== ===== ======= ===== =========
+Intervals Diminished Minor Perfect Major Augmented
+========= ========== ===== ======= ===== =========
+1         d1               1             a1
+2         d2         m2            2     a2
+3         d3         m3            3     a3
+4         d4               4             a4
+5         d5               5             a5
+6         d6         m6            6     a6
+7         d7         m7            7     a7
+8         d8               8             a8
+9         d9         m9            9     a9
+10        d10        m10           10    a10
+11        d11              11            a11
+12        d12              12            a12
+13        d13        m13           13    a13
+14        d14        m14           14    a14
+15        d15              15            a15
+========= ========== ===== ======= ===== =========
+
+
+List of Buldin Chord Formulas
+=============================
+
+Normal Chords
+^^^^^^^^^^^^^
 
 ====================== ======================================= ========== ========== ===============================================
 Formula                Chord Name                              Shortcode  Notation   Other notations
@@ -61,6 +104,14 @@ Formula                Chord Name                              Shortcode  Notati
 **3-a5-7-9-11-13**     augmented major 13th                               +Δ13       Maj13(♯5) +Maj13 +M13
 **3-a5-m7-9-11-13**    augmented (dominant) 13th                          13         13,5♯ 13(♯5)
 **m3-d5-m7-m9-11-13**  half-diminished 13th                               ø13        m13,5♭ m13(♭5) -13(♭5) halfdim13
+====================== ======================================= ========== ========== ===============================================
+
+Figured Chords
+^^^^^^^^^^^^^^
+
+====================== ======================================= ========== ========== ===============================================
+Formula                Chord Name                              Shortcode  Notation   Other notations
+====================== ======================================= ========== ========== ===============================================
 **4-5**                suspended 4th                           sus4       4          sus4 sus
 **2-5**                suspended 2nd                           sus2       2          sus2
 **3-5-m7-13**          dominant (7th) major 6th                           7,6        7(add13) 7(add6)
