@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="hu" version="0.9">
+<song xmlns="http://openlyrics.info/namespace/2009/song" xml:lang="hu" version="0.9" chordNotation="hungarian">
   <properties>
     <titles>
       <title lang="hu">A kapudat nyisd meg</title>
@@ -16,10 +16,10 @@
   <lyrics>
     <instrument name="i">
       <lines>
-        <beat><chord name="h" /><chord name="A/C#" /></beat>
-        <beat><chord name="D" /></beat>
-        <beat><chord name="A" /></beat>
-        <beat><chord name="G" /></beat>
+        <beat><chord root="B" structure="m3-5" /><chord root="A" bass="C#" /></beat>
+        <beat><chord root="D" /></beat>
+        <beat><chord root="A" /></beat>
+        <beat><chord root="G" /></beat>
       </lines>
     </instrument>
     <verse name="v1">

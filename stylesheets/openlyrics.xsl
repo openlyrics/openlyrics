@@ -10,18 +10,28 @@
 <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
 
   <!-- Locale-specific content -->
+  <xsl:variable name="xmllang">
+    <xsl:choose>
+      <xsl:when test="//ol:song/@xml:lang">
+        <xsl:value-of select="//ol:song/@xml:lang" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>en</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
   <xsl:variable name="locale-strings">
     <xsl:text>xsl/lang-</xsl:text>
-    <xsl:value-of select="//ol:song/@xml:lang"/>
+    <xsl:value-of select="$xmllang"/>
     <xsl:text>.xml</xsl:text>
   </xsl:variable>
   <xsl:variable name="locale" select="document($locale-strings)/locale"/>
   <!-- Chords -->
-  <xsl:variable name="chordnotation" select="document('xsl/openlyrics-0.9-chord.xml')/chordnotation"/>
+  <xsl:variable name="chordNotation" select="document('xsl/openlyrics-0.9-chord.xml')/chordNotation"/>
   <xsl:variable name="notation">
     <xsl:choose>
-      <xsl:when test="//ol:song/@chordnotation">
-        <xsl:value-of select="//ol:song/@chordnotation" />
+      <xsl:when test="//ol:song/@chordNotation">
+        <xsl:value-of select="//ol:song/@chordNotation" />
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>english</xsl:text>
@@ -32,7 +42,7 @@
 
   <!-- Main -->
   <xsl:template match="/">
-    <html lang="{ol:song/@xml:lang}">
+    <html lang="{$xmllang}">
       <head>
         <title><xsl:value-of select="ol:song/ol:properties/ol:titles/ol:title[1]/text()"/></title>
         <meta charset="UTF-8" />
@@ -50,12 +60,17 @@
       <xsl:if test="@createdIn">
         <xsl:text> • </xsl:text><xsl:value-of select="$locale/properties/creator/text()"/><xsl:text>: </xsl:text><xsl:value-of select="@createdIn"/>
       </xsl:if>
-      <xsl:if test="@xml:lang">
-        <xsl:text> • </xsl:text><xsl:value-of select="$locale/properties/language/text()"/><xsl:text>: </xsl:text><xsl:value-of select="$locale/languages/*[local-name()=current()/@xml:lang]/text()"/>
-      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="@xml:lang">
+          <xsl:text> • </xsl:text><xsl:value-of select="$locale/properties/language/text()"/><xsl:text>: </xsl:text><xsl:value-of select="$locale/languages/*[local-name()=$xmllang]/text()"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text> • unspecified</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:variable>
 
-    <div class="song" id="{@id}" lang="{@xml:lang}" data-ol-version="{@version}" data-root-properties="{$rootProperties}">
+    <div class="song" id="{@id}" lang="{$xmllang}" data-ol-version="{@version}" data-root-properties="{$rootProperties}">
       <xsl:apply-templates/>
         <footer>
           <p class="root-properties">
@@ -361,13 +376,13 @@
   <xsl:template name="chordname">
     <xsl:param name="this" />
     <code>{</code>
-    <span class="chord-root" data-notation="{$notation}"><xsl:value-of select="$chordnotation/notation[@id=$notation]/name[@class=$this/@root]/text()"/></span>
+    <span class="chord-root" data-notation="{$notation}"><xsl:value-of select="$chordNotation/notation[@id=$notation]/name[@class=$this/@root]/text()"/></span>
     <!--<xsl:if test="string-length($this/@structure)!=0">-->
-      <span class="chord-structure"><xsl:value-of select="$chordnotation/structure[@id=$this/@structure]/text()|$chordnotation/structure[@shorthand=$this/@structure]/text()"/></span>
+      <span class="chord-structure"><xsl:value-of select="$chordNotation/structure[@id=$this/@structure]/text()|$chordNotation/structure[@shorthand=$this/@structure]/text()"/></span>
     <!--</xsl:if>-->
     <xsl:if test="string-length($this/@bass)!=0">
       <span class="chord-bassnotation">/</span>
-      <span class="chord-bass" data-notation="{$notation}"><xsl:value-of select="$chordnotation/notation[@id=$notation]/name[@class=$this/@bass]/text()"/></span>
+      <span class="chord-bass" data-notation="{$notation}"><xsl:value-of select="$chordNotation/notation[@id=$notation]/name[@class=$this/@bass]/text()"/></span>
     </xsl:if>
     <xsl:if test="local-name($this/..) = 'chord'">
       <xsl:call-template name="chordname">
