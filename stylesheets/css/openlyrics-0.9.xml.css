@@ -78,38 +78,50 @@ song[version="0.9"] chord[root][upbeat]:empty::before {
   right: 0;
 }
 
-/* nested chords
- * To normal handling would be necessary CSS4 has:() selector. In CSS3 we need 
- * a tweak... <chord tweak="nested" root="D"><chord root="A">Text<chord>text</chord>
- * First playing chord is D.
- * Displaying is a little bit tricky.
- * Prince 12 has :has selector, but browsers (for preview) doesn't support it. See: https://www.princexml.com/doc-refs/#sel-logical
+/* Nested chords and line breaks in chords
+ * To handling both of these cases it would be necessary to use CSS4 has:() selector. In CSS3 we need tweaks...
+ * - <chord tweak="nested" root="D"><chord root="A">Text<chord>text</chord>
+ * - chord roots="A" tweak="linebreak">Text<br />text</chord>
+ * Displaying is a little bit tricky. Prince 12 has :has() selector, but browsers (for preview) doesn't support it
+ * currently. See:
+ * - https://www.princexml.com/doc/css-refs/#logical-combinations
+ * - https://caniuse.com/css-has
  */
-song[version="0.9"] lines chord[root][tweak="nested"] /*,
-song[version="0.9"] lines chord[root]:has(> chord[root]) */ { /* CSS4 selector */
+song[version="0.9"] lines chord[root]:has(> chord[root]) {
   line-height: 0;
 }
-song[version="0.9"] lines chord[root][tweak="nested"]::before /*,
-song[version="0.9"] lines chord[root]:has(> chord[root])::before */ { /* CSS4 selector */
+song[version="0.9"] lines chord[root]:has(> chord[root])::before {
   display: inline-block;
   width: 100%;
   position: relative;
   top: .5rem;
   text-align: right;
 }
-
-/* line break in chords
- * To normal handling would be necessary CSS4 has:() selector. In CSS3 we need 
- * a tweak... <chord roots="A" tweak="linebreak">Text<br />text</chord>
- */
-song[version="0.9"] lines > chord[tweak="linebreak"] /*,
-song[version="0.9"] lines > chord:has(> br) */ /* CSS4 selector */ /*,
-song[version="0.9"] lines > chord:contains("\A") */ { /* works in Prince? https://www.princexml.com/doc/selectors/#selectors */
+song[version="0.9"] lines > chord:contains("\A") { /* chord:has(> br) */
   display: inline;
 }
-song[version="0.9"] lines > chord[tweak="linebreak"]::before {
+song[version="0.9"] lines > chord:contains("\A")::before { /* chord:has(> br) */
   position: absolute;
   display: inline-block;
+}
+@supports not (prince-flow: normal) { /* Detect it is not Prince */
+  song[version="0.9"] lines chord[root][tweak="nested"] {
+    line-height: 0;
+  }
+  song[version="0.9"] lines chord[root][tweak="nested"]::before {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    top: .5rem;
+    text-align: right;
+  }
+  song[version="0.9"] lines > chord[tweak="linebreak"] {
+    display: inline;
+  }
+  song[version="0.9"] lines > chord[tweak="linebreak"]::before {
+    position: absolute;
+    display: inline-block;
+  }
 }
 
 /*
