@@ -90,3 +90,13 @@ song[version] chord[root]::before,
   src: local("DejaVu Condensed Sans"),
        url(fonts/DejaVuSansCondensed-Bold.ttf) format('truetype');
 }
+
+/* Setting up a character range match and fallback
+ * for musical symbol left and right repeat sign
+ * https://github.com/alerque/libertinus/issues/339
+ */
+@font-face {
+  font-family: "Linux Libertine";
+  src: local("FreeSerif"); /* FreeSerif isn't included */
+  unicode-range: U+1D106, U+1D107;
+}

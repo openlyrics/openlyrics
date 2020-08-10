@@ -327,11 +327,11 @@
         </span>
       </xsl:if>
       <xsl:if test="@repeat">
-        <span class="repeat-sign start">‖:</span><xsl:text> </xsl:text>
+        <span class="repeat-sign start">𝄆</span><xsl:text> </xsl:text>
       </xsl:if>
       <xsl:apply-templates/>
       <xsl:if test="@repeat">
-        <xsl:text> </xsl:text><span class="repeat-sign end">:‖×<xsl:value-of select="@repeat"/></span>
+        <xsl:text> </xsl:text><span class="repeat-sign end">𝄇×<xsl:value-of select="@repeat"/></span>
       </xsl:if>
     </p>
   </xsl:template>
