@@ -60,22 +60,37 @@ song[version="0.9"] chord[root]:empty + chord[root]:empty {
   margin-left: .4rem;
 }
 /* upbeat: with text and empty tag */
-song[version="0.9"] chord[root][upbeat] {
+song[version="0.9"] chord[root][upbeat]:not(:first-of-type):not(:empty)::before {
+  float: left;
+  margin-top: -.9rem;
+  margin-bottom: .9rem;
+  display: inline-block;
+  white-space: nowrap;
+}
+song[version="0.9"] chord[root][upbeat]:first-of-type,
+song[version="0.9"] br + chord[root][upbeat] {
   position: relative;
 }
-song[version="0.9"] chord[root][upbeat]::before {
+song[version="0.9"] chord[root][upbeat]:first-of-type::before,
+song[version="0.9"] br + chord[root][upbeat]::before  {
   position: absolute;
   right: 100%;
   bottom: .9rem;
+  margin-top: auto;
+  margin-bottom: auto !important;
+  white-space: nowrap;
 }
-song[version="0.9"] chord[root][upbeat]:empty {
+song[version="0.9"] chord[root][upbeat]:first-of-type:empty,
+song[version="0.9"] br + chord[root][upbeat]:empty {
   bottom: -.1rem;
   height: 1rem;
   margin-right: 0 !important;
 }
-song[version="0.9"] chord[root][upbeat]:empty::before {
+song[version="0.9"] chord[root][upbeat]:first-of-type:empty::before,
+song[version="0.9"] br + chord[root][upbeat]:empty::before {
   position: absolute;
   right: 0;
+  white-space: nowrap;
 }
 
 /* Nested chords and line breaks in chords

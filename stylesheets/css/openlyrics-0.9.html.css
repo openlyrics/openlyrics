@@ -84,7 +84,16 @@
   top: -1.65rem;
   right: 0;
 }
-
+.song[data-ol-version="0.9"] .segment + .segment.upbeat > .chord {
+  float: left;
+  display: inline-block;
+  position: static;
+  margin-top: -0.9rem;
+  margin-bottom: 0.9rem;
+}
+.song[data-ol-version="0.9"] .segment + .segment.upbeat {
+  background-position: 0 .5rem !important;
+}
 
 /* intrument chords */
 .song[data-ol-version="0.9"] .instrument .segment {
@@ -97,7 +106,7 @@
 }
 /* join segments */
 .song[data-ol-version="0.9"] article.verse .segment:not(.only-chord) {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><line x1="0" y1="10" x2="10" y2="10" stroke="black" stroke-width="3"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><line x1="0" y1="10" x2="10" y2="10" stroke="red" stroke-width="3"/></svg>');
   background-repeat: repeat-x;
   background-size: .5rem .5rem;
   background-position: 0 1.34rem;
