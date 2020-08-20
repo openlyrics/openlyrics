@@ -276,12 +276,12 @@ valid file name characters. It is recommended that files should be compressed
 using the `7-Zip <http://en.wikipedia.org/wiki/7zip>`_ format, as this format is
 known to handle non-ASCII file names well.
 
-Processing Instruction
+Processing Instructions
 ----------------------
 
 OpenLyrics, like all XML files, can contain `processing instructions <https://www.w3.org/TR/REC-xml/#sec-pi>`_.
-With ``xml-stylesheet`` processing instruction it is possible to `associate <https://www.w3.org/TR/xml-stylesheet/>`_
-CSS or XSLT style sheets with OpenLyrics document. Example::
+With the ``xml-stylesheet`` attribute it is possible to `associate <https://www.w3.org/TR/xml-stylesheet/>`_
+CSS or XSLT style sheets with an OpenLyrics document. For example::
 
     <?xml-stylesheet href="ol.css" type="text/css"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9">
@@ -648,10 +648,10 @@ Song Lyrics
 The second section of an OpenLyrics song is defined by the ``<lyrics>`` tag. This
 tag contains words of a song and other data related to it.
 
-The ``<lyrics>`` tag contains one or more ``<verse>`` and ``<instrumental>`` tags.
+The ``<lyrics>`` tag contains one or more ``<verse>`` or ``<instrumental>`` tags.
 Each ``<verse>`` tag defines a verse or stanza of a song, and contains a single
 mandatory attribute, ``name``. Each ``<instrumental>`` tag defines an instrumental
-part (without lyrics) of a song, and contains a single mandatory attribute, name.
+part (without lyrics) of a song, and contains a single mandatory attribute, ``name``.
 Each verse and istreumental part can contain one or more ``<lines>`` tags, which holds a
 logical grouping of words and chords.
 
@@ -730,7 +730,7 @@ line "That saved a wretch like me!"
 Verse/Instrumental Name
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-As previously mentioned, every ``<verse>`` and ``instrumental`` tag has a mandatory ``name`` attribute.
+As previously mentioned, every ``<verse>`` or ``<instrumental>`` tag has a mandatory ``name`` attribute.
 They should be unique, written in **lower case**, a single word, and should
 follow the naming convention as laid out in the table below:
 
@@ -765,7 +765,7 @@ Name                    Description
 ``sa, s1a, s1b, ...``   solo part A, first solo part A, first solo part B, ...
 ======================= ==========================================================
 
-According to the table above, a song containing an istrumental intro (*i*) two verses (*v1, v2*), a chorus
+According to the table above, a song containing an instrumental intro (*i*) two verses (*v1, v2*), a chorus
 (*c*), a bridge (*b*) and an ending (*e*) would look like this::
 
     <lyrics>
@@ -828,7 +828,7 @@ The chord structure
 """""""""""""""""""
 
 The ``structure`` attribute describes the kind of the chord. This element is optional,
-if not present, de default value is the ``major``. It can be marked
+if not present, the default value is the ``major``. It can be marked
 
 - with a sorthand code, or
 - with a chord formula (for experts).
@@ -868,7 +868,7 @@ Shortcode    Chord Name                          Notation
 ============ =================================== ========
 
 Other chords can be noted with **chord formulas**. OpenLyrics has 69 built-in chords defined by a formula.
-But with chord formula every author can write additional custom chords. Chord formulas are described
+Using chord formulas, an author can write additional custom chords. Chord formulas are described
 in :ref:`chord formulas <chordlist>`.
 
 To display root+structure+bass
@@ -1107,13 +1107,13 @@ Repeating lines can be described with an optional attribute for lines::
 
     <lines repeat="2">O my Jesus.</lines>
 
-The value of this attribute schould be 2 or a larger integer.
+The value of this attribute should be an integer with a value of 2 or more.
 
 Lyrics projectors and processors can display the above example like this::
 
     𝄆 O my Jesus. 𝄇×2
 
-Or simple::
+Or simply::
 
     O my Jesus.
     O my Jesus.
@@ -1136,17 +1136,17 @@ OpenLyrics supports describing these parts, very similar to ``<verse>`` tags::
     </lyrics>
 
 <instrumental> tags are siblings to <verse> tags. They can be in any order
-(described in ``<verseOrder>``). Name of an instrumental part can be intro (``name="i"``),
+(described in ``<verseOrder>``). The name of an instrumental part can be intro (``name="i"``),
 middle (``name="m"``), outro (``name="o"``) or solo (``name="s"``), and can named similar to other
 verse names (``i, i1, i2, i1a, i1b``). Instrumental part can't contain lyrics, only ``<chord>`` and
 ``<beat>`` tags. A ``<beat>`` represents a beat in the music. It is not
-mandatory to separate beats, instrumental parts can contains only chords.
+mandatory to separate beats, instrumental parts can contain only chords.
 
-If a lyrics projector supports chords it can be display instrumental
+If a lyrics projector supports chords it can display instrumental
 parts as a verse without lyrics. If a lyrics projector does not support
-chords, can simple omit instrumental parts.
+chords, can simply omit instrumental parts.
 
-The example above should be displayed printed as::
+The example above should be displayed like so::
 
     {Intro} h A/C# | D | A | G
 
@@ -1225,4 +1225,3 @@ Here's an advanced example of the XML::
         </verse>
       </lyrics>
     </song>
-

@@ -3,13 +3,13 @@
 Chord Formulas
 ==============
 
-OpenLyrics is waiting for the chord in this form:
+OpenLyrics expects chords in the following format:
 
-- The root note (1) should not be included.
-- All other intervals (see the table below) can be included once.
-- Intervals must be separated by a hyphen character (-).
-- Intervals should stay in ascending order (as in the table below).
-- Min 1, max. 12 intervals can be included.
+- The root note (1) should not be included
+- All other intervals (see the table below) can be included once
+- Intervals must be separated by a hyphen character (-)
+- Intervals should be in ascending order (see the table below)
+- At least 1, but no more than 12, intervals can be specified
 
 Notation for intervals:
 
@@ -40,7 +40,7 @@ Intervals Diminished Minor Perfect Major Augmented
 ========= ========== ===== ======= ===== =========
 
 
-List of Buldin Chord Formulas
+List of Built-in Chord Formulas
 =============================
 
 Normal Chords
@@ -127,4 +127,3 @@ Formula                Chord Name                              Shortcode  Notati
 **4-a5-7-9**           augmented major 9th suspended 4th                  +Δ9,4      +Δ9sus4 Maj9(♯5)4 +M9,4 +M9sus4 +Maj9,4
 **4-a5-m7-9**          augmented (dominant) 9th suspended 4th             9,4        +9sus4 9(♯5)sus4
 ====================== ======================================= ========== ========== ===============================================
-
