@@ -826,7 +826,6 @@ with English notation.
 
 The chord structure
 """""""""""""""""""
-
 The ``structure`` attribute describes the kind of the chord. This element is optional,
 if not present, the default value is the ``major``. It can be marked
 
@@ -1121,7 +1120,7 @@ Or simply::
 Instrumental parts
 ^^^^^^^^^^^^^^^^^^
 
-In some songs there are parts without lyrics, instrumental sections or vamps.
+In some songs there are parts without lyrics, instrumental sections, etc.
 OpenLyrics supports describing these parts, very similar to ``<verse>`` tags::
 
     <lyrics>
