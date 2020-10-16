@@ -103,7 +103,7 @@ Features
         ``<verse name="v1" lang="en">``
 
     instrumental parts without lyrics
-        ``<instrumental name="i1">``
+        ``<instrument name="i1">``
 
     translated song title
         ``<title lang="en">``
@@ -648,9 +648,9 @@ Song Lyrics
 The second section of an OpenLyrics song is defined by the ``<lyrics>`` tag. This
 tag contains words of a song and other data related to it.
 
-The ``<lyrics>`` tag contains one or more ``<verse>`` or ``<instrumental>`` tags.
+The ``<lyrics>`` tag contains one or more ``<verse>`` or ``<instrument>`` tags.
 Each ``<verse>`` tag defines a verse or stanza of a song, and contains a single
-mandatory attribute, ``name``. Each ``<instrumental>`` tag defines an instrumental
+mandatory attribute, ``name``. Each ``<instrument>`` tag defines an instrumental
 part (without lyrics) of a song, and contains a single mandatory attribute, ``name``.
 Each verse and istreumental part can contain one or more ``<lines>`` tags, which holds a
 logical grouping of words and chords.
@@ -730,7 +730,7 @@ line "That saved a wretch like me!"
 Verse/Instrumental Name
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-As previously mentioned, every ``<verse>`` or ``<instrumental>`` tag has a mandatory ``name`` attribute.
+As previously mentioned, every ``<verse>`` or ``<instrument>`` tag has a mandatory ``name`` attribute.
 They should be unique, written in **lower case**, a single word, and should
 follow the naming convention as laid out in the table below:
 
@@ -769,9 +769,9 @@ According to the table above, a song containing an instrumental intro (*i*) two 
 (*c*), a bridge (*b*) and an ending (*e*) would look like this::
 
     <lyrics>
-      <verse name="i">
+      <instrument name="i">
         ...
-      </verse>
+      </instrument>
       <verse name="v1">
         ...
       </verse>
@@ -1134,7 +1134,7 @@ OpenLyrics supports describing these parts, very similar to ``<verse>`` tags::
       </instrument>
     </lyrics>
 
-<instrumental> tags are siblings to <verse> tags. They can be in any order
+<instrument> tags are siblings to <verse> tags. They can be in any order
 (described in ``<verseOrder>``). The name of an instrumental part can be intro (``name="i"``),
 middle (``name="m"``), outro (``name="o"``) or solo (``name="s"``), and can named similar to other
 verse names (``i, i1, i2, i1a, i1b``). Instrumental part can't contain lyrics, only ``<chord>`` and
