@@ -769,9 +769,9 @@ According to the table above, a song containing an instrumental intro (*i*) two 
 (*c*), a bridge (*b*) and an ending (*e*) would look like this::
 
     <lyrics>
-      <verse name="i">
+      <instrumental name="i">
         ...
-      </verse>
+      </instrumental>
       <verse name="v1">
         ...
       </verse>
