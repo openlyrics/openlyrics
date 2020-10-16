@@ -1138,8 +1138,14 @@ OpenLyrics supports describing these parts, very similar to ``<verse>`` tags::
 (described in ``<verseOrder>``). The name of an instrumental part can be intro (``name="i"``),
 middle (``name="m"``), outro (``name="o"``) or solo (``name="s"``), and can named similar to other
 verse names (``i, i1, i2, i1a, i1b``). Instrumental part can't contain lyrics, only ``<chord>`` and
-``<beat>`` tags. A ``<beat>`` represents a beat in the music. It is not
-mandatory to separate beats, instrumental parts can contain only chords.
+``<beat>`` tags. A <beat> represents a beat in the music. A <beat> tag can contains only <chord> tags.
+But it is not mandatory to separate beats, instrumental parts can contain chords only::
+
+    <instrument name="i">
+      <lines>
+        <chord root="D" /><chord root="A" /><chord root="G" />
+      </lines>
+    </instrument>
 
 If a lyrics projector supports chords it can display instrumental
 parts as a verse without lyrics. If a lyrics projector does not support
