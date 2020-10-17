@@ -24,7 +24,10 @@
 :root {
   font-size: 12pt; /* Root element size */
   color: device-cmyk(0, 0, 0, 1);
-  string-set: openlyrics-version attr(version), openlyrics-language attr(xml|lang);
+  string-set: openlyrics-version attr(version), openlyrics-language "unspecified";
+}
+:root[xml|lang] {
+  string-set: openlyrics-language attr(xml|lang);
 }
 title:first-child {
   color: device-cmyk(0, 0, 0, 1);
