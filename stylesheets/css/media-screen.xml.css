@@ -23,10 +23,14 @@
   color: red;
   position: absolute;
   top: .063rem;
-  content: "OpenLyrics " attr(version) " • " attr(createdIn) " • " attr(xml|lang);
+  content: "OpenLyrics " attr(version) " • " attr(createdIn) " • " "unspecified";
   text-align: center;
   font-size: .625rem;
 }
+:root[xml|lang]::before {
+  content: "OpenLyrics " attr(version) " • " attr(createdIn) " • " attr(xml|lang);
+}
+
 title:first-child {
   color: black;
 }

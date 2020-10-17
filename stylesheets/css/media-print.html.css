@@ -50,18 +50,18 @@ section.properties p.properties-main span {
 section.properties p.properties-main:empty ~ p.properties-songbooks {
   border-bottom-color: device-cmyk(0, 0, 0, 0.0588);
 }
-section.lyrics > article.verse .verse-name,
-section.lyrics > article.instrument .verse-name,
-section.lyrics > article.verse .verse-lang,
-section.lyrics > article.verse .verse-translit,
-section.lyrics p.lines > .line-part {
+main > article.verse .verse-name,
+main > article.instrument .verse-name,
+main > article.verse .verse-lang,
+main > article.verse .verse-translit,
+main p.lines > .line-part {
   color: device-cmyk(1, 0, 0, 0);
 }
-section.lyrics p.lines > .lyrics-comment {
+main p.lines > .lyrics-comment {
   color: device-cmyk(0, 0, 0, 0.35);
 }
-section.lyrics > article.verse,
-section.lyrics > article.instrument {
+main > article.verse,
+main > article.instrument {
   page-break-inside: avoid;
 }
 

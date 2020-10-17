@@ -22,14 +22,14 @@ section.properties p.properties-main span {
 section.properties p.properties-main:empty ~ p.properties-songbooks {
   border-bottom-color: rgba(240,240,240,1);
 }
-section.lyrics > article.verse .verse-name,
-section.lyrics > article.instrument .verse-name,
-section.lyrics > article.verse .verse-lang,
-section.lyrics > article.verse .verse-translit,
-section.lyrics p.lines > .line-part {
+main > article.verse .verse-name,
+main > article.instrument .verse-name,
+main > article.verse .verse-lang,
+main > article.verse .verse-translit,
+main p.lines > .line-part {
   color: blue;
 }
-section.lyrics p.lines > .lyrics-comment {
+main p.lines > .lyrics-comment {
   color: rgba(166,166,166,1);
 }
 .song[data-ol-version="0.8"] .chord,

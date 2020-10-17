@@ -16,7 +16,6 @@ p {
   margin-top: 1rem;
 }
 header,
-section.properties,
 aside.verse-order {
   font-size: .813rem;
 }
@@ -36,7 +35,7 @@ a:link {
 }
 
 header {
-  margin: .5rem 0 1.5rem 0;
+  margin: .5rem 0 0 0;
 }
 header h1 { /* title */
   font-size: 1.75rem;
@@ -49,6 +48,9 @@ header .title:not(:last-of-type)::after,
 .properties .author:not(:last-of-type)::after {
   content: " • ";
   padding: 0 .2rem;
+}
+header section.properties {
+  margin-top: 1.5rem;
 }
 .properties-other span,
 .properties-main span {
@@ -70,6 +72,7 @@ header .title.original::before,
 .properties .publisher::before,
 .properties .version::before,
 .properties .keywords::before,
+.properties .verseOrder::before,
 .verse-order .verseOrder::before,
 .properties .songbook::before,
 .properties .themes::before,
@@ -93,6 +96,7 @@ header .title.original::before          { content: "\f024"; /* flag */ }
 .properties .publisher::before          { content: "\f1ad"; /* building */ }
 .properties .version::before            { content: "\f126"; /* code-fork */ }
 .properties .keywords::before           { content: "\f02b"; /* tag */ }
+.properties .verseOrder::before         { content: "\f061"; /* arrow-right */ }
 .verse-order .verseOrder::before        { content: "\f061"; /* arrow-right */ }
 .properties .songbook::before           { content: "\f02d"; /* book */ }
 .properties .themes::before             { content: "\f069"; /* asterisk */ }
@@ -124,6 +128,9 @@ section.properties p.properties-main span {
 section.properties p.properties-main span:first-child {
   border-right-style: solid;
 }
+section.properties p.properties-songbooks span.songbook {
+  display: block;
+}
 
 /* verse-order */
 aside.verse-order {
@@ -134,22 +141,22 @@ aside.verse-order {
 }
 
 /* lyrics */
-section.lyrics {
+main {
   margin: 1.5rem 1rem;
 }
 
-section.lyrics > article.verse,
-section.lyrics > article.instrument {
+main > article.verse,
+main > article.instrument {
   margin: 0 0 1rem 5rem;
   font-size: 1rem;
   line-height: 1.2rem;
   position: relative;
 }
 
-section.lyrics > article.verse .verse-name,
-section.lyrics > article.instrument .verse-name,
-section.lyrics > article.verse .verse-lang,
-section.lyrics > article.verse .verse-translit { /* verse names */
+main > article.verse .verse-name,
+main > article.instrument .verse-name,
+main > article.verse .verse-lang,
+main > article.verse .verse-translit { /* verse names */
   position: absolute;
   width: auto;
   top: 1rem;
@@ -159,21 +166,21 @@ section.lyrics > article.verse .verse-translit { /* verse names */
   text-align: left;
   font-size: .813rem;
 }
-section.lyrics > article.instrument .verse-name {
+main > article.instrument .verse-name {
   top: 0;
 }
-section.lyrics > article.verse .verse-lang,
-section.lyrics > article.verse .verse-translit {
+main > article.verse .verse-lang,
+main > article.verse .verse-translit {
   left: -4rem;
 }
-section.lyrics p.lines > .line-part { /* line part */
+main p.lines > .line-part { /* line part */
   position: absolute;
   width: 4rem;
   margin-top: 1rem;
   left: -4rem;
   font-size: .813rem;
 }
-section.lyrics p.lines > .lyrics-comment { /* comment in lines */
+main p.lines > .lyrics-comment { /* comment in lines */
   float: right;
   width: 10rem;
   margin-top: 1rem;
