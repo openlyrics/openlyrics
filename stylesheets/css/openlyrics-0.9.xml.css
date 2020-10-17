@@ -1,0 +1,145 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * OpenLyrics 0.9
+ */
+
+song[version="0.9"] lines:after {
+  content: "\A";
+  white-space: pre-line;
+}
+song[version="0.9"] lines {
+  line-height: 1rem;
+  padding: 0;
+  margin: 0;
+}
+song[version="0.9"] lines[repeat]::before { /* repeat */
+  content: '𝄆';
+}
+song[version="0.9"] lines[repeat]::after {
+  content: '𝄇×' attr(repeat) '\A';
+}
+song[version="0.9"] beat {
+  display: inline-block;
+}
+song[version="0.9"] beat::after {
+  content: '|';
+  padding: 0 .1rem;
+}
+song[version="0.9"] beat:last-child::after {
+  content: none;
+}
+
+/* chords: <chord root="E" structure="3-5" bass="F#" />
+ */
+song[version="0.9"] chord[root] {
+  display: inline-block;
+  line-height: 1rem;
+}
+song[version="0.9"] chord[root]::before {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: -.1rem;
+  margin-right: .1rem;
+}
+/* Chord "content:" declarations in a separate file */
+
+/* intrument chords */
+song[version="0.9"] instrument chord[root]:empty {
+  margin-bottom: 0;
+  bottom: 0;
+  margin-right: .1rem;
+}
+/* empty */
+song[version="0.9"] chord[root]:empty {
+  position: relative;
+  bottom: .9rem;
+  margin-right: -.2rem;
+}
+song[version="0.9"] chord[root]:empty + chord[root]:empty {
+  margin-left: .4rem;
+}
+/* upbeat: with text and empty tag */
+song[version="0.9"] chord[root][upbeat]:not(:first-of-type):not(:empty)::before {
+  float: left;
+  margin-top: -.9rem;
+  margin-bottom: .9rem;
+  display: inline-block;
+  white-space: nowrap;
+}
+song[version="0.9"] chord[root][upbeat]:first-of-type,
+song[version="0.9"] br + chord[root][upbeat] {
+  position: relative;
+}
+song[version="0.9"] chord[root][upbeat]:first-of-type::before,
+song[version="0.9"] br + chord[root][upbeat]::before  {
+  position: absolute;
+  right: 100%;
+  bottom: .9rem;
+  margin-top: auto;
+  margin-bottom: auto !important;
+  white-space: nowrap;
+}
+song[version="0.9"] chord[root][upbeat]:first-of-type:empty,
+song[version="0.9"] br + chord[root][upbeat]:empty {
+  bottom: -.1rem;
+  height: 1rem;
+  margin-right: 0 !important;
+}
+song[version="0.9"] chord[root][upbeat]:first-of-type:empty::before,
+song[version="0.9"] br + chord[root][upbeat]:empty::before {
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
+}
+
+/* Nested chords and line breaks in chords
+ * To handling both of these cases it would be necessary to use CSS4 has:() selector. In CSS3 we need tweaks...
+ * - <chord tweak="nested" root="D"><chord root="A">Text<chord>text</chord>
+ * - chord roots="A" tweak="linebreak">Text<br />text</chord>
+ * Displaying is a little bit tricky. Prince 12 has :has() selector, but browsers (for preview) doesn't support it
+ * currently. See:
+ * - https://www.princexml.com/doc/css-refs/#logical-combinations
+ * - https://caniuse.com/css-has
+ */
+song[version="0.9"] lines chord[root]:has(> chord[root]) {
+  line-height: 0;
+}
+song[version="0.9"] lines chord[root]:has(> chord[root])::before {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  top: .5rem;
+  text-align: right;
+}
+song[version="0.9"] lines > chord:contains("\A") { /* chord:has(> br) */
+  display: inline;
+}
+song[version="0.9"] lines > chord:contains("\A")::before { /* chord:has(> br) */
+  position: absolute;
+  display: inline-block;
+}
+@supports not (prince-flow: normal) { /* Detect it is not Prince */
+  song[version="0.9"] lines chord[root][tweak="nested"] {
+    line-height: 0;
+  }
+  song[version="0.9"] lines chord[root][tweak="nested"]::before {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    top: .5rem;
+    text-align: right;
+  }
+  song[version="0.9"] lines > chord[tweak="linebreak"] {
+    display: inline;
+  }
+  song[version="0.9"] lines > chord[tweak="linebreak"]::before {
+    position: absolute;
+    display: inline-block;
+  }
+}
+
+/*
+chord {
+  border: .063rem solid silver;
+} /* /debug */

@@ -1,0 +1,102 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ * Fonts
+ */
+
+:root {
+  font-family: "Linux Libertine";
+  font-feature-settings: "ss01" on;
+  font-variant: prince-opentype(ss01(1));
+}
+song[version] chord[name]::before,
+song[version] chord[root]::before,
+.song[data-ol-version] .chord,
+.song[data-ol-version] footer #root-properties {
+  font-family: "DejaVu Sans";
+}
+.song[data-ol-version] .chord-structure,
+.song[data-ol-version] .chord-bass {
+  font-family: "DejaVu Condensed Sans";
+}
+
+@media print {
+  @page {
+    @top-left {
+      font-family: "Linux Biolinum";
+    }
+    @bottom-left {
+      font-family: "Linux Biolinum";
+    }
+    @bottom-right {
+      font-family: "Linux Libertine";
+    }
+  }
+}
+
+@font-face {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  src: local("FontAwesome"),
+       url(fonts/FontAwesome.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Libertine";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Linux Libertine O"),
+       url(fonts/LinLibertine_R.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Libertine";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Linux Libertine O Bold"),
+       url(fonts/LinLibertine_RB.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Libertine";
+  font-style: italic;
+  font-weight: normal;
+  src: local("Linux Libertine O Italic"),
+       url(fonts/LinLibertine_RI.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Biolinum";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Linux Biolinum O"),
+       url(fonts/LinBiolinum_R.otf) format('opentype');
+}
+@font-face {
+  font-family: "Linux Biolinum";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Linux Biolinum O Bold"),
+       url(fonts/LinBiolinum_RB.otf) format('opentype');
+}
+@font-face {
+  font-family: "DejaVu Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: local("DejaVu Sans Bold"),
+       url(fonts/DejaVuSans-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: "DejaVu Condensed Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: local("DejaVu Condensed Sans"),
+       url(fonts/DejaVuSansCondensed-Bold.ttf) format('truetype');
+}
+
+/* Setting up a character range match and fallback
+ * for musical symbol left and right repeat sign
+ * https://github.com/alerque/libertinus/issues/339
+ */
+@font-face {
+  font-family: "Linux Libertine";
+  src: local("FreeSerif"); /* FreeSerif isn't included */
+  unicode-range: U+1D106, U+1D107;
+}

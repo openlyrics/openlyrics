@@ -1,0 +1,49 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * Screen media
+ */
+
+/* namespace for xml|lang attribute
+ * See: http://tei-l.970651.n3.nabble.com/Selecting-xml-attributes-using-CSS-attr-td4029412.html
+ * https://searchcode.com/codesearch/view/6658711/
+ * Chrome doesn't support
+ */
+@namespace xml url(http://www.w3.org/XML/1998/namespace);
+
+:root {
+  font-size: 16px; /* Root element size */
+  width: 40rem;
+  margin: 2rem auto 1rem auto;
+  color: black;
+}
+:root::before { /* for version debug only on screen */
+  display: block;
+  border: .063rem solid red;
+  padding: .063rem;
+  color: red;
+  position: absolute;
+  top: .063rem;
+  content: "OpenLyrics " attr(version) " • " attr(createdIn) " • " attr(xml|lang);
+  text-align: center;
+  font-size: .625rem;
+}
+title:first-child {
+  color: black;
+}
+properties,
+lines comment {
+  border-bottom-color: darkgray;
+  color: darkgray;
+}
+lyrics > verse::before, 
+lyrics > instrument::before,
+lyrics > verse[lang]::after,
+lines[part]::before {
+  color: blue;
+}
+chord::before {
+  color: red;
+}
+beat::after {
+  color: black;
+}

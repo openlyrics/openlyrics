@@ -1,0 +1,19 @@
+/**
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ * OpenLyrics 0.8
+ */
+
+.song[data-ol-version="0.8"] code {
+  display: none;
+}
+.song[data-ol-version="0.8"] .segment {
+  display: inline;
+  line-height: 2rem;
+}
+.song[data-ol-version="0.8"] .chord {
+  display: inline-block;
+  position: absolute;
+  line-height: 1rem;
+  margin-top: -.4rem;
+  font-weight: bold;
+}

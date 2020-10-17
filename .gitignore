@@ -1,0 +1,4 @@
+docs/build/*
+lib/python/tests/tmp/*
+.pyc$
+export-openlyrics-0.8

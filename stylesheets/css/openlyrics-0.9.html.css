@@ -1,0 +1,118 @@
+/**
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ * OpenLyrics 0.9
+ */
+
+.song[data-ol-version="0.9"] code {
+  display: none;
+}
+.song[data-ol-version="0.9"] span.repeat-sign {}
+.song[data-ol-version="0.9"] span.repeat-sign.start {}
+.song[data-ol-version="0.9"] span.repeat-sign.end {}
+.song[data-ol-version="0.9"] span.beat-sign {
+  display: inline-block;
+  padding: 0 .15rem;
+}
+.song[data-ol-version="0.9"] .lines.has-segments {
+  line-height: 1rem;
+}
+.song[data-ol-version="0.9"] .segment {
+  display: inline-block;
+}
+.song[data-ol-version="0.9"] .segment > .chord:only-child {
+  display: inline-block;
+  margin-top: .9rem;
+  position: relative;
+  top: -.9rem;
+}
+.song[data-ol-version="0.9"] .segment .lyrics {
+  display: inline-block;
+  background: white;
+}
+.song[data-ol-version="0.9"] .segment .chord {
+  display: block;
+  position: relative;
+  top: .1rem;
+  padding-right: .1rem;
+  height: 1rem;
+  line-height: 1rem;
+}
+.song[data-ol-version="0.9"] .segment .chord .chord-root:not(:empty) {
+  font-weight: bold;
+}
+.song[data-ol-version="0.9"] .segment .chord .chord-structure:not(:empty) {
+}
+.song[data-ol-version="0.9"] .segment .chord .chord-bassnotation,
+.song[data-ol-version="0.9"] .segment .chord .chord-bass:not(:empty) {
+  font-size: .813rem;
+  font-weight: bold;
+}
+.song[data-ol-version="0.9"] .segment .chord .chord-structure:not(:empty) + .chord-basssnotation:not(:empty) {
+  margin-left: -.15rem;
+}
+
+/* Has BR in segment */
+.song[data-ol-version="0.9"] .segment.linebreak {
+  display: inline;
+}
+.song[data-ol-version="0.9"] .segment.linebreak .chord {
+  position: absolute;
+  display: inline-block;
+  top: auto;
+  margin-top: .1rem;
+}
+.song[data-ol-version="0.9"] .segment.linebreak .lyrics {
+  display: inline;
+}
+
+/* emtpy chord = only chord in segment */
+.song[data-ol-version="0.9"] .segment.only-chord {
+  top: -.1rem;
+}
+
+/* upbeat: with text and empty tag */
+.song[data-ol-version="0.9"] .segment.upbeat {
+  position: relative;
+}
+.song[data-ol-version="0.9"] .segment.upbeat > .chord {
+  position: absolute;
+  top: -.9rem;
+  right: 100%;
+  margin: 0;
+}
+.song[data-ol-version="0.9"] .segment.upbeat.only-chord > .chord {
+  top: -1.65rem;
+  right: 0;
+}
+.song[data-ol-version="0.9"] .segment + .segment.upbeat > .chord {
+  float: left;
+  display: inline-block;
+  position: static;
+  margin-top: -0.9rem;
+  margin-bottom: 0.9rem;
+}
+.song[data-ol-version="0.9"] .segment + .segment.upbeat {
+  background-position: 0 .5rem !important;
+}
+
+/* intrument chords */
+.song[data-ol-version="0.9"] .instrument .segment {
+  line-height: 1.2rem;
+}
+.song[data-ol-version="0.9"] .instrument .segment > .chord:only-child {
+  margin-right: .1rem;
+  margin-top: 0;
+  position: static;
+}
+/* join segments */
+.song[data-ol-version="0.9"] article.verse .segment:not(.only-chord) {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><line x1="0" y1="10" x2="10" y2="10" stroke="red" stroke-width="3"/></svg>');
+  background-repeat: repeat-x;
+  background-size: .5rem .5rem;
+  background-position: 0 1.34rem;
+}
+
+/* debug
+.song[data-ol-version="0.9"] .segment {
+  border: .063rem solid silver;
+} /* /debug */

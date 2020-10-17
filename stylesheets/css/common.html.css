@@ -1,0 +1,188 @@
+/**
+ * OpenLyrics XML+XSLT+CSS stylesheet
+ * Common
+ */
+
+/* properties */
+html,
+body,
+div,
+p {
+  margin: 0;
+  padding: 0;
+}
+.song {}
+.song + .song {
+  margin-top: 1rem;
+}
+header,
+section.properties,
+aside.verse-order {
+  font-size: .813rem;
+}
+span[class] > em { /* descriptions */
+  display: none; /* hide with "none", display with "inline" */
+}
+p.properties-main > span[class] > em,
+article > .verse-name > em,
+article > .verse-lang > em,
+article > .verse-translit > em,
+p.lines > .line-part em,
+p.lines > .lyrics-comment em {
+  display: none;
+}
+a:link {
+  text-decoration: none;
+}
+
+header {
+  margin: .5rem 0 1.5rem 0;
+}
+header h1 { /* title */
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+header .title:not(:last-of-type)::after,
+.properties .author:not(:last-of-type)::after {
+  content: " • ";
+  padding: 0 .2rem;
+}
+.properties-other span,
+.properties-main span {
+  padding-right: .4rem;
+}
+header .title.original {
+  font-weight: bold;
+}
+header .title.original::before,
+.properties .properties-authors:not(:empty)::before,
+.properties .author::before,
+.properties .copyright::before,
+.properties .ccliNo::before,
+.properties .released::before,
+.properties .transposition::before,
+.properties .tempo::before,
+.properties .key::before,
+.properties .variant::before,
+.properties .publisher::before,
+.properties .version::before,
+.properties .keywords::before,
+.verse-order .verseOrder::before,
+.properties .songbook::before,
+.properties .themes::before,
+.properties .comment::before {
+  display: inline-block;
+  font-family: FontAwesome;
+  margin-right: .25rem;
+}
+header .title.original::before          { content: "\f024"; /* flag */ }
+.properties .properties-authors:not(:empty)::before { content: "\f007"; /* user */ }
+.properties .author.words::before       { content: "\f031"; /* font */ }
+.properties .author.music::before       { content: "\f001"; /* music */ }
+.properties .author.translation::before { content: "\f0ac"; /* globe */ }
+.properties .copyright::before          { content: "\f07a"; /* shopping-cart */ }
+.properties .ccliNo::before             { content: "\f02a"; /* barcode */ }
+.properties .released::before           { content: "\f073"; /* calendar */}
+.properties .transposition::before      { content: "\f0dc"; /* sort */}
+.properties .tempo::before              { content: "\f017"; /* clock-o */}
+.properties .key::before                { content: "\f084"; /* key */ }
+.properties .variant::before            { content: "\f074"; /* random */ }
+.properties .publisher::before          { content: "\f1ad"; /* building */ }
+.properties .version::before            { content: "\f126"; /* code-fork */ }
+.properties .keywords::before           { content: "\f02b"; /* tag */ }
+.verse-order .verseOrder::before        { content: "\f061"; /* arrow-right */ }
+.properties .songbook::before           { content: "\f02d"; /* book */ }
+.properties .themes::before             { content: "\f069"; /* asterisk */ }
+.properties .comment::before            { content: "\f075"; /* comment */ }
+
+section.properties p.properties-other:not(:empty) {
+  margin: .25rem -.5rem .5rem -.5rem;
+  padding: .5rem;
+}
+section.properties p.properties-other:empty + p.properties-main:empty ~ p.properties-songbooks {
+  padding-bottom: .166666667rem;
+  margin-bottom: .166666667rem;
+  border-bottom-style: dotted;
+  border-bottom-width: .083333333rem;
+}
+section.properties p.properties-main:not(:empty) {
+  text-align: right;
+  position: relative;
+  top: -.8rem;
+}
+section.properties p.properties-main span {
+  border-style: solid;
+  border-width: .3rem;
+  border-right-style: none;
+  float: right;
+  padding: .1rem .25rem;
+  margin-right: -.5rem;
+}
+section.properties p.properties-main span:first-child {
+  border-right-style: solid;
+}
+
+/* verse-order */
+aside.verse-order {
+  clear: right;
+  float: right;
+  width: 7rem;
+  margin-left: 1rem;
+}
+
+/* lyrics */
+section.lyrics {
+  margin: 1.5rem 1rem;
+}
+
+section.lyrics > article.verse,
+section.lyrics > article.instrument {
+  margin: 0 0 1rem 5rem;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  position: relative;
+}
+
+section.lyrics > article.verse .verse-name,
+section.lyrics > article.instrument .verse-name,
+section.lyrics > article.verse .verse-lang,
+section.lyrics > article.verse .verse-translit { /* verse names */
+  position: absolute;
+  width: auto;
+  top: 1rem;
+  left: -5rem;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  text-align: left;
+  font-size: .813rem;
+}
+section.lyrics > article.instrument .verse-name {
+  top: 0;
+}
+section.lyrics > article.verse .verse-lang,
+section.lyrics > article.verse .verse-translit {
+  left: -4rem;
+}
+section.lyrics p.lines > .line-part { /* line part */
+  position: absolute;
+  width: 4rem;
+  margin-top: 1rem;
+  left: -4rem;
+  font-size: .813rem;
+}
+section.lyrics p.lines > .lyrics-comment { /* comment in lines */
+  float: right;
+  width: 10rem;
+  margin-top: 1rem;
+  font-size: .813rem;
+  line-height: .813rem;
+  font-style: italic;
+  text-align: right;
+}
+
+footer .root-properties {
+  font-size: .625rem;
+}

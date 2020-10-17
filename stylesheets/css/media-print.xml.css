@@ -1,0 +1,61 @@
+/**
+ * OpenLyrics XML+CSS stylesheet
+ * Print media
+ */
+
+/* namespace for xml|lang attribute
+ * See: http://tei-l.970651.n3.nabble.com/Selecting-xml-attributes-using-CSS-attr-td4029412.html
+ * https://searchcode.com/codesearch/view/6658711/
+ * Chrome doesn't support
+ */
+@namespace xml url(http://www.w3.org/XML/1998/namespace);
+
+@page {
+  size: A4;
+  margin: 4.5rem 6rem 7.5rem 3rem;
+  @top-left {
+    content: "OpenLyrics " string(openlyrics-version) " • " string(openlyrics-language);
+    font-size: .625rem;
+  }
+  @bottom-right {
+    content: counter(page);
+  }
+}
+:root {
+  font-size: 12pt; /* Root element size */
+  color: device-cmyk(0, 0, 0, 1);
+  string-set: openlyrics-version attr(version), openlyrics-language attr(xml|lang);
+}
+title:first-child {
+  color: device-cmyk(0, 0, 0, 1);
+}
+properties {
+  border-bottom-color: device-cmyk(0, 0, 0, 0.35);
+  color: device-cmyk(0, 0, 0, 0.35);
+}
+lines comment {
+  color: device-cmyk(0, 0, 0, 0.35);
+}
+lyrics > verse::before,
+lyrics > instrument::before,
+lyrics > verse[lang]::after,
+lines[part]::before {
+  color: device-cmyk(1, 0, 0, 0);
+}
+chord::before {
+  color: device-cmyk(0, 1, 1, 0);
+}
+beat::after {
+  color: device-cmyk(0, 0, 0, 1);
+}
+lyrics > verse,
+lyrics > instrument {
+  page-break-inside: avoid;
+}
+
+/* to avoid unnecessary line break after "/" in chord.
+ * See: https://www.princexml.com/doc/properties/prince-linebreak-magic/
+ */
+song[version="0.8"] chord[name]:empty::before {
+  prince-linebreak-magic: none;
+}

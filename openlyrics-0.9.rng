@@ -82,10 +82,15 @@
 
   <define name="lyrics">
     <element name="lyrics">
-      <!-- at least one verse is required -->
-      <oneOrMore>
-        <ref name="verse"/>
-      </oneOrMore>
+      <interleave>
+        <!-- at least one verse is required -->
+        <oneOrMore>
+          <ref name="verse"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="instrument"/>
+        </zeroOrMore>
+      </interleave>
     </element>
   </define>
 
@@ -243,7 +248,10 @@
     <element name="verseOrder">
       <list>
         <oneOrMore>
-          <ref name="verseNameType"/>
+          <choice>
+            <ref name="verseNameType"/>
+            <ref name="instrumentNameType"/>
+          </choice>
         </oneOrMore>
       </list>
     </element>
@@ -356,6 +364,13 @@
           <value>optional</value>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="repeat">
+          <data type="integer">
+            <param name="minInclusive">2</param>
+          </data>
+        </attribute>
+      </optional>
       <zeroOrMore>
         <ref name="linesContent"/>
       </zeroOrMore>
@@ -365,11 +380,289 @@
 
   <define name="chord">
     <element name="chord">
-      <attribute name="name">
-        <ref name="nonEmptyContent"/>
+      <attribute name="root">
+        <ref name="musicalNote"/>
       </attribute>
-      <empty/>
+      <optional>
+        <attribute name="bass">
+          <ref name="musicalNote"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="structure">
+          <ref name="chords"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="upbeat">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <choice>
+        <oneOrMore>
+          <ref name="linesContent"/>
+        </oneOrMore>
+        <empty/>
+      </choice>
     </element>
+  </define>
+
+  <define name="musicalNote">
+    <!-- Only English notation is allowed: C  C#  Db  D  D#  Eb  E  F  F#  Gb  G  G#  Ab  A  A#  Bb  B -->
+    <choice>
+      <value>C</value>
+      <value>C#</value>
+      <value>Db</value>
+      <value>D</value>
+      <value>D#</value>
+      <value>Eb</value>
+      <value>E</value>
+      <value>F</value>
+      <value>F#</value>
+      <value>Gb</value>
+      <value>G</value>
+      <value>G#</value>
+      <value>Ab</value>
+      <value>A</value>
+      <value>A#</value>
+      <value>Bb</value>
+      <value>B</value>
+    </choice>
+  </define>
+
+  <define name="chords">
+    <choice>
+      <!-- ** 2 note chords -->
+      <!-- perfect 5th; power chord -->
+      <value>5</value>
+      <value>power</value>
+
+      <!-- *** 3 note chords -->
+      <!-- major -->
+      <value>3-5</value>
+      <!-- minor -->
+      <value>m3-5</value>
+      <value>min</value>
+      <!-- augmented -->
+      <value>3-a5</value>
+      <value>aug</value>
+      <!-- diminished -->
+      <value>m3-d5</value>
+      <value>dim</value>
+
+      <!-- **** 4 note chords -->
+      <!-- dominant 7th -->
+      <value>3-5-m7</value>
+      <value>dom7</value>
+      <!-- major 7th -->
+      <value>3-5-7</value>
+      <value>maj7</value>
+      <!-- minor 7th -->
+      <value>m3-5-m7</value>
+      <value>min7</value>
+      <!-- diminished 7th -->
+      <value>m3-d5-d7</value>
+      <value>dim7</value>
+      <!-- half-diminished 7th -->
+      <value>m3-d5-m7</value>
+      <value>halfdim7</value>
+      <!-- minor major 7th -->
+      <value>m3-5-7</value>
+      <value>minmaj7</value>
+      <!-- augmented major 7th -->
+      <value>3-a5-7</value>
+      <value>augmaj7</value>
+      <!-- dominant 7th flat 5 -->
+      <value>3-d5-m7</value>
+      <!-- dominant 7th sharp 5; augmented 7th -->
+      <value>3-a5-m7</value>
+      <value>aug7</value>
+      <!-- diminished major 7th -->
+      <value>m3-d5-7</value>
+      <!-- major 7th flat 5 -->
+      <value>3-d5-7</value>
+      <!-- major 6th -->
+      <value>3-5-6</value>
+      <value>maj6</value>
+      <!-- (major minor 6th) -->
+      <value>3-5-m6</value>
+      <value>maj6b</value>
+      <!-- minor 6th -->
+      <value>m3-5-6</value>
+      <value>min6</value>
+      <!-- (minor minor 6th) -->
+      <value>m3-5-m6</value>
+      <value>min6b</value>
+
+      <!-- ***** 5 note chords -->
+      <!-- (dominant) 9th -->
+      <value>3-5-m7-9</value>
+      <value>dom9</value>
+      <!-- dominant minor 9th -->
+      <value>3-5-m7-m9</value>
+      <value>dom9b</value>
+      <!-- major 9th -->
+      <value>3-5-7-9</value>
+      <value>maj9</value>
+      <!-- minor (dominant)Í 9th -->
+      <value>m3-5-m7-9</value>
+      <value>min9</value>
+      <!-- minor major 9th -->
+      <value>m3-5-7-9</value>
+      <value>minmaj9</value>
+      <!-- augmented major 9th -->
+      <value>3-a5-7-9</value>
+      <!-- augmented (dominant) 9th -->
+      <value>3-a5-m7-9</value>
+      <value>aug9</value>
+      <!-- half-diminished 9th -->
+      <value>m3-d5-m7-9</value>
+      <value>halfdim9</value>
+      <!-- half-diminished minor 9th -->
+      <value>m3-d5-m7-m9</value>
+      <!-- diminished 9th -->
+      <value>m3-d5-d7-9</value>
+      <!-- diminished minor 9th -->
+      <value>m3-d5-d7-m9</value>
+      <!-- dominant flat 10 -->
+      <value>3-5-m7-m10</value>
+
+      <!-- ****** 6 note chords -->
+      <!-- (dominant) 11th -->
+      <value>3-5-m7-9-11</value>
+      <!-- major 11th -->
+      <value>3-5-7-9-11</value>
+      <!-- minor (dominant) 11th -->
+      <value>m3-5-m7-9-11</value>
+      <!-- minor major 11th -->
+      <value>m3-5-7-9-11</value>
+      <!-- acoustic (dominant) 11th -->
+      <value>3-5-m7-9-a11</value>
+      <!-- acoustic major 11th -->
+      <value>3-5-7-9-a11</value>
+      <!-- acoustic minor (dominant) 11th -->
+      <value>m3-5-m7-9-a11</value>
+      <!-- acoustic minor major 11th -->
+      <value>m3-5-7-9-a11</value>
+      <!-- augmented major 11th -->
+      <value>3-a5-7-9-11</value>
+      <!-- augmented (dominant) 11th -->
+      <value>3-a5-m7-9-11</value>
+      <!-- half-diminished 11th -->
+      <value>m3-d5-m7-m9-11</value>
+      <!-- diminished 11th -->
+      <value>m3-d5-d7-m9-d11</value>
+
+      <!-- 7 note chords -->
+      <!-- (dominant) 13th -->
+      <value>3-5-m7-9-11-13</value>
+      <!-- major 13th -->
+      <value>3-5-7-9-11-13</value>
+      <!-- minor (dominant) 13th -->
+      <value>m3-5-m7-9-11-13</value>
+      <!-- minor major 13th -->
+      <value>m3-5-7-9-11-13</value>
+      <!-- (dominant) 13th -->
+      <value>3-5-m7-9-a11-13</value>
+      <!-- major 13th -->
+      <value>3-5-7-9-a11-13</value>
+      <!-- minor (dominant) 13th -->
+      <value>m3-5-m7-9-a11-13</value>
+      <!-- minor major 13th -->
+      <value>m3-5-7-9-a11-13</value>
+      <!-- augmented major 13th -->
+      <value>3-a5-7-9-11-13</value>
+      <!-- augmented (dominant) 13th -->
+      <value>3-a5-m7-9-11-13</value>
+      <!-- half-diminished 13th -->
+      <value>m3-d5-m7-m9-11-13</value>
+
+      <!-- *** Figured 3 note chords -->
+      <!-- suspended 4th -->
+      <value>4-5</value>
+      <value>sus4</value>
+      <!-- suspended 2nd -->
+      <value>2-5</value>
+      <value>sus2</value>
+
+      <!-- **** Figured 4 note chords -->
+      <!-- dominant (7th) major 6th -->
+      <value>3-5-m7-13</value>
+      <!-- major 6th 9th -->
+      <value>3-5-6-9</value>
+      <!-- original name + added 9th -->
+      <value>3-5-9</value>
+      <value>add9</value>
+      <!-- dominant 7th suspended 4th -->
+      <value>4-5-m7</value>
+      <!-- dominant 7th suspended 2nd -->
+      <value>2-5-m7</value>
+      <!-- major 7th suspended 4th -->
+      <value>4-5-7</value>
+      <!-- major 7th suspended 2nd -->
+      <value>2-5-7</value>
+
+      <!-- ***** Figured 5 note chords -->
+      <!-- (dominant) 9th suspended 4th -->
+      <value>4-5-m7-9</value>
+      <!-- dominant minor 9th suspended 4th -->
+      <value>4-5-m7-m9</value>
+      <!-- major 9th suspended 4th -->
+      <value>4-5-7-9</value>
+      <!-- augmented major 9th suspended 4th -->
+      <value>4-a5-7-9</value>
+      <!-- augmented (dominant) 9th suspended 4th -->
+      <value>4-a5-m7-9</value>
+
+      <data type="token">
+        <param name="minLength">1</param>
+        <!--
+        Notation:
+        - major      - [not marked]
+        - minor      - m
+        - perfect    - [not marked]
+        - diminished - d
+        - augmented  - a
+
+        Music intervals:
+        | Int. | Dim. | Min. | Per. | Maj. | Aug. |
+        |::::::|::::::|::::::|::::::|::::::|::::::|
+        |  1   |  d1  |      |  1   |      |  a1  |
+        |  2   |  d2  |  m2  |      |  2   |  a2  |
+        |  3   |  d3  |  m3  |      |  3   |  a3  |
+        |  4   |  d4  |      |  4   |      |  a4  |
+        |  5   |  d5  |      |  5   |      |  a5  |
+        |  6   |  d6  |  m6  |      |  6   |  a6  |
+        |  7   |  d7  |  m7  |      |  7   |  a7  |
+        |  8   |  d8  |      |  8   |      |  a8  |
+        |  9   |  d9  |  m9  |      |  9   |  a9  |
+        | 10   | d10  | m10  |      |  10  | a10  |
+        | 11   | d11  |      |  11  |      | a11  |
+        | 12   | d12  |      |  12  |      | a12  |
+        | 13   | d13  | m13  |      |  13  | a13  |
+        | 14   | d14  | m14  |      |  14  | a14  |
+        | 15   | d15  |      |  15  |      | a15  |
+
+        Format:
+        1. The root note (1) should not be included
+        2. All other intervals (see the table above) can be included once
+        3. Intervals must be separated by a hyphen character (-)
+        4. Intervals should be in ascending order (see the table above)
+        5. At least 1, but no more than 12, intervals can be specified
+
+        Variants:
+        - Harmonics possible: (a?2)?-?(m?3)?-?((d|a)?4)?-?((d|a)?5)?-?(m?6)?-?((d|m)?7)?-?(d?8)?-?((m|a)?9)?-?(m?10)?-?((d|a)?11)?-?(m?13)?
+          Covers all variants from standardized 69 chords + a2, d4, a4, d8, a9, m13 (one per step)
+        - Logically possible: (d1)?-?(a1)?-?(d2)?-?(m2)?-?2?-?(a2)?-?(d3)?-?(m3)?-?3?-?(a3)?-?(d4)?-?4?-?(a4)?-?(d5)?-?5?-?(a5)?-?(d6)?-?(m6)?-?6?-?(a6)?-?(d7)?-?(m7)?-?7?-?(a7)?-?(d8)?-?8?-?(a8)?-?(d9)?-?(m9)?-?9?-?(a9)?-?(d10)?-?(m10)?-?(10)?-?(a10)?-?(d11)?-?(11)?-?(a11)?-?(d12)?-?(12)?-?(a12)?-?(d13)?-?(m13)?-?(13)?-?(a13)?-?(d14)?-?(m14)?-?(14)?-?(a14)?-?(d15)?-?(15)?-?(a15)?
+          Covers all possible variants (52) in ascending order. Covers format aspects of expectations: 1, 2, 3, 4.
+        - Logically possible (max. 12 notes): (([2-9]|1[0-5]|m([23679]|10|13|14)|(d|a)(1[0-5]|[1-9]))-){0,11}([2-9]|1[0-5]|m([23679]|10|13|14)|(d|a)(1[0-5]|[1-9]))
+          Covers all variants (52), but only 12 segments (in any order). Covers format aspects of expectations: 1, 3, 5.
+        We need to use both logical regular expressions to cover all 5 aspects of expectations.
+        -->
+        <param name="pattern">(d1)?-?(a1)?-?(d2)?-?(m2)?-?2?-?(a2)?-?(d3)?-?(m3)?-?3?-?(a3)?-?(d4)?-?4?-?(a4)?-?(d5)?-?5?-?(a5)?-?(d6)?-?(m6)?-?6?-?(a6)?-?(d7)?-?(m7)?-?7?-?(a7)?-?(d8)?-?8?-?(a8)?-?(d9)?-?(m9)?-?9?-?(a9)?-?(d10)?-?(m10)?-?(10)?-?(a10)?-?(d11)?-?(11)?-?(a11)?-?(d12)?-?(12)?-?(a12)?-?(d13)?-?(m13)?-?(13)?-?(a13)?-?(d14)?-?(m14)?-?(14)?-?(a14)?-?(d15)?-?(15)?-?(a15)?</param>
+        <param name="pattern">(([2-9]|1[0-5]|m([23679]|10|13|14)|(d|a)(1[0-5]|[1-9]))-){0,11}([2-9]|1[0-5]|m([23679]|10|13|14)|(d|a)(1[0-5]|[1-9]))</param>
+      </data>
+    </choice>
   </define>
 
   <define name="tag">
@@ -403,41 +696,66 @@
         <!-- allow only values like: '0.1' '11.2' '13.14.15'
         <param name="pattern">[0-9]+\.[0-9]+(\.[0-9]+)?</param> -->
         <!-- RelaxNG xml schema is specific for openlyrics version -->
-        <param name="pattern">0\.8</param>
+        <param name="pattern">0\.9</param>
       </data>
     </attribute>
     <optional>
-        <attribute name="createdIn">
-          <ref name="nonEmptyContent"/>
-        </attribute>
+      <attribute name="xml:lang">
+        <data type="language"/>
+      </attribute>
     </optional>
     <optional>
-        <attribute name="modifiedIn">
-          <ref name="nonEmptyContent"/>
-        </attribute>
+      <attribute name="createdIn">
+        <ref name="nonEmptyContent"/>
+      </attribute>
     </optional>
     <optional>
-        <attribute name="modifiedDate">
-          <!-- date format: ISO 8601 -->
-          <data type="dateTime"/>
-        </attribute>
+      <attribute name="modifiedIn">
+        <ref name="nonEmptyContent"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="modifiedDate">
+        <!-- date format: ISO 8601 -->
+        <data type="dateTime"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="chordNotation">
+        <choice>
+          <value>english</value>
+          <value>german</value>
+          <value>dutch</value>
+          <value>hungarian</value>
+          <value>neolatin</value>
+        </choice>
+      </attribute>
     </optional>
   </define>
 
   <define name="verseNameType">
-    <choice>
-      <data type="NMTOKEN">
-        <param name="minLength">1</param>
-        <!-- verse - v1, v2, v1a, ...  3 letters: [verse][verse_number][verse_part]
-             chorus c, c1, c2, c1a, ca, ...
-             pre-chorus - p, p1, p2, p1a, pa, ...
-             bridge - b, b1, b2, b1a, ba, ...
-             ending - e, e1, e2, e1a, ea, ... -->
-        <param name="pattern">(v[1-9]\d?[a-z]?)|([cpbe][a-z]?)|([cpbe][1-9]\d?[a-z]?)</param>
-      </data>
-      <!-- custom values of verse name - one word name -->
-      <data type="NMTOKEN"/>
-    </choice>
+    <data type="ID">
+      <param name="minLength">1</param>
+      <!-- 3 part: [verse][verse_number][verse_part]
+           verse      -    v1, v2, v1a, ...
+           chorus     - c, c1, c2, c1a, ca, ...
+           pre-chorus - p, p1, p2, p1a, pa, ...
+           bridge     - b, b1, b2, b1a, ba, ...
+           ending     - e, e1, e2, e1a, ea, ... -->
+      <param name="pattern">(v[1-9]\d*[a-z]?)|([cpbe][1-9]\d?[a-z]?)|([cpbe][a-z]?)</param>
+    </data>
+  </define>
+
+  <define name="instrumentNameType">
+    <data type="ID">
+      <param name="minLength">1</param>
+      <!-- 3 part: [verse][verse_number][verse_part]
+           intro  - i, i1, i2, i1a, ...
+           middle - m, m1, m2, m1a, ma, ...
+           outro  - o, o1, o2, o1a, oa, ...
+           solo   - s, s1, s2, s1a, sa, ... -->
+      <param name="pattern">([imos][1-9]\d?[a-z]?)|([imos][a-z]?)</param>
+    </data>
   </define>
 
   <define name="langAttribute">
@@ -480,6 +798,43 @@
         <empty/>
       </element>
     </optional>
+  </define>
+
+ <!-- INSTRUMENT -->
+
+  <define name="instrument">
+    <element name="instrument">
+      <attribute name="name">
+        <ref name="instrumentNameType"/>
+      </attribute>
+      <oneOrMore>
+        <element name="lines">
+          <optional>
+            <attribute name="repeat">
+              <data type="integer">
+                <param name="minInclusive">2</param>
+              </data>
+            </attribute>
+          </optional>
+          <choice>
+            <oneOrMore>
+              <ref name="beat"/>
+            </oneOrMore>
+            <oneOrMore>
+              <ref name="chord"/>
+            </oneOrMore>
+          </choice>
+        </element>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="beat">
+    <element name="beat">
+      <zeroOrMore>
+        <ref name="chord"/>
+      </zeroOrMore>
+    </element>
   </define>
 
 </grammar>

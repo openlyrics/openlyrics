@@ -27,7 +27,10 @@ Features
         ``<ccliNo>``
 
     chords
-        ``<chord name="D">``
+        ``<chord root="D">``
+
+    beats
+        ``<beat><chord root="D"></beat>``
 
     comments in lyrics
         ``<verse><lines><comment/></lines></verse>``
@@ -36,7 +39,7 @@ Features
         ``<released>``
 
     OpenLyrics version
-        ``<song version="0.8>``
+        ``<song version="0.9>``
 
     keywords for searching
         ``<keywords>``
@@ -77,6 +80,8 @@ Features
         ``<songbooks>``
 
     song metadata
+        ``<song xml:lang="">``
+        ``<song chordNotation="">``
         ``<song version="">``
         ``<song createdIn="">``
         ``<song modifiedIn="">``
@@ -96,6 +101,9 @@ Features
 
     translated lyrics
         ``<verse name="v1" lang="en">``
+
+    instrumental parts without lyrics
+        ``<instrument name="i1">``
 
     translated song title
         ``<title lang="en">``
@@ -128,10 +136,7 @@ Required Data Items
 Here is an example of a song containing only the required XML tags::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.8"
-          createdIn="OpenLP 1.9.0"
-          modifiedIn="ChangingSong 0.0.1"
-          modifiedDate="2010-01-28T13:15:30+01:00">
+          version="0.9">
       <properties>
         <titles>
           <title>Amazing Grace</title>
@@ -165,7 +170,9 @@ applications using OpenLyrics.
 Metadata is enclosed in the ``<song>`` tag as attributes::
 
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.8"
+          xml:lang="de"
+          chordNotation="german"
+          version="0.9"
           createdIn="OpenLP 1.9.0"
           modifiedIn="ChangingSong 0.0.1"
           modifiedDate="2010-01-28T13:15:30+01:00">
@@ -173,6 +180,22 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 ``xmlns``
     Defines an XML namespace. The value should be always
     ``http://openlyrics.info/namespace/2009/song``
+
+``xml:lang``
+    Language of the OpenLyrics document. It defines the default language for titles,
+    keywords, themes, comments, lyrics, etc. The format of this attribute should be
+    or ``xx-YY``, where ``xx`` is a language code from the
+    `ISO-639 <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_ standard, and
+    ``YY`` is a `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For more
+    details see `BCP 47 <http://www.rfc-editor.org/rfc/bcp/bcp47.txt>`_.
+    Default language can be overwriten for a specified element, see:
+    ``<title lang="">``, ``<theme lang="">``, ``<verse lang="">``.
+    This element is optional. If not specified, it means document language is ``"en"``.
+
+``chordNotation``
+    A string to idetify the preferred notation of the chords. Supported values are
+    ``english`` (default), ``german``, ``dutch``, ``hungarian``, ``neolatin``.
+    This element is optional.
 
 ``version``
     Version of the OpenLyrics format used by a song. This gives applications the
@@ -253,6 +276,15 @@ valid file name characters. It is recommended that files should be compressed
 using the `7-Zip <http://en.wikipedia.org/wiki/7zip>`_ format, as this format is
 known to handle non-ASCII file names well.
 
+Processing Instructions
+----------------------
+
+OpenLyrics, like all XML files, can contain `processing instructions <https://www.w3.org/TR/REC-xml/#sec-pi>`_.
+With the ``xml-stylesheet`` attribute it is possible to `associate <https://www.w3.org/TR/xml-stylesheet/>`_
+CSS or XSLT style sheets with an OpenLyrics document. For example::
+
+    <?xml-stylesheet href="ol.css" type="text/css"?>
+    <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9">
 
 Song Properties
 ---------------
@@ -520,17 +552,17 @@ For example, in *Amazing Grace*::
 Verse Order
 ^^^^^^^^^^^
 
-The verse order of a song defines the order in which the verses are typically sung
-or performed. The verse order is denoted by the ``<verseOrder>`` tag.
+The verse order of a song defines the order in which the verses and instrumental parts
+are typically sung or performed. The verse order is denoted by the ``<verseOrder>`` tag.
 
-The verse order is a space-separated string of verse names (which are defined in
+The verse order is a space-separated string of verse and instrumental names (which are defined in
 the ``<lyrics>`` section of the file). Verse names can appear multiple times, and
 should be lowercase. See the ``<verse>`` section for more information on verse
 names.
 
 For example::
 
-    <verseOrder>v1 c v2 c v1 c</verseOrder>
+    <verseOrder>i v1 c v2 c v1 c o</verseOrder>
 
 
 Song Books
@@ -616,10 +648,12 @@ Song Lyrics
 The second section of an OpenLyrics song is defined by the ``<lyrics>`` tag. This
 tag contains words of a song and other data related to it.
 
-The ``<lyrics>`` tag contains one or more ``<verse>`` tags. Each ``<verse>`` tag
-defines a verse or stanza of a song, and contains a single mandatory attribute,
-``name``. Each verse can contain one or more ``<lines>`` tags, which holds a
-logical grouping of words.
+The ``<lyrics>`` tag contains one or more ``<verse>`` or ``<instrument>`` tags.
+Each ``<verse>`` tag defines a verse or stanza of a song, and contains a single
+mandatory attribute, ``name``. Each ``<instrument>`` tag defines an instrumental
+part (without lyrics) of a song, and contains a single mandatory attribute, ``name``.
+Each verse and istreumental part can contain one or more ``<lines>`` tags, which holds a
+logical grouping of words and chords.
 
 A song should contain at least **one verse**::
 
@@ -693,36 +727,51 @@ doesn't fit on one screen::
 This tells the application that it can split the verse after the
 line "That saved a wretch like me!"
 
-Verse Name
-^^^^^^^^^^
+Verse/Instrumental Name
+^^^^^^^^^^^^^^^^^^^^^^^
 
-As previously mentioned, every ``<verse>`` tag has a mandatory ``name`` attribute.
-Verse names should be unique, written in **lower case**, a single word, and should
+As previously mentioned, every ``<verse>`` or ``<instrument>`` tag has a mandatory ``name`` attribute.
+They should be unique, written in **lower case**, a single word, and should
 follow the naming convention as laid out in the table below:
 
 ======================= ==========================================================
 Name                    Description
 ======================= ==========================================================
-``v1, v2, v3, ...``     first verse, second verse, third verse, ...
-``v1a, v1b, v1c, ...``  first verse part 1, first verse part two, ...
+``v1, v2, ...``         first verse, second verse, ...
+``v1a, v1b, ...``       first verse part A, first verse part B, ...
 ``c``                   chorus
 ``c1, c2, ...``         first chorus, second chorus, ...
-``c1a, c1b, ...``       first chorus part 1, first chorus part 2, ...
+``ca, c1a, c1b, ...``   chorus part A, first chorus part A, first chorus part B, ...
 ``p``                   pre-chorus
 ``p1, p2, ...``         first pre-chorus, second pre-chorus, ...
-``p1a, p1b, ...``       first pre-chorus part 1, first pre-chorus part 2, ...
+``pa, p1a, p1b, ...``   pre-chrous part A, first pre-chorus part A, first pre-chorus part B, ...
 ``b``                   bridge
 ``b1, b2, ...``         first bridge, second bridge, ...
-``b1a, b1b, b1c, ...``  first bridge part 1, first bridge part 2, ...
+``ba, b1a, b1b, ...``   bridge part A, first bridge part A, first bridge part B, ...
 ``e``                   ending
 ``e1, e2, ...``         first ending, second ending, ...
-``e1a, e1b, e1c, ...``  first ending part 1, first ending part 2, ...
+``ea, e1a, e1b, ...``   ending part A, first ending part A, first ending part B, ...
+``i``                   instrumental intro
+``i1, i2, ...``         first intro, second intro, ...
+``ia, i1a, i1b, ...``   intro part A, first intro part A, first intro part B, ...
+``m``                   instrumental middle
+``m1, m2, ...``         first middle, second middle, ...
+``ma, m1a, m1b, ...``   middle part A, first middle part A, first middle part B, ...
+``o``                   instrumental outro
+``o1, o2, ...``         first outro, second outro, ...
+``oa, o1a, o1b, ...``   outro part A, first outro part A, first outro part B, ...
+``s``                   instrumental solo
+``s1, s2, ...``         first solo, second solo, ...
+``sa, s1a, s1b, ...``   solo part A, first solo part A, first solo part B, ...
 ======================= ==========================================================
 
-According to the table above, a song containing two verses (*v1, v2*), a chorus
+According to the table above, a song containing an instrumental intro (*i*) two verses (*v1, v2*), a chorus
 (*c*), a bridge (*b*) and an ending (*e*) would look like this::
 
     <lyrics>
+      <instrument name="i">
+        ...
+      </instrument>
       <verse name="v1">
         ...
       </verse>
@@ -744,24 +793,180 @@ According to the table above, a song containing two verses (*v1, v2*), a chorus
 Chords
 ^^^^^^
 
-The OpenLyrics format also provides the ability to include chords in the lyrics of
-songs. The tag containing a chord name looks like this::
+The OpenLyrics format also provides the ability to include chords in the lyrics and instrumental part of
+songs. The tag containing a chord name looks like these::
 
-    <chord name="D7"/>
+    <chord root="C" structure="dom7">lyrics...</chord>
+    <chord root="D" bass="F#">lyrics...</chord>
+    <chord root="C" structure="min" bass="Eb"/>lyrics
+    <chord root="E" structure="3-5-m7-13">lyrics...</chord>
 
-The ``<chord>`` tags are mixed in with the lyrics of a song. This tag should be
-placed immediately before the letters where it should be played::
+The root note
+"""""""""""""
+
+The ``root`` attribute describes the root note of the chord. The values should marked
+with English notation:
+
+========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+english    C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    Bb   B
+========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+german     C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   B    H
+dutch      C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   Bes  B
+hungarian  C   Cisz  Desz  D   Disz  Esz  E   F   Fisz  Gesz  G    Gisz  Asz  A   Aisz  B    H
+neolatin   Do  Do#   Reb   Re  Re#   Mib  Mi  Fa  Fa#   Solb  Sol  Sol#  Lab  La  La#   Sib  Si
+========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+
+The preferred notation for displaying can be marked with ``chordNotation`` attribute on root element.
+
+The bass
+""""""""
+
+The optional ``bass`` attribute describes the foreign bass of the chord if any. The values should marked
+with English notation.
+
+The chord structure
+"""""""""""""""""""
+The ``structure`` attribute describes the kind of the chord. This element is optional,
+if not present, the default value is the ``major``. It can be marked
+
+- with a sorthand code, or
+- with a chord formula (for experts).
+
+These are the built-in **sorthand codes**:
+
+============ =================================== ========
+Shortcode    Chord Name                          Notation
+============ =================================== ========
+**power**    perfect 5th; power chord            5
+             major
+**min**      minor                               m
+**aug**      augmented                           \+
+**dim**      diminished                          °
+**dom7**     dominant 7th                        7
+**maj7**     major 7th                           Δ
+**min7**     minor 7th                           m7
+**dim7**     diminished 7th                      °7
+**halfdim7** half-diminished 7th                 ø
+**minmaj7**  minor major 7th                     mΔ
+**augmaj7**  augmented major 7th                 +Δ
+**aug7**     dominant 7th sharp 5; augmented 7th 7
+**maj6**     major 6th                           6
+**maj6b**    (major minor 6th)                   6♭
+**min6**     minor 6th                           m6
+**min6b**    (minor minor 6th)                   m6♭
+**dom9**     (dominant) 9th                      9
+**dom9b**    dominant minor 9th                  7,9♭
+**maj9**     major 9th                           Δ9
+**min9**     minor (dominant)Í 9th               m9
+**minmaj9**  minor major 9th                     mΔ9
+**aug9**     augmented (dominant) 9th            9
+**halfdim9** half-diminished 9th                 ø9
+**sus4**     suspended 4th                       4
+**sus2**     suspended 2nd                       2
+**add9**     original name + added 9th           add9
+============ =================================== ========
+
+Other chords can be noted with **chord formulas**. OpenLyrics has 69 built-in chords defined by a formula.
+Using chord formulas, an author can write additional custom chords. Chord formulas are described
+in :ref:`chord formulas <chordlist>`.
+
+To display root+structure+bass
+""""""""""""""""""""""""""""""
+
+The processors should display chords:
+
+- First display the ``root`` according to ``chordNotation``.
+- Immediately followed by the notation for the marked chord.
+- If there is a bass: immediately followed by a slash (/) and the ``root`` according to ``chordNotation``.
+
+Examples:
+
+=============================================== =========
+XML                                             Displayed
+=============================================== =========
+``<chord root="C" structure="dom7"/>``          C7
+``<chord root="D" bass="F#"/>``                 D/F♯
+``<chord root="C" structure="min" bass="Eb"/>`` Cm/E♭
+``<chord root="E" structure="3-5-m7-13"/>``     E7,6
+=============================================== =========
+
+Mixing lyrics and chords
+""""""""""""""""""""""""
+
+The ``<chord>`` tags are mixed in with the lyrics of a song::
 
     <lyrics>
       <verse name="v1">
         <lines>
-          <chord name="D7"/>Amazing grace how <chord name="E"/>sweet the sound<br/>
-          That saved <chord name="A"/>a wretch <chord name="F#"/>like me.
+          <chord root="D" structure="dom7"/>Amazing grace
+          how</chord> <chord root="E">sweet the sound</chord><br/>
+          That saved <chord root="A">a wretch</chord>
+          <chord root="F#"/>like me.</chord>
         </lines>
       </verse>
     </lyrics>
 
-Chords should be written according to this :ref:`list of chords <chordlist>`.
+This tag can be normal and empty.
+
+Normal tags:
+
+- Can mark normal chords with lyrics. They should be placed on the lyrics (syllables), to which the chord applies. With
+  this syntax overlapping can avoided::
+
+    Ho<chord root="E" bass="G#">san</chord><chord root="A">na,
+    ho</chord><chord root="B">san<chord root="C#" structure="min">na,<br/>
+    Ho</chord><chord root="A">sanna in the <chord root="C#"
+    structure="min">high</chord><chord root="B">est.</chord>
+
+      E/G# A     B  C#m
+    Hosan__na, hosanna,
+      A            C#m B
+    Hosanna in the highest.
+
+- Can mark upbeats using an optional ``upbeat`` attribute, when a chord starts with a music pause::
+
+    <chord root="D" upbeat="true">You are my
+    pas</chord><chord root="D" structure="sus2" bass="C#">sion</chord><br/>
+    <chord root="B" structure="min7" upbeat="true">Love of my</chord>
+    <chord root="G">life</chord>
+
+      D              D2 /C♯
+       You are my passion
+    Bm7           G
+       Love of my life
+
+- Can mark more that one chord on one syllable (nested tag)::
+
+    <chord root="A"><chord root="G"><chord root="D">Al</chord></chord></chord>
+    le<chord root="D">luja,</chord>
+
+    DGA    D
+    Al__leluja
+
+Empty tags:
+
+- Can mark chords without lyrics (chords on music pause). Example::
+
+    Aunque mis <chord root="E">ojos<br/>
+    no te puedan</chord> <chord root="C#" structure="min">ver,
+    te puedo sent<chord root="A">ir,<br/>
+    Sé que estás a</chord><chord root="E">quí.</chord><chord root="B"/>
+
+               E
+    Aunque mis ojos
+                 C#m               A
+    no te puedan ver, te puedo sentir,
+                   E  B
+    Sé que estás aquí.
+
+- Can mark chords without time specification like in version 0.8. They should be places immediately before the letters where it should be
+  played. (With this syntax chords can overlap.)::
+
+    A<chord root="G"/>mazing <chord root="G" structure="dom7" />Grace!
+    how <chord root="C"/>sweet the <chord root="G">sound.
+
+     G      G7         C         G
+    Amazing Grace! how sweet the sound.
 
 Multiple Languages (Lyrics Translations)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -889,6 +1094,66 @@ For example::
       </verse>
     </lyrics>
 
+Line repeat
+^^^^^^^^^^^
+
+In some songs not only the verses but also the lines may be repeated. Repeated verse can be managed
+with the ``<verseOrder>`` tag::
+
+    <verseOrder>v1 v1 c v2 v2 c</verseOrder>
+
+Repeating lines can be described with an optional attribute for lines::
+
+    <lines repeat="2">O my Jesus.</lines>
+
+The value of this attribute should be an integer with a value of 2 or more.
+
+Lyrics projectors and processors can display the above example like this::
+
+    𝄆 O my Jesus. 𝄇×2
+
+Or simply::
+
+    O my Jesus.
+    O my Jesus.
+
+Instrumental parts
+^^^^^^^^^^^^^^^^^^
+
+In some songs there are parts without lyrics, instrumental sections, etc.
+OpenLyrics supports describing these parts, very similar to ``<verse>`` tags::
+
+    <lyrics>
+      <instrument name="i">
+        <lines>
+          <beat><chord root="B" structure="m3-5" /><chord root="A" bass="C#" /></beat>
+          <beat><chord root="D" /></beat>
+          <beat><chord root="A" /></beat>
+          <beat><chord root="G" /></beat>
+        </lines>
+      </instrument>
+    </lyrics>
+
+<instrument> tags are siblings to <verse> tags. They can be in any order
+(described in ``<verseOrder>``). The name of an instrumental part can be intro (``name="i"``),
+middle (``name="m"``), outro (``name="o"``) or solo (``name="s"``), and can named similar to other
+verse names (``i, i1, i2, i1a, i1b``). Instrumental part can't contain lyrics, only ``<chord>`` and
+``<beat>`` tags. A <beat> represents a beat in the music. A <beat> tag can contains only <chord> tags.
+But it is not mandatory to separate beats, instrumental parts can contain chords only::
+
+    <instrument name="i">
+      <lines>
+        <chord root="D" /><chord root="A" /><chord root="G" />
+      </lines>
+    </instrument>
+
+If a lyrics projector supports chords it can display instrumental
+parts as a verse without lyrics. If a lyrics projector does not support
+chords, can simply omit instrumental parts.
+
+The example above should be displayed like so::
+
+    {Intro} h A/C# | D | A | G
 
 Advanced Example
 ----------------
@@ -900,7 +1165,7 @@ Here's an advanced example of the XML::
 
     <?xml version="1.0" encoding="UTF-8"?>
     <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.8"
+          version="0.9"
           createdIn="OpenLP 2.0"
           modifiedIn="ChangingSong 0.0.2"
           <!-- date format: ISO 8601 -->
@@ -917,7 +1182,7 @@ Here's an advanced example of the XML::
         <released>1779</released>
         <tempo type="text">moderate</tempo>
         <key>D</key>
-        <verseOrder>v1 v2 v3 v4 v5 v6</verseOrder>
+        <verseOrder>i v1 v2 v3 v4 v5 v6</verseOrder>
         <themes>
           <theme>Assurance</theme>
           <theme>Grace</theme>
@@ -926,6 +1191,11 @@ Here's an advanced example of the XML::
         </themes>
       </properties>
       <lyrics>
+        <verse name="i">
+          <lines>
+            <chord root="E" structure="min" /><chord root="D"/><chord root="G"/>
+          </lines>
+        </verse>
         <verse name="v1">
           <lines>
             Amazing grace how sweet the sound<br/>
@@ -960,4 +1230,3 @@ Here's an advanced example of the XML::
         </verse>
       </lyrics>
     </song>
-

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locale xml:lang="hu">
+  <properties>
+    <songbook>Énekeskönyv</songbook>
+    <language>Nyelv</language>
+    <title>Cím</title>
+    <originalTitle>Eredeti cím</originalTitle>
+    <subtitle>Alcím</subtitle>
+    <author>Szerző</author>
+    <words>Szövegíró</words>
+    <music>Zeneszerző</music>
+    <translation>Fordító</translation>
+    <released>Kiadva</released>
+    <version>Verzió</version>
+    <variant>Verzió</variant>
+    <publisher>Kiadó</publisher>
+    <copyright>Szerzői jogok</copyright>
+    <comment>Megjegyzés</comment>
+    <keywords>Kulcsszavak</keywords>
+    <key>Hangnem</key>
+    <tempo>Tempó</tempo>
+    <transposition>Transzponálás</transposition>
+    <ccliNo>CCLI-szám</ccliNo>
+    <themes>Témák</themes>
+    <verseOrder>Verszaksorrend</verseOrder>
+    <creator>Létrehozó</creator>
+  </properties>
+  <lyrics>
+    <part>Rész</part>
+    <name>Verszak neve</name>
+    <lang>Verszak nyelve</lang>
+    <translit>Átbetűzés, transzliteráció</translit>
+    <comment>Megjegyzés</comment>
+    <verseNames>
+      <v>Versszak</v>
+      <c>Refrén</c>
+      <p>Előrefrén</p>
+      <b>Híd</b>
+      <e>Lezárás</e>
+      <i>Intró</i>
+      <m>Közjáték</m>
+      <o>Utójáték</o>
+      <s>Szóló</s>
+    </verseNames>
+    <verseNameFormat initial="number" separator=". " translateFrom="VREHLIKUS" translateTo="vrehlikus" />
+  </lyrics>
+  <languages>
+    <en>angol</en>
+    <hu>magyar</hu>
+    <es>spanyol</es>
+    <it>olasz</it>
+    <he>héber, ivrit</he>
+  </languages>
+</locale>
