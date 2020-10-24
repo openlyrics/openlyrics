@@ -72,6 +72,7 @@
             <xsl:when test="$structure = 'maj7'">maj7</xsl:when>
             <xsl:when test="$structure = 'm7'">min7</xsl:when>
             <xsl:when test="$structure = '7(b5)' or $structure = 'm7b5'">halfdim7</xsl:when>
+            <xsl:when test="$structure = 'm#7' or $structure = 'm(#7)' or $structure = 'm(maj7)' or $structure = 'mmaj7'">minmaj7</xsl:when>
             <xsl:when test="$structure = 'maj7(#5)'">augmaj7</xsl:when>
             <xsl:when test="$structure = '6'">maj6</xsl:when>
             <xsl:when test="$structure = 'm6'">min6</xsl:when>
@@ -79,13 +80,15 @@
             <xsl:when test="$structure = '7(b9)' or $structure = '7b9'">dom9b</xsl:when>
             <xsl:when test="$structure = 'maj9'">maj9</xsl:when>
             <xsl:when test="$structure = 'm9'">min9</xsl:when>
+            <xsl:when test="$structure = 'm9(maj7)' or $structure = 'm9maj7'">minmaj9</xsl:when>
+            <xsl:when test="$structure = '7#9' or $structure = '7(#9)'">3-5-m7-m10</xsl:when>
             <xsl:when test="$structure = '11'">3-5-m7-9-11</xsl:when>
             <xsl:when test="$structure = 'm11'">m3-5-m7-9-11</xsl:when>
             <xsl:when test="$structure = '13'">3-5-m7-9-11-13</xsl:when>
-            <xsl:when test="$structure = '4'or $structure = 'sus' or $structure = 'sus4'">sus4</xsl:when>
-            <xsl:when test="$structure = 'sus2' or $structure = 'sus9'">sus2</xsl:when>
-            <xsl:when test="$structure = '(add9)' or $structure = '(addD)' or $structure = 'addD' or $structure = 'add2' or $structure = 'add9' or $structure = 'addG'">add9</xsl:when>
-            <xsl:when test="$structure = '7(sus4)' or $structure = '7sus4'">4-5-m7</xsl:when>
+            <xsl:when test="$structure = '4'or $structure = 'sus' or $structure = 'sus4' or $structure ='m(sus4)' or $structure = 'msus4'">sus4</xsl:when>
+            <xsl:when test="$structure = 'sus2' or $structure = 'sus9' or $structure='m(sus9)' or $structure = 'msus9'">sus2</xsl:when>
+            <xsl:when test="$structure = '2' or $structure = '(add9)' or $structure = '(addD)' or $structure = 'addD' or $structure = 'add2' or $structure = 'add9' or $structure = 'addG'">add9</xsl:when>
+            <xsl:when test="$structure = '7(sus4)' or $structure = '7sus4' or $structure = 'addE'">4-5-m7</xsl:when>
             <xsl:when test="$structure = '7sus2'">2-5-m7</xsl:when>
             <xsl:when test="$structure = 'maj7sus4'">4-5-7</xsl:when>
             <xsl:when test="$structure = '9sus'">4-5-m7-9</xsl:when>
