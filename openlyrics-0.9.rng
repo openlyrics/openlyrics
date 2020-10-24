@@ -734,7 +734,7 @@
   </define>
 
   <define name="verseNameType">
-    <data type="ID">
+    <data type="NMTOKEN">
       <param name="minLength">1</param>
       <!-- 3 part: [verse][verse_number][verse_part]
            verse      -    v1, v2, v1a, ...
@@ -747,7 +747,7 @@
   </define>
 
   <define name="instrumentNameType">
-    <data type="ID">
+    <data type="NMTOKEN">
       <param name="minLength">1</param>
       <!-- 3 part: [verse][verse_number][verse_part]
            intro  - i, i1, i2, i1a, ...
