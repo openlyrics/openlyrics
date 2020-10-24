@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.675831">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.675831">
   <properties>
     <titles>
       <title>Come Thou Fount</title>
@@ -18,26 +18,26 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        Come, Thou <chord name="D"/>Fount of every <chord name="A"/>blessing, Tune my <chord name="G"/>heart to sing Thy <chord name="D"/>grace;<br/>
-        Streams of <chord name="D"/>mercy, never <chord name="A"/>ceasing, Call for <chord name="G"/>songs of loudest <chord name="D"/>praise.<br/>
-        Teach me <chord name="D"/>some melodious <chord name="A"/>sonnet, Sung by <chord name="G"/>flaming tongues <chord name="D"/>above;<br/>
-        Praise the <chord name="D"/>mount, I'm fixed u<chord name="A"/>pon it, Mount of <chord name="G"/>Thy redeeming <chord name="D"/>love.
+        Come, Thou <chord root="D"/>Fount of every <chord root="A"/>blessing, Tune my <chord root="G"/>heart to sing Thy <chord root="D"/>grace;<br/>
+        Streams of <chord root="D"/>mercy, never <chord root="A"/>ceasing, Call for <chord root="G"/>songs of loudest <chord root="D"/>praise.<br/>
+        Teach me <chord root="D"/>some melodious <chord root="A"/>sonnet, Sung by <chord root="G"/>flaming tongues <chord root="D"/>above;<br/>
+        Praise the <chord root="D"/>mount, I'm fixed u<chord root="A"/>pon it, Mount of <chord root="G"/>Thy redeeming <chord root="D"/>love.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        Here I <chord name="D"/>raise mine Ebe<chord name="A"/>nezer, Hither <chord name="G"/>by Thy great help I <chord name="D"/>come;<br/>
-        And I <chord name="D"/>hope by Thy good <chord name="A"/>pleasure, Safely <chord name="G"/>to arrive at <chord name="D"/>home.<br/>
-        Jesus <chord name="D"/>sought me when a <chord name="A"/>stranger, Wandering <chord name="G"/>from the fold of <chord name="D"/>God;<br/>
-        He to <chord name="D"/>rescue me from <chord name="A"/>danger, Inter<chord name="G"/>posed His precious <chord name="D"/>blood.
+        Here I <chord root="D"/>raise mine Ebe<chord root="A"/>nezer, Hither <chord root="G"/>by Thy great help I <chord root="D"/>come;<br/>
+        And I <chord root="D"/>hope by Thy good <chord root="A"/>pleasure, Safely <chord root="G"/>to arrive at <chord root="D"/>home.<br/>
+        Jesus <chord root="D"/>sought me when a <chord root="A"/>stranger, Wandering <chord root="G"/>from the fold of <chord root="D"/>God;<br/>
+        He to <chord root="D"/>rescue me from <chord root="A"/>danger, Inter<chord root="G"/>posed His precious <chord root="D"/>blood.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        Oh to <chord name="D"/>grace how great a <chord name="A"/>debtor, Daily <chord name="G"/>I'm constrained to <chord name="D"/>be;<br/>
-        Let Thy <chord name="D"/>goodness, like a <chord name="A"/>fetter, Bind my <chord name="G"/>wandering heart to <chord name="D"/>Thee.<br/>
-        Prone to <chord name="D"/>wander, Lord I <chord name="A"/>feel it, Prone to <chord name="G"/>leave the God I <chord name="D"/>love;<br/>
-        Here's my <chord name="D"/>heart, Oh take and <chord name="A"/>seal it, Seal it <chord name="G"/>for Thy courts a<chord name="D"/>bove.
+        Oh to <chord root="D"/>grace how great a <chord root="A"/>debtor, Daily <chord root="G"/>I'm constrained to <chord root="D"/>be;<br/>
+        Let Thy <chord root="D"/>goodness, like a <chord root="A"/>fetter, Bind my <chord root="G"/>wandering heart to <chord root="D"/>Thee.<br/>
+        Prone to <chord root="D"/>wander, Lord I <chord root="A"/>feel it, Prone to <chord root="G"/>leave the God I <chord root="D"/>love;<br/>
+        Here's my <chord root="D"/>heart, Oh take and <chord root="A"/>seal it, Seal it <chord root="G"/>for Thy courts a<chord root="D"/>bove.
       </lines>
     </verse>
   </lyrics>

@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.351916">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.351916">
   <properties>
     <titles>
       <title>The Solid Rock</title>
@@ -16,33 +16,33 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        My <chord name="E"/>hope is built on <chord name="B"/>nothing less than <chord name="A"/>Jesus' blood and <chord name="B"/>righteous<chord name="E"/>ness;<br/>
-        I <chord name="E"/>dare not trust the <chord name="B"/>sweetest frame, but <chord name="A"/>wholly lean on <chord name="B"/>Jesus' <chord name="E"/>name.
+        My <chord root="E"/>hope is built on <chord root="B"/>nothing less than <chord root="A"/>Jesus' blood and <chord root="B"/>righteous<chord root="E"/>ness;<br/>
+        I <chord root="E"/>dare not trust the <chord root="B"/>sweetest frame, but <chord root="A"/>wholly lean on <chord root="B"/>Jesus' <chord root="E"/>name.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        When <chord name="E"/>darkness veils His <chord name="B"/>lovely face, I <chord name="A"/>rest on His un<chord name="B"/>changing <chord name="E"/>grace.<br/>
-        In <chord name="E"/>every high and <chord name="B"/>stormy gale, my <chord name="A"/>anchor holds with<chord name="B"/>in the <chord name="E"/>veil.
+        When <chord root="E"/>darkness veils His <chord root="B"/>lovely face, I <chord root="A"/>rest on His un<chord root="B"/>changing <chord root="E"/>grace.<br/>
+        In <chord root="E"/>every high and <chord root="B"/>stormy gale, my <chord root="A"/>anchor holds with<chord root="B"/>in the <chord root="E"/>veil.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        His  <chord name="E"/>oath, His cove<chord name="B"/>nant, His blood sup<chord name="A"/>port me in the <chord name="B"/>whelming <chord name="E"/>flood;<br/>
-        When <chord name="E"/>all around my <chord name="B"/>soul gives way, He <chord name="A"/>then is all my <chord name="B"/>hope and <chord name="E"/>stay.
+        His <chord root="E"/>oath, His cove<chord root="B"/>nant, His blood sup<chord root="A"/>port me in the <chord root="B"/>whelming <chord root="E"/>flood;<br/>
+        When <chord root="E"/>all around my <chord root="B"/>soul gives way, He <chord root="A"/>then is all my <chord root="B"/>hope and <chord root="E"/>stay.
       </lines>
     </verse>
     <verse name="v4">
       <lines>
-        When <chord name="E"/>He shall come with <chord name="B"/>trumpet sound, O <chord name="A"/>may I then in <chord name="B"/>Him be <chord name="E"/>found;<br/>
-        Dressed <chord name="E"/>in His righteous<chord name="B"/>ness alone, fault<chord name="A"/>less to stand be<chord name="B"/>fore the <chord name="E"/>throne.
+        When <chord root="E"/>He shall come with <chord root="B"/>trumpet sound, O <chord root="A"/>may I then in <chord root="B"/>Him be <chord root="E"/>found;<br/>
+        Dressed <chord root="E"/>in His righteous<chord root="B"/>ness alone, fault<chord root="A"/>less to stand be<chord root="B"/>fore the <chord root="E"/>throne.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        On <chord name="E"/>Christ, the solid <chord name="A"/>rock I stand;<br/>
-        All <chord name="E"/>other ground is sinking <chord name="B"/>sand,<br/>
-        All <chord name="A"/>other ground is <chord name="B"/>sinking <chord name="E"/>sand.
+        On <chord root="E"/>Christ, the solid <chord root="A"/>rock I stand;<br/>
+        All <chord root="E"/>other ground is sinking <chord root="B"/>sand,<br/>
+        All <chord root="A"/>other ground is <chord root="B"/>sinking <chord root="E"/>sand.
       </lines>
     </verse>
   </lyrics>

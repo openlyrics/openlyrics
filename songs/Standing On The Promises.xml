@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.175271">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.175271">
   <properties>
     <titles>
       <title>Standing On The Promises</title>
@@ -20,50 +20,50 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <chord name="G"/>Standing on the promises of Christ, my King!<br/>
-        <chord name="C"/>Through eternal ages let His <chord name="G"/>praises ring;<br/>
-        <chord name="G"/>"Glory in the highest!" I will shout and sing,<br/>
-        Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.
+        <chord root="G"/>Standing on the promises of Christ, my King!<br/>
+        <chord root="C"/>Through eternal ages let His <chord root="G"/>praises ring;<br/>
+        <chord root="G"/>"Glory in the highest!" I will shout and sing,<br/>
+        Standing on the <chord root="A" structure="min"/>promi<chord root="D"/>ses of <chord root="G"/>God.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <chord name="G"/>Standing on the promises that cannot fail,<br/>
-        <chord name="C"/>When the howling storms of doubt and <chord name="G"/>fears assail,<br/>
-        <chord name="G"/>By the living Word of God I shall prevail,<br/>
-        Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.
+        <chord root="G"/>Standing on the promises that cannot fail,<br/>
+        <chord root="C"/>When the howling storms of doubt and <chord root="G"/>fears assail,<br/>
+        <chord root="G"/>By the living Word of God I shall prevail,<br/>
+        Standing on the <chord root="A" structure="min"/>promi<chord root="D"/>ses of <chord root="G"/>God.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <chord name="G"/>Standing on the promises, I now can see<br/>
-        <chord name="C"/>Perfect, present cleansing in the <chord name="G"/>blood for me;<br/>
-        <chord name="G"/>Standing in the liberty where Christ makes free,<br/>
-        Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.
+        <chord root="G"/>Standing on the promises, I now can see<br/>
+        <chord root="C"/>Perfect, present cleansing in the <chord root="G"/>blood for me;<br/>
+        <chord root="G"/>Standing in the liberty where Christ makes free,<br/>
+        Standing on the <chord root="A" structure="min"/>promi<chord root="D"/>ses of <chord root="G"/>God.
       </lines>
     </verse>
     <verse name="v4">
       <lines>
-        <chord name="G"/>Standing on the promises of Christ the Lord,<br/>
-        <chord name="C"/>Bound to Him eternally by <chord name="G"/>love's strong cord,<br/>
-        <chord name="G"/>Overcoming daily with the Spirit's sword,<br/>
-        Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.
+        <chord root="G"/>Standing on the promises of Christ the Lord,<br/>
+        <chord root="C"/>Bound to Him eternally by <chord root="G"/>love's strong cord,<br/>
+        <chord root="G"/>Overcoming daily with the Spirit's sword,<br/>
+        Standing on the <chord root="A" structure="min"/>promi<chord root="D"/>ses of <chord root="G"/>God.
       </lines>
     </verse>
     <verse name="v5">
       <lines>
-        <chord name="G"/>Standing on the promises, I cannot fall,<br/>
-        <chord name="C"/>List'ning every moment to the <chord name="G"/>Spirit's call,<br/>
-        <chord name="G"/>Resting in my Saviour as my All-in-All,<br/>
-        Standing on the <chord name="Am"/>promi<chord name="D"/>ses of <chord name="G"/>God.
+        <chord root="G"/>Standing on the promises, I cannot fall,<br/>
+        <chord root="C"/>List'ning every moment to the <chord root="G"/>Spirit's call,<br/>
+        <chord root="G"/>Resting in my Saviour as my All-in-All,<br/>
+        Standing on the <chord root="A" structure="min"/>promi<chord root="D"/>ses of <chord root="G"/>God.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        <chord name="G"/>Standing, <chord name="C"/>stan<chord name="Em"/>ding,<br/>
-        <chord name="D"/>Standing on the promises of <chord name="G"/>Christ my <chord name="C"/>Sav<chord name="G"/>iour;<br/>
-        Standing, <chord name="C"/>standing<br/>
-        I'm <chord name="G"/>standing on the <chord name="Dsus"/>promi<chord name="D"/>ses of <chord name="G"/>God.
+        <chord root="G"/>Standing, <chord root="C"/>stan<chord root="E" structure="min"/>ding,<br/>
+        <chord root="D"/>Standing on the promises of <chord root="G"/>Christ my <chord root="C"/>Sav<chord root="G"/>iour;<br/>
+        Standing, <chord root="C"/>standing<br/>
+        I'm <chord root="G"/>standing on the <chord root="D" structure="sus4"/>promi<chord root="D"/>ses of <chord root="G"/>God.
       </lines>
     </verse>
   </lyrics>

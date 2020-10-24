@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.322812">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.322812">
   <properties>
     <titles>
       <title>And Can It Be</title>
@@ -18,38 +18,38 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <chord name="G"/>And can be that <chord name="Am/C"/>I <chord name="D"/>should <chord name="G"/>gain,<br/>
-        an <chord name="C"/>in<chord name="D"/>terest <chord name="G"/>in my <chord name="D"/>Sa<chord name="A"/>vior's <chord name="D"/>blood?<br/>
-        <chord name="D"/>Died He for <chord name="G/D"/>me, who <chord name="G/B"/>caused His <chord name="D"/>pain?<br/>
-        For <chord name="C"/>me, who <chord name="G"/>Him to <chord name="D"/>death pur<chord name="G"/>sued?<br/>
-        <chord name="G"/>Amazing <chord name="G/D"/>love, how <chord name="C"/>can <chord name="A"/>it <chord name="D"/>be<br/>
-        That <chord name="G"/>thou my <chord name="C"/>Lord should <chord name="D"/>die for <chord name="G"/>me?
+        <chord root="G"/>And can be that <chord root="A" structure="min" bass="C"/>I <chord root="D"/>should <chord root="G"/>gain,<br/>
+        an <chord root="C"/>in<chord root="D"/>terest <chord root="G"/>in my <chord root="D"/>Sa<chord root="A"/>vior's <chord root="D"/>blood?<br/>
+        <chord root="D"/>Died He for <chord root="G" bass="D"/>me, who <chord root="G" bass="B"/>caused His <chord root="D"/>pain?<br/>
+        For <chord root="C"/>me, who <chord root="G"/>Him to <chord root="D"/>death pur<chord root="G"/>sued?<br/>
+        <chord root="G"/>Amazing <chord root="G" bass="D"/>love, how <chord root="C"/>can <chord root="A"/>it <chord root="D"/>be<br/>
+        That <chord root="G"/>thou my <chord root="C"/>Lord should <chord root="D"/>die for <chord root="G"/>me?
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        A<chord name="G"/>mazing <chord name="D"/>love, how <chord name="C"/>can it <chord name="G"/>be<br/>
-        That <chord name="C"/>thou my <chord name="G"/>God <chord name="Am"/>should <chord name="C"/>die <chord name="D"/>for <chord name="G"/>me?
+        A<chord root="G"/>mazing <chord root="D"/>love, how <chord root="C"/>can it <chord root="G"/>be<br/>
+        That <chord root="C"/>thou my <chord root="G"/>God <chord root="A" structure="min"/>should <chord root="C"/>die <chord root="D"/>for <chord root="G"/>me?
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <chord name="G"/>Long my imprisoned <chord name="Am/C"/>spi<chord name="D"/>rit <chord name="G"/>lay,<br/>
-        Fast <chord name="C"/>bound <chord name="D"/>in <chord name="G"/>sin and <chord name="D"/>na<chord name="A"/>ture's <chord name="D"/>night,<br/>
-        <chord name="D"/>Thine eye dif<chord name="G/D"/>fused a <chord name="G/B"/>quickening <chord name="D"/>ray,<br/>
-        I <chord name="C"/>woke, the <chord name="G"/>dungeon <chord name="D"/>flamed with <chord name="G"/>light;<br/>
-        <chord name="G"/>My chains fell <chord name="G/D"/>off, my <chord name="C"/>heart <chord name="A"/>was <chord name="D"/>free,<br/>
-        I <chord name="G"/>rose, went <chord name="C"/>forth and <chord name="D"/>followed <chord name="G"/>thee.
+        <chord root="G"/>Long my imprisoned <chord root="A" structure="min" bass="C"/>spi<chord root="D"/>rit <chord root="G"/>lay,<br/>
+        Fast <chord root="C"/>bound <chord root="D"/>in <chord root="G"/>sin and <chord root="D"/>na<chord root="A"/>ture's <chord root="D"/>night,<br/>
+        <chord root="D"/>Thine eye dif<chord root="G" bass="D"/>fused a <chord root="G" bass="B"/>quickening <chord root="D"/>ray,<br/>
+        I <chord root="C"/>woke, the <chord root="G"/>dungeon <chord root="D"/>flamed with <chord root="G"/>light;<br/>
+        <chord root="G"/>My chains fell <chord root="G" bass="D"/>off, my <chord root="C"/>heart <chord root="A"/>was <chord root="D"/>free,<br/>
+        I <chord root="G"/>rose, went <chord root="C"/>forth and <chord root="D"/>followed <chord root="G"/>thee.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <chord name="G"/>No condemnation <chord name="Am/C"/>now <chord name="D"/>I <chord name="G"/>dread,<br/>
-        Je<chord name="C"/>sus, <chord name="D"/>and <chord name="G"/>all in <chord name="D"/>Him, <chord name="A"/>is <chord name="D"/>mine;<br/>
-        <chord name="D"/>Alive in <chord name="G/D"/>Him, my <chord name="G/B"/>living <chord name="D"/>Head<br/>
-        and <chord name="C"/>clothed with <chord name="G"/>righteous<chord name="D"/>ness di<chord name="G"/>vine,<br/>
-        <chord name="G"/>Bold I ap<chord name="G/D"/>proach the e<chord name="C"/>ter<chord name="A"/>nal <chord name="D"/>throne,<br/>
-        And <chord name="G"/>claim the <chord name="C"/>crown through <chord name="D"/>Christ, my <chord name="G"/>own.
+        <chord root="G"/>No condemnation <chord root="A" structure="min" bass="C"/>now <chord root="D"/>I <chord root="G"/>dread,<br/>
+        Je<chord root="C"/>sus, <chord root="D"/>and <chord root="G"/>all in <chord root="D"/>Him, <chord root="A"/>is <chord root="D"/>mine;<br/>
+        <chord root="D"/>Alive in <chord root="G" bass="D"/>Him, my <chord root="G" bass="B"/>living <chord root="D"/>Head<br/>
+        and <chord root="C"/>clothed with <chord root="G"/>righteous<chord root="D"/>ness di<chord root="G"/>vine,<br/>
+        <chord root="G"/>Bold I ap<chord root="G" bass="D"/>proach the e<chord root="C"/>ter<chord root="A"/>nal <chord root="D"/>throne,<br/>
+        And <chord root="G"/>claim the <chord root="C"/>crown through <chord root="D"/>Christ, my <chord root="G"/>own.
       </lines>
     </verse>
   </lyrics>

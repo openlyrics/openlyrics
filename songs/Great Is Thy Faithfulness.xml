@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.907924">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:48.907924">
   <properties>
     <titles>
       <title>Great Is Thy Faithfulness</title>
@@ -18,34 +18,34 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <chord name="A"/>Great is Thy <chord name="E"/>faithfulness, <chord name="D"/>O God my <chord name="A"/>Father,<br/>
-        <chord name="D"/>There is no <chord name="A"/>shadow of <chord name="B7"/>turning with <chord name="E"/>Thee;<br/>
-        <chord name="E7"/>Thou changest <chord name="A"/>not, Thy com<chord name="A7"/>passions they <chord name="D"/>fail not;<br/>
-        <chord name="Bm7"/>As Thou hast <chord name="A"/>been, Thou for<chord name="D"/>ever <chord name="E"/>will <chord name="A"/>be.
+        <chord root="A"/>Great is Thy <chord root="E"/>faithfulness, <chord root="D"/>O God my <chord root="A"/>Father,<br/>
+        <chord root="D"/>There is no <chord root="A"/>shadow of <chord root="B" structure="dom7"/>turning with <chord root="E"/>Thee;<br/>
+        <chord root="E" structure="dom7"/>Thou changest <chord root="A"/>not, Thy com<chord root="A" structure="dom7"/>passions they <chord root="D"/>fail not;<br/>
+        <chord root="B" structure="min7"/>As Thou hast <chord root="A"/>been, Thou for<chord root="D"/>ever <chord root="E"/>will <chord root="A"/>be.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        <chord name="E"/>Great is Thy <chord name="A"/>faithfulness! <chord name="F#"/>Great is Thy <chord name="Bm"/>faithfulness!<br/>
-        <chord name="E"/>Morning by <chord name="A"/>morning new <chord name="B7"/>mercies I <chord name="E"/>see;<br/>
-        <chord name="E7"/>All I have <chord name="A"/>needed, Thy <chord name="A7"/>hands hath pro<chord name="D"/>vided--<br/>
-        <chord name="B7"/>Great is Thy <chord name="A"/>faithfulness, <chord name="D"/>Lord un<chord name="E"/>to <chord name="A"/>me!
+        <chord root="E"/>Great is Thy <chord root="A"/>faithfulness! <chord root="F#"/>Great is Thy <chord root="B" structure="min"/>faithfulness!<br/>
+        <chord root="E"/>Morning by <chord root="A"/>morning new <chord root="B" structure="dom7"/>mercies I <chord root="E"/>see;<br/>
+        <chord root="E" structure="dom7"/>All I have <chord root="A"/>needed, Thy <chord root="A" structure="dom7"/>hands hath pro<chord root="D"/>vided--<br/>
+        <chord root="B" structure="dom7"/>Great is Thy <chord root="A"/>faithfulness, <chord root="D"/>Lord un<chord root="E"/>to <chord root="A"/>me!
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <chord name="A"/>Summer and <chord name="E"/>winter and <chord name="D"/>springtime and <chord name="A"/>harvest,<br/>
-        <chord name="D"/>Sun, moon and <chord name="A"/>stars in their <chord name="B7"/>courses a<chord name="E"/>bove<br/>
-        <chord name="E7"/>Join with all <chord name="A"/>nature in <chord name="A7"/>manifold <chord name="D"/>witness<br/>
-        <chord name="Bm7"/>To Thy great <chord name="A"/>faithfulness, <chord name="D"/>mercy <chord name="E"/>and <chord name="A"/>love.
+        <chord root="A"/>Summer and <chord root="E"/>winter and <chord root="D"/>springtime and <chord root="A"/>harvest,<br/>
+        <chord root="D"/>Sun, moon and <chord root="A"/>stars in their <chord root="B" structure="dom7"/>courses a<chord root="E"/>bove<br/>
+        <chord root="E" structure="dom7"/>Join with all <chord root="A"/>nature in <chord root="A" structure="dom7"/>manifold <chord root="D"/>witness<br/>
+        <chord root="B" structure="min7"/>To Thy great <chord root="A"/>faithfulness, <chord root="D"/>mercy <chord root="E"/>and <chord root="A"/>love.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <chord name="A"/>Pardon for <chord name="E"/>sin and a <chord name="D"/>peace that en<chord name="A"/>dureth,<br/>
-        <chord name="D"/>Thy own dear <chord name="A"/>presence to <chord name="B7"/>cheer and to <chord name="E"/>guide;<br/>
-        <chord name="E7"/>Strength for to<chord name="A"/>day and bright <chord name="A7"/>hope for to<chord name="D"/>morrow,<br/>
-        <chord name="Bm7"/>Blessings all <chord name="A"/>mine with ten <chord name="D"/>thousands <chord name="E"/>be<chord name="A"/>side.
+        <chord root="A"/>Pardon for <chord root="E"/>sin and a <chord root="D"/>peace that en<chord root="A"/>dureth,<br/>
+        <chord root="D"/>Thy own dear <chord root="A"/>presence to <chord root="B" structure="dom7"/>cheer and to <chord root="E"/>guide;<br/>
+        <chord root="E" structure="dom7"/>Strength for to<chord root="A"/>day and bright <chord root="A" structure="dom7"/>hope for to<chord root="D"/>morrow,<br/>
+        <chord root="B" structure="min7"/>Blessings all <chord root="A"/>mine with ten <chord root="D"/>thousands <chord root="E"/>be<chord root="A"/>side.
       </lines>
     </verse>
   </lyrics>

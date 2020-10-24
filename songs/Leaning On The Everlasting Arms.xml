@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.819233">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.819233">
   <properties>
     <titles>
       <title>Leaning On The Everlasting Arms</title>
@@ -15,26 +15,26 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <chord name="G"/>What a fellowship, <chord name="C2"/>what a joy divine! <chord name="G"/>Leaning on the everlasting <chord name="D"/>arms;<br/>
-        <chord name="G"/>What a blessedness, <chord name="C2"/>what a peace is mine! <chord name="G"/>Leaning on the ever<chord name="D"/>lasting <chord name="G"/>arms.
+        <chord root="G"/>What a fellowship, <chord root="C" structure="add9"/>what a joy divine! <chord root="G"/>Leaning on the everlasting <chord root="D"/>arms;<br/>
+        <chord root="G"/>What a blessedness, <chord root="C" structure="add9"/>what a peace is mine! <chord root="G"/>Leaning on the ever<chord root="D"/>lasting <chord root="G"/>arms.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <chord name="G"/>O how sweet to walk <chord name="C2"/>in this pilgrim way, <chord name="G"/>Leaning on the everlasting <chord name="D"/>arms;<br/>
-        <chord name="G"/>O how bright the path <chord name="C2"/>grows from day to day, <chord name="G"/>Leaning on the ever<chord name="D"/>lasting <chord name="G"/>arms.
+        <chord root="G"/>O how sweet to walk <chord root="C" structure="add9"/>in this pilgrim way, <chord root="G"/>Leaning on the everlasting <chord root="D"/>arms;<br/>
+        <chord root="G"/>O how bright the path <chord root="C" structure="add9"/>grows from day to day, <chord root="G"/>Leaning on the ever<chord root="D"/>lasting <chord root="G"/>arms.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <chord name="G"/>What have I do dread? <chord name="C2"/>What have I to fear? <chord name="G"/>Leaning on the everlasting <chord name="D"/>arms;<br/>
-        <chord name="G"/>I have blessed peace <chord name="C2"/>with my Lord so near, <chord name="G"/>Leaning on the ever<chord name="D"/>lasting <chord name="G"/>arms.
+        <chord root="G"/>What have I do dread? <chord root="C" structure="add9"/>What have I to fear? <chord root="G"/>Leaning on the everlasting <chord root="D"/>arms;<br/>
+        <chord root="G"/>I have blessed peace <chord root="C" structure="add9"/>with my Lord so near, <chord root="G"/>Leaning on the ever<chord root="D"/>lasting <chord root="G"/>arms.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        <chord name="G"/>Leaning, <chord name="C2"/>leaning, <chord name="G"/>Safe and secure from all a<chord name="D"/>larms;<br/>
-        <chord name="G"/>Leaning, <chord name="C2"/>leaning, <chord name="G"/>Leaning on the ever<chord name="D"/>lasting <chord name="G"/>arms.
+        <chord root="G"/>Leaning, <chord root="C" structure="add9"/>leaning, <chord root="G"/>Safe and secure from all a<chord root="D"/>larms;<br/>
+        <chord root="G"/>Leaning, <chord root="C" structure="add9"/>leaning, <chord root="G"/>Leaning on the ever<chord root="D"/>lasting <chord root="G"/>arms.
       </lines>
     </verse>
   </lyrics>
