@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.456276">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.456276">
   <properties>
     <titles>
       <title>I Have Decided To Follow Jesus</title>
@@ -15,26 +15,26 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        I have de<chord name="C"/>ci<chord name="Em/B"/>ded<chord name="Am"/> to follow <chord name="C"/>Jesus,<br/>
-        I have de<chord name="F"/>ci<chord name="Am/E"/>ded<chord name="F"/> to follow <chord name="C"/>Jesus,<chord name="C/G"/><br/>
-        I have de<chord name="C"/>ci<chord name="Em/B"/>ded<chord name="Am"/> to follow <chord name="C"/>Jesus,<chord name="Am"/><br/>
-        No turning <chord name="C"/>ba<chord name="Am"/>ck,<chord name="G"/> no turning <chord name="C"/>back.
+        I have de<chord root="C"/>ci<chord root="E" structure="min" bass="B"/>ded<chord root="A" structure="min"/> to follow <chord root="C"/>Jesus,<br/>
+        I have de<chord root="F"/>ci<chord root="A" structure="min" bass="E"/>ded<chord root="F"/> to follow <chord root="C"/>Jesus,<chord root="C" bass="G"/><br/>
+        I have de<chord root="C"/>ci<chord root="E" structure="min" bass="B"/>ded<chord root="A" structure="min"/> to follow <chord root="C"/>Jesus,<chord root="A" structure="min"/><br/>
+        No turning <chord root="C"/>ba<chord root="A" structure="min"/>ck,<chord root="G"/> no turning <chord root="C"/>back.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        The world be<chord name="C"/>hind <chord name="Em/B"/>me,<chord name="Am"/> the cross be<chord name="C"/>fore me,<br/>
-        The world be<chord name="F"/>hind <chord name="Am/E"/>me,<chord name="F"/> the cross be<chord name="C"/>fore me,<chord name="C/G"/><br/>
-        The world be<chord name="C"/>hind <chord name="Em/B"/>me,<chord name="Am"/> the cross be<chord name="C"/>fore me,<chord name="Am"/><br/>
-        No turning <chord name="C"/>ba<chord name="Am"/>ck,<chord name="G"/> no turning <chord name="C"/>back.
+        The world be<chord root="C"/>hind <chord root="E" structure="min" bass="B"/>me,<chord root="A" structure="min"/> the cross be<chord root="C"/>fore me,<br/>
+        The world be<chord root="F"/>hind <chord root="A" structure="min" bass="E"/>me,<chord root="F"/> the cross be<chord root="C"/>fore me,<chord root="C" bass="G"/><br/>
+        The world be<chord root="C"/>hind <chord root="E" structure="min" bass="B"/>me,<chord root="A" structure="min"/> the cross be<chord root="C"/>fore me,<chord root="A" structure="min"/><br/>
+        No turning <chord root="C"/>ba<chord root="A" structure="min"/>ck,<chord root="G"/> no turning <chord root="C"/>back.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        Though none go <chord name="C"/>with <chord name="Em/B"/>me,<chord name="Am"/> still I will <chord name="C"/>follow,<br/>
-        Though none go <chord name="F"/>with <chord name="Am/E"/>me,<chord name="F"/> still I will <chord name="C"/>follow,<chord name="C/G"/><br/>
-        Though none go <chord name="C"/>with <chord name="Em/B"/>me,<chord name="Am"/> still I will <chord name="C"/>follow,<chord name="Am"/><br/>
-        No turning <chord name="C"/>ba<chord name="Am"/>ck,<chord name="G"/> no turning <chord name="C"/>back.
+        Though none go <chord root="C"/>with <chord root="E" structure="min" bass="B"/>me,<chord root="A" structure="min"/> still I will <chord root="C"/>follow,<br/>
+        Though none go <chord root="F"/>with <chord root="A" structure="min" bass="E"/>me,<chord root="F"/> still I will <chord root="C"/>follow,<chord root="C" bass="G"/><br/>
+        Though none go <chord root="C"/>with <chord root="E" structure="min" bass="B"/>me,<chord root="A" structure="min"/> still I will <chord root="C"/>follow,<chord root="A" structure="min"/><br/>
+        No turning <chord root="C"/>ba<chord root="A" structure="min"/>ck,<chord root="G"/> no turning <chord root="C"/>back.
       </lines>
     </verse>
   </lyrics>

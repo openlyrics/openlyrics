@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.438967">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.438967">
   <properties>
     <titles>
       <title>What A Friend We Have In Jesus</title>
@@ -20,26 +20,26 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <chord name="D"/>What a friend we have in <chord name="G"/>Jesus, <chord name="D"/>All ours sins and griefs to <chord name="A"/>bear;<br/>
-        <chord name="D"/>What a privilege to <chord name="G"/>carry, <chord name="A"/>Everything to God in <chord name="D"/>prayer!<br/>
-        <chord name="A"/>O what peace we often <chord name="D"/>forfeit, <chord name="G"/>O what <chord name="D"/>needless pain we <chord name="A"/>bear;<br/>
-        <chord name="D"/>All because we do not <chord name="G"/>carry, <chord name="A"/>Everything to God in <chord name="D"/>prayer!
+        <chord root="D"/>What a friend we have in <chord root="G"/>Jesus, <chord root="D"/>All ours sins and griefs to <chord root="A"/>bear;<br/>
+        <chord root="D"/>What a privilege to <chord root="G"/>carry, <chord root="A"/>Everything to God in <chord root="D"/>prayer!<br/>
+        <chord root="A"/>O what peace we often <chord root="D"/>forfeit, <chord root="G"/>O what <chord root="D"/>needless pain we <chord root="A"/>bear;<br/>
+        <chord root="D"/>All because we do not <chord root="G"/>carry, <chord root="A"/>Everything to God in <chord root="D"/>prayer!
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <chord name="D"/>Have we trials and temp<chord name="G"/>tations? <chord name="D"/>Is there trouble any<chord name="A"/>where?<br/>
-        <chord name="D"/>We should never be dis<chord name="G"/>couraged, <chord name="A"/>Take it to the Lord in <chord name="D"/>prayer.<br/>
-        <chord name="A"/>Can we find a friend so <chord name="D"/>faithful? <chord name="G"/>Who will <chord name="D"/>all our sorrows <chord name="A"/>share?<br/>
-        <chord name="D"/>Jesus knows our every <chord name="G"/>weakness; <chord name="A"/>Take it to the Lord in <chord name="D"/>prayer.
+        <chord root="D"/>Have we trials and temp<chord root="G"/>tations? <chord root="D"/>Is there trouble any<chord root="A"/>where?<br/>
+        <chord root="D"/>We should never be dis<chord root="G"/>couraged, <chord root="A"/>Take it to the Lord in <chord root="D"/>prayer.<br/>
+        <chord root="A"/>Can we find a friend so <chord root="D"/>faithful? <chord root="G"/>Who will <chord root="D"/>all our sorrows <chord root="A"/>share?<br/>
+        <chord root="D"/>Jesus knows our every <chord root="G"/>weakness; <chord root="A"/>Take it to the Lord in <chord root="D"/>prayer.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <chord name="D"/>Are we weak and heavy <chord name="G"/>laden, <chord name="D"/>Cumbered with a load of <chord name="A"/>care?<br/>
-        <chord name="D"/>Precious Saviour still our <chord name="G"/>refuge; <chord name="A"/>Take it to the Lord in <chord name="D"/>prayer.<br/>
-        <chord name="A"/>Do thy friends despise for<chord name="D"/>sake thee? <chord name="G"/>Take it <chord name="D"/>to the Lord in <chord name="A"/>prayer!<br/>
-        <chord name="D"/>In His arms He’ll take and <chord name="G"/>shield thee; <chord name="A"/>Thou wilt find a solace <chord name="D"/>there.
+        <chord root="D"/>Are we weak and heavy <chord root="G"/>laden, <chord root="D"/>Cumbered with a load of <chord root="A"/>care?<br/>
+        <chord root="D"/>Precious Saviour still our <chord root="G"/>refuge; <chord root="A"/>Take it to the Lord in <chord root="D"/>prayer.<br/>
+        <chord root="A"/>Do thy friends despise for<chord root="D"/>sake thee? <chord root="G"/>Take it <chord root="D"/>to the Lord in <chord root="A"/>prayer!<br/>
+        <chord root="D"/>In His arms He’ll take and <chord root="G"/>shield thee; <chord root="A"/>Thou wilt find a solace <chord root="D"/>there.
       </lines>
     </verse>
   </lyrics>

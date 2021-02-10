@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:47.974846">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:47.974846">
   <properties>
     <titles>
       <title>All Hail The Power Of Jesus' Name</title>
@@ -20,30 +20,30 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        All <chord name="D/F#"/>hail the pow’r of <chord name="A"/>Jesus’ name! Let angels <chord name="D/A"/>pros<chord name="A"/>trate <chord name="D"/>fall;<br/>
-        <chord name="A"/>Bring <chord name="D"/>forth the <chord name="D/F#"/>royal <chord name="A"/>dia<chord name="D"/>dem, And crown <chord name="A/C#"/>Him  <chord name="Bm"/>Lord <chord name="A/E"/>of<chord name="E"/>  <chord name="A"/>all.<br/>
-        Bring <chord name="D"/>forth the <chord name="D/F#"/>royal <chord name="A"/>diadem, And <chord name="D/F#"/>crown <chord name="G"/>Him <chord name="D/F#"/>Lord<chord name="A"/> of <chord name="D"/>all.
+        All <chord root="D" bass="F#"/>hail the pow’r of <chord root="A"/>Jesus’ name! Let angels <chord root="D" bass="A"/>pros<chord root="A"/>trate <chord root="D"/>fall;<br/>
+        <chord root="A"/>Bring <chord root="D"/>forth the <chord root="D" bass="F#"/>royal <chord root="A"/>dia<chord root="D"/>dem, And crown <chord root="A" bass="C#"/>Him <chord root="B" structure="min"/>Lord <chord root="A" bass="E"/>of<chord root="E"/> <chord root="A"/>all.<br/>
+        Bring <chord root="D"/>forth the <chord root="D" bass="F#"/>royal <chord root="A"/>diadem, And <chord root="D" bass="F#"/>crown <chord root="G"/>Him <chord root="D" bass="F#"/>Lord<chord root="A"/> of <chord root="D"/>all.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        Ye  <chord name="D/F#"/>chosen seed of  <chord name="A"/>Israel’s race, Ye  ransomed <chord name="D/A"/>from <chord name="A"/>the <chord name="D"/>fall,<br/>
-        <chord name="A"/>Hail <chord name="D"/>Him Who <chord name="D/F#"/>saves you <chord name="A"/>by His <chord name="D"/>grace, And crown <chord name="A/C#"/>Him  <chord name="Bm"/>Lord <chord name="A/E"/>of<chord name="E"/>  <chord name="A"/>all.<br/>
-        Hail <chord name="D"/>Him Who <chord name="D/F#"/>saves you <chord name="A"/>by His grace, And <chord name="D/F#"/>crown <chord name="G"/>Him <chord name="D/F#"/>Lord<chord name="A"/> of <chord name="D"/>all.
+        Ye <chord root="D" bass="F#"/>chosen seed of <chord root="A"/>Israel’s race, Ye ransomed <chord root="D" bass="A"/>from <chord root="A"/>the <chord root="D"/>fall,<br/>
+        <chord root="A"/>Hail <chord root="D"/>Him Who <chord root="D" bass="F#"/>saves you <chord root="A"/>by His <chord root="D"/>grace, And crown <chord root="A" bass="C#"/>Him <chord root="B" structure="min"/>Lord <chord root="A" bass="E"/>of<chord root="E"/> <chord root="A"/>all.<br/>
+        Hail <chord root="D"/>Him Who <chord root="D" bass="F#"/>saves you <chord root="A"/>by His grace, And <chord root="D" bass="F#"/>crown <chord root="G"/>Him <chord root="D" bass="F#"/>Lord<chord root="A"/> of <chord root="D"/>all.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        Let <chord name="E/G#"/>every kindred, <chord name="B"/>every tribe On this ter<chord name="E/B"/>res<chord name="B"/>trial <chord name="E"/>ball<br/>
-        <chord name="B"/>To <chord name="E"/>Him all <chord name="E/G#"/>majes<chord name="B"/>ty a<chord name="E"/>scribe, And crown <chord name="B/D#"/>Him  <chord name="C#m"/>Lord <chord name="B/F#"/>of<chord name="F#"/>   <chord name="B"/>all.<br/>
-        To <chord name="E"/>Him all <chord name="E/G#"/>majes<chord name="B"/>ty ascribe, And <chord name="E/G#"/>crown <chord name="A"/>Him <chord name="E/G#"/>Lord<chord name="B"/> of <chord name="E"/>all.
+        Let <chord root="E" bass="G#"/>every kindred, <chord root="B"/>every tribe On this ter<chord root="E" bass="B"/>res<chord root="B"/>trial <chord root="E"/>ball<br/>
+        <chord root="B"/>To <chord root="E"/>Him all <chord root="E" bass="G#"/>majes<chord root="B"/>ty a<chord root="E"/>scribe, And crown <chord root="B" bass="D#"/>Him <chord root="C#" structure="min"/>Lord <chord root="B" bass="F#"/>of<chord root="F#"/> <chord root="B"/>all.<br/>
+        To <chord root="E"/>Him all <chord root="E" bass="G#"/>majes<chord root="B"/>ty ascribe, And <chord root="E" bass="G#"/>crown <chord root="A"/>Him <chord root="E" bass="G#"/>Lord<chord root="B"/> of <chord root="E"/>all.
       </lines>
     </verse>
     <verse name="v4">
       <lines>
-        O <chord name="E/G#"/>that with yonder <chord name="B"/>sacred throng We at His <chord name="E/B"/>feet <chord name="B"/>may  <chord name="E"/>fall<br/>
-        <chord name="B"/>We’ll <chord name="E"/>join the <chord name="E/G#"/>ever<chord name="B"/>last<chord name="E"/>ing song, And crown <chord name="B/D#"/>Him  <chord name="C#m"/>Lord <chord name="B/F#"/>of<chord name="F#"/>   <chord name="B"/>all.<br/>
-        We’ll <chord name="E"/>join the <chord name="E/G#"/>ever<chord name="B"/>lasting song, And <chord name="E/G#"/>crown <chord name="A"/>Him <chord name="E/G#"/>Lord<chord name="B"/> of <chord name="E"/>all.
+        O <chord root="E" bass="G#"/>that with yonder <chord root="B"/>sacred throng We at His <chord root="E" bass="B"/>feet <chord root="B"/>may <chord root="E"/>fall<br/>
+        <chord root="B"/>We’ll <chord root="E"/>join the <chord root="E" bass="G#"/>ever<chord root="B"/>last<chord root="E"/>ing song, And crown <chord root="B" bass="D#"/>Him <chord root="C#" structure="min"/>Lord <chord root="B" bass="F#"/>of<chord root="F#"/> <chord root="B"/>all.<br/>
+        We’ll <chord root="E"/>join the <chord root="E" bass="G#"/>ever<chord root="B"/>lasting song, And <chord root="E" bass="G#"/>crown <chord root="A"/>Him <chord root="E" bass="G#"/>Lord<chord root="B"/> of <chord root="E"/>all.
       </lines>
     </verse>
   </lyrics>

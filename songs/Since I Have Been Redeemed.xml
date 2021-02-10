@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.087250">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:50.087250">
   <properties>
     <titles>
       <title>Since I Have Been Redeemed</title>
@@ -16,32 +16,32 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        I <chord name="D"/>have a song I <chord name="A"/>love to <chord name="D"/>sing, since I have been re<chord name="A"/>deemed;<br/>
-        Of <chord name="D"/>my Redeemer, <chord name="A"/>Savior, <chord name="D"/>King, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+        I <chord root="D"/>have a song I <chord root="A"/>love to <chord root="D"/>sing, since I have been re<chord root="A"/>deemed;<br/>
+        Of <chord root="D"/>my Redeemer, <chord root="A"/>Savior, <chord root="D"/>King, since <chord root="G"/>I have <chord root="A"/>been re<chord root="D"/>deemed.
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        Since <chord name="D"/>I have been re<chord name="A"/>deemed, since <chord name="G"/>I have been redeemed I will <chord name="D"/>glory <chord name="A"/>in His <chord name="D"/>name;<br/>
-        Since <chord name="D"/>I have been re<chord name="A"/>deemed, I will <chord name="G"/>glory in my <chord name="A"/>Savior’s <chord name="D"/>name.
+        Since <chord root="D"/>I have been re<chord root="A"/>deemed, since <chord root="G"/>I have been redeemed I will <chord root="D"/>glory <chord root="A"/>in His <chord root="D"/>name;<br/>
+        Since <chord root="D"/>I have been re<chord root="A"/>deemed, I will <chord root="G"/>glory in my <chord root="A"/>Savior’s <chord root="D"/>name.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        I <chord name="D"/>have a Christ Who <chord name="A"/>satis<chord name="D"/>fies, since I have been re<chord name="A"/>deemed;<br/>
-        To <chord name="D"/>do His will my <chord name="A"/>highest <chord name="D"/>prize, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+        I <chord root="D"/>have a Christ Who <chord root="A"/>satis<chord root="D"/>fies, since I have been re<chord root="A"/>deemed;<br/>
+        To <chord root="D"/>do His will my <chord root="A"/>highest <chord root="D"/>prize, since <chord root="G"/>I have <chord root="A"/>been re<chord root="D"/>deemed.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        I <chord name="D"/>have a witness <chord name="A"/>bright and <chord name="D"/>clear, since I have been re<chord name="A"/>deemed;<br/>
-        Dis<chord name="D"/>pelling every <chord name="A"/>doubt and <chord name="D"/>fear, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+        I <chord root="D"/>have a witness <chord root="A"/>bright and <chord root="D"/>clear, since I have been re<chord root="A"/>deemed;<br/>
+        Dis<chord root="D"/>pelling every <chord root="A"/>doubt and <chord root="D"/>fear, since <chord root="G"/>I have <chord root="A"/>been re<chord root="D"/>deemed.
       </lines>
     </verse>
     <verse name="v4">
       <lines>
-        I <chord name="D"/>have a home pre<chord name="A"/>pared for <chord name="D"/>me, since I have been re<chord name="A"/>deemed;<br/>
-        Where <chord name="D"/>I shall dwell e<chord name="A"/>ternal<chord name="D"/>ly, since <chord name="G"/>I have <chord name="A"/>been re<chord name="D"/>deemed.
+        I <chord root="D"/>have a home pre<chord root="A"/>pared for <chord root="D"/>me, since I have been re<chord root="A"/>deemed;<br/>
+        Where <chord root="D"/>I shall dwell e<chord root="A"/>ternal<chord root="D"/>ly, since <chord root="G"/>I have <chord root="A"/>been re<chord root="D"/>deemed.
       </lines>
     </verse>
   </lyrics>

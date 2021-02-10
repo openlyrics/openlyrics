@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.907069">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.907069">
   <properties>
     <titles>
       <title>Man Of Sorrows</title>
@@ -13,32 +13,32 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        <chord name="A"/>Man of Sorrows, <chord name="F#m"/>what a <chord name="C#"/>name! <chord name="D"/>For the <chord name="A"/>Son of <chord name="E/B"/>God, <chord name="B"/>Who <chord name="E"/>came<br/>
-        <chord name="A"/>Ruined sinners <chord name="D/A"/>to re<chord name="A"/>claim. Hallelu<chord name="E"/>jah! <chord name="F#m"/>What a <chord name="D"/>Sav<chord name="A"/>ior!
+        <chord root="A"/>Man of Sorrows, <chord root="F#" structure="min"/>what a <chord root="C#"/>name! <chord root="D"/>For the <chord root="A"/>Son of <chord root="E" bass="B"/>God, <chord root="B"/>Who <chord root="E"/>came<br/>
+        <chord root="A"/>Ruined sinners <chord root="D" bass="A"/>to re<chord root="A"/>claim. Hallelu<chord root="E"/>jah! <chord root="F#" structure="min"/>What a <chord root="D"/>Sav<chord root="A"/>ior!
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        <chord name="A"/>Bearing shame and <chord name="F#m"/>scoffing <chord name="C#"/>rude, <chord name="D"/>In my <chord name="A"/>place con<chord name="E/B"/>demne<chord name="B"/>d He<chord name="E"/> stood;<br/>
-        <chord name="A"/>Sealed my pardon <chord name="D/A"/>with His <chord name="A"/>blood. Hallelu<chord name="E"/>jah! <chord name="F#m"/>What a <chord name="D"/>Sav<chord name="A"/>ior!
+        <chord root="A"/>Bearing shame and <chord root="F#" structure="min"/>scoffing <chord root="C#"/>rude, <chord root="D"/>In my <chord root="A"/>place con<chord root="E" bass="B"/>demne<chord root="B"/>d He<chord root="E"/> stood;<br/>
+        <chord root="A"/>Sealed my pardon <chord root="D" bass="A"/>with His <chord root="A"/>blood. Hallelu<chord root="E"/>jah! <chord root="F#" structure="min"/>What a <chord root="D"/>Sav<chord root="A"/>ior!
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        <chord name="A"/>Guilty, vile, and <chord name="F#m"/>helpless <chord name="C#"/>we; <chord name="D"/>Spotless <chord name="A"/>Lamb of <chord name="E/B"/>God w<chord name="B"/>as H<chord name="E"/>e;<br/>
-        <chord name="A"/>Full atonement! <chord name="D/A"/>Can it <chord name="A"/>be? Hallelu<chord name="E"/>jah! <chord name="F#m"/>What a <chord name="D"/>Sav<chord name="A"/>ior!
+        <chord root="A"/>Guilty, vile, and <chord root="F#" structure="min"/>helpless <chord root="C#"/>we; <chord root="D"/>Spotless <chord root="A"/>Lamb of <chord root="E" bass="B"/>God w<chord root="B"/>as H<chord root="E"/>e;<br/>
+        <chord root="A"/>Full atonement! <chord root="D" bass="A"/>Can it <chord root="A"/>be? Hallelu<chord root="E"/>jah! <chord root="F#" structure="min"/>What a <chord root="D"/>Sav<chord root="A"/>ior!
       </lines>
     </verse>
     <verse name="v4">
       <lines>
-        <chord name="A"/>Lifted up was <chord name="F#m"/>He to <chord name="C#"/>die; <chord name="D"/>"It is <chord name="A"/>finished!" <chord name="E/B"/>was H<chord name="B"/>is c<chord name="E"/>ry;<br/>
-        <chord name="A"/>Now in heaven ex<chord name="D/A"/>alted <chord name="A"/>high. Hallelu<chord name="E"/>jah! <chord name="F#m"/>What a <chord name="D"/>Sav<chord name="A"/>ior!
+        <chord root="A"/>Lifted up was <chord root="F#" structure="min"/>He to <chord root="C#"/>die; <chord root="D"/>"It is <chord root="A"/>finished!" <chord root="E" bass="B"/>was H<chord root="B"/>is c<chord root="E"/>ry;<br/>
+        <chord root="A"/>Now in heaven ex<chord root="D" bass="A"/>alted <chord root="A"/>high. Hallelu<chord root="E"/>jah! <chord root="F#" structure="min"/>What a <chord root="D"/>Sav<chord root="A"/>ior!
       </lines>
     </verse>
     <verse name="v5">
       <lines>
-        <chord name="A"/>When He comes, our <chord name="F#m"/>glorious <chord name="C#"/>King, <chord name="D"/>All His <chord name="A"/>ransomed <chord name="E/B"/>home <chord name="B"/>to b<chord name="E"/>ring,<br/>
-        <chord name="A"/>Then anew His <chord name="D/A"/>song we’ll <chord name="A"/>sing: Hallelu<chord name="E"/>jah! <chord name="F#m"/>What a <chord name="D"/>Sav<chord name="A"/>ior!
+        <chord root="A"/>When He comes, our <chord root="F#" structure="min"/>glorious <chord root="C#"/>King, <chord root="D"/>All His <chord root="A"/>ransomed <chord root="E" bass="B"/>home <chord root="B"/>to b<chord root="E"/>ring,<br/>
+        <chord root="A"/>Then anew His <chord root="D" bass="A"/>song we’ll <chord root="A"/>sing: Hallelu<chord root="E"/>jah! <chord root="F#" structure="min"/>What a <chord root="D"/>Sav<chord root="A"/>ior!
       </lines>
     </verse>
   </lyrics>

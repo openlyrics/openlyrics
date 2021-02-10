@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="../stylesheets/openlyrics.css" type="text/css"?>
-<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.643833">
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9" createdIn="opensong2openlyrics.py 0.3" modifiedIn="convert-schema.py" modifiedDate="2012-04-10T21:31:49.643833">
   <properties>
     <titles>
       <title>It Is Well With My Soul</title>
@@ -21,41 +21,41 @@
   <lyrics>
     <verse name="v1">
       <lines>
-        When <chord name="C"/>peace like a river at<chord name="F"/>tendeth my <chord name="C"/>way,<br/>
-        When <chord name="Am"/>sorrows like <chord name="D"/>sea billows <chord name="G"/>roll;<br/>
-        What<chord name="C"/>ever my <chord name="F"/>lot, Thou hast <chord name="D"/>taught me to <chord name="G"/>say,<br/>
-        “It is <chord name="C"/>well, it is <chord name="F"/>well <chord name="G"/>with <chord name="C"/>my soul.”
+        When <chord root="C"/>peace like a river at<chord root="F"/>tendeth my <chord root="C"/>way,<br/>
+        When <chord root="A" structure="min"/>sorrows like <chord root="D"/>sea billows <chord root="G"/>roll;<br/>
+        What<chord root="C"/>ever my <chord root="F"/>lot, Thou hast <chord root="D"/>taught me to <chord root="G"/>say,<br/>
+        “It is <chord root="C"/>well, it is <chord root="F"/>well <chord root="G"/>with <chord root="C"/>my soul.”
       </lines>
     </verse>
     <verse name="c">
       <lines>
-        It is <chord name="C"/>well, (it is <chord name="G"/>well,)<br/>
-        With my <chord name="G"/>soul, (with my <chord name="C"/>soul,)<br/>
-        It is <chord name="F"/>well, it is <chord name="C"/>well <chord name="G"/>with my <chord name="C"/>soul.
+        It is <chord root="C"/>well, (it is <chord root="G"/>well,)<br/>
+        With my <chord root="G"/>soul, (with my <chord root="C"/>soul,)<br/>
+        It is <chord root="F"/>well, it is <chord root="C"/>well <chord root="G"/>with my <chord root="C"/>soul.
       </lines>
     </verse>
     <verse name="v2">
       <lines>
-        Though <chord name="C"/>Satan should buffet, though <chord name="F"/>trials should <chord name="C"/>come,<br/>
-        Let <chord name="Am"/>this blest as<chord name="D"/>surance con<chord name="G"/>trol,<br/>
-        That <chord name="C"/>Christ has re<chord name="F"/>garded my <chord name="D"/>helpless e<chord name="G"/>state,<br/>
-        And hath <chord name="C"/>shed his own <chord name="F"/>blood <chord name="G"/>for my <chord name="C"/>soul.
+        Though <chord root="C"/>Satan should buffet, though <chord root="F"/>trials should <chord root="C"/>come,<br/>
+        Let <chord root="A" structure="min"/>this blest as<chord root="D"/>surance con<chord root="G"/>trol,<br/>
+        That <chord root="C"/>Christ has re<chord root="F"/>garded my <chord root="D"/>helpless e<chord root="G"/>state,<br/>
+        And hath <chord root="C"/>shed his own <chord root="F"/>blood <chord root="G"/>for my <chord root="C"/>soul.
       </lines>
     </verse>
     <verse name="v3">
       <lines>
-        My <chord name="C"/>sin, oh the bliss of this <chord name="F"/>glorious <chord name="C"/>thought!<br/>
-        My <chord name="Am"/>sin, not in <chord name="D"/>part but the <chord name="G"/>whole<br/>
-        Is <chord name="C"/>nailed to the <chord name="F"/>cross, and I <chord name="D"/>bear it no <chord name="G"/>more,<br/>
-        Praise the <chord name="C"/>Lord, praise the <chord name="F"/>Lord, <chord name="G"/>O my <chord name="C"/>soul!
+        My <chord root="C"/>sin, oh the bliss of this <chord root="F"/>glorious <chord root="C"/>thought!<br/>
+        My <chord root="A" structure="min"/>sin, not in <chord root="D"/>part but the <chord root="G"/>whole<br/>
+        Is <chord root="C"/>nailed to the <chord root="F"/>cross, and I <chord root="D"/>bear it no <chord root="G"/>more,<br/>
+        Praise the <chord root="C"/>Lord, praise the <chord root="F"/>Lord, <chord root="G"/>O my <chord root="C"/>soul!
       </lines>
     </verse>
     <verse name="v4">
       <lines>
-        And, <chord name="C"/>Lord, haste the day when my <chord name="F"/>faith shall be <chord name="C"/>sight,<br/>
-        The <chord name="Am"/>clouds be rolled <chord name="D"/>back as a <chord name="G"/>scroll;<br/>
-        The <chord name="C"/>trump shall re<chord name="F"/>sound, and the <chord name="D"/>Lord shall de<chord name="G"/>scend,<br/>
-        Even <chord name="C"/>so, it is <chord name="F"/>well <chord name="G"/>with my <chord name="C"/>soul.
+        And, <chord root="C"/>Lord, haste the day when my <chord root="F"/>faith shall be <chord root="C"/>sight,<br/>
+        The <chord root="A" structure="min"/>clouds be rolled <chord root="D"/>back as a <chord root="G"/>scroll;<br/>
+        The <chord root="C"/>trump shall re<chord root="F"/>sound, and the <chord root="D"/>Lord shall de<chord root="G"/>scend,<br/>
+        Even <chord root="C"/>so, it is <chord root="F"/>well <chord root="G"/>with my <chord root="C"/>soul.
       </lines>
     </verse>
   </lyrics>
