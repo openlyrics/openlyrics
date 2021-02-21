@@ -102,12 +102,12 @@
   <structure id="3-5" shorthand=""></structure>
   <structure id="m3-5" shorthand="min">m</structure><!-- - --><!-- min -->
   <structure id="3-a5" shorthand="aug">+</structure><!-- 5♯ --><!-- (♯5) -->
-  <structure id="m3-d5" shorthand="dim">°</structure><!-- m,5♭ --><!-- m(♭5) -->
+  <structure id="m3-d5" shorthand="dim">m,5♭</structure><!-- m(♭5) -->
   <!-- 4 note chords -->
   <structure id="3-5-m7" shorthand="dom7">7</structure>
   <structure id="3-5-7" shorthand="maj7">Δ</structure><!-- Maj7 --><!-- M7 --><!-- Δ7 -->
   <structure id="m3-5-m7" shorthand="min7">m7</structure><!-- -7 --><!-- min7 -->
-  <structure id="m3-d5-d7" shorthand="dim7">°7</structure><!-- dim7 -->
+  <structure id="m3-d5-d7" shorthand="dim7">○</structure><!-- dim7 --><!-- ○7 -->
   <structure id="m3-d5-m7" shorthand="halfdim7">ø</structure><!-- m7,5♭ --><!-- m7(♭5) --><!-- -7(♭5) --><!-- ø7 --><!-- halfdim -->
   <structure id="m3-5-7" shorthand="minmaj7">mΔ</structure><!-- mMaj7 --><!-- mM7 --><!-- -M7 --><!-- -Δ --><!-- -Δ7 -->
   <structure id="3-a5-7" shorthand="augmaj7">+Δ</structure><!-- Maj7(♯5) --><!-- +Maj7 --><!-- +M7 --><!-- +Δ7 -->
@@ -164,13 +164,29 @@
   <structure id="3-5-m7-13">7,6</structure><!-- 7(add13) --><!-- 7(add6) -->
   <structure id="3-5-6-9">6,9</structure><!-- 6(add9) -->
   <structure id="3-5-9" shorthand="add9">add9</structure>
+  <structure id="m3-5-9">m(add9)</structure>
+  <structure id="3-a5-9">+add9</structure><!-- (♯5)add9 -->
+  <structure id="4-5-6">6,4</structure><!-- 6(sus4) -->
+  <structure id="2-5-6">6,2</structure><!-- 6(sus2) -->
+  <structure id="4-5-m6">6♭,4</structure><!-- 6♭(sus4) --><!-- (♭6)sus4 -->
+  <structure id="2-5-m6">6♭,2</structure><!-- 6♭(sus2) --><!-- (♭6)sus2 -->
   <structure id="4-5-m7">7,4</structure><!-- 7sus4 -->
   <structure id="2-5-m7">7,2</structure><!-- 7sus2 -->
   <structure id="4-5-7">Δ,4</structure><!-- Maj7,4 --><!-- M7,4 --><!-- Δ7,4 --><!-- Δsus4 --><!-- M7sus4 -->
   <structure id="2-5-7">Δ,2</structure><!-- Maj7,2 --><!-- M7,2 --><!-- Δ7,2 --><!-- Δsus2 --><!-- M7sus2 -->
+  <structure id="4-a5-7">+Δ,4</structure><!-- Maj7(♯5)4 --><!-- +Maj7,4 --><!-- +M7,4 --><!-- +Δ7,4 --><!-- Maj7(♯5)4sus4 --><!-- +Maj7,4sus4 --><!-- +M7,4sus4 --><!-- +Δ7,4sus4 -->
+  <structure id="2-a5-7">+Δ,2</structure><!-- Maj7(♯5)2 --><!-- +Maj7,2 --><!-- +M7,2 --><!-- +Δ7,2 --><!-- Maj7(♯5)2sus2 --><!-- +Maj7,2sus2 --><!-- +M7,2sus2 --><!-- +Δ7,2sus2 -->
+  <structure id="4-d5-m7">ø,4</structure><!-- 7,5♭,4 --><!-- 7(♭5)4 --><!-- ø7,4 --><!-- halfdim,4 --><!-- 7,5♭,4sus4 --><!-- 7(♭5)4sus4 --><!-- ø7,4sus4 --><!-- halfdim,4sus4 -->
+  <structure id="2-d5-m7">ø,2</structure><!-- 7,5♭,2 --><!-- 7(♭5)2 --><!-- ø7,2 --><!-- halfdim,2 --><!-- 7,5♭,2sus2 --><!-- 7(♭5)2sus2 --><!-- ø7,2sus2 --><!-- halfdim,2sus2 -->
+  <structure id="4-d5-d7">○,4</structure><!-- dim7,4 --><!-- ○7,4 --><!-- ○(sus4) --><!-- dim7(sus4) --><!-- ○7(sus4) -->
+  <structure id="2-d5-d7">○,2</structure><!-- dim7,2 --><!-- ○7,2 --><!-- ○(sus2) --><!-- dim7(sus2) --><!-- ○7(sus2) -->
+  <structure id="4-d5-7">Δ,5♭,4</structure><!-- Δ7(♭5)4 --><!-- Maj7(♭5)4 --><!-- M7(♭5)4 --><!-- Δ7(♭5)4sus4 --><!-- Maj7(♭5)4sus4 --><!-- M7(♭5)4sus4 -->
+  <structure id="2-d5-7">Δ,5♭,2</structure><!-- Δ7(♭5)2 --><!-- Maj7(♭5)2 --><!-- M7(♭5)2 --><!-- Δ7(♭5)2sus2 --><!-- Maj7(♭5)2sus2 --><!-- M7(♭5)2sus2 -->
+  <structure id="4-5-m7-13">7,6,4</structure><!-- 7(add13)4 --><!-- 7(add6)4 --><!-- 7,6sus4 --><!-- 7(add13)sus4 --><!-- 7(add6)sus4 -->
+  <structure id="2-5-m7-13">7,6,2</structure><!-- 7(add13)2 --><!-- 7(add6)2 --><!-- 7,6sus2 --><!-- 7(add13)sus2 --><!-- 7(add6)sus2 -->
   <!-- Figured 5 note chords -->
   <structure id="4-5-m7-9">9,4</structure><!-- 9sus4 -->
-  <structure id="4-5-m7-m9">7,9♭,4</structure><!-- 7(♭9) --><!-- 7,9♭,sus4 --><!-- 7(♭9)sus4 -->
+  <structure id="4-5-m7-m9">7,9♭,4</structure><!-- 7(♭9)4 --><!-- 7,9♭,sus4 --><!-- 7(♭9)sus4 -->
   <structure id="4-5-7-9">Δ9,4</structure><!-- Δ9sus4 --><!-- Maj9,4 --><!-- M9,4 --><!-- Maj9sus4 --><!-- M9sus4 -->
   <structure id="4-a5-7-9">+Δ9,4</structure><!-- +Δ9sus4 --><!-- Maj9(♯5)4 --><!-- +M9,4 --><!-- +M9sus4 --><!-- +Maj9,4 -->
   <structure id="4-a5-m7-9">+9,4</structure><!-- +9sus4 --><!-- 9(♯5)sus4 -->

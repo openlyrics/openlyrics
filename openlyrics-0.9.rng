@@ -578,10 +578,10 @@
       <value>m3-d5-m7-m9-11-13</value>
 
       <!-- *** Figured 3 note chords -->
-      <!-- suspended 4th -->
+      <!-- major/minor suspended 4th -->
       <value>4-5</value>
       <value>sus4</value>
-      <!-- suspended 2nd -->
+      <!-- major/minor suspended 2nd -->
       <value>2-5</value>
       <value>sus2</value>
 
@@ -590,17 +590,49 @@
       <value>3-5-m7-13</value>
       <!-- major 6th 9th -->
       <value>3-5-6-9</value>
-      <!-- original name + added 9th -->
+      <!-- major added 9th -->
       <value>3-5-9</value>
       <value>add9</value>
-      <!-- dominant 7th suspended 4th -->
+      <!-- minor added 9th -->
+      <value>m3-5-9</value>
+      <!-- augmented added 9th -->
+      <value>3-a5-9</value>
+      <!-- major 6th suspended 4th -->
+      <value>4-5-6</value>
+      <!-- major 6th suspended 2nd -->
+      <value>2-5-6</value>
+      <!-- minor 6th suspended 4th -->
+      <value>4-5-m6</value>
+      <!-- minor 6th suspended 2nd -->
+      <value>2-5-m6</value>
+      <!-- dominant/minor 7th suspended 4th -->
       <value>4-5-m7</value>
-      <!-- dominant 7th suspended 2nd -->
+      <!-- dominant/minor 7th suspended 2nd -->
       <value>2-5-m7</value>
-      <!-- major 7th suspended 4th -->
+      <!-- (minor) major 7th suspended 4th -->
       <value>4-5-7</value>
-      <!-- major 7th suspended 2nd -->
+      <!-- (minor) major 7th suspended 2nd -->
       <value>2-5-7</value>
+      <!-- augmented major 7th suspended 4th -->
+      <value>4-a5-7</value>
+      <!-- augmented major 7th suspended 2nd -->
+      <value>2-a5-7</value>
+      <!-- half-diminished 7th suspended 4th; dominant 7th flat 5 suspended 4th -->
+      <value>4-d5-m7</value>
+      <!-- half-diminished 7th suspended 2nd; dominant 7th flat 5 suspended 2nd -->
+      <value>2-d5-m7</value>
+      <!-- diminished 7th suspended 4th -->
+      <value>4-d5-d7</value>
+      <!-- diminished 7th suspended 2nd -->
+      <value>2-d5-d7</value>
+      <!-- diminished major 7th suspended 4th; major 7th flat 5 suspended 4th -->
+      <value>4-d5-7</value>
+      <!-- diminished major 7th suspended 2nd; major 7th flat 5 suspended 2nd -->
+      <value>2-d5-7</value>
+      <!-- dominant (7th) major 6th suspended 4th -->
+      <value>4-5-m7-13</value>
+      <!-- dominant (7th) major 6th suspended 4th -->
+      <value>2-5-m7-13</value>
 
       <!-- ***** Figured 5 note chords -->
       <!-- (dominant) 9th suspended 4th -->

@@ -205,12 +205,12 @@ chord[structure="5"],          chord[structure="power"]    { --chord-structure: 
 chord[structure="3-5"],        chord:not([structure])      { --chord-structure: "" }
 chord[structure="m3-5"],       chord[structure="min"]      { --chord-structure: "m" /*-*/ /*min*/ }
 chord[structure="3-a5"],       chord[structure="aug"]      { --chord-structure: "+" /*5♯*/ /*(♯5)*/ }
-chord[structure="m3-d5"],      chord[structure="dim"]      { --chord-structure: "°" /*m,5♭*/ /*m(♭5)*/ }
+chord[structure="m3-d5"],      chord[structure="dim"]      { --chord-structure: "m,5♭" /*m(♭5)*/ }
 /* 4 note chords */
 chord[structure="3-5-m7"],     chord[structure="dom7"]     { --chord-structure: "7" }
 chord[structure="3-5-7"],      chord[structure="maj7"]     { --chord-structure: "Δ" /*Maj7*/ /*M7*/ /*Δ7*/ }
 chord[structure="m3-5-m7"],    chord[structure="min7"]     { --chord-structure: "m7" /*-7*/ /*min7*/ }
-chord[structure="m3-d5-d7"],   chord[structure="dim7"]     { --chord-structure: "°7" /*dim7*/ }
+chord[structure="m3-d5-d7"],   chord[structure="dim7"]     { --chord-structure: "○" /*dim7*/ /*○7*/ }
 chord[structure="m3-d5-m7"],   chord[structure="halfdim7"] { --chord-structure: "ø" /*m7,5♭*/ /*m7(♭5)*/ /*-7(♭5)*/ /*ø7*/ /*halfdim*/ }
 chord[structure="m3-5-7"],     chord[structure="minmaj7"]  { --chord-structure: "mΔ" /*mMaj7*/ /*mM7*/ /*-M7*/ /*-Δ*/ /*-Δ7*/ }
 chord[structure="3-a5-7"],     chord[structure="augmaj7"]  { --chord-structure: "+Δ" /*Maj7(♯5)*/ /*+Maj7*/ /*+M7*/ /*+Δ7*/ }
@@ -267,13 +267,29 @@ chord[structure="2-5"],        chord[structure="sus2"]     { --chord-structure: 
 chord[structure="3-5-m7-13"]                               { --chord-structure: "7,6" /*7(add13)*/ /*7(add6)*/ }
 chord[structure="3-5-6-9"]                                 { --chord-structure: "6,9" /*6(add9)*/ }
 chord[structure="3-5-9"],      chord[structure="add9"]     { --chord-structure: "add9" }
+chord[structure="m3-5-9"]                                  { --chord-structure: "m(add9)" }
+chord[structure="3-a5-9"]                                  { --chord-structure: "+add9" /*(♯5)add9*/ }
+chord[structure="4-5-6"]                                   { --chord-structure: "6,4" /*6(sus4)*/ }
+chord[structure="2-5-6"]                                   { --chord-structure: "6,2" /*6(sus2)*/ }
+chord[structure="4-5-m6"]                                  { --chord-structure: "6♭,4" /*6♭(sus4)*/ /*(♭6)sus4*/ }
+chord[structure="2-5-m6"]                                  { --chord-structure: "6♭,2" /*6♭(sus2)*/ /*(♭6)sus2*/ }
 chord[structure="4-5-m7"]                                  { --chord-structure: "7,4" /*7sus4*/ }
 chord[structure="2-5-m7"]                                  { --chord-structure: "7,2" /*7sus2*/ }
 chord[structure="4-5-7"]                                   { --chord-structure: "Δ,4" /*Maj7,4*/ /*M7,4*/ /*Δ7,4*/ /*Δsus4*/ /*M7sus4*/ }
 chord[structure="2-5-7"]                                   { --chord-structure: "Δ,2" /*Maj7,2*/ /*M7,2*/ /*Δ7,2*/ /*Δsus2*/ /*M7sus2*/ }
+chord[structure="4-a5-7"]                                  { --chord-structure: "+Δ,4" /*Maj7(♯5)4*/ /*+Maj7,4*/ /*+M7,4*/ /*+Δ7,4*/ /*Maj7(♯5)4sus4*/ /*+Maj7,4sus4*/ /*+M7,4sus4*/ /*+Δ7,4sus4*/ }
+chord[structure="2-a5-7"]                                  { --chord-structure: "+Δ,2" /*Maj7(♯5)2*/ /*+Maj7,2*/ /*+M7,2*/ /*+Δ7,2*/ /*Maj7(♯5)2sus2*/ /*+Maj7,2sus2*/ /*+M7,2sus2*/ /*+Δ7,2sus2*/ }
+chord[structure="4-d5-m7"]                                 { --chord-structure: "ø,4" /*7,5♭,4*/ /*7(♭5)4*/ /*ø7,4*/ /*halfdim,4*/ /*7,5♭,4sus4*/ /*7(♭5)4sus4*/ /*ø7,4sus4*/ /*halfdim,4sus4*/ }
+chord[structure="2-d5-m7"]                                 { --chord-structure: "ø,2" /*7,5♭,2*/ /*7(♭5)2*/ /*ø7,2*/ /*halfdim,2*/ /*7,5♭,2sus2*/ /*7(♭5)2sus2*/ /*ø7,2sus2*/ /*halfdim,2sus2*/ }
+chord[structure="4-d5-d7"]                                 { --chord-structure: "○,4" /*dim7,4*/ /*○7,4*/ /*○(sus4)*/ /*dim7(sus4)*/ /*○7(sus4)*/ }
+chord[structure="2-d5-d7"]                                 { --chord-structure: "○,2" /*dim7,2*/ /*○7,2*/ /*○(sus2)*/ /*dim7(sus2)*/ /*○7(sus2)*/ }
+chord[structure="4-d5-7"]                                  { --chord-structure: "Δ,5♭,4" /*Δ7(♭5)4*/ /*Maj7(♭5)4*/ /*M7(♭5)4*/ /*Δ7(♭5)4sus4*/ /*Maj7(♭5)4sus4*/ /*M7(♭5)4sus4*/ }
+chord[structure="2-d5-7"]                                  { --chord-structure: "Δ,5♭,2" /*Δ7(♭5)2*/ /*Maj7(♭5)2*/ /*M7(♭5)2*/ /*Δ7(♭5)2sus2*/ /*Maj7(♭5)2sus2*/ /*M7(♭5)2sus2*/ }
+chord[structure="4-5-m7-13"]                               { --chord-structure: "7,6,4" /*7(add13)4*/ /*7(add6)4*/ /*7,6sus4*/ /*7(add13)sus4*/ /*7(add6)sus4*/ }
+chord[structure="2-5-m7-13"]                               { --chord-structure: "7,6,2" /*7(add13)2*/ /*7(add6)2*/ /*7,6sus2*/ /*7(add13)sus2*/ /*7(add6)sus2*/ }
 /* Figured 5 note chords */
 chord[structure="4-5-m7-9"]                                { --chord-structure: "9,4" /*9sus4*/ }
-chord[structure="4-5-m7-m9"]                               { --chord-structure: "7,9♭,4" /*7(♭9)*/ /*7,9♭,sus4*/ /*7(♭9)sus4*/ }
+chord[structure="4-5-m7-m9"]                               { --chord-structure: "7,9♭,4" /*7(♭9)4*/ /*7,9♭,sus4*/ /*7(♭9)sus4*/ }
 chord[structure="4-5-7-9"]                                 { --chord-structure: "Δ9,4" /*Δ9sus4*/ /*Maj9,4*/ /*M9,4*/ /*Maj9sus4*/ /*M9sus4*/ }
 chord[structure="4-a5-7-9"]                                { --chord-structure: "+Δ9,4" /*+Δ9sus4*/ /*Maj9(♯5)4*/ /*+M9,4*/ /*+M9sus4*/ /*+Maj9,4*/ }
 chord[structure="4-a5-m7-9"]                               { --chord-structure: "+9,4" /*+9sus4*/ /*9(♯5)sus4*/ }

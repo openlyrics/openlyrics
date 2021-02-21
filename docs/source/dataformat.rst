@@ -841,11 +841,11 @@ Shortcode    Chord Name                          Notation
              major
 **min**      minor                               m
 **aug**      augmented                           \+
-**dim**      diminished                          °
+**dim**      diminished                          m,5♭
 **dom7**     dominant 7th                        7
 **maj7**     major 7th                           Δ
 **min7**     minor 7th                           m7
-**dim7**     diminished 7th                      °7
+**dim7**     diminished 7th                      ○
 **halfdim7** half-diminished 7th                 ø
 **minmaj7**  minor major 7th                     mΔ
 **augmaj7**  augmented major 7th                 +Δ
@@ -866,7 +866,7 @@ Shortcode    Chord Name                          Notation
 **add9**     original name + added 9th           add9
 ============ =================================== ========
 
-Other chords can be noted with **chord formulas**. OpenLyrics has 69 built-in chords defined by a formula.
+Other chords can be noted with **chord formulas**. OpenLyrics has 85 built-in chords defined by a formula.
 Using chord formulas, an author can write additional custom chords. Chord formulas are described
 in :ref:`chord formulas <chordlist>`.
 
