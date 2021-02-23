@@ -194,7 +194,7 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 
 ``chordNotation``
     A string to idetify the preferred notation of the chords. Supported values are
-    ``english`` (default), ``german``, ``dutch``, ``hungarian``, ``neolatin``.
+    ``english`` (default), ``english-b``,  ``german``, ``dutch``, ``hungarian``, ``neolatin``.
     This element is optional.
 
 ``version``
@@ -810,6 +810,7 @@ with English notation:
 ========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
 english    C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    Bb   B
 ========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+english-b  C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    B    H
 german     C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   B    H
 dutch      C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   Bes  B
 hungarian  C   Cisz  Desz  D   Disz  Esz  E   F   Fisz  Gesz  G    Gisz  Asz  A   Aisz  B    H

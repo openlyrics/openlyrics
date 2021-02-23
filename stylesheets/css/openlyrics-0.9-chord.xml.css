@@ -19,41 +19,44 @@ chord[bass]      { --chord-bass: attr(bass) }
  * Root and bass:
  ***************/
 
-/* English notation */
-chord[root="C"]  { --chord-root: "C"   }
-chord[root="C#"] { --chord-root: "C♯"  }
-chord[root="Db"] { --chord-root: "D♭"  }
-chord[root="D"]  { --chord-root: "D"   }
-chord[root="D#"] { --chord-root: "D♯"  }
-chord[root="Eb"] { --chord-root: "E♭"  }
-chord[root="E"]  { --chord-root: "E"   }
-chord[root="F"]  { --chord-root: "F"   }
-chord[root="F#"] { --chord-root: "F♯"  }
-chord[root="Gb"] { --chord-root: "G♭"  }
-chord[root="G"]  { --chord-root: "G"   }
-chord[root="G#"] { --chord-root: "G♯"  }
-chord[root="Ab"] { --chord-root: "A♭"  }
-chord[root="A"]  { --chord-root: "A"   }
-chord[root="A#"] { --chord-root: "A♯"  }
-chord[root="Bb"] { --chord-root: "B♭"  }
-chord[root="B"]  { --chord-root: "B"   }
-chord[bass="C"]  { --chord-bass: "/C"  }
-chord[bass="C#"] { --chord-bass: "/C♯" }
-chord[bass="Db"] { --chord-bass: "/D♭" }
-chord[bass="D"]  { --chord-bass: "/D"  }
-chord[bass="D#"] { --chord-bass: "/D♯" }
-chord[bass="Eb"] { --chord-bass: "/E♭" }
-chord[bass="E"]  { --chord-bass: "/E"  }
-chord[bass="F"]  { --chord-bass: "/F"  }
-chord[bass="F#"] { --chord-bass: "/F♯" }
-chord[bass="Gb"] { --chord-bass: "/G♭" }
-chord[bass="G"]  { --chord-bass: "/G"  }
-chord[bass="G#"] { --chord-bass: "/G♯" }
-chord[bass="Ab"] { --chord-bass: "/A♭" }
-chord[bass="A"]  { --chord-bass: "/A"  }
-chord[bass="A#"] { --chord-bass: "/A♯" }
-chord[bass="Bb"] { --chord-bass: "/B♭" }
-chord[bass="B"]  { --chord-bass: "/B"  }
+chord[root="C"],  :root[chordNotation=english-b] chord[root="C"]  { --chord-root: "C"   }
+chord[root="C#"], :root[chordNotation=english-b] chord[root="C#"] { --chord-root: "C♯"  }
+chord[root="Db"], :root[chordNotation=english-b] chord[root="Db"] { --chord-root: "D♭"  }
+chord[root="D"],  :root[chordNotation=english-b] chord[root="D"]  { --chord-root: "D"   }
+chord[root="D#"], :root[chordNotation=english-b] chord[root="D#"] { --chord-root: "D♯"  }
+chord[root="Eb"], :root[chordNotation=english-b] chord[root="Eb"] { --chord-root: "E♭"  }
+chord[root="E"],  :root[chordNotation=english-b] chord[root="E"]  { --chord-root: "E"   }
+chord[root="F"],  :root[chordNotation=english-b] chord[root="F"]  { --chord-root: "F"   }
+chord[root="F#"], :root[chordNotation=english-b] chord[root="F#"] { --chord-root: "F♯"  }
+chord[root="Gb"], :root[chordNotation=english-b] chord[root="Gb"] { --chord-root: "G♭"  }
+chord[root="G"],  :root[chordNotation=english-b] chord[root="G"]  { --chord-root: "G"   }
+chord[root="G#"], :root[chordNotation=english-b] chord[root="G#"] { --chord-root: "G♯"  }
+chord[root="Ab"], :root[chordNotation=english-b] chord[root="Ab"] { --chord-root: "A♭"  }
+chord[root="A"],  :root[chordNotation=english-b] chord[root="A"]  { --chord-root: "A"   }
+chord[root="A#"], :root[chordNotation=english-b] chord[root="A#"] { --chord-root: "A♯"  }
+chord[root="Bb"]                                                  { --chord-root: "B♭"  }
+chord[root="B"]                                                   { --chord-root: "B"   }
+chord[bass="C"],  :root[chordNotation=english-b] chord[bass="C"]  { --chord-bass: "/C"  }
+chord[bass="C#"], :root[chordNotation=english-b] chord[bass="C#"] { --chord-bass: "/C♯" }
+chord[bass="Db"], :root[chordNotation=english-b] chord[bass="Db"] { --chord-bass: "/D♭" }
+chord[bass="D"],  :root[chordNotation=english-b] chord[bass="D"]  { --chord-bass: "/D"  }
+chord[bass="D#"], :root[chordNotation=english-b] chord[bass="D#"] { --chord-bass: "/D♯" }
+chord[bass="Eb"], :root[chordNotation=english-b] chord[bass="Eb"] { --chord-bass: "/E♭" }
+chord[bass="E"],  :root[chordNotation=english-b] chord[bass="E"]  { --chord-bass: "/E"  }
+chord[bass="F"],  :root[chordNotation=english-b] chord[bass="F"]  { --chord-bass: "/F"  }
+chord[bass="F#"], :root[chordNotation=english-b] chord[bass="F#"] { --chord-bass: "/F♯" }
+chord[bass="Gb"], :root[chordNotation=english-b] chord[bass="Gb"] { --chord-bass: "/G♭" }
+chord[bass="G"],  :root[chordNotation=english-b] chord[bass="G"]  { --chord-bass: "/G"  }
+chord[bass="G#"], :root[chordNotation=english-b] chord[bass="G#"] { --chord-bass: "/G♯" }
+chord[bass="Ab"], :root[chordNotation=english-b] chord[bass="Ab"] { --chord-bass: "/A♭" }
+chord[bass="A"],  :root[chordNotation=english-b] chord[bass="A"]  { --chord-bass: "/A"  }
+chord[bass="A#"], :root[chordNotation=english-b] chord[bass="A#"] { --chord-bass: "/A♯" }
+chord[bass="Bb"]                                                  { --chord-bass: "/B♭" }
+chord[bass="B"]                                                   { --chord-bass: "/B"  }
+:root[chordNotation=english-b] chord[root="Bb"]                   { --chord-root: "B"   }
+:root[chordNotation=english-b] chord[root="B"]                    { --chord-root: "H"   }
+:root[chordNotation=english-b] chord[bass="Bb"]                   { --chord-bass: "/B"  }
+:root[chordNotation=english-b] chord[bass="B"]                    { --chord-bass: "/H"  }
 
 :root[chordNotation=german] chord[root="C"]  { --chord-root: "C"    }
 :root[chordNotation=german] chord[root="C#"] { --chord-root: "Cis"  }

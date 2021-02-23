@@ -19,6 +19,25 @@
     <name class="Bb">B♭</name>
     <name class="B">B</name>
   </notation>
+  <notation id="english-b">
+    <name class="C">C</name>
+    <name class="C#">C♯</name>
+    <name class="Db">D♭</name>
+    <name class="D">D</name>
+    <name class="D#">D♯</name>
+    <name class="Eb">E♭</name>
+    <name class="E">E</name>
+    <name class="F">F</name>
+    <name class="F#">F♯</name>
+    <name class="Gb">G♭</name>
+    <name class="G">G</name>
+    <name class="G#">G♯</name>
+    <name class="Ab">A♭</name>
+    <name class="A">A</name>
+    <name class="A#">A♯</name>
+    <name class="Bb">B</name>
+    <name class="B">H</name>
+  </notation>
   <notation id="german">
     <name class="C">C</name>
     <name class="C#">Cis</name>

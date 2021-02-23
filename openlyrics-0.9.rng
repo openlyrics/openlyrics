@@ -756,6 +756,7 @@
       <attribute name="chordNotation">
         <choice>
           <value>english</value>
+          <value>english-b</value>
           <value>german</value>
           <value>dutch</value>
           <value>hungarian</value>
