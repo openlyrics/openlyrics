@@ -103,10 +103,26 @@
           <chord root="C" structure="3-5-m7-13"/>
           <chord root="C" structure="3-5-6-9"/>
           <chord root="C" structure="3-5-9"/>
+          <chord root="C" structure="m3-5-9"/>
+          <chord root="C" structure="3-a5-9"/>
+          <chord root="C" structure="4-5-6"/>
+          <chord root="C" structure="2-5-6"/>
+          <chord root="C" structure="4-5-m6"/>
+          <chord root="C" structure="2-5-m6"/>
           <chord root="C" structure="4-5-m7"/>
           <chord root="C" structure="2-5-m7"/>
           <chord root="C" structure="4-5-7"/>
           <chord root="C" structure="2-5-7"/>
+          <chord root="C" structure="4-a5-7"/>
+          <chord root="C" structure="2-a5-7"/>
+          <chord root="C" structure="4-d5-m7"/>
+          <chord root="C" structure="2-d5-m7"/>
+          <chord root="C" structure="4-d5-d7"/>
+          <chord root="C" structure="2-d5-d7"/>
+          <chord root="C" structure="4-d5-7"/>
+          <chord root="C" structure="2-d5-7"/>
+          <chord root="C" structure="4-5-m7-13"/>
+          <chord root="C" structure="2-5-m7-13"/>
           <chord root="C" structure="4-5-m7-9"/>
           <chord root="C" structure="4-5-m7-m9"/>
           <chord root="C" structure="4-5-7-9"/>
