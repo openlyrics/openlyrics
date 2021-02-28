@@ -862,9 +862,9 @@ Shortcode    Chord Name                          Notation
 **minmaj9**  minor major 9th                     mΔ9
 **aug9**     augmented (dominant) 9th            +9
 **halfdim9** half-diminished 9th                 ⵁ9
-**sus4**     suspended 4th                       4
-**sus2**     suspended 2nd                       2
-**add9**     original name + added 9th           add9
+**sus4**     major/minor suspended 4th           4
+**sus2**     major/minor suspended 2nd           2
+**add9**     major added 9th                     add9
 ============ =================================== ========
 
 Other chords can be noted with **chord formulas**. OpenLyrics has 85 built-in chords defined by a formula.
