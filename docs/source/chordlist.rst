@@ -57,8 +57,8 @@ Formula                Chord Name                              Shortcode  Notati
 **3-5-m7**             dominant 7th                            dom7       7
 **3-5-7**              major 7th                               maj7       Δ          Maj7 M7 Δ7
 **m3-5-m7**            minor 7th                               min7       m7         -7 min7
-**m3-d5-d7**           diminished 7th                          dim7       ○         dim7 ○7
-**m3-d5-m7**           half-diminished 7th                     halfdim7   ∅          m7,5♭ m7(♭5) -7(♭5) ∅7 halfdim
+**m3-d5-d7**           diminished 7th                          dim7       ⵔ         dim7 ⵔ7
+**m3-d5-m7**           half-diminished 7th                     halfdim7   ⵁ          m7,5♭ m7(♭5) -7(♭5) ⵁ7 halfdim
 **m3-5-7**             minor major 7th                         minmaj7    mΔ         mMaj7 mM7 -M7 -Δ -Δ7
 **3-a5-7**             augmented major 7th                     augmaj7    +Δ         Maj7(♯5) +Maj7 +M7 +Δ7
 **3-d5-m7**            dominant 7th flat 5                                7,5♭       7(♭5)
@@ -76,8 +76,8 @@ Formula                Chord Name                              Shortcode  Notati
 **m3-5-7-9**           minor major 9th                         minmaj9    mΔ9        mMaj9 mM9 -M9 -Δ9
 **3-a5-7-9**           augmented major 9th                                +Δ9        Maj9(♯5) +Maj9 +M9
 **3-a5-m7-9**          augmented (dominant) 9th                aug9       +9         +7,9 9,5♯ 9(♯5)
-**m3-d5-m7-9**         half-diminished 9th                     halfdim9   ∅9         m9,5♭ m9(♭5) -9(♭5) halfdim9
-**m3-d5-m7-m9**        half-diminished minor 9th                          ∅9♭        ∅(♭9) m7,9♭,5♭ m7(♭9,♭5) -7(♭9,♭5) halfdim(♭9)
+**m3-d5-m7-9**         half-diminished 9th                     halfdim9   ⵁ9         m9,5♭ m9(♭5) -9(♭5) halfdim9
+**m3-d5-m7-m9**        half-diminished minor 9th                          ⵁ9♭        ⵁ(♭9) m7,9♭,5♭ m7(♭9,♭5) -7(♭9,♭5) halfdim(♭9)
 **m3-d5-d7-9**         diminished 9th                                     °9         dim9
 **m3-d5-d7-m9**        diminished minor 9th                               °9♭        °(♭9) dim7,9♭ °7,9♭
 **3-5-m7-m10**         dominant flat 10                                   7,10♭      7(♭10)
@@ -91,7 +91,7 @@ Formula                Chord Name                              Shortcode  Notati
 **m3-5-7-9-a11**       acoustic minor major 11th                          mΔ11♯      mΔ(♯11) mMaj(♯11) mM(♯11) -M(♯11) -Δ(♯11)
 **3-a5-7-9-11**        augmented major 11th                               +Δ11       Maj11(♯5) +Maj11 +M11
 **3-a5-m7-9-11**       augmented (dominant) 11th                          +11        11,5♯ 11(♯5)
-**m3-d5-m7-m9-11**     half-diminished 11th                               ∅11        m11,5♭ m11(♭5) -11(♭5) halfdim11
+**m3-d5-m7-m9-11**     half-diminished 11th                               ⵁ11        m11,5♭ m11(♭5) -11(♭5) halfdim11
 **m3-d5-d7-m9-d11**    diminished 11th                                    °11        dim11
 **3-5-m7-9-11-13**     (dominant) 13th                                    13
 **3-5-7-9-11-13**      major 13th                                         Δ13        Maj13 M13
@@ -103,7 +103,7 @@ Formula                Chord Name                              Shortcode  Notati
 **m3-5-7-9-a11-13**    minor major 13th                                   mΔ13(♯11)  mMaj13(♯11) mM13(♯11) -M13(♯11) -Δ13(♯11)
 **3-a5-7-9-11-13**     augmented major 13th                               +Δ13       Maj13(♯5) +Maj13 +M13
 **3-a5-m7-9-11-13**    augmented (dominant) 13th                          +13        13,5♯ 13(♯5)
-**m3-d5-m7-m9-11-13**  half-diminished 13th                               ∅13        m13,5♭ m13(♭5) -13(♭5) halfdim13
+**m3-d5-m7-m9-11-13**  half-diminished 13th                               ⵁ13        m13,5♭ m13(♭5) -13(♭5) halfdim13
 ====================== ======================================= ========== ========== ===============================================
 
 Figured Chords
@@ -129,10 +129,10 @@ Formula        Chord Name                                                       
 **2-5-7**      (minor) major 7th suspended 2nd                                                  Δ,2        Maj7,2 M7,2 Δ7,2 Δsus2 M7sus2
 **4-a5-7**     augmented major 7th suspended 4th                                                +Δ,4       Maj7(♯5)4 +Maj7,4 +M7,4 +Δ7,4 Maj7(♯5)4sus4 +Maj7,4sus4 +M7,4sus4 +Δ7,4sus4
 **2-a5-7**     augmented major 7th suspended 2nd                                                +Δ,2       Maj7(♯5)2 +Maj7,2 +M7,2 +Δ7,2 Maj7(♯5)2sus2 +Maj7,2sus2 +M7,2sus2 +Δ7,2sus2
-**4-d5-m7**    half-diminished 7th suspended 4th; dominant 7th flat 5 suspended 4th             ∅,4        7,5♭,4 7(♭5)4 ∅7,4 halfdim,4 7,5♭,4sus4 7(♭5)4sus4 ∅7,4sus4 halfdim,4sus4
-**2-d5-m7**    half-diminished 7th suspended 2nd; dominant 7th flat 5 suspended 2nd             ∅,2        7,5♭,2 7(♭5)2 ∅7,2 halfdim,2 7,5♭,2sus2 7(♭5)2sus2 ∅7,2sus2 halfdim,2sus2
-**4-d5-d7**    diminished 7th suspended 4th                                                     ○,4       dim7,4 ○7,4 ○(sus4) dim7(sus4) ○7(sus4)
-**2-d5-d7**    diminished 7th suspended 2nd                                                     ○,2       dim7,2 ○7,2 ○(sus2) dim7(sus2) ○7(sus2)
+**4-d5-m7**    half-diminished 7th suspended 4th; dominant 7th flat 5 suspended 4th             ⵁ,4        7,5♭,4 7(♭5)4 ⵁ7,4 halfdim,4 7,5♭,4sus4 7(♭5)4sus4 ⵁ7,4sus4 halfdim,4sus4
+**2-d5-m7**    half-diminished 7th suspended 2nd; dominant 7th flat 5 suspended 2nd             ⵁ,2        7,5♭,2 7(♭5)2 ⵁ7,2 halfdim,2 7,5♭,2sus2 7(♭5)2sus2 ⵁ7,2sus2 halfdim,2sus2
+**4-d5-d7**    diminished 7th suspended 4th                                                     ⵔ,4       dim7,4 ⵔ7,4 ⵔ(sus4) dim7(sus4) ⵔ7(sus4)
+**2-d5-d7**    diminished 7th suspended 2nd                                                     ⵔ,2       dim7,2 ⵔ7,2 ⵔ(sus2) dim7(sus2) ⵔ7(sus2)
 **4-d5-7**     diminished major 7th suspended 4th; major 7th flat 5 suspended 4th               Δ,5♭,4     Δ7(♭5)4 Maj7(♭5)4 M7(♭5)4 Δ7(♭5)4sus4 Maj7(♭5)4sus4 M7(♭5)4sus4
 **2-d5-7**     diminished major 7th suspended 2nd; major 7th flat 5 suspended 2nd               Δ,5♭,2     Δ7(♭5)2 Maj7(♭5)2 M7(♭5)2 Δ7(♭5)2sus2 Maj7(♭5)2sus2 M7(♭5)2sus2
 **4-5-m7-13**  dominant (7th) major 6th suspended 4th                                           7,6,4      7(add13)4 7(add6)4 7,6sus4 7(add13)sus4 7(add6)sus4

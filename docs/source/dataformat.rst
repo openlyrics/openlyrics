@@ -846,8 +846,8 @@ Shortcode    Chord Name                          Notation
 **dom7**     dominant 7th                        7
 **maj7**     major 7th                           Δ
 **min7**     minor 7th                           m7
-**dim7**     diminished 7th                      ○
-**halfdim7** half-diminished 7th                 ∅
+**dim7**     diminished 7th                      ⵔ
+**halfdim7** half-diminished 7th                 ⵁ
 **minmaj7**  minor major 7th                     mΔ
 **augmaj7**  augmented major 7th                 +Δ
 **aug7**     dominant 7th sharp 5; augmented 7th +7
@@ -861,7 +861,7 @@ Shortcode    Chord Name                          Notation
 **min9**     minor (dominant)Í 9th               m9
 **minmaj9**  minor major 9th                     mΔ9
 **aug9**     augmented (dominant) 9th            +9
-**halfdim9** half-diminished 9th                 ∅9
+**halfdim9** half-diminished 9th                 ⵁ9
 **sus4**     suspended 4th                       4
 **sus2**     suspended 2nd                       2
 **add9**     original name + added 9th           add9
