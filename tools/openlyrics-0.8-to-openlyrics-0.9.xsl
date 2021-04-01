@@ -8,6 +8,9 @@
  xmlns="http://openlyrics.info/namespace/2009/song">
   <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
+  <!-- config variables -->
+  <xsl:param name="empty-chords">true</xsl:param>
+
   <!-- Main: copy all nodes and attributes -->
   <xsl:template match="node()|@*">
     <xsl:copy>
@@ -106,7 +109,25 @@
           </xsl:call-template>
         </xsl:attribute>
       </xsl:if>
+      <xsl:if test="$empty-chords = 'false' and
+                    name(following-sibling::node()[1]) != 'chord'">
+        <xsl:value-of select="normalize-space(following-sibling::text()[1])"/>
+      </xsl:if>
     </xsl:element>
+    <xsl:if test="$empty-chords = 'false' and
+                  name(following-sibling::node()[1]) != 'chord' and
+                  substring(following-sibling::text()[1], string-length(following-sibling::text()[1]), 1) = ' '">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="text()[name(preceding-sibling::node()[1]) = 'chord']">
+    <xsl:choose>
+      <xsl:when test="$empty-chords = 'false'"></xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="."/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template name="convertNote">
