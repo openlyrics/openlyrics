@@ -4,24 +4,51 @@
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:ol="http://openlyrics.info/namespace/2009/song"
  xmlns:str="http://exslt.org/strings"
- extension-element-prefixes="str"
+ xmlns:date="http://exslt.org/dates-and-times"
+ extension-element-prefixes="str date"
  xmlns="http://openlyrics.info/namespace/2009/song">
   <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
   <!-- config variables -->
-  <xsl:param name="empty-chords">true</xsl:param><!-- Specifies "<chord/>text" or "<chord>text</chord>" format. Possible values: true, false -->
-  <xsl:param name="chord-notation">english</xsl:param><!-- Specifies input chord notation. Possible values: english, english-b, german, dutch, hungarian, neolatin -->
+  <xsl:param name="empty-chords">true</xsl:param><!-- Specifies the format for converting: "<chord/>text" or "<chord>text</chord>". Possible values: true, false -->
+  <xsl:param name="chord-notation">english</xsl:param><!-- Specifies input chord notation. Used during chord processing. Possible values: english, english-b, german, dutch, hungarian, neolatin -->
+  <xsl:param name="xmllang">en</xsl:param><!-- Language for xml:lang. Possible values: IETF BCP 47 -->
+  <xsl:param name="update-meta">false</xsl:param><!-- Option to update modifiedIn and modifiedDate during convertion or not. Possible values: true, false -->
+  <xsl:param name="add-pi">false</xsl:param><!-- Option to add CSS processing intruction. Possible values: true, false -->
+
+  <!-- Create root element. Add //ol:song/@chordNotation, //ol:song/@xml:lang -->
+  <xsl:template match="/ol:song">
+    <xsl:if test="$add-pi = 'true'">
+      <xsl:processing-instruction name="xml-stylesheet">href="../stylesheets/openlyrics.css" type="text/css"</xsl:processing-instruction> 
+    </xsl:if>
+    <xsl:element name="{local-name()}" namespace="{namespace-uri(}">
+      <xsl:attribute name="version">0.9</xsl:attribute>
+      <xsl:attribute name="createdIn"><xsl:value-of select="/ol:song/@createdIn" /></xsl:attribute>
+      <xsl:attribute name="modifiedIn">
+        <xsl:choose>
+          <xsl:when test="$update-meta = 'true'">OpenLyrics 0.8 to 0.9 XSLT converter</xsl:when>
+          <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedIn" /></xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:attribute name="modifiedDate">
+        <xsl:choose>
+          <xsl:when test="$update-meta = 'true'"><xsl:value-of select="date:date-time()"/></xsl:when>
+          <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedDate" /></xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:if test="$chord-notation != 'english'">
+        <xsl:attribute name="chordNotation"><xsl:value-of select="$chord-notation"/></xsl:attribute>
+      </xsl:if>
+      <xsl:attribute name="xml:lang"><xsl:value-of select="$xmllang"/></xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
 
   <!-- Main: copy all nodes and attributes -->
   <xsl:template match="node()|@*">
     <xsl:copy>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
-  </xsl:template>
-
-  <!-- Set OL version -->
-  <xsl:template match="/ol:song/@version">
-    <xsl:attribute name="version">0.9</xsl:attribute>
   </xsl:template>
 
   <!-- Convert chords: Supports documented notations and all variation of https://github.com/openlyrics/openlyrics/blob/v0.8/chords.txt -->
