@@ -237,7 +237,9 @@
       <!-- diminished 7th -->
       <xsl:when test="$s = 'ⵔ'
                    or $s = 'dim7'
-                   or $s = 'ⵔ7'">dim7</xsl:when>
+                   or $s = 'ⵔ7'
+                   or $s = 'o'
+                   or $s = 'o7'">dim7</xsl:when>
       <!-- half-diminished 7th -->
       <xsl:when test="$s = 'ⵁ'
                    or $s = 'm7,5♭'
