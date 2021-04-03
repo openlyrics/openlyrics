@@ -5,7 +5,7 @@
     <titles>
       <title>Testing 0.8 to 0.9 converting</title>
     </titles>
-    <verseOrder>v1 v2</verseOrder>
+    <verseOrder>v1 v2 v3 v4 v5</verseOrder>
     <authors>
       <author>Gellért Gyuris</author>
     </authors>
@@ -17,6 +17,31 @@
       </lines>
     </verse>
     <verse name="v2">
+      <lines>
+        A Te <chord name="D"/>nevedben mi együtt <chord name="D2"/>va<chord name="D"/>gyunk.<br/>
+        Jézus, <chord name="A"/>nevedben <chord name="A7"/>mi együtt <chord name="D"/>va<chord name="D7"/>gyunk.<br/>
+        Hallgasd <chord name="G"/>meg imánk, mikor hoz<chord name="D"/>zád <chord name="F#7"/>járu<chord name="Hm"/>lunk,<br/>
+        élő <chord name="Em7"/>igéddel <chord name="A"/>táplálj <chord name="A7"/>hű <chord name="D"/>Urunk!<chord name="G"/><chord name="D"/>
+      </lines>
+    </verse>
+    <verse name="v3">
+      <lines>
+        A Te <chord name="D"/>nevedben mi együtt <chord name="D2"/>va<chord name="D"/>gyunk.<br/>
+        Jézus, <chord name="A"/>nevedben <chord name="A7"/>mi együtt va<chord name="D"/>gyunk.<chord name="D7"/><br/>
+        ‖: Tégy <chord name="G"/>eggyé minket szentsé<chord name="D"/>gedben, <chord name="F#7"/>ez óha<chord name="Hm"/>junk!<br/>
+        Használj <chord name="Em7"/>munkádban <chord name="A"/>drága, <chord name="A7"/>hű U<chord name="D"/>runk!<chord name="G"/><chord name="D"/> :‖
+      </lines>
+    </verse>
+    <verse name="v4">
+      <lines>
+        ‖: <chord name="D"/>A-<chord name="G"/>a-<chord name="A"/>alle<chord name="D"/>luja, <chord name="G"/>dicsőség a <chord name="A"/>mennyben Iste<chord name="D"/>nünknek,<br/>
+        és <chord name="G"/>békes<chord name="A"/>ség a földön <chord name="G"/>néped<chord name="A"/>nek! :‖<br/>
+        <chord name="D"/>A<chord name="G"/>tyánk, <chord name="A"/>jóságos <chord name="D"/>Atya,<br/>
+        <chord name="G"/>minden <chord name="A"/>dicsőség a <chord name="D"/>Tiéd,<br/>
+        <chord name="G"/>szere<chord name="A"/>tő Atya <chord name="G"/>Is<chord name="A"/>ten!
+      </lines>
+    </verse>
+    <verse name="v5">
       <!-- chords from https://github.com/openlyrics/openlyrics/blob/v0.8/chords.txt -->
       <lines>
         <chord name="C"/>

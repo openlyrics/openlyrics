@@ -103,12 +103,12 @@
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="$empty-chords = 'false'
-                and name(following-sibling::node()[1]) != 'chord'">
+                    and not(following-sibling::node()[1] = following-sibling::*[1])">
         <xsl:value-of select="normalize-space(following-sibling::text()[1])"/>
       </xsl:if>
     </xsl:element>
     <xsl:if test="$empty-chords = 'false'
-              and name(following-sibling::node()[1]) != 'chord'
+              and not(following-sibling::node()[1] = following-sibling::*[1])
               and substring(following-sibling::text()[1],
                             string-length(following-sibling::text()[1]),
                             1) = ' '">
