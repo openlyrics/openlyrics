@@ -13,6 +13,7 @@
   <xsl:param name="empty-chords">true</xsl:param><!-- Specifies the format for converting: "<chord/>text" or "<chord>text</chord>". Possible values: true, false -->
   <xsl:param name="chord-notation">english</xsl:param><!-- Specifies input chord notation. Used during chord processing. Possible values: english, english-b, german, dutch, hungarian, neolatin -->
   <xsl:param name="xmllang">en</xsl:param><!-- Language for xml:lang. Possible values: IETF BCP 47 -->
+  <xsl:param name="remove-optional">true</xsl:param><!-- Option to remove optional attributes in 0.9 (createdIn, modifiedIn and modifiedDate). Possible values: true, false -->
   <xsl:param name="update-meta">false</xsl:param><!-- Option to update modifiedIn and modifiedDate during convertion or not. Possible values: true, false -->
   <xsl:param name="add-pi">false</xsl:param><!-- Option to add CSS processing intruction. Possible values: true, false -->
 
@@ -23,19 +24,21 @@
     </xsl:if>
     <xsl:element name="{local-name()}" namespace="{namespace-uri(}">
       <xsl:attribute name="version">0.9</xsl:attribute>
-      <xsl:attribute name="createdIn"><xsl:value-of select="/ol:song/@createdIn" /></xsl:attribute>
-      <xsl:attribute name="modifiedIn">
-        <xsl:choose>
-          <xsl:when test="$update-meta = 'true'">OpenLyrics 0.8 to 0.9 XSLT converter</xsl:when>
-          <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedIn" /></xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
-      <xsl:attribute name="modifiedDate">
-        <xsl:choose>
-          <xsl:when test="$update-meta = 'true'"><xsl:value-of select="date:date-time()"/></xsl:when>
-          <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedDate" /></xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:if test="$remove-optional != 'true'">
+        <xsl:attribute name="createdIn"><xsl:value-of select="/ol:song/@createdIn" /></xsl:attribute>
+        <xsl:attribute name="modifiedIn">
+          <xsl:choose>
+            <xsl:when test="$update-meta = 'true'">OpenLyrics 0.8 to 0.9 XSLT converter</xsl:when>
+            <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedIn" /></xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+        <xsl:attribute name="modifiedDate">
+          <xsl:choose>
+            <xsl:when test="$update-meta = 'true'"><xsl:value-of select="date:date-time()"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedDate" /></xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="$chord-notation != 'english'">
         <xsl:attribute name="chordNotation"><xsl:value-of select="$chord-notation"/></xsl:attribute>
       </xsl:if>

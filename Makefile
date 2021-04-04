@@ -75,6 +75,7 @@ convert-08-09: songs/*.xml
 					--stringparam empty-chords true \
 					--stringparam chord-notation english \
 					--stringparam xmllang en \
+					--stringparam remove-optional true \
 					--stringparam update-meta false \
 					--stringparam add-pi false \
 					tools/openlyrics-0.8-to-openlyrics-0.9.xsl \
