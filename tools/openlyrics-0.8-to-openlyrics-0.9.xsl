@@ -10,31 +10,32 @@
   <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
   <!-- config variables -->
-  <xsl:param name="empty-chords">true</xsl:param><!-- Specifies the format for converting: "<chord/>text" or "<chord>text</chord>". Possible values: true, false -->
+  <xsl:param name="empty-chords" select="true()"/><!-- Specifies the format for converting: "<chord/>text" or "<chord>text</chord>". Boolean: true(), false() -->
   <xsl:param name="chord-notation">english</xsl:param><!-- Specifies input chord notation. Used during chord processing. Possible values: english, english-b, german, dutch, hungarian, neolatin -->
   <xsl:param name="xmllang">en</xsl:param><!-- Language for xml:lang. Possible values: IETF BCP 47 -->
-  <xsl:param name="remove-optional">true</xsl:param><!-- Option to remove optional attributes in 0.9 (createdIn, modifiedIn and modifiedDate). Possible values: true, false -->
-  <xsl:param name="update-meta">false</xsl:param><!-- Option to update modifiedIn and modifiedDate during convertion or not. Possible values: true, false -->
-  <xsl:param name="add-pi">false</xsl:param><!-- Option to add CSS processing intruction. Possible values: true, false -->
+  <xsl:param name="remove-optional" select="true()"/><!-- Option to remove optional attributes in 0.9 (createdIn, modifiedIn and modifiedDate). Boolean: true(), false() -->
+  <xsl:param name="update-meta" select="false()"/><!-- Option to update modifiedIn and modifiedDate during convertion or not. Boolean: true(), false() -->
+  <xsl:param name="add-pi" select="false()"/><!-- Option to add CSS processing intruction. Boolean: true(), false() -->
+  <xsl:param name="pi">href="../stylesheets/openlyrics.css" type="text/css"</xsl:param>
 
   <!-- Create root element. Add //ol:song/@chordNotation, //ol:song/@xml:lang -->
   <xsl:template match="/ol:song">
-    <xsl:if test="$add-pi = 'true'">
-      <xsl:processing-instruction name="xml-stylesheet">href="../stylesheets/openlyrics.css" type="text/css"</xsl:processing-instruction> 
+    <xsl:if test="$add-pi = true()">
+      <xsl:processing-instruction name="xml-stylesheet"><xsl:value-of select="$pi"/></xsl:processing-instruction> 
     </xsl:if>
     <xsl:element name="{local-name()}" namespace="{namespace-uri(}">
       <xsl:attribute name="version">0.9</xsl:attribute>
-      <xsl:if test="$remove-optional != 'true'">
+      <xsl:if test="$remove-optional = false()">
         <xsl:attribute name="createdIn"><xsl:value-of select="/ol:song/@createdIn" /></xsl:attribute>
         <xsl:attribute name="modifiedIn">
           <xsl:choose>
-            <xsl:when test="$update-meta = 'true'">OpenLyrics 0.8 to 0.9 XSLT converter</xsl:when>
+            <xsl:when test="$update-meta = true()">OpenLyrics 0.8 to 0.9 XSLT converter</xsl:when>
             <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedIn" /></xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
         <xsl:attribute name="modifiedDate">
           <xsl:choose>
-            <xsl:when test="$update-meta = 'true'"><xsl:value-of select="date:date-time()"/></xsl:when>
+            <xsl:when test="$update-meta = true()"><xsl:value-of select="date:date-time()"/></xsl:when>
             <xsl:otherwise><xsl:value-of select="/ol:song/@modifiedDate" /></xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
@@ -132,12 +133,12 @@
           </xsl:call-template>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="$empty-chords = 'false'
+      <xsl:if test="$empty-chords = false()
                     and not(following-sibling::node()[1] = following-sibling::*[1])">
         <xsl:value-of select="normalize-space(following-sibling::text()[1])"/>
       </xsl:if>
     </xsl:element>
-    <xsl:if test="$empty-chords = 'false'
+    <xsl:if test="$empty-chords = false()
               and not(following-sibling::node()[1] = following-sibling::*[1])
               and substring(following-sibling::text()[1],
                             string-length(following-sibling::text()[1]),
@@ -149,7 +150,7 @@
   <!-- Match text after a chord: only effective in "<chords>text</chords>" mode -->
   <xsl:template match="text()[name(preceding-sibling::node()[1]) = 'chord']">
     <xsl:choose>
-      <xsl:when test="$empty-chords = 'false'"></xsl:when>
+      <xsl:when test="$empty-chords = false()"></xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="."/>
       </xsl:otherwise>
