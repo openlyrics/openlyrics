@@ -184,7 +184,7 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 ``xml:lang``
     Language of the OpenLyrics document. It defines the default language for titles,
     keywords, themes, comments, lyrics, etc. The format of this attribute should be
-    or ``xx-YY``, where ``xx`` is a language code from the
+    ``xx`` or ``xx-YY``, where ``xx`` is a language code from the
     `ISO-639 <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_ standard, and
     ``YY`` is a `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For more
     details see `BCP 47 <http://www.rfc-editor.org/rfc/bcp/bcp47.txt>`_.
