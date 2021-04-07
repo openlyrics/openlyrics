@@ -55,6 +55,23 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Convert transposition tag -->
+  <xsl:template match="//ol:transposition">
+    <xsl:element name="{local-name()}" namespace="{namespace-uri(}">
+      <xsl:choose>
+        <xsl:when test="number(.) &gt; 0">
+          <xsl:value-of select="number(.) mod 12"/>
+        </xsl:when>
+        <xsl:when test="number(.) &lt; 0">
+          <xsl:value-of select="number(.) mod -12"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>0</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+
   <!-- Convert key tag -->
   <xsl:template match="//ol:key">
     <xsl:element name="{local-name()}" namespace="{namespace-uri(}">

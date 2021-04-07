@@ -444,7 +444,7 @@ Transposition
 ^^^^^^^^^^^^^
 
 The ``<transposition>`` tag is used when it is necessary to move the key or the
-pitch of chords up or down. The value must be a positive or negative integer.
+pitch of chords up or down. The value must be an integer between -11 and 11.
 
 A negative value moves the pitch down by a fixed number of semitones::
 

@@ -181,8 +181,8 @@
   <define name="transposition">
     <element name="transposition">
       <data type="integer">
-        <param name="minInclusive">-99</param>
-        <param name="maxInclusive">99</param>
+        <param name="minInclusive">-11</param>
+        <param name="maxInclusive">11</param>
       </data>
     </element>
   </define>
