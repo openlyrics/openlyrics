@@ -478,8 +478,28 @@ example ``Very Fast``, ``Fast``, ``Moderate``, ``Slow``, ``Very Slow``, etc.::
 Key
 ^^^
 
-The key determines the musical scale of a song. For example, ``A``, ``B``, ``C#``,
-``D``, ``Eb``, ``F#`` or ``Ab``.
+The key determines the musical scale of a song. It can be determined with the
+following major or minor values:
+
+============== ====== ======
+Key signature  Major  Minor
+============== ====== ======
+7♯             C#     A#m
+6♯             F#     D#m
+5♯             B      G#m
+4♯             E      C#m
+3♯             A      F#m
+2♯             D      Bm
+1♯             G      Em
+0              C      Am
+1♭             F      Dm
+2♭             Bb     Gm
+3♭             Eb     Cm
+4♭             Ab     Fm
+5♭             Db     Bbm
+6♭             Gb     Ebm
+7♭             Cb     Abm
+============== ====== ======
 
 Example::
 

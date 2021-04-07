@@ -214,7 +214,7 @@
 
   <define name="key">
     <element name="key">
-      <ref name="nonEmptyContent"/>
+      <ref name="keyNote"/>
     </element>
   </define>
 
@@ -405,6 +405,56 @@
         <empty/>
       </choice>
     </element>
+  </define>
+
+  <define name="keyNote">
+    <choice>
+      <!-- 7♯ -->
+      <value>C#</value>
+      <value>A#m</value>
+      <!-- 6♯ -->
+      <value>F#</value>
+      <value>D#m</value>
+      <!-- 5♯ -->
+      <value>B</value>
+      <value>G#m</value>
+      <!-- 4♯ -->
+      <value>E</value>
+      <value>C#m</value>
+      <!-- 3♯ -->
+      <value>A</value>
+      <value>F#m</value>
+      <!-- 2♯ -->
+      <value>D</value>
+      <value>Bm</value>
+      <!-- 1♯ -->
+      <value>G</value>
+      <value>Em</value>
+      <!-- 0  -->
+      <value>C</value>
+      <value>Am</value>
+      <!-- 1♭ -->
+      <value>F</value>
+      <value>Dm</value>
+      <!-- 2♭ -->
+      <value>Bb</value>
+      <value>Gm</value>
+      <!-- 3♭ -->
+      <value>Eb</value>
+      <value>Cm</value>
+      <!-- 4♭ -->
+      <value>Ab</value>
+      <value>Fm</value>
+      <!-- 5♭ -->
+      <value>Db</value>
+      <value>Bbm</value>
+      <!-- 6♭ -->
+      <value>Gb</value>
+      <value>Ebm</value>
+      <!-- 7♭ -->
+      <value>Cb</value>
+      <value>Abm</value>
+    </choice>
   </define>
 
   <define name="musicalNote">

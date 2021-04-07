@@ -304,3 +304,10 @@ chord[structure="4-a5-m7-9"]                               { --chord-structure: 
 song[version="0.9"] chord[root]::before {
   content: var(--chord-root) var(--chord-structure) var(--chord-bass);
 }
+
+/*
+ * Key
+ **************/
+song[version="0.9"] key {
+  /* It is impssible to select by text content */
+}

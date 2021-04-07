@@ -188,6 +188,16 @@
         <xsl:when test="local-name()='ccliNo'">
           <a href="https://songselect.ccli.com/songs/{.}"><xsl:value-of select="."/></a>
         </xsl:when>
+        <xsl:when test="local-name()='key'">
+          <xsl:choose>
+            <xsl:when test="substring(., string-length(.), 1) = 'm'">
+              <xsl:value-of select="$chordNotation/notation[@id=$notation]/name[@class=substring(current(), 1, string-length(current())-1)]/text()"/><xsl:text>m</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$chordNotation/notation[@id=$notation]/name[@class=current()]/text()"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="."/>
         </xsl:otherwise>

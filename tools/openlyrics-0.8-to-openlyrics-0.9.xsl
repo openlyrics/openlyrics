@@ -55,6 +55,25 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Convert key tag -->
+  <xsl:template match="//ol:key">
+    <xsl:element name="{local-name()}" namespace="{namespace-uri(}">
+      <xsl:choose>
+        <xsl:when test="substring(., string-length(.), 1) = 'm'">
+          <xsl:call-template name="convertNote">
+            <xsl:with-param name="n" select="substring(., 1, string-length(.)-1)"/>
+          </xsl:call-template>
+          <xsl:text>m</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="convertNote">
+            <xsl:with-param name="n" select="."/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+
   <!-- Convert chords: Supports documented notations and all variation of https://github.com/openlyrics/openlyrics/blob/v0.8/chords.txt -->
   <xsl:template match="//ol:chord">
     <!-- Tokenize @name to $root, $structure, $bass, TODO: port to regexp if available -->
@@ -165,6 +184,10 @@
   <xsl:template name="convertNote">
     <xsl:param name="n" />
     <xsl:choose>
+      <xsl:when test="$n = 'Cb'
+                   or $n = 'Ces'
+                   or $n = 'Cesz'
+                   or $n = 'Dob'">Cb</xsl:when><!-- only for song key -->
       <xsl:when test="$n = 'C'
                    or $n = 'Do'">C</xsl:when>
       <xsl:when test="$n = 'C#'
