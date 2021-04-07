@@ -120,11 +120,16 @@
         </xsl:call-template>
       </xsl:attribute>
       <xsl:if test="$structure != ''">
-        <xsl:attribute name="structure">
+        <xsl:variable name="convertedStructure">
           <xsl:call-template name="convertStructure">
             <xsl:with-param name="str" select="$structure"/>
           </xsl:call-template>
-        </xsl:attribute>
+        </xsl:variable>
+        <xsl:if test="$convertedStructure != ''">
+          <xsl:attribute name="structure">
+            <xsl:value-of select="$convertedStructure"/>
+          </xsl:attribute>
+        </xsl:if>
       </xsl:if>
       <xsl:if test="$bass != ''">
         <xsl:attribute name="bass">
