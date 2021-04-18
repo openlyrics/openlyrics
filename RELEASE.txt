@@ -7,7 +7,10 @@ Release 0.9 (unreleased)
 * Add support for repeating lines (``<lines repeat="2">``)
 * Add support for chordNotation attribute (``chordNotation="hungarian"``)
 * Add support for non empty chords (``<chord root="C" structure="dom7">lyrics...</chord>``)
-* Add support for chord root, structure, bass attributes, remove chord name attribute (``<chord root="C" structure="min" bass="Eb"/>``)
+* Add support for chord root, structure, bass attributes (``<chord root="C" structure="min" bass="Eb"/>``) by checking compliance, remove chord name attribute
+* Add "tool/openlyrics-0.8-to-openlyrics-0.9.xsl" to convert songs from OpenLyrics 0.8.
+* Add "tool/openlyrics-0.9-to-openlyrics-0.8.xsl" to convert songs from OpenLyrics 0.9 to 0.8.
+* Add "Makefile" to check well formedness, validity, and conversions.
 
 Release 0.8 (15 Apr 2012)
 =========================

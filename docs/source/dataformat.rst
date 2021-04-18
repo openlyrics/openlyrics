@@ -194,7 +194,7 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 
 ``chordNotation``
     A string to idetify the preferred notation of the chords. Supported values are
-    ``english`` (default), ``german``, ``dutch``, ``hungarian``, ``neolatin``.
+    ``english`` (default), ``english-b``,  ``german``, ``dutch``, ``hungarian``, ``neolatin``.
     This element is optional.
 
 ``version``
@@ -810,6 +810,7 @@ with English notation:
 ========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
 english    C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    Bb   B
 ========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+english-b  C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    B    H
 german     C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   B    H
 dutch      C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   Bes  B
 hungarian  C   Cisz  Desz  D   Disz  Esz  E   F   Fisz  Gesz  G    Gisz  Asz  A   Aisz  B    H
@@ -841,12 +842,12 @@ Shortcode    Chord Name                          Notation
              major
 **min**      minor                               m
 **aug**      augmented                           \+
-**dim**      diminished                          °
+**dim**      diminished                          m,5♭
 **dom7**     dominant 7th                        7
 **maj7**     major 7th                           Δ
 **min7**     minor 7th                           m7
-**dim7**     diminished 7th                      °7
-**halfdim7** half-diminished 7th                 ø
+**dim7**     diminished 7th                      ⵔ
+**halfdim7** half-diminished 7th                 ⵁ
 **minmaj7**  minor major 7th                     mΔ
 **augmaj7**  augmented major 7th                 +Δ
 **aug7**     dominant 7th sharp 5; augmented 7th +7
@@ -860,13 +861,13 @@ Shortcode    Chord Name                          Notation
 **min9**     minor (dominant)Í 9th               m9
 **minmaj9**  minor major 9th                     mΔ9
 **aug9**     augmented (dominant) 9th            +9
-**halfdim9** half-diminished 9th                 ø9
-**sus4**     suspended 4th                       4
-**sus2**     suspended 2nd                       2
-**add9**     original name + added 9th           add9
+**halfdim9** half-diminished 9th                 ⵁ9
+**sus4**     major/minor suspended 4th           4
+**sus2**     major/minor suspended 2nd           2
+**add9**     major added 9th                     add9
 ============ =================================== ========
 
-Other chords can be noted with **chord formulas**. OpenLyrics has 69 built-in chords defined by a formula.
+Other chords can be noted with **chord formulas**. OpenLyrics has 85 built-in chords defined by a formula.
 Using chord formulas, an author can write additional custom chords. Chord formulas are described
 in :ref:`chord formulas <chordlist>`.
 

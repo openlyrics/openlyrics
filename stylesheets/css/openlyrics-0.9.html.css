@@ -65,9 +65,23 @@
   display: inline;
 }
 
-/* emtpy chord = only chord in segment */
+/* emtpy chord, only a chord in the segment (empty chord written with 0.8 style) there are only empty chords in the scope */
 .song[data-ol-version="0.9"] .segment.only-chord {
-  top: -.1rem;
+  position: relative;
+  height: 1rem;
+  margin-bottom: 1rem;
+}
+.song[data-ol-version="0.9"] .segment.only-chord .chord {
+  position: absolute;
+  top: -0.7rem;
+}
+/* emtpy chord, only a chord in the segment (real empty chord written mixed with non-empty chords as normal in 0.9) */
+.song[data-ol-version="0.9"] .segment:not(.only-chord) ~ .segment.only-chord {
+  top: -.9rem;
+}
+.song[data-ol-version="0.9"] .segment:not(.only-chord) ~ .segment.only-chord .chord {
+  position: static;
+  margin-top: 0;
 }
 
 /* upbeat: with text and empty tag */

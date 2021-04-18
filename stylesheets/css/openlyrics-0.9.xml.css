@@ -42,22 +42,34 @@ song[version="0.9"] chord[root]::before {
   margin-bottom: -.1rem;
   margin-right: .1rem;
 }
-/* Chord "content:" declarations in a separate file */
+/* Chord "content:" declarations are in a separate file */
 
 /* intrument chords */
 song[version="0.9"] instrument chord[root]:empty {
+  position: static;
   margin-bottom: 0;
-  bottom: 0;
   margin-right: .1rem;
 }
-/* empty */
+song[version="0.9"] instrument chord[root]:empty::before {
+  position: static;
+}
+/* empty chord written with 0.8 style: there are only empty chords in the scope */
 song[version="0.9"] chord[root]:empty {
   position: relative;
-  bottom: .9rem;
-  margin-right: -.2rem;
+  height: 1rem;
+  margin-bottom: 1rem;
 }
-song[version="0.9"] chord[root]:empty + chord[root]:empty {
-  margin-left: .4rem;
+song[version="0.9"] chord[root]:empty::before {
+  position: absolute;
+  top: .2rem;
+}
+/* real empty chord written mixed with non-empty chords as normal in 0.9 */
+song[version="0.9"] chord[root]:not(:empty) ~ chord[root]:empty {
+  bottom: .9rem;
+  margin-right: .1rem;
+}
+song[version="0.9"] chord[root]:not(:empty) ~ chord[root]:empty::before {
+  position: static;
 }
 /* upbeat: with text and empty tag */
 song[version="0.9"] chord[root][upbeat]:not(:first-of-type):not(:empty)::before {
@@ -72,7 +84,7 @@ song[version="0.9"] br + chord[root][upbeat] {
   position: relative;
 }
 song[version="0.9"] chord[root][upbeat]:first-of-type::before,
-song[version="0.9"] br + chord[root][upbeat]::before  {
+song[version="0.9"] br + chord[root][upbeat]::before {
   position: absolute;
   right: 100%;
   bottom: .9rem;

@@ -72,6 +72,12 @@ convert-08-09: songs/*.xml
 				name=$${file##*/} && \
 				xsltproc \
 					--output songs/"$$name" \
+					--param empty-chords "true()" \
+					--stringparam chord-notation english \
+					--stringparam xmllang en \
+					--param remove-optional "true()" \
+					--param update-meta "false()" \
+					--param add-pi "false()" \
 					tools/openlyrics-0.8-to-openlyrics-0.9.xsl \
 					"$$file"; \
 			fi; \
