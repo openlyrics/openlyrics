@@ -13,6 +13,7 @@ Release 0.9 (unreleased)
 * Add "Makefile" to check well formedness, validity, and conversions.
 * Restrict values for musical ``key``.
 * Restrict ``transposition`` between -11 and 11.
+* Add support for ``timeSignature``.
 
 
 Release 0.8 (15 Apr 2012)

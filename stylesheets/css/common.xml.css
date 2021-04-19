@@ -36,6 +36,7 @@ released,
 transposition,
 tempo,
 key,
+timeSignature,
 variant,
 publisher,
 version,
@@ -56,6 +57,7 @@ released::before,
 transposition::before,
 tempo::before,
 key::before,
+timeSignature::before,
 variant::before,
 publisher::before,
 version::before,
@@ -79,6 +81,7 @@ released::before                 { content: "\f073"; /* calendar */}
 transposition::before            { content: "\f0dc"; /* sort */}
 tempo::before                    { content: "\f017"; /* clock-o */}
 key::before                      { content: "\f084"; /* key */ }
+timeSignature::before            { content: "\f192"; /* dot-circle-o */ }
 variant::before                  { content: "\f074"; /* random */ }
 publisher::before                { content: "\f1ad"; /* building */ }
 version::before                  { content: "\f126"; /* code-fork */ }

@@ -68,6 +68,7 @@ header .title.original::before,
 .properties .transposition::before,
 .properties .tempo::before,
 .properties .key::before,
+.properties .timeSignature::before,
 .properties .variant::before,
 .properties .publisher::before,
 .properties .version::before,
@@ -92,6 +93,7 @@ header .title.original::before          { content: "\f024"; /* flag */ }
 .properties .transposition::before      { content: "\f0dc"; /* sort */}
 .properties .tempo::before              { content: "\f017"; /* clock-o */}
 .properties .key::before                { content: "\f084"; /* key */ }
+.properties .timeSignature::before      { content: "\f192"; /* dot-circle-o */ }
 .properties .variant::before            { content: "\f074"; /* random */ }
 .properties .publisher::before          { content: "\f1ad"; /* building */ }
 .properties .version::before            { content: "\f126"; /* code-fork */ }

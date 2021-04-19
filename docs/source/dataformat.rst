@@ -66,6 +66,7 @@ Features
         ``<transposition>``
         ``<tempo>``
         ``<key>``
+        ``<timeSignature>``
 
     namespace
         ``<song xmlns="http://openlyrics.info/namespace/2009/song">``
@@ -504,6 +505,17 @@ Key signature  Major  Minor
 Example::
 
     <key>Eb</key>
+
+
+Time Signature
+^^^^^^^^^^^^^^
+
+The ``timeSignature`` tag is used to define the time signature::
+
+    <timeSignature>3/4</timeSignature>
+
+Its value must be a fraction: an integer between 1 and 63, a slash (/), and one of
+the following integers: 1, 2, 4, 8, 16, 32, 64. For example: 2/2, 4/4, 3/4, 7/8, 12/8.
 
 
 Variant

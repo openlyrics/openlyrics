@@ -44,6 +44,9 @@
         <optional>
           <ref name="key"/>
         </optional>
+        <optional>
+          <ref name="timeSignature"/>
+        </optional>
         <!-- Other Info -->
         <optional>
           <ref name="variant"/>
@@ -211,11 +214,21 @@
     </element>
   </define>
 
-
   <define name="key">
     <element name="key">
       <ref name="keyNote"/>
     </element>
+  </define>
+
+  <define name="timeSignature">
+    <element name="timeSignature">
+      <data type="token">
+        <param name="minLength">3</param>
+        <param name="maxLength">5</param>
+        <!-- number between 1 and 63 + "/" + numbers: 1, 2, 4, 8, 16, 32, 64 -->
+        <param name="pattern">(6[0-3]|[1-5][0-9]|[1-9])/(64|32|16|8|4|2|1)</param>
+      </data>
+   </element>
   </define>
 
   <!-- OTHER INFO -->

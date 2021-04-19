@@ -106,6 +106,7 @@
         <p class="properties-main">
           <xsl:apply-templates select="ol:key"/>
           <xsl:apply-templates select="ol:transposition"/>
+          <xsl:apply-templates select="ol:timeSignature"/>
           <xsl:apply-templates select="ol:tempo"/>
           <xsl:apply-templates select="ol:ccliNo"/>
           <xsl:if test="$verseorder-style='short'">
@@ -181,7 +182,7 @@
     </span>
   </xsl:template>
 
-  <xsl:template match="ol:released|ol:version|ol:variant|ol:publisher|ol:copyright|ol:comment|ol:keywords|ol:key|ol:transposition|ol:ccliNo">
+  <xsl:template match="ol:released|ol:version|ol:variant|ol:publisher|ol:copyright|ol:comment|ol:keywords|ol:key|ol:transposition|ol:timeSignature|ol:ccliNo">
     <span class="{local-name()}" title="{$locale/properties/*[local-name()=local-name(current())]/text()}">
       <em><xsl:value-of select="$locale/properties/*[local-name()=local-name(current())]/text()"/>: </em>
       <xsl:choose>

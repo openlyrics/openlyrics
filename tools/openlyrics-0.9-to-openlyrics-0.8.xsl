@@ -95,6 +95,7 @@
 
   <!-- Remove other parts not compliant with version 0.8 -->
   <xsl:template match="//ol:song/ol:lyrics/ol:instrument"/>
+  <xsl:template match="//ol:song/ol:properties/ol:timeSignature"/>
 
   <!-- Transform cords and cord's name respecting chordNotation -->
   <xsl:template match="//ol:chord">
