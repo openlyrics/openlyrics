@@ -1,0 +1,15 @@
+language: minimal
+
+os:
+  - linux
+
+addons:
+  apt:
+    packages:
+    - make
+    - libxml2-utils
+    - xmlformat-perl
+    - xsltproc
+
+script:
+  - make all
