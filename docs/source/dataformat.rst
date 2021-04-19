@@ -277,7 +277,7 @@ using the `7-Zip <http://en.wikipedia.org/wiki/7zip>`_ format, as this format is
 known to handle non-ASCII file names well.
 
 Processing Instructions
-----------------------
+-----------------------
 
 OpenLyrics, like all XML files, can contain `processing instructions <https://www.w3.org/TR/REC-xml/#sec-pi>`_.
 With the ``xml-stylesheet`` attribute it is possible to `associate <https://www.w3.org/TR/xml-stylesheet/>`_
