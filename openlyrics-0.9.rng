@@ -133,16 +133,19 @@
                 <choice>
                   <value>words</value>
                   <value>music</value>
+                  <value>arrangement</value>
                 </choice>
               </attribute>
-              <!-- when attrib 'type' value is 'translation' require attribute 'lang'.
+              <!-- when attrib 'type' value is 'translation' it can have an attribute 'lang'.
                    'xml:lang' can't be used. xml:lang means in what language is the
                    content of an element and this is not the case. -->
               <group>
                 <attribute name="type">
                   <value>translation</value>
                 </attribute>
-                <ref name="langAttribute"/>
+                <optional>
+                  <ref name="langAttribute"/>
+                </optional>
               </group>
             </choice>
           </optional>

@@ -7,7 +7,7 @@
     </titles>
     <verseOrder>v1 v2 v3 v4 v5</verseOrder>
     <authors>
-      <author>Gellért Gyuris</author>
+      <author type="translation" lang="en">Gellért Gyuris</author>
     </authors>
     <key>Esm</key>
     <transposition>-6</transposition>

@@ -10,6 +10,7 @@
     <words>Szövegíró</words>
     <music>Zeneszerző</music>
     <translation>Fordító</translation>
+    <arrangement>Átdolgozó</arrangement><!-- Átirat -->
     <released>Kiadva</released>
     <version>Verzió</version>
     <variant>Verzió</variant>

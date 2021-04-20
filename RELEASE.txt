@@ -14,6 +14,8 @@ Release 0.9 (unreleased)
 * Restrict values for musical ``key``.
 * Restrict ``transposition`` between -11 and 11.
 * Add support for ``timeSignature``.
+* Add arrangement type for author (``<author type="arrangement">Name</author>``).
+* Remove mandatory flag from author type=translation, as it may match the language of the XML document (``xml:lang``).
 
 
 Release 0.8 (15 Apr 2012)

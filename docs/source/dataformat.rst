@@ -367,7 +367,7 @@ There can, of course, be more authors::
       <author>Johannes Newton</author>
     </authors>
 
-Three different types of authors can be defined:
+Four different types of authors can be defined:
 
 * *author of words*::
 
@@ -379,12 +379,19 @@ Three different types of authors can be defined:
 
 * *translator*::
 
+      <author type="translation">Csiszér László</author>
       <author type="translation" lang="cs">Jan Ňůtn</author>
 
-  When the ``type`` is ``translation``, a ``lang`` attribute is mandatory. The
+  When the ``type`` is ``translation``, a ``lang`` attribute can be added. The
   value of this attribute should be in the same format as the ``lang`` attribute
-  of the ``<title>`` tag.
+  of the ``<title>`` tag. It is not mandatory, because the translation normally
+  matches the language of the document, stored in ``<song xml:lang="">``, but
+  it can be useful for bilingual documents to indicate precisely the translator.
 
+* *arranger*, a person, who produces an alternate version, arrangement of a song,
+  who rewrites, alters, reworks a song or adopts a song to another language::
+
+      <author type="arrangement">John Newton</author>
 
 Copyright
 ^^^^^^^^^

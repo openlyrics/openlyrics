@@ -166,7 +166,7 @@
       <xsl:value-of select="."/>
     </span>
   </xsl:template>
-  <xsl:template match="ol:author[@type='words']|ol:author[@type='music']">
+  <xsl:template match="ol:author[@type='words']|ol:author[@type='music']|ol:author[@type='arrangement']">
     <span class="{local-name()} {@type}" title="{$locale/properties/*[local-name()=current()/@type]/text()}">
       <em><xsl:value-of select="$locale/properties/*[local-name()=current()/@type]/text()"/>: </em>
       <xsl:value-of select="."/>

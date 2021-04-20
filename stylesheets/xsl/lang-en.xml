@@ -7,9 +7,10 @@
     <originalTitle>Original title</originalTitle>
     <subtitle>Subtitle</subtitle>
     <author>Author</author>
-    <words>Words</words>
-    <music>Music</music>
-    <translation>Translation</translation>
+    <words>Lyricist</words>
+    <music>Composer</music>
+    <translation>Translator</translation>
+    <arrangement>Arranger</arrangement>
     <released>Released</released>
     <version>Version</version>
     <variant>Variant</variant>

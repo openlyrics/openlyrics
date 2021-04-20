@@ -93,9 +93,28 @@
     </xsl:element>
   </xsl:template>
 
+  <!-- Add lang attribute to author[translation] if not exists -->
+  <xsl:template match="//ol:author[@type='translation']">
+    <xsl:element name="author">
+      <xsl:attribute name="type"><xsl:value-of select="@type"/></xsl:attribute>
+      <xsl:attribute name="lang">
+        <xsl:choose>
+          <xsl:when test="@lang">
+            <xsl:value-of select="@lang"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="//ol:song/@xml:lang"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:value-of select="."/>
+    </xsl:element>
+  </xsl:template>
+
   <!-- Remove other parts not compliant with version 0.8 -->
   <xsl:template match="//ol:song/ol:lyrics/ol:instrument"/>
   <xsl:template match="//ol:song/ol:properties/ol:timeSignature"/>
+  <xsl:template match="//ol:song/ol:properties/ol:authors/ol:author/@type[.='arrangement']"/>
 
   <!-- Transform cords and cord's name respecting chordNotation -->
   <xsl:template match="//ol:chord">

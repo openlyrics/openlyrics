@@ -91,6 +91,18 @@
     </xsl:element>
   </xsl:template>
 
+  <!-- Remove lang attribute from translator if it matches the document language -->
+  <xsl:template match="//ol:author/@lang">
+    <xsl:choose>
+      <xsl:when test=".=$xmllang"></xsl:when>
+      <xsl:otherwise>
+        <xsl:attribute name="lang">
+          <xsl:value-of select="."/>
+        </xsl:attribute>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- Convert chords: Supports documented notations and all variation of https://github.com/openlyrics/openlyrics/blob/v0.8/chords.txt -->
   <xsl:template match="//ol:chord">
     <!-- Tokenize @name to $root, $structure, $bass, TODO: port to regexp if available -->

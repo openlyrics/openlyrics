@@ -7,7 +7,11 @@
     </titles>
     <verseOrder>i v1</verseOrder>
     <authors>
-      <author>Gellért Gyuris</author>
+      <author>Csiszér László</author>
+      <author type="words">Flach Ferenc</author>
+      <author type="music">Flach Ferenc</author>
+      <author type="translation">Majoros Ildikó</author>
+      <author type="arrangement">Gellért Gyuris</author>
     </authors>
     <timeSignature>4/4</timeSignature>
   </properties>

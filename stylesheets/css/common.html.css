@@ -87,6 +87,7 @@ header .title.original::before          { content: "\f024"; /* flag */ }
 .properties .author.words::before       { content: "\f031"; /* font */ }
 .properties .author.music::before       { content: "\f001"; /* music */ }
 .properties .author.translation::before { content: "\f0ac"; /* globe */ }
+.properties .author.arrangement::before { content: "\f24d"; /* clone */ }
 .properties .copyright::before          { content: "\f07a"; /* shopping-cart */ }
 .properties .ccliNo::before             { content: "\f02a"; /* barcode */ }
 .properties .released::before           { content: "\f073"; /* calendar */}
