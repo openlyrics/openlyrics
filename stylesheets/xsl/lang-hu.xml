@@ -38,13 +38,13 @@
       <c>Refrén</c>
       <p>Előrefrén</p>
       <b>Híd</b>
-      <e>Lezárás</e>
+      <o>Más</o>
       <i>Intró</i>
-      <m>Közjáték</m>
-      <o>Utójáték</o>
+      <e>Lezárás</e>
       <s>Szóló</s>
+      <m>Közjáték</m>
     </verseNames>
-    <verseNameFormat initial="number" separator=". " translateFrom="VREHLIKUS" translateTo="vrehlikus" />
+    <verseNameFormat initial="number" separator=". " translateFrom="VREHMILSK" translateTo="vrehmilsk" />
   </lyrics>
   <languages>
     <en>angol</en>

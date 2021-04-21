@@ -38,11 +38,11 @@
       <c>Chorus</c>
       <p>Pre-chorus</p>
       <b>Bridge</b>
-      <e>Ending</e>
+      <o>Other</o>
       <i>Intro</i>
-      <m>Middle</m>
-      <o>Outro</o>
+      <e>Ending</e>
       <s>Solo</s>
+      <m>Middle</m>
     </verseNames>
     <!-- Format of verse name.
     @initial: Whitch is the 1st? "name" or "number"
