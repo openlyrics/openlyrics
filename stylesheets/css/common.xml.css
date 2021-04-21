@@ -183,33 +183,43 @@ lyrics > verse[name^='b'] {
 lyrics > verse[name^='b'][lang] {
   counter-increment: bridge 0;
 }
-lyrics > verse[name^='e'] {
+lyrics > verse[name^='o'] {
+  counter-increment: other;
+}
+lyrics > verse[name^='o'][lang] {
+  counter-increment: other 0;
+}
+lyrics > verse[name^='i'],
+lyrics > instrument[name^='i'] {
+  counter-increment: intro;
+}
+lyrics > verse[name^='i'][lang] {
+  counter-increment: intro 0;
+}
+lyrics > verse[name^='e'],
+lyrics > instrument[name^='e'] {
   counter-increment: ending;
 }
 lyrics > verse[name^='e'][lang] {
   counter-increment: ending 0;
 }
-lyrics > instrument[name^='i'] {
-  counter-increment: intro;
+lyrics > instrument[name^='s'] {
+  counter-increment: solo;
 }
 lyrics > instrument[name^='m'] {
   counter-increment: middle;
-}
-lyrics > instrument[name^='o'] {
-  counter-increment: outro;
-}
-lyrics > instrument[name^='s'] {
-  counter-increment: solo;
 }
 lyrics > verse[name='v'],
 lyrics > verse[name='c'],
 lyrics > verse[name='p'],
 lyrics > verse[name='b'],
-lyrics > verse[name='e'],
+lyrics > verse[name='o'],
+lyrics > verse[name='i'],
 lyrics > instrument[name='i'],
-lyrics > instrument[name='m'],
-lyrics > instrument[name='o'],
-lyrics > instrument[name='s'] {
+lyrics > verse[name='e'],
+lyrics > instrument[name='e'],
+lyrics > instrument[name='s'],
+lyrics > instrument[name='m'] {
   counter-increment: none !important;
 }
 
