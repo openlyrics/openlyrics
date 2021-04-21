@@ -769,40 +769,52 @@ line "That saved a wretch like me!"
 Verse/Instrumental Name
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+OpenLyrics supports these verse and instrumental types:
+
++------------+------------+-------+------------+
+| Name       | Short code | Type               |
++============+============+=======+============+
+| intro      | i          | verse | instrument |
++------------+------------+-------+------------+
+| verse      | v          | verse |            |
++------------+------------+-------+------------+
+| pre-chorus | p          | verse |            |
++------------+------------+-------+------------+
+| chorus     | c          | verse |            |
++------------+------------+-------+------------+
+| solo       | s          |       | instrument |
++------------+------------+-------+------------+
+| bridge     | b          | verse |            |
++------------+------------+-------+------------+
+| middle     | m          |       | instrument |
++------------+------------+-------+------------+
+| other      | o          | verse |            |
++------------+------------+-------+------------+
+| ending     | e          | verse | instrument |
++------------+------------+-------+------------+
+
+
 As previously mentioned, every ``<verse>`` or ``<instrument>`` tag has a mandatory ``name`` attribute.
 They should be unique, written in **lower case**, a single word, and should
 follow the naming convention as laid out in the table below:
 
-======================= ==========================================================
-Name                    Description
-======================= ==========================================================
-``v1, v2, ...``         first verse, second verse, ...
-``v1a, v1b, ...``       first verse part A, first verse part B, ...
-``c``                   chorus
-``c1, c2, ...``         first chorus, second chorus, ...
-``ca, c1a, c1b, ...``   chorus part A, first chorus part A, first chorus part B, ...
-``p``                   pre-chorus
-``p1, p2, ...``         first pre-chorus, second pre-chorus, ...
-``pa, p1a, p1b, ...``   pre-chrous part A, first pre-chorus part A, first pre-chorus part B, ...
-``b``                   bridge
-``b1, b2, ...``         first bridge, second bridge, ...
-``ba, b1a, b1b, ...``   bridge part A, first bridge part A, first bridge part B, ...
-``e``                   ending
-``e1, e2, ...``         first ending, second ending, ...
-``ea, e1a, e1b, ...``   ending part A, first ending part A, first ending part B, ...
-``i``                   instrumental intro
-``i1, i2, ...``         first intro, second intro, ...
-``ia, i1a, i1b, ...``   intro part A, first intro part A, first intro part B, ...
-``m``                   instrumental middle
-``m1, m2, ...``         first middle, second middle, ...
-``ma, m1a, m1b, ...``   middle part A, first middle part A, first middle part B, ...
-``o``                   instrumental outro
-``o1, o2, ...``         first outro, second outro, ...
-``oa, o1a, o1b, ...``   outro part A, first outro part A, first outro part B, ...
-``s``                   instrumental solo
-``s1, s2, ...``         first solo, second solo, ...
-``sa, s1a, s1b, ...``   solo part A, first solo part A, first solo part B, ...
-======================= ==========================================================
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+|                         | i          | v          | p          | c          | s          | b          | m          | o          | e          |
++=========================+============+============+============+============+============+============+============+============+============+
+| section                 | ``i``      |            | ``p``      | ``c``      | ``s``      | ``b``      | ``m``      | ``o``      | ``e``      |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+| | section part A        | | ``ia``   |            | | ``pa``   | | ``ca``   | | ``sa``   | | ``ba``   | | ``ma``   | | ``oa``   | | ``ea``   |
+| | section part B        | | ``ib``   |            | | ``pb``   | | ``cb``   | | ``sb``   | | ``bb``   | | ``mb``   | | ``ob``   | | ``eb``   |
+| | section part C…       | | ``ic``…  |            | | ``pc``…  | | ``cc``…  | | ``sc``…  | | ``bc``…  | | ``mc``…  | | ``oc``…  | | ``ec``…  |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+| | first section         | | ``i1``   | | ``v1``   | | ``p1``   | | ``c1``   | | ``s1``   | | ``b1``   | | ``m1``   | | ``o1``   | | ``e1``   |
+| | second section        | | ``i2``   | | ``v2``   | | ``p2``   | | ``c2``   | | ``s2``   | | ``b2``   | | ``m2``   | | ``o2``   | | ``e2``   |
+| | third section…        | | ``i3``…  | | ``v3``…  | | ``p3``…  | | ``c3``…  | | ``s3``…  | | ``b3``…  | | ``m3``…  | | ``o3``…  | | ``e3``…  |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+| | first section part A  | | ``i1a``  | | ``v1a``  | | ``p1a``  | | ``c1a``  | | ``s1a``  | | ``b1a``  | | ``m1a``  | | ``o1a``  | | ``e1a``  |
+| | first section part B  | | ``i1b``  | | ``v1b``  | | ``p1b``  | | ``c1b``  | | ``s1b``  | | ``b1b``  | | ``m1b``  | | ``o1b``  | | ``e1b``  |
+| | first section part C… | | ``i1c``… | | ``v1c``… | | ``p1c``… | | ``c1c``… | | ``s1c``… | | ``b1c``… | | ``m1c``… | | ``o1c``… | | ``e1c``… |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
 
 According to the table above, a song containing an instrumental intro (*i*) two verses (*v1, v2*), a chorus
 (*c*), a bridge (*b*) and an ending (*e*) would look like this::

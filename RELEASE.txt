@@ -3,7 +3,7 @@ Release 0.9 (unreleased)
 
 * Make ``<song>`` attributes createdIn, modifiedIn and modifiedDate optional.
 * Add default language: ``xml:lang`` for ``<song>``.
-* Add support for instrumental parts (``<instrumental>``) and beats (``<beat>``).
+* Add support for instrumental parts (``<instrumental>``) and beats (``<beat>``) alongside new verse types: other, intro, solo, middle.
 * Add support for repeating lines (``<lines repeat="2">``)
 * Add support for chordNotation attribute (``chordNotation="hungarian"``)
 * Add support for non empty chords (``<chord root="C" structure="dom7">lyrics...</chord>``)

@@ -115,6 +115,9 @@
   <xsl:template match="//ol:song/ol:lyrics/ol:instrument"/>
   <xsl:template match="//ol:song/ol:properties/ol:timeSignature"/>
   <xsl:template match="//ol:song/ol:properties/ol:authors/ol:author/@type[.='arrangement']"/>
+  <!-- The 'other' and 'intro' verse types are new in 0.9 and they sould be removed, but
+  there is an undocumented free NMTOKEN option in 0.8's RelaxNG (l. 433) which allows any
+  character in verse type, so we do not need to remove them finally. -->
 
   <!-- Transform cords and cord's name respecting chordNotation -->
   <xsl:template match="//ol:chord">
