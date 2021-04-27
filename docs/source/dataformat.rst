@@ -1284,70 +1284,70 @@ OpenLyrics archive.
 
 Here's an advanced example of the XML::
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.9"
-          createdIn="OpenLP 2.0"
-          modifiedIn="ChangingSong 0.0.2"
-          <!-- date format: ISO 8601 -->
-          modifiedDate="2009-12-22T21:24:30+02:00">
-      <properties>
-        <titles>
-          <title>Amazing Grace</title>
-        </titles>
-        <authors>
-          <author>John Newton</author>
-        </authors>
-        <copyright>Public Domain</copyright>
-        <ccliNo>2762836</ccliNo>
-        <released>1779</released>
-        <tempo type="text">moderate</tempo>
-        <key>D</key>
-        <verseOrder>i v1 v2 v3 v4 v5 v6</verseOrder>
-        <themes>
-          <theme>Assurance</theme>
-          <theme>Grace</theme>
-          <theme>Praise</theme>
-          <theme>Salvation</theme>
-        </themes>
-      </properties>
-      <lyrics>
-        <verse name="i">
-          <lines>
-            <chord root="E" structure="min" /><chord root="D"/><chord root="G"/>
-          </lines>
-        </verse>
-        <verse name="v1">
-          <lines>
-            Amazing grace how sweet the sound<br/>
-            That saved a wretch like me.<br/>
-            I once was lost, but now am found,<br/>
-            Was blind but now I see.
-          </lines>
-        </verse>
-        <verse name="v2">
-          <lines>
-            'Twas grace that taught my heart to fear,<br/>
-            And grace my fears;<br/>
-            How precious did that grace appear<br/>
-            The hour I first believed.
-          </lines>
-        </verse>
-        <verse name="v3">
-          <lines>
-            Through many dangers, toil and snares,<br/>
-            I have already come;<br/>
-            'Tis grace has brought me safe thus far,<br/>
-            And grace will lead me home.
-          </lines>
-        </verse>
-        <verse name="v4">
-          <lines>
-            When we've been there ten thousand years<br/>
-            Bright shining as the sun,<br/>
-            We've no less days to sing God's praise<br/>
-            Than when we've first begun.
-          </lines>
-        </verse>
-      </lyrics>
-    </song>
+  <?xml version='1.0' encoding='UTF-8'?>
+  <?xml-stylesheet href="ol.css" type="text/css"?>
+  <song xmlns="http://openlyrics.info/namespace/2009/song"
+   version="0.9"
+   createdIn="OpenLP 2.0"
+   modifiedIn="ChangingSong 0.0.2"
+   modifiedDate="2009-12-22T21:24:30+02:00"><!-- date format: ISO 8601 -->
+    <properties>
+      <titles>
+        <title>Amazing Grace</title>
+      </titles>
+      <authors>
+        <author>John Newton</author>
+      </authors>
+      <copyright>Public Domain</copyright>
+      <ccliNo>2762836</ccliNo>
+      <released>1779</released>
+      <tempo type="text">moderate</tempo>
+      <key>D</key>
+      <verseOrder>i v1 v2 v3 v4 v5 v6</verseOrder>
+      <themes>
+        <theme>Assurance</theme>
+        <theme>Grace</theme>
+        <theme>Praise</theme>
+        <theme>Salvation</theme>
+      </themes>
+    </properties>
+    <lyrics>
+      <verse name="i">
+        <lines>
+          <chord root="E" structure="min" /><chord root="D"/><chord root="G"/>
+        </lines>
+      </verse>
+      <verse name="v1">
+        <lines>
+          Amazing grace how sweet the sound<br/>
+          That saved a wretch like me.<br/>
+          I once was lost, but now am found,<br/>
+          Was blind but now I see.
+        </lines>
+      </verse>
+      <verse name="v2">
+        <lines>
+          'Twas grace that taught my heart to fear,<br/>
+          And grace my fears;<br/>
+          How precious did that grace appear<br/>
+          The hour I first believed.
+        </lines>
+      </verse>
+      <verse name="v3">
+        <lines>
+          Through many dangers, toil and snares,<br/>
+          I have already come;<br/>
+          'Tis grace has brought me safe thus far,<br/>
+          And grace will lead me home.
+        </lines>
+      </verse>
+      <verse name="v4">
+        <lines>
+          When we've been there ten thousand years<br/>
+          Bright shining as the sun,<br/>
+          We've no less days to sing God's praise<br/>
+          Than when we've first begun.
+        </lines>
+      </verse>
+    </lyrics>
+  </song>
