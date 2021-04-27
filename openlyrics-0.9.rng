@@ -78,7 +78,7 @@
 
   <define name="format">
     <element name="format">
-        <ref name="formatTags"/>
+      <ref name="formatTags"/>
     </element>
   </define>
 

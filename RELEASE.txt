@@ -16,6 +16,7 @@ Release 0.9 (unreleased)
 * Add support for ``timeSignature``.
 * Add arrangement type for author (``<author type="arrangement">Name</author>``).
 * Remove mandatory flag from author type=translation, as it may match the language of the XML document (``xml:lang``).
+* Documentation for formatting tags
 
 
 Release 0.8 (15 Apr 2012)

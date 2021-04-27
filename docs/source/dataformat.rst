@@ -1207,6 +1207,75 @@ The example above should be displayed like so::
 
     {Intro} h A/C# | D | A | G
 
+Formatting extensions
+---------------------
+
+Formatting options for OpenLyrics can be extended. There is a possibility to define and apply
+custom tags for formatting lyrics or chords. The extensions can be defined in ``format`` section
+which can be placed between the ``properties`` and ``lyrics`` tags.
+
+Formatting tags
+^^^^^^^^^^^^^^^
+
+OpenLyrics is quite solid in lyrics formatting options. If the author needs additional formatting
+options, they can define a formatting dictionary and apply the defined tags in the lyrics. The
+formatting dictionary should be placed in ``<tags>`` tag and should have a ``target`` application or processor identifier attribute, which supports these custom tags. A tag consists of the definition of an opening and a closing element. Closing element is not mandatory (empty XML element). They can be included in the lyrics as XML elements and a ``name`` attribute points to its custom tag name::
+
+  <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9">
+    <properties>
+      <titles>
+        <title>Amazing Grace</title>
+      </titles>
+    </properties>
+    <format>
+      <tags application="MyHTMLExporter">
+        <tag name="red">
+          <open><![CDATA[<span style="color:red">]]></open>
+          <close><![CDATA[</span>]]></close>
+        </tag>
+        <tag name="strong">
+          <open><![CDATA[<strong>]]></open>
+          <close><![CDATA[</strong>]]></close>
+        </tag>
+      </tags>
+    </format>
+    <lyrics>
+      <verse name="v1">
+        <lines>
+          Amazing <tag name="red">grace!</tag> How sweet the sound<br/>
+          That saved a wretch <tag name="strong">like</tag> me.
+        </lines>
+      </verse>
+    </lyrics>
+  </song>
+
+This method allows custom formatting tags to be saved in OpenLyrics files and load them without
+loss of data.
+
+It should be noted that:
+
+- Support for formatting tags is not mandatory for OpenLyrics processors.
+
+- Formatting tags are not interpreted elements, they have no common meaning. Their name is just a
+  name that carries no standardized meaning (e.g., "red" can mean red text, but it can also mean
+  anything else, e.g., black text). A formatting only carries a meaningful definition for the user
+  and processor of the formatting in some descriptive language that makes sense to them (e.g.,
+  HTML, HTML+CSS, PostScript, ...)::
+
+    <tags application="OpenLP">
+      <tag name="r">
+        <open>&lt;span style="-webkit-text-fill-color:red"&gt;</open>
+        <close>&lt;/span&gt;</close>
+      </tag>
+    </tags>
+
+- Different programs that import or export OpenLyrics may use quite different formatting tags, or
+  may simply ignore those belonging to other programs and even if they use the same names, may
+  associate a whole different meaning with them (e.g. "red" may be a fill color or a background
+  color in another case.)
+
+
+
 Advanced Example
 ----------------
 
