@@ -1284,7 +1284,7 @@ OpenLyrics archive.
 
 Here's an advanced example of the XML::
 
-  <?xml version='1.0' encoding='UTF-8'?>
+  <?xml version="1.0" encoding="UTF-8"?>
   <?xml-stylesheet href="ol.css" type="text/css"?>
   <song xmlns="http://openlyrics.info/namespace/2009/song"
    version="0.9"
