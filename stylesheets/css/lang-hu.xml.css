@@ -3,14 +3,18 @@
  * Hungarian
  */
 
-:lang(hu) theme[lang=hu]::after,
-:lang(hu) author[type=translation][lang=hu]::after { content: " (magyar)" }
 :lang(hu) title[lang=en]::after,
 :lang(hu) theme[lang=en]::after,
 :lang(hu) author[type=translator][lang=en]::after  { content: " (angol)" }
+:lang(hu) title[lang=fr]::after,
+:lang(hu) theme[lang=fr]::after,
+:lang(hu) author[type=translator][lang=fr]::after  { content: " (francia)" }
+:lang(hu) title[lang=hu]::after
+:lang(hu) theme[lang=hu]::after,
+:lang(hu) author[type=translation][lang=hu]::after { content: " (magyar)" }
 :lang(hu) title[lang=es]::after,
 :lang(hu) theme[lang=es]::after,
-:lang(hu) author[type=translator][lang=ee]::after  { content: " (spanyol)" }
+:lang(hu) author[type=translator][lang=es]::after  { content: " (spanyol)" }
 :lang(hu) title[lang=it]::after,
 :lang(hu) theme[lang=it]::after,
 :lang(hu) author[type=translator][lang=it]::after  { content: " (olasz)" }
@@ -18,23 +22,23 @@
 :lang(hu) theme[lang=he]::after,
 :lang(hu) author[type=translator][lang=he]::after  { content: " (héber, ivrit)" }
 
-:lang(hu) lyrics > verse[name='v']::before         { content: "Versszak" !important  }
-:lang(hu) lyrics > verse[name^='v']::before        { content: counter(verse) ". versszak"  }
-:lang(hu) lyrics > verse[name='c']::before         { content: "Refrén" !important }
-:lang(hu) lyrics > verse[name^='c']::before        { content: counter(chorus) ". refrén" }
-:lang(hu) lyrics > verse[name='p']::before         { content: "Előrefrén" !important }
-:lang(hu) lyrics > verse[name^='p']::before        { content: counter(prechorus) ". előrefrén" }
-:lang(hu) lyrics > verse[name='b']::before         { content: "Híd" !important }
-:lang(hu) lyrics > verse[name^='b']::before        { content: counter(bridge) ". híd" }
-:lang(hu) lyrics > verse[name='o']::before         { content: "Más" !important }
-:lang(hu) lyrics > verse[name^='o']::before        { content: counter(other) ". más" }
-:lang(hu) lyrics > verse[name='i']::before,
+:lang(hu) lyrics >      verse[name='v']::before    { content: "Versszak" !important  }
+:lang(hu) lyrics >      verse[name^='v']::before   { content: counter(verse) ". versszak"  }
+:lang(hu) lyrics >      verse[name='c']::before    { content: "Refrén" !important }
+:lang(hu) lyrics >      verse[name^='c']::before   { content: counter(chorus) ". refrén" }
+:lang(hu) lyrics >      verse[name='p']::before    { content: "Előrefrén" !important }
+:lang(hu) lyrics >      verse[name^='p']::before   { content: counter(prechorus) ". előrefrén" }
+:lang(hu) lyrics >      verse[name='b']::before    { content: "Híd" !important }
+:lang(hu) lyrics >      verse[name^='b']::before   { content: counter(bridge) ". híd" }
+:lang(hu) lyrics >      verse[name='o']::before    { content: "Más" !important }
+:lang(hu) lyrics >      verse[name^='o']::before   { content: counter(other) ". más" }
+:lang(hu) lyrics >      verse[name='i']::before,
 :lang(hu) lyrics > instrument[name='i']::before    { content: "Intró" !important }
-:lang(hu) lyrics > verse[name^='i']::before,
+:lang(hu) lyrics >      verse[name^='i']::before,
 :lang(hu) lyrics > instrument[name^='i']::before   { content: counter(intro) ". intró" }
-:lang(hu) lyrics > verse[name='e']::before,
+:lang(hu) lyrics >      verse[name='e']::before,
 :lang(hu) lyrics > instrument[name='e']::before    { content: "Lezárás" !important }
-:lang(hu) lyrics > verse[name^='e']::before,
+:lang(hu) lyrics >      verse[name^='e']::before,
 :lang(hu) lyrics > instrument[name^='e']::before   { content: counter(ending) ". lezárás" }
 :lang(hu) lyrics > instrument[name='s']::before    { content: "Szóló" !important }
 :lang(hu) lyrics > instrument[name^='s']::before   { content: counter(solo) ". szóló" }

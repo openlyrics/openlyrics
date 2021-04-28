@@ -7,6 +7,12 @@
 :lang(en) theme[lang=en]::after,
 :root     author[type=translator][lang=en]::after,
 :lang(en) author[type=translator][lang=en]::after  { content: " (English)" }
+:root     title[lang=fr]::after,
+:lang(en) title[lang=fr]::after,
+:root     theme[lang=fr]::after,
+:lang(en) theme[lang=fr]::after,
+:root     author[type=translation][lang=fr]::after,
+:lang(en) author[type=translation][lang=fr]::after { content: " (French)" }
 :root     title[lang=hu]::after,
 :lang(en) title[lang=hu]::after,
 :root     theme[lang=hu]::after,
@@ -17,8 +23,8 @@
 :lang(en) title[lang=es]::after,
 :root     theme[lang=es]::after,
 :lang(en) theme[lang=es]::after,
-:root     author[type=translator][lang=ee]::after,
-:lang(en) author[type=translator][lang=ee]::after  { content: " (Spanish)" }
+:root     author[type=translator][lang=es]::after,
+:lang(en) author[type=translator][lang=es]::after  { content: " (Spanish)" }
 :root     title[lang=it]::after,
 :lang(en) title[lang=it]::after,
 :root     theme[lang=it]::after,

@@ -17,6 +17,7 @@ Release 0.9 (unreleased)
 * Add arrangement type for author (``<author type="arrangement">Name</author>``).
 * Remove mandatory flag from author type=translation, as it may match the language of the XML document (``xml:lang``).
 * Documentation for formatting tags
+* Supply missing documentation for ``translit`` with ``title`` and ``theme``
 
 
 Release 0.8 (15 Apr 2012)

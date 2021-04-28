@@ -156,7 +156,13 @@
       <em><xsl:value-of select="$locale/properties/subtitle/text()"/>: </em>
       <xsl:value-of select="."/>
       <xsl:if test="@lang">
-        (<xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>)
+        <xsl:text> (</xsl:text>
+          <xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>
+          <xsl:if test="@translit">
+            <xsl:text>→</xsl:text>
+            <xsl:value-of select="$locale/languages/*[local-name()=current()/@translit]/text()"/>
+          </xsl:if>
+        <xsl:text>)</xsl:text>
       </xsl:if>
     </span>
   </xsl:template>
@@ -229,7 +235,14 @@
         </xsl:if>
         <xsl:if test="@lang">
           <xsl:value-of select="."/>
-          (<xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>)<xsl:if test="position()!=last()">, <xsl:text/></xsl:if>
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="$locale/languages/*[local-name()=current()/@lang]/text()"/>
+          <xsl:if test="@translit">
+            <xsl:text>→</xsl:text>
+            <xsl:value-of select="$locale/languages/*[local-name()=current()/@translit]/text()"/>
+          </xsl:if>
+          <xsl:text>)</xsl:text>
+          <xsl:if test="position()!=last()"><xsl:text>, </xsl:text></xsl:if>
         </xsl:if>
       </xsl:for-each>
     </span>

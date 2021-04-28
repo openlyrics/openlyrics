@@ -351,6 +351,14 @@ original title of the song::
       <title lang="pl">Cudowna Boża łaska</title>
     </titles>
 
+Like the lyrics, the title can be :ref:`transliterated<Transliteration>` with an
+optional ``translit`` attribute alongside ``lang`` attribute::
+
+    <titles>
+      <title lang="he">הבה נגילה</title>
+      <title lang="he" translit="en">Hava Nagila</title>
+      <title lang="en">Let Us Rejoice</title>
+    </titles>
 
 Authors
 ^^^^^^^
@@ -662,8 +670,17 @@ Some examples::
       <theme lang="pt-BR">Salvação</theme>
     </themes>
 
+Like title and the lyrics, the theme can be :ref:`transliterated<Transliteration>` with an
+optional ``translit`` attribute alongside ``lang`` attribute::
+
+    <themes>
+      <theme>Peace</theme>
+      <theme lang="he">שָׁלוֹם</theme>
+      <theme lang="he" translit="en">Shalom</theme>
+    </themes>
+
 It is highly recommended that themes should come from the list of themes on the
-CCLI web site: `<http://www.ccli.co.za/owners/themes.cfm>`_
+CCLI web site: `<https://songselect.ccli.com/search/themes>`_
 
 
 Comments
@@ -1090,6 +1107,8 @@ transliterated to the English alphabet, and then finally translated into English
         <lines>Let's rejoice</lines>
       </verse>
     </lyrics>
+
+In parallel to the lyrics, titles and themes can be transliterated.
 
 
 Verse Parts (Groups of Lines)
