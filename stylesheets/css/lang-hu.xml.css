@@ -9,7 +9,7 @@
 :lang(hu) title[lang=fr]::after,
 :lang(hu) theme[lang=fr]::after,
 :lang(hu) author[type=translator][lang=fr]::after  { content: " (francia)" }
-:lang(hu) title[lang=hu]::after
+:lang(hu) title[lang=hu]::after,
 :lang(hu) theme[lang=hu]::after,
 :lang(hu) author[type=translation][lang=hu]::after { content: " (magyar)" }
 :lang(hu) title[lang=es]::after,
