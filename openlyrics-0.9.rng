@@ -425,6 +425,17 @@
 
   <define name="keyNote">
     <choice>
+      <!-- theoretical keys -->
+      <!-- 10♯ -->
+      <value>A#</value>
+      <value>Fxm</value>
+      <!-- 9♯ -->
+      <value>D#</value>
+      <value>B#m</value>
+      <!-- 8♯ -->
+      <value>G#</value>
+      <value>E#m</value>
+      <!-- /theoretical keys -->
       <!-- 7♯ -->
       <value>C#</value>
       <value>A#m</value>
@@ -474,8 +485,9 @@
   </define>
 
   <define name="musicalNote">
-    <!-- Only English notation is allowed: C  C#  Db  D  D#  Eb  E  F  F#  Gb  G  G#  Ab  A  A#  Bb  B -->
+    <!-- Only English notation is allowed -->
     <choice>
+      <!-- chromatic notes -->
       <value>C</value>
       <value>C#</value>
       <value>Db</value>
@@ -493,6 +505,15 @@
       <value>A#</value>
       <value>Bb</value>
       <value>B</value>
+      <!-- supporting theoretical keys -->
+      <value>E#</value><!-- supporting major F# scale (6#) -->
+      <value>B#</value><!-- supporting major C# scale (7#) -->
+      <value>Fx</value><!-- supporting major G# scale (8#) -->
+      <value>Cx</value><!-- supporting major D# scale (9#) -->
+      <value>Gx</value><!-- supporting major A# scale (10#) -->
+      <value>Cb</value><!-- supporting major Gb scale (6b) -->
+      <value>Fb</value><!-- supporting major Cb scale (7b) -->
+      <!-- /supporting theoretical keys -->
     </choice>
   </define>
 

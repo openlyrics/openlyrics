@@ -103,7 +103,8 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- Convert chords: Supports documented notations and all variation of https://github.com/openlyrics/openlyrics/blob/v0.8/chords.txt -->
+  <!-- Convert chords: Supports documented notations and all variation of https://github.com/openlyrics/openlyrics/blob/v0.8/chords.txt
+                       There is no support for theoretical keys. -->
   <xsl:template match="//ol:chord">
     <!-- Tokenize @name to $root, $structure, $bass, TODO: port to regexp if available -->
     <xsl:variable name="temp">

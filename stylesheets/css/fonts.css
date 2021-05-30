@@ -105,3 +105,13 @@ song[version] chord[root]::before,
   src: local("DejaVu Sans Bold Semi-Condensed"),
        url(fonts/DejaVuSansCondensed-Bold.ttf) format('truetype');
 }
+
+
+/* Setting up a character range match and fallback
+ * for some musical symbols
+ */
+@font-face {
+  font-family: "Linux Libertine";
+  src: local("FreeSerif"); /* FreeSerif isn't included */
+  unicode-range: U+1D12A;
+}

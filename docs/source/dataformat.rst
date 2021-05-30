@@ -500,6 +500,9 @@ following major or minor values:
 ============== ====== ======
 Key signature  Major  Minor
 ============== ====== ======
+10♯            A#     Fxm
+9♯             D#     B#m
+8♯             G#     E#m
 7♯             C#     A#m
 6♯             F#     D#m
 5♯             B      G#m
@@ -886,6 +889,18 @@ neolatin   Do  Do#   Reb   Re  Re#   Mib  Mi  Fa  Fa#   Solb  Sol  Sol#  Lab  La
 ========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
 
 The preferred notation for displaying can be marked with ``chordNotation`` attribute on root element.
+
+For supporting diatonic transposition and theoretical keys the following notes are valid also:
+
+========== ==== ==== ======= ======= ======= ==== ====
+english    E#   B#   Fx      Cx      Gx      Cb   Fb
+========== ==== ==== ======= ======= ======= ==== ====
+english-b  E#   H#   Fx      Cx      Gx      Cb   Fb
+german     Eis  His  Fisis   Cisis   Gisis   Ces  Fes
+dutch      Eis  Bis  Fisis   Cisis   Gisis   Ces  Fes
+hungarian  Eisz Hisz Fiszisz Ciszisz Giszisz Cesz Fesz
+neolatin   Mi#  Si#  Fax     Dox     Solx    Dob  Fab
+========== ==== ==== ======= ======= ======= ==== ====
 
 The bass
 """"""""
