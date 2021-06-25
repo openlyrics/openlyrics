@@ -72,5 +72,5 @@ RelaxNG XML schema
 
 The following RelaxNG XML schema was created:
 
-.. literalinclude:: ../../openlyrics-0.8.rng
+.. literalinclude:: ../../openlyrics-0.9.rng
 
