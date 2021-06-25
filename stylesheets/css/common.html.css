@@ -68,6 +68,7 @@ header .title.original::before,
 .properties .transposition::before,
 .properties .tempo::before,
 .properties .key::before,
+.properties .timeSignature::before,
 .properties .variant::before,
 .properties .publisher::before,
 .properties .version::before,
@@ -86,12 +87,14 @@ header .title.original::before          { content: "\f024"; /* flag */ }
 .properties .author.words::before       { content: "\f031"; /* font */ }
 .properties .author.music::before       { content: "\f001"; /* music */ }
 .properties .author.translation::before { content: "\f0ac"; /* globe */ }
+.properties .author.arrangement::before { content: "\f24d"; /* clone */ }
 .properties .copyright::before          { content: "\f07a"; /* shopping-cart */ }
 .properties .ccliNo::before             { content: "\f02a"; /* barcode */ }
 .properties .released::before           { content: "\f073"; /* calendar */}
 .properties .transposition::before      { content: "\f0dc"; /* sort */}
 .properties .tempo::before              { content: "\f017"; /* clock-o */}
 .properties .key::before                { content: "\f084"; /* key */ }
+.properties .timeSignature::before      { content: "\f192"; /* dot-circle-o */ }
 .properties .variant::before            { content: "\f074"; /* random */ }
 .properties .publisher::before          { content: "\f1ad"; /* building */ }
 .properties .version::before            { content: "\f126"; /* code-fork */ }

@@ -10,6 +10,7 @@
     <words>Szövegíró</words>
     <music>Zeneszerző</music>
     <translation>Fordító</translation>
+    <arrangement>Átdolgozó</arrangement><!-- Átirat -->
     <released>Kiadva</released>
     <version>Verzió</version>
     <variant>Verzió</variant>
@@ -18,6 +19,7 @@
     <comment>Megjegyzés</comment>
     <keywords>Kulcsszavak</keywords>
     <key>Hangnem</key>
+    <timeSignature>Ütemjelzés</timeSignature>
     <tempo>Tempó</tempo>
     <transposition>Transzponálás</transposition>
     <ccliNo>CCLI-szám</ccliNo>
@@ -36,16 +38,17 @@
       <c>Refrén</c>
       <p>Előrefrén</p>
       <b>Híd</b>
-      <e>Lezárás</e>
+      <o>Más</o>
       <i>Intró</i>
-      <m>Közjáték</m>
-      <o>Utójáték</o>
+      <e>Lezárás</e>
       <s>Szóló</s>
+      <m>Közjáték</m>
     </verseNames>
-    <verseNameFormat initial="number" separator=". " translateFrom="VREHLIKUS" translateTo="vrehlikus" />
+    <verseNameFormat initial="number" separator=". " translateFrom="VREHMILSK" translateTo="vrehmilsk" />
   </lyrics>
   <languages>
     <en>angol</en>
+    <fr>francia</fr>
     <hu>magyar</hu>
     <es>spanyol</es>
     <it>olasz</it>

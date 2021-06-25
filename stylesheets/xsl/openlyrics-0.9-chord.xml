@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chordNotation>
   <notation id="english">
+    <name class="Cb">C♭</name><!-- only for song key -->
     <name class="C">C</name>
     <name class="C#">C♯</name>
     <name class="Db">D♭</name>
@@ -20,6 +21,7 @@
     <name class="B">B</name>
   </notation>
   <notation id="english-b">
+    <name class="Cb">C♭</name><!-- only for song key -->
     <name class="C">C</name>
     <name class="C#">C♯</name>
     <name class="Db">D♭</name>
@@ -39,6 +41,7 @@
     <name class="B">H</name>
   </notation>
   <notation id="german">
+    <name class="Cb">Ces</name><!-- only for song key -->
     <name class="C">C</name>
     <name class="C#">Cis</name>
     <name class="Db">Des</name>
@@ -58,6 +61,7 @@
     <name class="B">H</name>
  </notation>
  <notation id="dutch">
+    <name class="Cb">Ces</name><!-- only for song key -->
     <name class="C">C</name>
     <name class="C#">Cis</name>
     <name class="Db">Des</name>
@@ -77,6 +81,7 @@
     <name class="B">B</name>
   </notation>
   <notation id="hungarian">
+    <name class="Cb">Cesz</name><!-- only for song key -->
     <name class="C">C</name>
     <name class="C#">Cisz</name>
     <name class="Db">Desz</name>
@@ -96,6 +101,7 @@
     <name class="B">H</name>
   </notation>
   <notation id="neolatin">
+    <name class="Cb">Do♭</name><!-- only for song key -->
     <name class="C">Do</name>
     <name class="C#">Do♯</name>
     <name class="Db">Re♭</name>

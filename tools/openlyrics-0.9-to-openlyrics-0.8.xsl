@@ -93,8 +93,31 @@
     </xsl:element>
   </xsl:template>
 
+  <!-- Add lang attribute to author[translation] if not exists -->
+  <xsl:template match="//ol:author[@type='translation']">
+    <xsl:element name="author">
+      <xsl:attribute name="type"><xsl:value-of select="@type"/></xsl:attribute>
+      <xsl:attribute name="lang">
+        <xsl:choose>
+          <xsl:when test="@lang">
+            <xsl:value-of select="@lang"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="//ol:song/@xml:lang"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:value-of select="."/>
+    </xsl:element>
+  </xsl:template>
+
   <!-- Remove other parts not compliant with version 0.8 -->
   <xsl:template match="//ol:song/ol:lyrics/ol:instrument"/>
+  <xsl:template match="//ol:song/ol:properties/ol:timeSignature"/>
+  <xsl:template match="//ol:song/ol:properties/ol:authors/ol:author/@type[.='arrangement']"/>
+  <!-- The 'other' and 'intro' verse types are new in 0.9 and they sould be removed, but
+  there is an undocumented free NMTOKEN option in 0.8's RelaxNG (l. 433) which allows any
+  character in verse type, so we do not need to remove them finally. -->
 
   <!-- Transform cords and cord's name respecting chordNotation -->
   <xsl:template match="//ol:chord">

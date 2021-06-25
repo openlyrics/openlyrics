@@ -66,6 +66,7 @@ Features
         ``<transposition>``
         ``<tempo>``
         ``<key>``
+        ``<timeSignature>``
 
     namespace
         ``<song xmlns="http://openlyrics.info/namespace/2009/song">``
@@ -184,7 +185,7 @@ Metadata is enclosed in the ``<song>`` tag as attributes::
 ``xml:lang``
     Language of the OpenLyrics document. It defines the default language for titles,
     keywords, themes, comments, lyrics, etc. The format of this attribute should be
-    or ``xx-YY``, where ``xx`` is a language code from the
+    ``xx`` or ``xx-YY``, where ``xx`` is a language code from the
     `ISO-639 <http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_ standard, and
     ``YY`` is a `country code <http://en.wikipedia.org/wiki/ISO_3166-1>`_. For more
     details see `BCP 47 <http://www.rfc-editor.org/rfc/bcp/bcp47.txt>`_.
@@ -277,7 +278,7 @@ using the `7-Zip <http://en.wikipedia.org/wiki/7zip>`_ format, as this format is
 known to handle non-ASCII file names well.
 
 Processing Instructions
-----------------------
+-----------------------
 
 OpenLyrics, like all XML files, can contain `processing instructions <https://www.w3.org/TR/REC-xml/#sec-pi>`_.
 With the ``xml-stylesheet`` attribute it is possible to `associate <https://www.w3.org/TR/xml-stylesheet/>`_
@@ -350,6 +351,14 @@ original title of the song::
       <title lang="pl">Cudowna Boża łaska</title>
     </titles>
 
+Like the lyrics, the title can be :ref:`transliterated<Transliteration>` with an
+optional ``translit`` attribute alongside ``lang`` attribute::
+
+    <titles>
+      <title lang="he">הבה נגילה</title>
+      <title lang="he" translit="en">Hava Nagila</title>
+      <title lang="en">Let Us Rejoice</title>
+    </titles>
 
 Authors
 ^^^^^^^
@@ -366,7 +375,7 @@ There can, of course, be more authors::
       <author>Johannes Newton</author>
     </authors>
 
-Three different types of authors can be defined:
+Four different types of authors can be defined:
 
 * *author of words*::
 
@@ -378,12 +387,19 @@ Three different types of authors can be defined:
 
 * *translator*::
 
+      <author type="translation">Csiszér László</author>
       <author type="translation" lang="cs">Jan Ňůtn</author>
 
-  When the ``type`` is ``translation``, a ``lang`` attribute is mandatory. The
+  When the ``type`` is ``translation``, a ``lang`` attribute can be added. The
   value of this attribute should be in the same format as the ``lang`` attribute
-  of the ``<title>`` tag.
+  of the ``<title>`` tag. It is not mandatory, because the translation normally
+  matches the language of the document, stored in ``<song xml:lang="">``, but
+  it can be useful for bilingual documents to indicate precisely the translator.
 
+* *arranger*, a person, who produces an alternate version, arrangement of a song,
+  who rewrites, alters, reworks a song or adopts a song to another language::
+
+      <author type="arrangement">John Newton</author>
 
 Copyright
 ^^^^^^^^^
@@ -444,7 +460,7 @@ Transposition
 ^^^^^^^^^^^^^
 
 The ``<transposition>`` tag is used when it is necessary to move the key or the
-pitch of chords up or down. The value must be a positive or negative integer.
+pitch of chords up or down. The value must be an integer between -11 and 11.
 
 A negative value moves the pitch down by a fixed number of semitones::
 
@@ -478,12 +494,43 @@ example ``Very Fast``, ``Fast``, ``Moderate``, ``Slow``, ``Very Slow``, etc.::
 Key
 ^^^
 
-The key determines the musical scale of a song. For example, ``A``, ``B``, ``C#``,
-``D``, ``Eb``, ``F#`` or ``Ab``.
+The key determines the musical scale of a song. It can be determined with the
+following major or minor values:
+
+============== ====== ======
+Key signature  Major  Minor
+============== ====== ======
+7♯             C#     A#m
+6♯             F#     D#m
+5♯             B      G#m
+4♯             E      C#m
+3♯             A      F#m
+2♯             D      Bm
+1♯             G      Em
+0              C      Am
+1♭             F      Dm
+2♭             Bb     Gm
+3♭             Eb     Cm
+4♭             Ab     Fm
+5♭             Db     Bbm
+6♭             Gb     Ebm
+7♭             Cb     Abm
+============== ====== ======
 
 Example::
 
     <key>Eb</key>
+
+
+Time Signature
+^^^^^^^^^^^^^^
+
+The ``timeSignature`` tag is used to define the time signature::
+
+    <timeSignature>3/4</timeSignature>
+
+Its value must be a fraction: an integer between 1 and 63, a slash (/), and one of
+the following integers: 1, 2, 4, 8, 16, 32, 64. For example: 2/2, 4/4, 3/4, 7/8, 12/8.
 
 
 Variant
@@ -623,8 +670,17 @@ Some examples::
       <theme lang="pt-BR">Salvação</theme>
     </themes>
 
+Like title and the lyrics, the theme can be :ref:`transliterated<Transliteration>` with an
+optional ``translit`` attribute alongside ``lang`` attribute::
+
+    <themes>
+      <theme>Peace</theme>
+      <theme lang="he">שָׁלוֹם</theme>
+      <theme lang="he" translit="en">Shalom</theme>
+    </themes>
+
 It is highly recommended that themes should come from the list of themes on the
-CCLI web site: `<http://www.ccli.co.za/owners/themes.cfm>`_
+CCLI web site: `<https://songselect.ccli.com/search/themes>`_
 
 
 Comments
@@ -730,40 +786,52 @@ line "That saved a wretch like me!"
 Verse/Instrumental Name
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+OpenLyrics supports these verse and instrumental types:
+
++------------+------------+-------+------------+
+| Name       | Short code | Type               |
++============+============+=======+============+
+| intro      | i          | verse | instrument |
++------------+------------+-------+------------+
+| verse      | v          | verse |            |
++------------+------------+-------+------------+
+| pre-chorus | p          | verse |            |
++------------+------------+-------+------------+
+| chorus     | c          | verse |            |
++------------+------------+-------+------------+
+| solo       | s          |       | instrument |
++------------+------------+-------+------------+
+| bridge     | b          | verse |            |
++------------+------------+-------+------------+
+| middle     | m          |       | instrument |
++------------+------------+-------+------------+
+| other      | o          | verse |            |
++------------+------------+-------+------------+
+| ending     | e          | verse | instrument |
++------------+------------+-------+------------+
+
+
 As previously mentioned, every ``<verse>`` or ``<instrument>`` tag has a mandatory ``name`` attribute.
 They should be unique, written in **lower case**, a single word, and should
 follow the naming convention as laid out in the table below:
 
-======================= ==========================================================
-Name                    Description
-======================= ==========================================================
-``v1, v2, ...``         first verse, second verse, ...
-``v1a, v1b, ...``       first verse part A, first verse part B, ...
-``c``                   chorus
-``c1, c2, ...``         first chorus, second chorus, ...
-``ca, c1a, c1b, ...``   chorus part A, first chorus part A, first chorus part B, ...
-``p``                   pre-chorus
-``p1, p2, ...``         first pre-chorus, second pre-chorus, ...
-``pa, p1a, p1b, ...``   pre-chrous part A, first pre-chorus part A, first pre-chorus part B, ...
-``b``                   bridge
-``b1, b2, ...``         first bridge, second bridge, ...
-``ba, b1a, b1b, ...``   bridge part A, first bridge part A, first bridge part B, ...
-``e``                   ending
-``e1, e2, ...``         first ending, second ending, ...
-``ea, e1a, e1b, ...``   ending part A, first ending part A, first ending part B, ...
-``i``                   instrumental intro
-``i1, i2, ...``         first intro, second intro, ...
-``ia, i1a, i1b, ...``   intro part A, first intro part A, first intro part B, ...
-``m``                   instrumental middle
-``m1, m2, ...``         first middle, second middle, ...
-``ma, m1a, m1b, ...``   middle part A, first middle part A, first middle part B, ...
-``o``                   instrumental outro
-``o1, o2, ...``         first outro, second outro, ...
-``oa, o1a, o1b, ...``   outro part A, first outro part A, first outro part B, ...
-``s``                   instrumental solo
-``s1, s2, ...``         first solo, second solo, ...
-``sa, s1a, s1b, ...``   solo part A, first solo part A, first solo part B, ...
-======================= ==========================================================
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+|                         | i          | v          | p          | c          | s          | b          | m          | o          | e          |
++=========================+============+============+============+============+============+============+============+============+============+
+| section                 | ``i``      |            | ``p``      | ``c``      | ``s``      | ``b``      | ``m``      | ``o``      | ``e``      |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+| | section part A        | | ``ia``   |            | | ``pa``   | | ``ca``   | | ``sa``   | | ``ba``   | | ``ma``   | | ``oa``   | | ``ea``   |
+| | section part B        | | ``ib``   |            | | ``pb``   | | ``cb``   | | ``sb``   | | ``bb``   | | ``mb``   | | ``ob``   | | ``eb``   |
+| | section part C…       | | ``ic``…  |            | | ``pc``…  | | ``cc``…  | | ``sc``…  | | ``bc``…  | | ``mc``…  | | ``oc``…  | | ``ec``…  |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+| | first section         | | ``i1``   | | ``v1``   | | ``p1``   | | ``c1``   | | ``s1``   | | ``b1``   | | ``m1``   | | ``o1``   | | ``e1``   |
+| | second section        | | ``i2``   | | ``v2``   | | ``p2``   | | ``c2``   | | ``s2``   | | ``b2``   | | ``m2``   | | ``o2``   | | ``e2``   |
+| | third section…        | | ``i3``…  | | ``v3``…  | | ``p3``…  | | ``c3``…  | | ``s3``…  | | ``b3``…  | | ``m3``…  | | ``o3``…  | | ``e3``…  |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
+| | first section part A  | | ``i1a``  | | ``v1a``  | | ``p1a``  | | ``c1a``  | | ``s1a``  | | ``b1a``  | | ``m1a``  | | ``o1a``  | | ``e1a``  |
+| | first section part B  | | ``i1b``  | | ``v1b``  | | ``p1b``  | | ``c1b``  | | ``s1b``  | | ``b1b``  | | ``m1b``  | | ``o1b``  | | ``e1b``  |
+| | first section part C… | | ``i1c``… | | ``v1c``… | | ``p1c``… | | ``c1c``… | | ``s1c``… | | ``b1c``… | | ``m1c``… | | ``o1c``… | | ``e1c``… |
++-------------------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
 
 According to the table above, a song containing an instrumental intro (*i*) two verses (*v1, v2*), a chorus
 (*c*), a bridge (*b*) and an ending (*e*) would look like this::
@@ -1040,6 +1108,8 @@ transliterated to the English alphabet, and then finally translated into English
       </verse>
     </lyrics>
 
+In parallel to the lyrics, titles and themes can be transliterated.
+
 
 Verse Parts (Groups of Lines)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1156,6 +1226,75 @@ The example above should be displayed like so::
 
     {Intro} h A/C# | D | A | G
 
+Formatting extensions
+---------------------
+
+Formatting options for OpenLyrics can be extended. There is a possibility to define and apply
+custom tags for formatting lyrics or chords. The extensions can be defined in ``format`` section
+which can be placed between the ``properties`` and ``lyrics`` tags.
+
+Formatting tags
+^^^^^^^^^^^^^^^
+
+OpenLyrics is quite solid in lyrics formatting options. If the author needs additional formatting
+options, they can define a formatting dictionary and apply the defined tags in the lyrics. The
+formatting dictionary should be placed in ``<tags>`` tag and should have a ``target`` application or processor identifier attribute, which supports these custom tags. A tag consists of the definition of an opening and a closing element. Closing element is not mandatory (empty XML element). They can be included in the lyrics as XML elements and a ``name`` attribute points to its custom tag name::
+
+  <song xmlns="http://openlyrics.info/namespace/2009/song" version="0.9">
+    <properties>
+      <titles>
+        <title>Amazing Grace</title>
+      </titles>
+    </properties>
+    <format>
+      <tags application="MyHTMLExporter">
+        <tag name="red">
+          <open><![CDATA[<span style="color:red">]]></open>
+          <close><![CDATA[</span>]]></close>
+        </tag>
+        <tag name="strong">
+          <open><![CDATA[<strong>]]></open>
+          <close><![CDATA[</strong>]]></close>
+        </tag>
+      </tags>
+    </format>
+    <lyrics>
+      <verse name="v1">
+        <lines>
+          Amazing <tag name="red">grace!</tag> How sweet the sound<br/>
+          That saved a wretch <tag name="strong">like</tag> me.
+        </lines>
+      </verse>
+    </lyrics>
+  </song>
+
+This method allows custom formatting tags to be saved in OpenLyrics files and load them without
+loss of data.
+
+It should be noted that:
+
+- Support for formatting tags is not mandatory for OpenLyrics processors.
+
+- Formatting tags are not interpreted elements, they have no common meaning. Their name is just a
+  name that carries no standardized meaning (e.g., "red" can mean red text, but it can also mean
+  anything else, e.g., black text). A formatting only carries a meaningful definition for the user
+  and processor of the formatting in some descriptive language that makes sense to them (e.g.,
+  HTML, HTML+CSS, PostScript, ...)::
+
+    <tags application="OpenLP">
+      <tag name="r">
+        <open>&lt;span style="-webkit-text-fill-color:red"&gt;</open>
+        <close>&lt;/span&gt;</close>
+      </tag>
+    </tags>
+
+- Different programs that import or export OpenLyrics may use quite different formatting tags, or
+  may simply ignore those belonging to other programs and even if they use the same names, may
+  associate a whole different meaning with them (e.g. "red" may be a fill color or a background
+  color in another case.)
+
+
+
 Advanced Example
 ----------------
 
@@ -1164,70 +1303,70 @@ OpenLyrics archive.
 
 Here's an advanced example of the XML::
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <song xmlns="http://openlyrics.info/namespace/2009/song"
-          version="0.9"
-          createdIn="OpenLP 2.0"
-          modifiedIn="ChangingSong 0.0.2"
-          <!-- date format: ISO 8601 -->
-          modifiedDate="2009-12-22T21:24:30+02:00">
-      <properties>
-        <titles>
-          <title>Amazing Grace</title>
-        </titles>
-        <authors>
-          <author>John Newton</author>
-        </authors>
-        <copyright>Public Domain</copyright>
-        <ccliNo>2762836</ccliNo>
-        <released>1779</released>
-        <tempo type="text">moderate</tempo>
-        <key>D</key>
-        <verseOrder>i v1 v2 v3 v4 v5 v6</verseOrder>
-        <themes>
-          <theme>Assurance</theme>
-          <theme>Grace</theme>
-          <theme>Praise</theme>
-          <theme>Salvation</theme>
-        </themes>
-      </properties>
-      <lyrics>
-        <verse name="i">
-          <lines>
-            <chord root="E" structure="min" /><chord root="D"/><chord root="G"/>
-          </lines>
-        </verse>
-        <verse name="v1">
-          <lines>
-            Amazing grace how sweet the sound<br/>
-            That saved a wretch like me.<br/>
-            I once was lost, but now am found,<br/>
-            Was blind but now I see.
-          </lines>
-        </verse>
-        <verse name="v2">
-          <lines>
-            'Twas grace that taught my heart to fear,<br/>
-            And grace my fears;<br/>
-            How precious did that grace appear<br/>
-            The hour I first believed.
-          </lines>
-        </verse>
-        <verse name="v3">
-          <lines>
-            Through many dangers, toil and snares,<br/>
-            I have already come;<br/>
-            'Tis grace has brought me safe thus far,<br/>
-            And grace will lead me home.
-          </lines>
-        </verse>
-        <verse name="v4">
-          <lines>
-            When we've been there ten thousand years<br/>
-            Bright shining as the sun,<br/>
-            We've no less days to sing God's praise<br/>
-            Than when we've first begun.
-          </lines>
-        </verse>
-      </lyrics>
-    </song>
+  <?xml version="1.0" encoding="UTF-8"?>
+  <?xml-stylesheet href="ol.css" type="text/css"?>
+  <song xmlns="http://openlyrics.info/namespace/2009/song"
+   version="0.9"
+   createdIn="OpenLP 2.0"
+   modifiedIn="ChangingSong 0.0.2"
+   modifiedDate="2009-12-22T21:24:30+02:00"><!-- date format: ISO 8601 -->
+    <properties>
+      <titles>
+        <title>Amazing Grace</title>
+      </titles>
+      <authors>
+        <author>John Newton</author>
+      </authors>
+      <copyright>Public Domain</copyright>
+      <ccliNo>2762836</ccliNo>
+      <released>1779</released>
+      <tempo type="text">moderate</tempo>
+      <key>D</key>
+      <verseOrder>i v1 v2 v3 v4 v5 v6</verseOrder>
+      <themes>
+        <theme>Assurance</theme>
+        <theme>Grace</theme>
+        <theme>Praise</theme>
+        <theme>Salvation</theme>
+      </themes>
+    </properties>
+    <lyrics>
+      <verse name="i">
+        <lines>
+          <chord root="E" structure="min" /><chord root="D"/><chord root="G"/>
+        </lines>
+      </verse>
+      <verse name="v1">
+        <lines>
+          Amazing grace how sweet the sound<br/>
+          That saved a wretch like me.<br/>
+          I once was lost, but now am found,<br/>
+          Was blind but now I see.
+        </lines>
+      </verse>
+      <verse name="v2">
+        <lines>
+          'Twas grace that taught my heart to fear,<br/>
+          And grace my fears;<br/>
+          How precious did that grace appear<br/>
+          The hour I first believed.
+        </lines>
+      </verse>
+      <verse name="v3">
+        <lines>
+          Through many dangers, toil and snares,<br/>
+          I have already come;<br/>
+          'Tis grace has brought me safe thus far,<br/>
+          And grace will lead me home.
+        </lines>
+      </verse>
+      <verse name="v4">
+        <lines>
+          When we've been there ten thousand years<br/>
+          Bright shining as the sun,<br/>
+          We've no less days to sing God's praise<br/>
+          Than when we've first begun.
+        </lines>
+      </verse>
+    </lyrics>
+  </song>

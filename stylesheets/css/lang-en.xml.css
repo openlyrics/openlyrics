@@ -7,6 +7,12 @@
 :lang(en) theme[lang=en]::after,
 :root     author[type=translator][lang=en]::after,
 :lang(en) author[type=translator][lang=en]::after  { content: " (English)" }
+:root     title[lang=fr]::after,
+:lang(en) title[lang=fr]::after,
+:root     theme[lang=fr]::after,
+:lang(en) theme[lang=fr]::after,
+:root     author[type=translation][lang=fr]::after,
+:lang(en) author[type=translation][lang=fr]::after { content: " (French)" }
 :root     title[lang=hu]::after,
 :lang(en) title[lang=hu]::after,
 :root     theme[lang=hu]::after,
@@ -17,8 +23,8 @@
 :lang(en) title[lang=es]::after,
 :root     theme[lang=es]::after,
 :lang(en) theme[lang=es]::after,
-:root     author[type=translator][lang=ee]::after,
-:lang(en) author[type=translator][lang=ee]::after  { content: " (Spanish)" }
+:root     author[type=translator][lang=es]::after,
+:lang(en) author[type=translator][lang=es]::after  { content: " (Spanish)" }
 :root     title[lang=it]::after,
 :lang(en) title[lang=it]::after,
 :root     theme[lang=it]::after,
@@ -32,39 +38,47 @@
 :root     author[type=translator][lang=he]::after,
 :lang(en) author[type=translator][lang=he]::after  { content: " (Hebrew, Ivrit)" }
 
-:root     lyrics > verse[name='v']::before,
-:lang(en) lyrics > verse[name='v']::before          { content: "Verse" !important  }
-:root     lyrics > verse[name^='v']::before,
-:lang(en) lyrics > verse[name^='v']::before         { content: "Verse " counter(verse)  }
-:root     lyrics > verse[name='c']::before,
-:lang(en) lyrics > verse[name='c']::before          { content: "Chorus" !important }
-:root     lyrics > verse[name^='c']::before,
-:lang(en) lyrics > verse[name^='c']::before         { content: "Chorus " counter(chorus) }
-:root     lyrics > verse[name='p']::before,
-:lang(en) lyrics > verse[name='p']::before          { content: "Pre-chorus" !important }
-:root     lyrics > verse[name^='p']::before,
-:lang(en) lyrics > verse[name^='p']::before         { content: "Pre-chorus " counter(prechorus) }
-:root     lyrics > verse[name='b']::before,
-:lang(en) lyrics > verse[name='b']::before          { content: "Bridge" !important }
-:root     lyrics > verse[name^='b']::before,
-:lang(en) lyrics > verse[name^='b']::before         { content: "Bridge " counter(bridge) }
-:root     lyrics > verse[name='e']::before,
-:lang(en) lyrics > verse[name='e']::before          { content: "Ending" !important }
-:root     lyrics > verse[name^='e']::before,
-:lang(en) lyrics > verse[name^='e']::before         { content: "Ending " counter(ending) }
+:root     lyrics >      verse[name='v']::before,
+:lang(en) lyrics >      verse[name='v']::before    { content: "Verse" !important  }
+:root     lyrics >      verse[name^='v']::before,
+:lang(en) lyrics >      verse[name^='v']::before   { content: "Verse " counter(verse)  }
+:root     lyrics >      verse[name='c']::before,
+:lang(en) lyrics >      verse[name='c']::before    { content: "Chorus" !important }
+:root     lyrics >      verse[name^='c']::before,
+:lang(en) lyrics >      verse[name^='c']::before   { content: "Chorus " counter(chorus) }
+:root     lyrics >      verse[name='p']::before,
+:lang(en) lyrics >      verse[name='p']::before    { content: "Pre-chorus" !important }
+:root     lyrics >      verse[name^='p']::before,
+:lang(en) lyrics >      verse[name^='p']::before   { content: "Pre-chorus " counter(prechorus) }
+:root     lyrics >      verse[name='b']::before,
+:lang(en) lyrics >      verse[name='b']::before    { content: "Bridge" !important }
+:root     lyrics >      verse[name^='b']::before,
+:lang(en) lyrics >      verse[name^='b']::before   { content: "Bridge " counter(bridge) }
+:root     lyrics >      verse[name='o']::before,
+:lang(en) lyrics >      verse[name='o']::before    { content: "Other" !important }
+:root     lyrics >      verse[name^='o']::before,
+:lang(en) lyrics >      verse[name^='o']::before   { content: "Other " counter(other) }
+:root     lyrics >      verse[name='i']::before,
+:lang(en) lyrics >      verse[name='i']::before,
 :root     lyrics > instrument[name='i']::before,
-:lang(en) lyrics > instrument[name='i']::before     { content: "Intro" !important }
+:lang(en) lyrics > instrument[name='i']::before    { content: "Intro" !important }
+:root     lyrics >      verse[name^='i']::before,
+:lang(en) lyrics >      verse[name^='i']::before,
 :root     lyrics > instrument[name^='i']::before,
-:lang(en) lyrics > instrument[name^='i']::before    { content: "Intro " counter(intro) }
-:root     lyrics > instrument[name='m']::before,
-:lang(en) lyrics > instrument[name='m']::before     { content: "Middle" !important }
-:root     lyrics > instrument[name^='m']::before,
-:lang(en) lyrics > instrument[name^='m']::before    { content: "Middle " counter(middle) }
-:root     lyrics > instrument[name='o']::before,
-:lang(en) lyrics > instrument[name='o']::before     { content: "Outro" !important }
-:root     lyrics > instrument[name^='o']::before,
-:lang(en) lyrics > instrument[name^='o']::before    { content: "Outro " counter(outro) }
+:lang(en) lyrics > instrument[name^='i']::before   { content: "Intro " counter(intro) }
+:root     lyrics >      verse[name='e']::before,
+:lang(en) lyrics >      verse[name='e']::before,
+:root     lyrics > instrument[name='e']::before,
+:lang(en) lyrics > instrument[name='e']::before    { content: "Ending" !important }
+:root     lyrics >      verse[name^='e']::before,
+:lang(en) lyrics >      verse[name^='e']::before,
+:root     lyrics > instrument[name^='e']::before,
+:lang(en) lyrics > instrument[name^='e']::before   { content: "Ending " counter(ending) }
 :root     lyrics > instrument[name='s']::before,
-:lang(en) lyrics > instrument[name='s']::before     { content: "Solo" !important }
+:lang(en) lyrics > instrument[name='s']::before    { content: "Solo" !important }
 :root     lyrics > instrument[name^='s']::before,
-:lang(en) lyrics > instrument[name^='s']::before    { content: "Solo " counter(solo) }
+:lang(en) lyrics > instrument[name^='s']::before   { content: "Solo " counter(solo) }
+:root     lyrics > instrument[name='m']::before,
+:lang(en) lyrics > instrument[name='m']::before    { content: "Middle" !important }
+:root     lyrics > instrument[name^='m']::before,
+:lang(en) lyrics > instrument[name^='m']::before   { content: "Middle " counter(middle) }

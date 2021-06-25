@@ -36,6 +36,7 @@ released,
 transposition,
 tempo,
 key,
+timeSignature,
 variant,
 publisher,
 version,
@@ -56,6 +57,7 @@ released::before,
 transposition::before,
 tempo::before,
 key::before,
+timeSignature::before,
 variant::before,
 publisher::before,
 version::before,
@@ -73,12 +75,14 @@ authors::before                  { content: "\f007"; /* user */ }
 author[type=words]::before       { content: "\f031"; /* font */ }
 author[type=music]::before       { content: "\f001"; /* music */ }
 author[type=translation]::before { content: "\f0ac"; /* globe */ }
+author[type=arrangement]::before { content: "\f24d"; /* clone */ }
 copyright::before                { content: "\f07a"; /* shopping-cart */ }
 ccliNo::before                   { content: "\f02a"; /* barcode */ }
 released::before                 { content: "\f073"; /* calendar */}
 transposition::before            { content: "\f0dc"; /* sort */}
 tempo::before                    { content: "\f017"; /* clock-o */}
 key::before                      { content: "\f084"; /* key */ }
+timeSignature::before            { content: "\f192"; /* dot-circle-o */ }
 variant::before                  { content: "\f074"; /* random */ }
 publisher::before                { content: "\f1ad"; /* building */ }
 version::before                  { content: "\f126"; /* code-fork */ }
@@ -155,57 +159,41 @@ lyrics > verse[lang]::after {
 }
 
 /* verse, instrument numbers */
-lyrics > verse[name^='v'] {
-  counter-increment: verse;
-}
-lyrics > verse[name^='v'][lang] {
-  counter-increment: verse 0; /* don't increment verse translations and transliterations */
-}
-lyrics > verse[name^='c'] {
-  counter-increment: chorus;
-}
-lyrics > verse[name^='c'][lang] {
-  counter-increment: chorus 0;
-}
-lyrics > verse[name^='p'] {
-  counter-increment: prechorus;
-}
-lyrics > verse[name^='p'][lang] {
-  counter-increment: prechorus 0;
-}
-lyrics > verse[name^='b'] {
-  counter-increment: bridge;
-}
-lyrics > verse[name^='b'][lang] {
-  counter-increment: bridge 0;
-}
-lyrics > verse[name^='e'] {
-  counter-increment: ending;
-}
-lyrics > verse[name^='e'][lang] {
-  counter-increment: ending 0;
-}
-lyrics > instrument[name^='i'] {
-  counter-increment: intro;
-}
-lyrics > instrument[name^='m'] {
-  counter-increment: middle;
-}
-lyrics > instrument[name^='o'] {
-  counter-increment: outro;
-}
-lyrics > instrument[name^='s'] {
-  counter-increment: solo;
-}
-lyrics > verse[name='v'],
-lyrics > verse[name='c'],
-lyrics > verse[name='p'],
-lyrics > verse[name='b'],
-lyrics > verse[name='e'],
+lyrics >      verse[name^='v'] { counter-increment: verse; }
+lyrics >      verse[name^='c'] { counter-increment: chorus; }
+lyrics >      verse[name^='p'] { counter-increment: prechorus; }
+lyrics >      verse[name^='b'] { counter-increment: bridge; }
+lyrics >      verse[name^='o'] { counter-increment: other; }
+lyrics >      verse[name^='i'],
+lyrics > instrument[name^='i'] { counter-increment: intro; }
+lyrics >      verse[name^='e'],
+lyrics > instrument[name^='e'] { counter-increment: ending; }
+lyrics > instrument[name^='s'] { counter-increment: solo; }
+lyrics > instrument[name^='m'] { counter-increment: middle; }
+
+lyrics >      verse[name^='v'][lang] { counter-increment: verse 0; } /* don't increment verse translations and transliterations */
+lyrics >      verse[name^='c'][lang] { counter-increment: chorus 0; }
+lyrics >      verse[name^='p'][lang] { counter-increment: prechorus 0; }
+lyrics >      verse[name^='b'][lang] { counter-increment: bridge 0; }
+lyrics >      verse[name^='o'][lang] { counter-increment: other 0; }
+lyrics >      verse[name^='i'][lang],
+lyrics > instrument[name^='i'][lang] { counter-increment: intro 0; }
+lyrics >      verse[name^='e'][lang],
+lyrics > instrument[name^='e'][lang] { counter-increment: ending 0; }
+lyrics > instrument[name^='s'][lang] { counter-increment: solo 0; }
+lyrics > instrument[name^='m'][lang] { counter-increment: middle 0; }
+
+lyrics >      verse[name='v'],
+lyrics >      verse[name='c'],
+lyrics >      verse[name='p'],
+lyrics >      verse[name='b'],
+lyrics >      verse[name='o'],
+lyrics >      verse[name='i'],
 lyrics > instrument[name='i'],
-lyrics > instrument[name='m'],
-lyrics > instrument[name='o'],
-lyrics > instrument[name='s'] {
+lyrics >      verse[name='e'],
+lyrics > instrument[name='e'],
+lyrics > instrument[name='s'],
+lyrics > instrument[name='m'] {
   counter-increment: none !important;
 }
 

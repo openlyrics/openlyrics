@@ -7,9 +7,10 @@
     <originalTitle>Original title</originalTitle>
     <subtitle>Subtitle</subtitle>
     <author>Author</author>
-    <words>Words</words>
-    <music>Music</music>
-    <translation>Translation</translation>
+    <words>Lyricist</words>
+    <music>Composer</music>
+    <translation>Translator</translation>
+    <arrangement>Arranger</arrangement>
     <released>Released</released>
     <version>Version</version>
     <variant>Variant</variant>
@@ -18,6 +19,7 @@
     <comment>Comment</comment>
     <keywords>Keywords</keywords>
     <key>Key</key>
+    <timeSignature>Time Signature</timeSignature>
     <tempo>Tempo</tempo>
     <transposition>Transposition</transposition>
     <ccliNo>CCLI No.</ccliNo>
@@ -36,11 +38,11 @@
       <c>Chorus</c>
       <p>Pre-chorus</p>
       <b>Bridge</b>
-      <e>Ending</e>
+      <o>Other</o>
       <i>Intro</i>
-      <m>Middle</m>
-      <o>Outro</o>
+      <e>Ending</e>
       <s>Solo</s>
+      <m>Middle</m>
     </verseNames>
     <!-- Format of verse name.
     @initial: Whitch is the 1st? "name" or "number"
@@ -50,6 +52,7 @@
   </lyrics>
   <languages>
     <en>English</en>
+    <fr>French</fr>
     <hu>Hungarian</hu>
     <es>Spanish</es>
     <it>Italian</it>

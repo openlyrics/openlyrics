@@ -55,6 +55,54 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Convert transposition tag -->
+  <xsl:template match="//ol:transposition">
+    <xsl:element name="{local-name()}" namespace="{namespace-uri(}">
+      <xsl:choose>
+        <xsl:when test="number(.) &gt; 0">
+          <xsl:value-of select="number(.) mod 12"/>
+        </xsl:when>
+        <xsl:when test="number(.) &lt; 0">
+          <xsl:value-of select="number(.) mod -12"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>0</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Convert key tag -->
+  <xsl:template match="//ol:key">
+    <xsl:element name="{local-name()}" namespace="{namespace-uri(}">
+      <xsl:choose>
+        <xsl:when test="substring(., string-length(.), 1) = 'm'">
+          <xsl:call-template name="convertNote">
+            <xsl:with-param name="n" select="substring(., 1, string-length(.)-1)"/>
+          </xsl:call-template>
+          <xsl:text>m</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="convertNote">
+            <xsl:with-param name="n" select="."/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Remove lang attribute from translator if it matches the document language -->
+  <xsl:template match="//ol:author/@lang">
+    <xsl:choose>
+      <xsl:when test=".=$xmllang"></xsl:when>
+      <xsl:otherwise>
+        <xsl:attribute name="lang">
+          <xsl:value-of select="."/>
+        </xsl:attribute>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- Convert chords: Supports documented notations and all variation of https://github.com/openlyrics/openlyrics/blob/v0.8/chords.txt -->
   <xsl:template match="//ol:chord">
     <!-- Tokenize @name to $root, $structure, $bass, TODO: port to regexp if available -->
@@ -120,11 +168,16 @@
         </xsl:call-template>
       </xsl:attribute>
       <xsl:if test="$structure != ''">
-        <xsl:attribute name="structure">
+        <xsl:variable name="convertedStructure">
           <xsl:call-template name="convertStructure">
             <xsl:with-param name="str" select="$structure"/>
           </xsl:call-template>
-        </xsl:attribute>
+        </xsl:variable>
+        <xsl:if test="$convertedStructure != ''">
+          <xsl:attribute name="structure">
+            <xsl:value-of select="$convertedStructure"/>
+          </xsl:attribute>
+        </xsl:if>
       </xsl:if>
       <xsl:if test="$bass != ''">
         <xsl:attribute name="bass">
@@ -160,6 +213,10 @@
   <xsl:template name="convertNote">
     <xsl:param name="n" />
     <xsl:choose>
+      <xsl:when test="$n = 'Cb'
+                   or $n = 'Ces'
+                   or $n = 'Cesz'
+                   or $n = 'Dob'">Cb</xsl:when><!-- only for song key -->
       <xsl:when test="$n = 'C'
                    or $n = 'Do'">C</xsl:when>
       <xsl:when test="$n = 'C#'
