@@ -87,6 +87,9 @@
       {%- set titlesuffix = "" %}
     {%- endif %}
     <title>{{ title|striptags }}{{ titlesuffix }}</title>
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" />
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" />
     {%- if not embedded %}

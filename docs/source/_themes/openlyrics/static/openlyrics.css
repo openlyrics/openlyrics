@@ -27,8 +27,6 @@ footer             { grid-area: footer;     }
 html {
   font-size: 16px;
   display: grid;
-  justify-content: center;
-
 }
 body {
   display: grid;
@@ -44,16 +42,27 @@ nav {
   justify-content: space-between;
 }
 @media (min-width: 1200px) {
+  html {
+    justify-content: center;
+  }
   body {
     width: 1170px;
+    padding: 20px;
   }
 }
 @media (max-width: 1199px) {
+  html {
+    justify-content: center;
+  }
   body {
     max-width: 1170px;
+    padding: 20px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 800px) {
+  html {
+    justify-content: unset;
+  }
   body {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -97,10 +106,15 @@ nav {
     max-width: fit-content;
   }
 }
-@media (max-width: 360px) {
+@media (max-width: 600px) {
+  html {
+    justify-content: unset;
+  }
   body {
     gap: 0;
-    padding: 0;
+    padding: 20px 0;
+    max-width: 600px;
+    box-sizing: border-box;
   }
   body nav,
   body main,
@@ -126,10 +140,9 @@ body::before {
 body {
   background: var(--color-canvas);
   margin: 0;
-  padding: 20px;
   text-align: left;
   font-family: lucida grande, trebuchet ms, verdana, arial;
-  font-size: .875rem;
+  font-size: clamp(.8125rem, 1vw, 1.125rem);
   color: var(--color-medium);
 }
 header {
@@ -167,7 +180,7 @@ nav li {
 nav li a {
   display: block;
   color: var(--color-medium);
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
   text-decoration: none;
   font-weight: bold;
   position: relative;
@@ -230,19 +243,23 @@ aside {
   height: auto;
 }
 main h1 {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 1.5vw, 2rem);
   margin-top: 1rem;
 }
 main h2 {
   padding-bottom: .5rem;
   color: var(--color-dark);
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.25vw, 1.5rem);
 }
 main h3 {
   margin-bottom: .25rem;
 }
 main h3 + p {
   margin-top: .25rem;
+}
+pre,
+code {
+  font-family: consolas,"Liberation Mono",courier,monospace;
 }
 pre {
   background: linear-gradient(to right, var(--color-light) 0%, var(--color-page) 100%);
