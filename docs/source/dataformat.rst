@@ -878,29 +878,43 @@ The root note
 The ``root`` attribute describes the root note of the chord. The values should marked
 with English notation:
 
-========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
-english    C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    Bb   B
-========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
-english-b  C   C#    Db    D   D#    Eb   E   F   F#    Gb    G    G#    Ab   A   A#    B    H
-german     C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   B    H
-dutch      C   Cis   Des   D   Dis   Es   E   F   Fis   Ges   G    Gis   As   A   Ais   Bes  B
-hungarian  C   Cisz  Desz  D   Disz  Esz  E   F   Fisz  Gesz  G    Gisz  Asz  A   Aisz  B    H
-neolatin   Do  Do#   Reb   Re  Re#   Mib  Mi  Fa  Fa#   Solb  Sol  Sol#  Lab  La  La#   Sib  Si
-========== === ===== ===== === ===== ==== === === ===== ===== ==== ===== ==== === ===== ==== ===
+======= ========= ====== ===== ========= ========
+english english-b german dutch hungarian neolatin
+======= ========= ====== ===== ========= ========
+**C**   C         C      C     C         Do
+**C#**  C#        Cis    Cis   Cisz      Do#
+**Db**  Db        Des    Des   Desz      Reb
+**D**   D         D      D     D         Re
+**D#**  D#        Dis    Dis   Disz      Re#
+**Eb**  Eb        Es     Es    Esz       Mib
+**E**   E         E      E     E         Mi
+**F**   F         F      F     F         Fa
+**F#**  F#        Fis    Fis   Fisz      Fa#
+**Gb**  Gb        Ges    Ges   Gesz      Solb
+**G**   G         G      G     G         Sol
+**G#**  G#        Gis    Gis   Gisz      Sol#
+**Ab**  Ab        As     As    Asz       Lab
+**A**   A         A      A     A         La
+**A#**  A#        Ais    Ais   Aisz      La#
+**Bb**  B         B      Bes   B         Sib
+**B**   H         H      B     H         Si
+======= ========= ====== ===== ========= ========
 
 The preferred notation for displaying can be marked with ``chordNotation`` attribute on root element.
 
 For supporting diatonic transposition and theoretical keys the following notes are valid also:
 
-========== ==== ==== ======= ======= ======= ==== ====
-english    E#   B#   Fx      Cx      Gx      Cb   Fb
-========== ==== ==== ======= ======= ======= ==== ====
-english-b  E#   H#   Fx      Cx      Gx      Cb   Fb
-german     Eis  His  Fisis   Cisis   Gisis   Ces  Fes
-dutch      Eis  Bis  Fisis   Cisis   Gisis   Ces  Fes
-hungarian  Eisz Hisz Fiszisz Ciszisz Giszisz Cesz Fesz
-neolatin   Mi#  Si#  Fax     Dox     Solx    Dob  Fab
-========== ==== ==== ======= ======= ======= ==== ====
+======= ========= ====== ===== ========= ========
+english english-b german dutch hungarian neolatin
+======= ========= ====== ===== ========= ========
+**E#**  E#        Eis    Eis   Eisz      Mi#
+**B#**  H#        His    Bis   Hisz      Si#
+**Fx**  Fx        Fisis  Fisis Fiszisz   Fax
+**Cx**  Cx        Cisis  Cisis Ciszisz   Dox
+**Gx**  Gx        Gisis  Gisis Giszisz   Solx
+**Cb**  Cb        Ces    Ces   Cesz      Dob
+**Fb**  Fb        Fes    Fes   Fesz      Fab
+======= ========= ====== ===== ========= ========
 
 The bass
 """"""""
