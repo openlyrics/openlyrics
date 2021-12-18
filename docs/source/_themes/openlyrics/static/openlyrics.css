@@ -124,6 +124,38 @@ nav {
   footer {
     padding: 10px;
   }
+  table {
+    border-collapse: collapse;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  table tbody tr td {
+    border: none;
+    border-bottom: 1px solid var(--color-clear);
+    position: relative;
+    padding-left: 50% !important;
+  }
+  table tbody tr td:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 49%;
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    white-space: nowrap;
+    content: attr(data-column);
+    font-weight: bold;
+    background-color: var(--color-canvas);
+  }
+  table tbody tr.row-odd td:before {
+    background-color: var(--color-canvas-alternate);
+  }
 }
 
 /* Appearance  */

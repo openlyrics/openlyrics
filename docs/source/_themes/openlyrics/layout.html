@@ -94,7 +94,7 @@
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" />
     {%- if not embedded %}
     <script>
-      global DOCUMENTATION_OPTIONS = {
+      const DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '{{ pathto("", 1) }}',
         VERSION:     '{{ release|e }}',
         COLLAPSE_MODINDEX: false,
