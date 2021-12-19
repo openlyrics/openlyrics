@@ -1,7 +1,7 @@
 .. _faq:
 
-FAQ
-===
+Frequently Asked Questions
+==========================
 
 This is a list of Frequently Asked Questions about OpenLyrics. Feel free to
 suggest new entries!

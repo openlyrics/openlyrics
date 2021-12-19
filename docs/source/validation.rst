@@ -23,8 +23,8 @@ Bundled CLI Script
 This section describes how to use bundled script ``validate.py`` in command
 prompt.
 
-Prerequisites
-^^^^^^^^^^^^^
+Prerequisites for validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before using the script for validation please ensure that the following
 is available in your system:

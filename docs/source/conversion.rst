@@ -18,8 +18,8 @@ line tool to convert `OpenSong <http://www.opensong.org/>`_ song files to
 OpenLyrics. The conversion script should work in most situations, but do
 make sure that the conversion was successful before removing the old files.
 
-Prerequisites
-^^^^^^^^^^^^^
+Prerequisites for conversion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before using the script for conversion please ensure that the following
 is available in your system:
@@ -27,8 +27,8 @@ is available in your system:
 * `Python <http://www.python.org/>`_ >= 2.5
 * `lxml <http://codespeak.net/lxml/>`_
 
-Usage
-^^^^^
+Application
+^^^^^^^^^^^
 
 To execute the script use the following command::
 
