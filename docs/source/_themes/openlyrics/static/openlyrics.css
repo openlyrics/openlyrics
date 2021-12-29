@@ -315,7 +315,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
-main a:not(.headerlink),
+main a,
 aside a {
   position: relative;
 }
@@ -376,7 +376,9 @@ table tr th p {
 }
 a.headerlink {
   padding: 0 .1rem 0 .25rem;
-  visibility: hidden;
+  left: -5em;
+  opacity: 0;
+  transition: left 0.25s ease-out, opacity 0.25s;
 }
 a.headerlink:hover {
   text-decoration: none;
@@ -388,7 +390,8 @@ h4:hover > a.headerlink,
 h5:hover > a.headerlink,
 h6:hover > a.headerlink,
 dt:hover > a.headerlink {
-  visibility:visible;
+  left: 0;
+  opacity: 1;
 }
 aside > ul {
   padding: 0 0 0 20px;
