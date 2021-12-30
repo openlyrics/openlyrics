@@ -76,7 +76,7 @@ NAMESPACE = 'http://openlyrics.info/namespace/2009/song'
 OPENLYRICS_VER = '0.7'
 
 SCRIPTPATH = os.path.dirname(unicode(__file__, locale.getpreferredencoding()))
-SCHEMAFILE = os.path.join(SCRIPTPATH, '..', 'openlyrics_schema.rng')
+SCHEMAFILE = os.path.join(SCRIPTPATH, '..', 'openlyrics-0.7.rng')
 
 CCLITHEMES_FILE = os.path.join(SCRIPTPATH, '..', 'themelist.txt')
 CCLITHEMES = []

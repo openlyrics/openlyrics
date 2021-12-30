@@ -4,6 +4,6 @@ List of Themes
 ==============
 
 This list of themes comes from
-`CCLI site <http://www.ccli.com.au/owners/themes.cfm>`_.
+`CCLI site <https://songselect.ccli.com/search/themes>`_.
 
 .. literalinclude:: ../../themelist.txt

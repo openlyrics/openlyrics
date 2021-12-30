@@ -43,7 +43,7 @@ convert-09-08: songs/*.xml
 				name=$${file##*/} && \
 				xsltproc \
 					--output export-openlyrics-0.8/"$$name" \
-					tools/openlyrics-0.9-to-openlyrics-0.8.xsl \
+					tools/convert-schema-0.9-to-0.8.xsl \
 					"$$file"; \
 			fi; \
 		done
@@ -78,7 +78,7 @@ convert-08-09: songs/*.xml
 					--param remove-optional "true()" \
 					--param update-meta "false()" \
 					--param add-pi "false()" \
-					tools/openlyrics-0.8-to-openlyrics-0.9.xsl \
+					tools/convert-schema-0.8-to-0.9.xsl \
 					"$$file"; \
 			fi; \
 		done

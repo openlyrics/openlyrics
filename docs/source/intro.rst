@@ -14,14 +14,14 @@ system-independent song format for interoperability between applications.
 History
 -------
 
-The first version of OpenLyrics was created in 2008, when the OpenLP project
-leader approached the ChangingSong project leader, and proposed cooperation
+The first version of OpenLyrics was created in 2008, when the `OpenLP <https://openlp.org/>`_ project
+leader approached the `ChangingSong <https://sourceforge.net/projects/changingsong/>`_ project leader, and proposed cooperation
 between OpenLP and ChangingSong to improve data exchange between the two
 projects. They agreed that a good first step would be to create an independent
 interoperable data format to provide better song exchange between the two
 applications.
 
-Furthermore, experiences the leader of the ChangingSong had with the OpenSong
+Furthermore, experiences the leader of the ChangingSong had with the `OpenSong <http://www.opensong.org/>`_
 project's XML format for songs made him aware that the OpenSong format was not
 sufficient for the proposed features in ChangingSong, and thus a new format
 would be necessary in order to implement many of the more advanced features
@@ -37,8 +37,9 @@ there are a plethora of XML libraries for manipulating XML.
 
 The current design of OpenLyrics is based on the OpenSong data format along with
 some features suggested by users, particularly the ability to use
-`multiple languages for a song (forum) <http://sourceforge.net/projects/changingsong/forums/forum/770759/topic/1983107>`_
-.
+`multiple languages for a song (forum) <https://sourceforge.net/projects/changingsong/forums/forum/770759/topic/1983107>`_
+and the possibility of using them as `single source <https://github.com/openlyrics/openlyrics/issues/29>`_
+to provide various outputs including printed hymnbooks.
 
 
 Release Numbering

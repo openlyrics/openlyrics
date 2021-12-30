@@ -22,7 +22,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = u'OpenLyrics'
-copyright = u'2009-2014, Martin Zibricky, Raoul Snyman, Samuel Mehrbrodt and others'
+copyright = u'2009-2021, Martin Zibricky, Raoul Snyman, Samuel Mehrbrodt and others'
 
 # The short X.Y version.
 version = '0.8'

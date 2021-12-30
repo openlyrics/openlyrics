@@ -303,6 +303,9 @@ pre {
   overflow: auto;
   white-space: pre-wrap;
 }
+dl dd pre {
+  margin-bottom: .5rem;
+}
 code {
   background: var(--color-light);
   display: inline flow-root;
@@ -382,6 +385,9 @@ a.headerlink {
 }
 a.headerlink:hover {
   text-decoration: none;
+}
+ul, dl ul {
+  margin-bottom: 1em;
 }
 h1:hover > a.headerlink,
 h2:hover > a.headerlink,
