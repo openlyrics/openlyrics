@@ -389,6 +389,9 @@ a.headerlink:hover {
 ul, dl ul {
   margin-bottom: 1em;
 }
+.toctree-wrapper ul {
+  margin-bottom: initial;
+}
 h1:hover > a.headerlink,
 h2:hover > a.headerlink,
 h3:hover > a.headerlink,

@@ -28,9 +28,11 @@ Prerequisites
   * `lxml <https://lxml.de/>`_
 
 Usage
-  To execute the script use the following command::
+  To execute the script use the following command:
 
-      python tools/opensong2openlyrics.py opensong_file openlyrics_file.xml
+  .. code-block:: console
+
+    python tools/opensong2openlyrics.py opensong_file openlyrics_file.xml
 
   Where ``opensong_file`` is the original song in OpenSong format and
   ``openlyrics_file.xml`` is the name of the song in OpenLyrics format.
@@ -58,9 +60,11 @@ Prerequisites
   * `Python <https://www.python.org/>`_ >= 2.5
 
 Usage
-  To execute the script use the following command::
+  To execute the script use the following command:
 
-      python tools/convert-schema.py old_olpenlyrics_file.xml new_olpenlyrics_file.xml
+  .. code-block:: console
+
+    python tools/convert-schema.py old_olpenlyrics_file.xml new_olpenlyrics_file.xml
 
   Where ``old_olpenlyrics_file.xml`` is the original song with OpenLyrics 0.6 or 0.7 format and
   ``new_olpenlyrics_file.xml`` is the name of the song with OpenLyrics 0.8 schema.
@@ -75,9 +79,11 @@ Prerequisites
   We recommend libxslt's ``xsltproc``.
 
 Usage
-  Execute this command::
+  Execute this command:
 
-      xsltproc --output new_olpenlyrics_file.xml tools/convert-schema-0.8-to-0.9.xsl old_olpenlyrics_file.xml
+  .. code-block:: console
+
+    xsltproc --output new_olpenlyrics_file.xml tools/convert-schema-0.8-to-0.9.xsl old_olpenlyrics_file.xml
 
   Where ``old_olpenlyrics_file.xml`` is the original song with OpenLyrics 0.8 format and
   ``new_olpenlyrics_file.xml`` is the name of the song with OpenLyrics 0.9 schema.
@@ -91,18 +97,20 @@ Usage
   * ``--param update-meta``: Option to update ``modifiedIn`` and ``modifiedDate`` during convertion or not. Boolean: ``true()``, ``false()``. Default is ``false()``. 
   * ``--param add-pi``: Option to add CSS processing intruction: ``href="../stylesheets/openlyrics.css" type="text/css"``. Boolean: ``true()``, ``false()``. Default is ``false()``.
 
-  A complex example::
+  A complex example:
 
-      xsltproc \
-        --output new_olpenlyrics_file.xml \
-        --param empty-chords "true()" \
-        --stringparam chord-notation english \
-        --stringparam xmllang en \
-        --param remove-optional "true()" \
-        --param update-meta "false()" \
-        --param add-pi "false()" \
-        tools/convert-schema-0.8-to-0.9.xsl \
-        old_olpenlyrics_file.xml
+  .. code-block:: bash
+
+    xsltproc \
+      --output new_olpenlyrics_file.xml \
+      --param empty-chords "true()" \
+      --stringparam chord-notation english \
+      --stringparam xmllang en \
+      --param remove-optional "true()" \
+      --param update-meta "false()" \
+      --param add-pi "false()" \
+      tools/convert-schema-0.8-to-0.9.xsl \
+      old_olpenlyrics_file.xml
 
 Converting schema version 0.9 to 0.8
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,9 +123,11 @@ Prerequisites
   We recommend libxslt's ``xsltproc``.
 
 Usage
-  Execute this command::
+  Execute this command:
 
-      xsltproc --output openlyrics_0.8_file.xml tools/convert-schema-0.9-to-0.8.xsl openlyrics_0.9_file.xml
+  .. code-block:: console
+
+    xsltproc --output openlyrics_0.8_file.xml tools/convert-schema-0.9-to-0.8.xsl openlyrics_0.9_file.xml
 
   Where ``openlyrics_0.9_file.xml`` is the original song with OpenLyrics 0.9 format and
   ``openlyrics_0.8_file.xml`` is the name of the song exported to OpenLyrics 0.8 schema.

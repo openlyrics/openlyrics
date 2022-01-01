@@ -46,9 +46,11 @@ Validation examples
 CLI validation using Libxml2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To validate an OpenLyrics XML file use the following command::
+To validate an OpenLyrics XML file use the following command:
 
-    xmllint --noout --relaxng openlyrics-0.9.rng xmlfile.xml
+.. code-block:: console
+
+  xmllint --noout --relaxng openlyrics-0.9.rng xmlfile.xml
 
 ``xmlfile.xml`` is the OpenLyrics file which you need to validate and
 ``openlyrics-0.9.rng`` contains OpenLyrics RelaxNG XML schema.
@@ -59,17 +61,19 @@ system with ``apt-get install libxml2-utils``.
 Validating using Python
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Example::
+Example:
 
-    #!/usr/bin/env python3
+.. code-block:: python
 
-    from lxml import etree
+  #!/usr/bin/env python3
 
-    xml_validator = etree.RelaxNG(file = "openlyrics-0.9.rng")
-    xml_file = etree.parse("xmlfile.xml")
-    is_valid = xml_validator.validate(xml_file)
+  from lxml import etree
 
-    print(f'xmlfile.xml is{"" if is_valid else " not"} valid')
+  xml_validator = etree.RelaxNG(file = "openlyrics-0.9.rng")
+  xml_file = etree.parse("xmlfile.xml")
+  is_valid = xml_validator.validate(xml_file)
+
+  print(f'xmlfile.xml is{"" if is_valid else " not"} valid')
 
 ``xmlfile.xml`` is the OpenLyrics file which you need to validate and
 ``openlyrics-0.9.rng`` contains OpenLyrics RelaxNG XML schema.
@@ -77,9 +81,11 @@ Example::
 Bundled CLI Script
 ^^^^^^^^^^^^^^^^^^
 
-To execute the included script, use the following command::
+To execute the included script, use the following command:
 
-    python3 tools/validate.py openlyrics-0.9.rng xmlfile.xml
+.. code-block:: console
+
+  python3 tools/validate.py openlyrics-0.9.rng xmlfile.xml
 
 ``xmlfile.xml`` is the OpenLyrics file which you need to validate and
 ``openlyrics-0.9.rng`` contains OpenLyrics RelaxNG XML schema.
