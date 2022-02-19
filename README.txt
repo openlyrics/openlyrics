@@ -7,14 +7,13 @@ system-independant song format for interoperability between applications.
 
 For more details see:
 
-  http://openlyrics.org
+  https://openlyrics.org
 
 
 Files
 -----
 
-openlyrics-0.8.rng	- RelaxNG XML Schema for a song
-validate.py		- Python script to validate XML using RelaxNG schema
+openlyrics-0.9.rng	- RelaxNG XML Schema for a song
 
 chords.txt		- examples of chord notation
 themelist.txt		- standardized song themes (from www.ccli.com)
@@ -24,40 +23,35 @@ Folders
 -------
 
 examples		- song examples
-examples/simple.xml	-   minimalistic song example
-examples/complex.xml	-   complex song example
-examples/format.xml	-   example with formatting tags
-examples/format2.xml	-   more complex song with formatting tags
-
 songs			- several song examples
-tools			- additional tools
+stylesheets			- reference style implementation using purse CSS or XSLT/HTML/CSS
+tools			- additional tools for validation and conversion
 
 
 Validation
 ===========
 
-Online Validator
-----------------
-
-  http://validator.nu/
-
-
-Other RelaxNG Software
-----------------------
-
-  http://relaxng.org/#software
-
+Recommended method:
+  xmllint --noout --relaxng openlyrics-0.9.rng any_song.xml
 
 Included Validator
 ------------------
 
-validate.py - for validating xml documents with given RelaxNG schema.
+tools/validate.py - for validating xml documents with given RelaxNG schema.
 
 To use this python script you need:
 
-  * python >=2.4
+  * python >=3.6
   * python library lxml:
-      http://pypi.python.org/pypi/lxml
+      https://pypi.org/project/lxml/
 
 Usage:
-  python validate.py openlyrics-0.8.rng any_song.xml
+  python3 tools/validate.py openlyrics-0.9.rng any_song.xml
+
+Conversion from 0.8 to 0.9
+==========================
+
+To use this command you need libxslt's xsltproc.
+
+Usage:
+  xsltproc --output new_olpenlyrics_file.xml tools/convert-schema-0.8-to-0.9.xsl old_olpenlyrics_file.xml

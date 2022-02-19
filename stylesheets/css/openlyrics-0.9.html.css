@@ -41,11 +41,17 @@
   font-weight: bold;
 }
 .song[data-ol-version="0.9"] .segment .chord .chord-structure:not(:empty) {
+/* lifted structure style
+  position: relative;
+  top: -.33rem; */
 }
 .song[data-ol-version="0.9"] .segment .chord .chord-bassnotation,
 .song[data-ol-version="0.9"] .segment .chord .chord-bass:not(:empty) {
   font-size: .813rem;
   font-weight: bold;
+/* lifted bassnotation style
+  position: relative;
+  top: -.33rem; */
 }
 .song[data-ol-version="0.9"] .segment .chord .chord-structure:not(:empty) + .chord-basssnotation:not(:empty) {
   margin-left: -.15rem;

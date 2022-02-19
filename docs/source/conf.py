@@ -22,7 +22,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = u'OpenLyrics'
-copyright = u'2009-2014, Martin Zibricky, Raoul Snyman, Samuel Mehrbrodt and others'
+copyright = u'2009-2021, Martin Zibricky, Raoul Snyman, Samuel Mehrbrodt and others'
 
 # The short X.Y version.
 version = '0.8'
@@ -78,6 +78,8 @@ html_title = '%s v%s Documentation' % (project, version)
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_js_files = ['openlyrics.js']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chordNotation>
   <notation id="english">
-    <name class="Cb">C♭</name><!-- only for song key -->
+    <!-- chromatic notes -->
     <name class="C">C</name>
     <name class="C#">C♯</name>
     <name class="Db">D♭</name>
@@ -19,9 +19,17 @@
     <name class="A#">A♯</name>
     <name class="Bb">B♭</name>
     <name class="B">B</name>
+    <!-- supporting theoretical keys -->
+    <name class="E#">E♯</name>
+    <name class="B#">B♯</name>
+    <name class="Fx">F𝄪</name>
+    <name class="Cx">C𝄪</name>
+    <name class="Gx">G𝄪</name>
+    <name class="Cb">C♭</name>
+    <name class="Fb">F♭</name>
   </notation>
   <notation id="english-b">
-    <name class="Cb">C♭</name><!-- only for song key -->
+    <!-- chromatic notes -->
     <name class="C">C</name>
     <name class="C#">C♯</name>
     <name class="Db">D♭</name>
@@ -39,9 +47,17 @@
     <name class="A#">A♯</name>
     <name class="Bb">B</name>
     <name class="B">H</name>
+    <!-- supporting theoretical keys -->
+    <name class="E#">E♯</name>
+    <name class="B#">H♯</name>
+    <name class="Fx">F𝄪</name>
+    <name class="Cx">C𝄪</name>
+    <name class="Gx">G𝄪</name>
+    <name class="Cb">C♭</name>
+    <name class="Fb">F♭</name>
   </notation>
   <notation id="german">
-    <name class="Cb">Ces</name><!-- only for song key -->
+    <!-- chromatic notes -->
     <name class="C">C</name>
     <name class="C#">Cis</name>
     <name class="Db">Des</name>
@@ -59,9 +75,17 @@
     <name class="A#">Ais</name>
     <name class="Bb">B</name>
     <name class="B">H</name>
+    <!-- supporting theoretical keys -->
+    <name class="E#">Eis</name>
+    <name class="B#">His</name>
+    <name class="Fx">Fisis</name>
+    <name class="Cx">Cisis</name>
+    <name class="Gx">Gisis</name>
+    <name class="Cb">Ces</name>
+    <name class="Fb">Fes</name>
  </notation>
  <notation id="dutch">
-    <name class="Cb">Ces</name><!-- only for song key -->
+    <!-- chromatic notes -->
     <name class="C">C</name>
     <name class="C#">Cis</name>
     <name class="Db">Des</name>
@@ -79,9 +103,17 @@
     <name class="A#">Ais</name>
     <name class="Bb">Bes</name>
     <name class="B">B</name>
+    <!-- supporting theoretical keys -->
+    <name class="E#">Eis</name>
+    <name class="B#">Bis</name>
+    <name class="Fx">Fisis</name>
+    <name class="Cx">Cisis</name>
+    <name class="Gx">Gisis</name>
+    <name class="Cb">Ces</name>
+    <name class="Fb">Fes</name>
   </notation>
   <notation id="hungarian">
-    <name class="Cb">Cesz</name><!-- only for song key -->
+    <!-- chromatic notes -->
     <name class="C">C</name>
     <name class="C#">Cisz</name>
     <name class="Db">Desz</name>
@@ -99,9 +131,17 @@
     <name class="A#">Aisz</name>
     <name class="Bb">B</name>
     <name class="B">H</name>
+    <!-- supporting theoretical keys -->
+    <name class="E#">Eisz</name>
+    <name class="B#">Hisz</name>
+    <name class="Fx">Fiszisz</name>
+    <name class="Cx">Ciszisz</name>
+    <name class="Gx">Giszisz</name>
+    <name class="Cb">Cesz</name>
+    <name class="Fb">Fesz</name>
   </notation>
   <notation id="neolatin">
-    <name class="Cb">Do♭</name><!-- only for song key -->
+    <!-- chromatic notes -->
     <name class="C">Do</name>
     <name class="C#">Do♯</name>
     <name class="Db">Re♭</name>
@@ -119,6 +159,14 @@
     <name class="A#">La♯</name>
     <name class="Bb">Si♭</name>
     <name class="B">Si</name>
+    <!-- supporting theoretical keys -->
+    <name class="E#">Mi♯</name>
+    <name class="B#">Si♯</name>
+    <name class="Fx">Fa𝄪</name>
+    <name class="Cx">Do𝄪</name>
+    <name class="Gx">Sol𝄪</name>
+    <name class="Cb">Do♭</name>
+    <name class="Fb">Fa♭</name>
   </notation>
 
   <!-- 2 note chords -->
