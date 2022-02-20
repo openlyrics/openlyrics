@@ -14,8 +14,6 @@ Files
 -----
 
 openlyrics-0.9.rng	- RelaxNG XML Schema for a song
-
-chords.txt		- examples of chord notation
 themelist.txt		- standardized song themes (from www.ccli.com)
 
 
@@ -24,7 +22,7 @@ Folders
 
 examples		- song examples
 songs			- several song examples
-stylesheets			- reference style implementation using purse CSS or XSLT/HTML/CSS
+stylesheets		- reference style implementation using purse CSS or XSLT/HTML/CSS
 tools			- additional tools for validation and conversion
 
 

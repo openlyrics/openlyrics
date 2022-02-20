@@ -22,8 +22,9 @@ header             { grid-area: header;     }
 main               { grid-area: content;    }
 nav                { grid-area: nav;        }
 aside              { grid-area: sidebar;    }
-section#additional { grid-area: additional; }
+section#ad         { grid-area: additional; }
 footer             { grid-area: footer;     }
+.injected          { grid-area: rtd;        }
 html {
   font-size: 16px;
   display: grid;
@@ -36,7 +37,8 @@ body {
     "header     header"
     "nav        nav"
     "content    sidebar"
-    "footer     additional";
+    "footer     rtd"
+    "additional additional";
 }
 nav {
   justify-content: space-between;
@@ -70,8 +72,9 @@ nav {
       "nav"
       "sidebar"
       "content"
-      "additional"
-      "footer";
+      "rtd"
+      "footer"
+      "additional";
   }
   aside:empty,
   aside:-moz-only-whitespace {
@@ -415,4 +418,44 @@ aside ul.this-page-menu {
 aside h3,
 aside h4 {
   margin-bottom: 0;
+}
+
+/*  Inserted RTD Footer */
+.injected .rst-versions .rst-other-versions {
+  display: none;
+  transform: scale(0);
+  transform-origin: left top;
+  animation: anim .3s ease-in-out;
+}
+.injected .rst-versions.shift-up .rst-other-versions {
+  display: block;
+  transform: scale(1);
+}
+.injected .rst-versions .rst-current-version::before {
+  display: inline;
+  content: "Read the Docs";
+}
+.injected .rst-versions .rst-current-version {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color-navigation);
+}
+.injected dd {
+  margin-left: 1rem;
+}
+
+@keyframes anim {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
